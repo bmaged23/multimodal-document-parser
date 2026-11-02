@@ -1,5 +1,5 @@
 {
-  "recorded_at": "2026-11-02T13:43:11.559732+00:00",
+  "recorded_at": "2026-11-02T14:32:07.995617+00:00",
   "selected_pages": 54,
   "documents": 4,
   "runs": 12,
@@ -26,7 +26,7 @@
   ],
   "scope": "Expanded saved-output demo; not live inference",
   "public_url": "https://bmaged23.github.io/multimodal-document-parser/?v=2.0",
-  "public_hosting_verified": false,
+  "public_hosting_verified": true,
   "local_browser_verified": true,
   "archive": {
     "release_tag": "v0.1.0-rc.2",
@@ -53,5 +53,15 @@
   "last_full_suite_passed": 137,
   "targeted_demo_suite_passed": 10,
   "pipeline_diagram_verification": "docs/assets/pipeline-diagram-verification.json",
-  "docker_hub_overview_source": "docs/docker/docker-hub-overview.md"
+  "docker_hub_overview_source": "docs/docker/docker-hub-overview.md",
+  "ci_run": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41459517244",
+  "deployment_run": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41459517449",
+  "diagram_matches_released_runtime_sources": true,
+  "docker_hub_overview_publication": {
+    "overview_url": "https://hub.docker.com/r/bmaged23/multimodal-document-parser",
+    "public_overview_verified": true,
+    "source": "docs/docker/docker-hub-overview.md",
+    "sha256": "ea66a1f69366a4021478e3e9d06afdd92bdb23e97b683b1c033353b419e3ae5a",
+    "image_tag_unchanged": "0.1.0-rc.2"
+  }
 }
