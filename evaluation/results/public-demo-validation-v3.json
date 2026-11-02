@@ -1,5 +1,5 @@
 {
-  "recorded_at": "2026-11-02T16:33:27.978470+00:00",
+  "recorded_at": "2026-11-02T16:47:45.000130+00:00",
   "selected_pages": 53,
   "documents": 4,
   "runs": 12,
@@ -25,7 +25,7 @@
     "mobile overflow"
   ],
   "public_url": "https://bmaged23.github.io/multimodal-document-parser/?v=3.0",
-  "public_hosting_verified": false,
+  "public_hosting_verified": true,
   "local_browser_verified": true,
   "last_full_suite_passed": 140,
   "archive": {
@@ -55,5 +55,16 @@
     "PaddleOCR-VL-1.6": 93,
     "dots.mocr-Q4_K_M-mmproj-Q8_0": 168,
     "Unlimited-OCR-2-NF4-FP16-vision": 37
-  }
+  },
+  "ci_run": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41483426987",
+  "deployment_run": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41483427046",
+  "docker_hub_overview_publication": {
+    "overview_url": "https://hub.docker.com/r/bmaged23/multimodal-document-parser",
+    "public_overview_verified": true,
+    "source": "docs/docker/docker-hub-overview.md",
+    "sha256": "f2321419e76b8df5ec75e2587031ed2b479c9d271da2a10aae9b91e94ef3a41f",
+    "image_tag_unchanged": "0.1.0-rc.2"
+  },
+  "release_asset_verified": true,
+  "previous_diary_runs_preserved": true
 }
