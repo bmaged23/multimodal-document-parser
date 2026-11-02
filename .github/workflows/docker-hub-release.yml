@@ -9,6 +9,11 @@ on:
         description: 'Image tag (for example 0.1.0-rc1)'
         required: true
         type: string
+      publish_latest:
+        description: 'Also update the mutable latest alias to this tested release'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -59,6 +64,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=raw,value=${{ inputs.tag }},enable=${{ github.event_name == 'workflow_dispatch' }}
+            type=raw,value=latest,enable=${{ inputs.publish_latest }}
             type=sha
       - name: Build release candidate
         uses: docker/build-push-action@v6

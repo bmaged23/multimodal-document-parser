@@ -2,7 +2,7 @@
 name: multimodal-parsing
 
 x-runtime: &runtime
-  image: ${PARSER_IMAGE:-multimodal-document-parsing:release-candidate}
+  image: ${PARSER_IMAGE:-bmaged23/multimodal-document-parser:0.1.0-rc.3}
   init: true
   read_only: true
   cap_drop: [ALL]
