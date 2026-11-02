@@ -1,5 +1,5 @@
 {
-  "recorded_at": "2026-11-02T09:57:22.179861+00:00",
+  "recorded_at": "2026-11-02T10:23:50.402876+00:00",
   "intended_public_repository": "bmaged23/multimodal-document-parser",
   "docker_target": "parsing",
   "platform": "linux/amd64",
@@ -32,9 +32,7 @@
   "cloud_inference_requests": 0,
   "published": true,
   "repository_public_visibility_verified": true,
-  "next_required": [
-    "Verify a hosted Docker Hub release workflow run"
-  ],
+  "next_required": [],
   "storage_cleanup": {
     "completed": true,
     "free_gib_after_cleanup": 25.67,
@@ -70,15 +68,17 @@
   },
   "github": {
     "repository": "https://github.com/bmaged23/multimodal-document-parser",
-    "source_commit": "5f6722c",
-    "ci_run": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41377223373",
+    "source_commit": "5d3c1ba9ccf00917307e0616292632b9e232f1e3",
+    "ci_run": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424905794",
     "ci_conclusion": "success",
     "release_environment": "docker-hub",
     "release_variables_configured": true,
     "release_secret_configured": true,
     "container_validation_run": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41422591707",
     "container_validation_status": "completed",
-    "container_validation_conclusion": "success"
+    "container_validation_conclusion": "success",
+    "release_workflow": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424942053",
+    "release_workflow_conclusion": "success"
   },
   "repository_reorganization": {
     "local_tests_passed": 132,
@@ -87,5 +87,20 @@
     "strict_mypy": true,
     "task_script_groups": 8,
     "preserved_evaluation_archives_modified": false
+  },
+  "automated_release": {
+    "repository": "bmaged23/multimodal-document-parser",
+    "tag": "0.1.0-rc.2",
+    "index_digest": "sha256:fbd8e78741c933e04de58ab5648f55b3846cad65fc73290ba7ac8a35eb580c34",
+    "platform_manifest_digest": "sha256:f6eeac2a2dd9ddc8b4e119429a6c1f87042d63e120e4b772432344a5ef741ad1",
+    "source_revision_verified": "5d3c1ba9ccf00917307e0616292632b9e232f1e3",
+    "anonymous_manifest_access": true,
+    "attestation_predicates": [
+      "https://spdx.dev/Document",
+      "https://slsa.dev/provenance/v1"
+    ],
+    "hosted_workflow": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424942053",
+    "workflow_conclusion": "success",
+    "gpu_test": "not_run_on_hosted_runner"
   }
 }

@@ -76,8 +76,8 @@ After merging and checking the intended commit, either create a new version tag
 or manually dispatch the workflow. Example for a **new, unused** prerelease:
 
 ```bash
-git tag -a v0.1.0-rc.2 -m 'Document parser release candidate 2'
-git push origin v0.1.0-rc.2
+git tag -a v0.1.0-rc.3 -m 'Document parser release candidate 2'
+git push origin v0.1.0-rc.3
 ```
 
 Alternative, using an authenticated GitHub CLI:
@@ -85,7 +85,7 @@ Alternative, using an authenticated GitHub CLI:
 ```bash
 gh workflow run docker-hub-release.yml \
   --repo bmaged23/multimodal-document-parser \
-  --ref main -f tag=0.1.0-rc.2
+  --ref main -f tag=0.1.0-rc.3
 ```
 
 Choose one trigger per release. Keep existing tags immutable; prereleases do not
@@ -99,7 +99,8 @@ Consumers should pin a version or immutable digest.
 - [First Python/browser CI](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41377223373): passed.
 - [Initial hosted container validation](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41422591707): passed API/parsing builds and parsing runtime checks.
 - Docker Hub `0.1.0-rc.1`: published locally, anonymous digest verified, SBOM/provenance present. This is not claimed as a hosted release run.
-- GitHub release environment: variables and secret configured; the first automated publication must pass before it is described as verified.
+- [First automated release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424942053): passed and published `0.1.0-rc.2`; anonymous source-revision, SBOM and provenance checks passed.
+- GitHub release environment: variables and encrypted secret configured. No live server deployment is claimed.
 
 [Docker instructions and evidence](../docker/README.md) ·
 [Machine-readable release validation](../../evaluation/results/container-release-validation-v1.json)

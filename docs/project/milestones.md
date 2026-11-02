@@ -179,5 +179,5 @@ including DOCX conversion and CUDA allocation. The public Docker Hub release
 is published with anonymous manifest verification, SBOM and provenance.
 The public GitHub repository is connected and CI runs on source pushes.
 Python/browser CI passed, and the Docker Hub environment token is configured.
-Hosted API/parsing image checks passed. Automated release verification and a
-hosted demo remain pending.
+Hosted API/parsing image checks and the first automated Docker Hub release
+(`0.1.0-rc.2`) passed. A hosted public demo remains pending.

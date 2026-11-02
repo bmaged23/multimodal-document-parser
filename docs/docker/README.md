@@ -29,7 +29,7 @@ image; no host uv/Paddle installation is needed for this route.
 ```bash
 git clone https://github.com/bmaged23/multimodal-document-parser.git
 cd multimodal-document-parser
-export PARSER_IMAGE=bmaged23/multimodal-document-parser:0.1.0-rc.1
+export PARSER_IMAGE=bmaged23/multimodal-document-parser:0.1.0-rc.2
 docker pull "$PARSER_IMAGE"
 ```
 
@@ -45,15 +45,17 @@ from pathlib import Path
 
 root = Path('.cache/service_secrets')
 root.mkdir(parents=True, exist_ok=True, mode=0o700)
+root.chmod(0o700)
 values = {'pipeline_api_key': lambda: secrets.token_urlsafe(32),
           'ollama_api_key': lambda: getpass.getpass('Ollama key (Enter for OCR only): ')}
 for name, value in values.items():
     path = root / name
     if not path.exists():
         secret = value()
-        descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644)
         with os.fdopen(descriptor, 'w') as stream:
             stream.write(secret + '\n')
+    path.chmod(0o644)
 print('Local secret files ready; existing values retained.')
 PYTHON
 
@@ -63,6 +65,11 @@ docker compose -f compose.parsing.yaml ps
 curl --fail http://127.0.0.1:8101/health/ready
 curl --fail http://127.0.0.1:8102/health/ready
 ```
+
+The secret directory is private to your host user (mode 700). Its files are
+readable by the container UID through Compose mounts (mode 644), including hosts
+whose user ID differs from the image's UID 1000. The private parent directory
+prevents other host users from accessing those files.
 
 Open the preparation API at <http://127.0.0.1:8101/docs> and the parsing API at
 <http://127.0.0.1:8102/docs>. Follow the [upload-to-output API example](../api/README.md#upload-prepare-parse-and-download)
@@ -121,12 +128,12 @@ OpenAPI, Paddle CUDA imports, LibreOffice and optionally a small CUDA tensor. It
 makes **no model inference or cloud calls**. A passing smoke test is not an
 end-to-end OCR/visual-quality benchmark.
 
-Configure secrets with the existing local secret setup utility (see
-[service deployment](../architecture/service-pipeline.md)); files live under the
-ignored `.cache/service_secrets/` directory. Never pass credentials as build args.
+Use the Compose secret-file setup above; files live under ignored
+`.cache/service_secrets/`. The native API secret helper is documented in the
+[API README](../api/README.md). Never pass credentials as build args.
 
 ```bash
-export PARSER_IMAGE=bmaged23/multimodal-document-parser:0.1.0-rc.1
+export PARSER_IMAGE=bmaged23/multimodal-document-parser:0.1.0-rc.2
 docker compose -f compose.parsing.yaml pull
 docker compose -f compose.parsing.yaml up -d
 ```
@@ -144,6 +151,20 @@ See the dedicated [CI/CD README](../ci-cd/README.md) for workflow triggers,
 release configuration, checks and Docker Hub publication. The image context
 excludes private inputs, evaluation archives, environments, caches and credentials.
 Third-party notices accompany the application; model weights are not redistributed.
+
+## Automated release verification
+
+[GitHub Actions release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424942053)
+passed source/browser CI, image build, runtime smoke tests, authenticated push
+and anonymous access checks. The published version is **`0.1.0-rc.2`**.
+Independent registry verification confirmed source commit
+`5d3c1ba9ccf00917307e0616292632b9e232f1e3`, SPDX SBOM and SLSA provenance.
+
+Immutable index digest: `sha256:fbd8e78741c933e04de58ab5648f55b3846cad65fc73290ba7ac8a35eb580c34`.
+
+The automated Linux runner has no GPU. Its checks establish runtime/API behavior;
+the separate CUDA tensor check below covers the earlier local `0.1.0-rc.1` image.
+No release workflow reran OCR evaluation or called a cloud model.
 
 ## Local validation status (2026-11-02)
 
@@ -193,5 +214,4 @@ are configured. The existing Docker Hub access token was reused at the owner's
 request; its value is absent from source and logs. The first
 [hosted container validation](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41422591707)
 passed both image builds and the parsing runtime smoke test. Automated publishing
-still needs a successful workflow run before
-it is described as verified.
+is verified by the successful release run linked above.

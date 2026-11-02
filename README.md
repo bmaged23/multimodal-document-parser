@@ -342,10 +342,11 @@ Legacy `.doc` and encrypted documents are unsupported, and extraction quality va
 The public Linux amd64 image packages PDF/DOCX preparation, PaddleOCR GPU parsing,
 JSON/Markdown/HTML exports and the Ollama Cloud client. Gemma runs remotely;
 model credentials and Gemma weights are not bundled. The dots.mocr comparison
-runtime is separate. The local image passed API/auth, conversion and CUDA checks.
+runtime is separate. Local GPU checks cover `0.1.0-rc.1`; `0.1.0-rc.2` passed
+hosted API, conversion and runtime checks.
 
 ```bash
-docker pull bmaged23/multimodal-document-parser:0.1.0-rc.1
+docker pull bmaged23/multimodal-document-parser:0.1.0-rc.2
 ```
 
 [Docker README: clone, pull, secrets, GPU setup, Compose and verification](docs/docker/README.md)
@@ -355,7 +356,8 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.1
 GitHub Actions checks Python formatting, lint, types, tests, packaging and browser
 behavior. Separate jobs validate container builds; version tags or manual releases
 publish to Docker Hub with an SBOM and build provenance. The first Python/browser
-CI and hosted API/parsing container checks passed. The release environment is
-configured; the first automated publication is tracked separately from local GPU validation.
+CI and hosted API/parsing container checks passed. The first
+[automated release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424942053)
+also passed, publishing `0.1.0-rc.2` with verified public access.
 
 [CI/CD README: workflows, triggers, configuration and release process](docs/ci-cd/README.md)
