@@ -1,0 +1,88 @@
+{
+  "captured_at_utc": "2026-11-02T10:52:29.431785+00:00",
+  "note": "Actual browser screenshots of saved public excerpts; no model inference or image synthesis.",
+  "demo_build_manifest_sha256": "85a557d89a9c694468cfa17e48781defa00f44986a8368705e4bf8041684a1aa",
+  "presentation": "Expanded review; output zoom 125%; selected source region highlighted.",
+  "images": [
+    {
+      "file": "demo-table.png",
+      "category": "table",
+      "case": "irena-pipeline",
+      "run": "irena-final",
+      "source_element_id": "element_00020",
+      "original_pdf_page": 15,
+      "saved_page_number": 3,
+      "stage": "source_checked",
+      "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
+      "sha256": "cbfad90b57cba3e6fd01424db2cbbbe1681e37f52208545cb1b3c15ac0ec3c51",
+      "viewport": {
+        "width": 1800,
+        "height": 1120
+      }
+    },
+    {
+      "file": "demo-chart.png",
+      "category": "chart",
+      "case": "irena-pipeline",
+      "run": "irena-final",
+      "source_element_id": "element_00036",
+      "original_pdf_page": 16,
+      "saved_page_number": 4,
+      "stage": "source_checked",
+      "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
+      "sha256": "aca68ebb9f1157abbb84dd6510d08e15ed7b3e2070d7e0295bdb29b94e60fbf0",
+      "viewport": {
+        "width": 1800,
+        "height": 1120
+      }
+    },
+    {
+      "file": "demo-image.png",
+      "category": "image",
+      "case": "nasa-financial",
+      "run": "nasa-paddle",
+      "source_element_id": "element_00028",
+      "original_pdf_page": 4,
+      "saved_page_number": 4,
+      "stage": "ocr",
+      "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
+      "sha256": "828cbc476071db9a8bf47ee0b22bf910a0fbd88eb3c46c697ac519ff97690700",
+      "viewport": {
+        "width": 1800,
+        "height": 1120
+      }
+    },
+    {
+      "file": "demo-text.png",
+      "category": "text",
+      "case": "nasa-financial",
+      "run": "nasa-paddle",
+      "source_element_id": "element_00060",
+      "original_pdf_page": 6,
+      "saved_page_number": 6,
+      "stage": "ocr",
+      "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
+      "sha256": "807c89ddda7d1e51f551f720e7e333847529e59d4c787dcfa4f67dd76126aff9",
+      "viewport": {
+        "width": 1800,
+        "height": 1120
+      }
+    },
+    {
+      "file": "demo-handwriting.png",
+      "category": "handwriting",
+      "case": "handwriting",
+      "run": "diary-paddle",
+      "source_element_id": "element_00037",
+      "original_pdf_page": 6,
+      "saved_page_number": 4,
+      "stage": "ocr",
+      "source_url": "https://npgallery.nps.gov/AssetDetail/539a8c6d-d1c2-40ec-9729-ba874f53ccb1",
+      "sha256": "13f4eabd2effd82fcd9d5ed266a5d82acad367ba7434fd8cc6bb9a4ce766ccec",
+      "viewport": {
+        "width": 1800,
+        "height": 1120
+      }
+    }
+  ]
+}

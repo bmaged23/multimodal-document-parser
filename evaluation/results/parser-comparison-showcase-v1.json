@@ -51,8 +51,30 @@
       "initialization_seconds": null,
       "measurement_scope": "Sum of isolated per-page HTTP-client measurements. Same shared GPU server; server startup excluded. Accepted envelopes map single-page jobs to parent pages. Original job responses/logs retained under page-jobs.",
       "quality_reference_status": "not_scored"
+    },
+    {
+      "model_identity": [
+        "baidu/Unlimited-OCR-2@c14071b549f4fcab10909f3c4acc6a2edb366947"
+      ],
+      "execution_profile": "NF4 language / FP16 vision / PyTorch attention fallback",
+      "canonical_parser_backend": false,
+      "completed_generation_pages": 20,
+      "selected_comparison_pages": 20,
+      "median_page_seconds": 108.07936154149957,
+      "mean_page_seconds": 120.75874612749995,
+      "slowest_page_seconds": 233.6219310790002,
+      "peak_torch_allocated_memory_mib": 3150.1318359375,
+      "measurement_scope": "Experimental NF4 language / FP16 vision with compatibility changes. Generation-only page timing; repeated per-page model loading and process startup excluded. PyTorch allocator memory is not sampled total-device memory.",
+      "quality_reference_status": "not_scored"
     }
   ],
   "source_comparison": "outputs/parser_comparisons/nasa-first20-paddleocr-vs-dots-mocr-q4-01/comparison.json",
-  "limitations": "Matched document pages, but backend timing scopes, preprocessing and inference image dimensions differ. Observed timings are not a controlled speedup or accuracy ranking. No independent accuracy reference for these 20 pages. Source-reviewed enriched pipeline checks are a separate experiment."
+  "limitations": "Matched document pages, but backend timing scopes, preprocessing and inference image dimensions differ. Observed timings are not a controlled speedup or accuracy ranking. No independent accuracy reference for these 20 pages. Source-reviewed enriched pipeline checks are a separate experiment. Unlimited-OCR 2 is a diagnostic raw-generation path, not the canonical comparison adapter; successful generation is not accuracy.",
+  "hardware": {
+    "gpu": "NVIDIA GeForce GTX 1660 Ti",
+    "vram_mib": 6144,
+    "advertised_vram_gb": 6,
+    "environment": "Linux x86_64 under WSL2",
+    "execution": "Sequential local OCR runs; Ollama Cloud visual descriptions use remote hardware."
+  }
 }

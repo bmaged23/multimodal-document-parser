@@ -1,0 +1,60 @@
+name: Publish saved-output demo
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['evaluation/public-demo-bundle.json']
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: public-demo-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download the pinned public demo release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PYTHON'
+          import hashlib, json, pathlib, stat, subprocess, zipfile
+          pin = json.loads(pathlib.Path('evaluation/public-demo-bundle.json').read_text())
+          subprocess.run(['gh', 'release', 'download', pin['release_tag'], '--pattern', pin['asset'], '--dir', 'demo-download'], check=True)
+          archive = pathlib.Path('demo-download') / pin['asset']
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == pin['sha256']
+          with zipfile.ZipFile(archive) as bundle:
+              members = bundle.infolist()
+              assert len(members) <= 500
+              assert sum(item.file_size for item in members) <= 150*1024*1024
+              for item in members:
+                  path = pathlib.PurePosixPath(item.filename)
+                  assert not path.is_absolute() and '..' not in path.parts and '\\' not in item.filename
+                  assert not stat.S_ISLNK(item.external_attr >> 16)
+              bundle.extractall('public-demo')
+          manifest = json.loads(pathlib.Path('public-demo/build-manifest.json').read_text())
+          assert manifest['private_inputs_included'] is False
+          assert manifest['inference_requests'] == 0
+          for relative, expected in manifest['artifacts'].items():
+              path = (pathlib.Path('public-demo') / relative).resolve()
+              assert path.is_relative_to(pathlib.Path('public-demo').resolve())
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == expected
+          PYTHON
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public-demo
+      - name: Deploy the static demo
+        id: deployment
+        uses: actions/deploy-pages@v4

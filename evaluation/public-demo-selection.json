@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "cases": [
+    {
+      "id": "nasa-financial",
+      "saved_pages": [4, 6],
+      "attribution": "NASA FY2024 Agency Financial Report; original PDF pages 4 and 6. Apollo photograph: NASA. No NASA endorsement is implied.",
+      "rights_note": "Selected NASA-authored narrative and the Apollo 11 photograph explicitly credited to NASA; other report photographs and third-party media are excluded. https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "id": "handwriting",
+      "saved_pages": [1, 2, 4],
+      "attribution": "Lucinda Davis Diary, 1874. Courtesy of North Cascades NPS Complex Museum Collection, Aerial Photograph Collection. Includes failed model outputs.",
+      "rights_note": "NPS identifies this digital asset as public domain. Original PDF pages 4, 5 and 6; source attribution retained."
+    },
+    {
+      "id": "irena-pipeline",
+      "saved_pages": [3, 4],
+      "attribution": "© IRENA 2025. Renewable Power Generation Costs in 2024, International Renewable Energy Agency, Abu Dhabi. Original PDF pages 15–16; final stage includes disclosed source corrections.",
+      "rights_note": "IRENA permits reproduction with source/copyright acknowledgement unless otherwise stated. Selected IRENA table/chart pages only; separately credited third-party photographs are excluded. Copyright notice: original report page 2."
+    }
+  ]
+}

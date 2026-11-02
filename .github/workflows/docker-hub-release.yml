@@ -21,6 +21,8 @@ jobs:
   checks:
     uses: ./.github/workflows/continuous-integration.yml
   publish:
+    permissions:
+      contents: write
     needs: checks
     runs-on: ubuntu-latest
     timeout-minutes: 90
@@ -99,3 +101,32 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/anonymous-docker"
           docker --config "$RUNNER_TEMP/anonymous-docker" manifest inspect "$IMAGE@$DIGEST" > /dev/null
+      - name: Create a GitHub release for the published image
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_INPUT: ${{ inputs.tag }}
+          IMAGE: ${{ vars.DOCKERHUB_IMAGE }}
+          DIGEST: ${{ steps.publish.outputs.digest }}
+        run: |
+          version="${TAG_INPUT:-${GITHUB_REF_NAME#v}}"
+          python - <<'PYTHON'
+          import json, os, pathlib
+          record = {'image': os.environ['IMAGE'], 'digest': os.environ['DIGEST'],
+                    'source_revision': os.environ['GITHUB_SHA'],
+                    'workflow': f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"}
+          pathlib.Path('container-release.json').write_text(json.dumps(record, indent=2)+'\n')
+          pathlib.Path('release-notes.md').write_text(
+              f"Public GPU parsing image: `{record['image']}@{record['digest']}`.\n\n"
+              f"Built from `{record['source_revision']}` after source/browser CI and image smoke tests. "
+              'Includes SBOM and build provenance. Gemma executes through Ollama Cloud; its weights are not bundled.\n\n'
+              '[Docker setup](https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/blob/main/docs/docker/README.md)')
+          PYTHON
+          if gh release view "v$version" >/dev/null 2>&1; then
+            echo 'Existing release preserved.'
+          else
+            options=()
+            if [[ "$version" == *-* ]]; then options+=(--prerelease); fi
+            gh release create "v$version" container-release.json \
+              --target "$GITHUB_SHA" --title "Document parsing pipeline $version" \
+              --notes-file release-notes.md "${options[@]}"
+          fi

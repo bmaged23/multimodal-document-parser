@@ -1,0 +1,53 @@
+name: Record verified image as a GitHub release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verified-release-record
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the recorded public image without rebuilding it
+        id: image
+        run: |
+          python - <<'PYTHON'
+          import hashlib, json, os, pathlib, re, urllib.request
+          record = json.loads(pathlib.Path('evaluation/results/container-release-validation-v1.json').read_text())['automated_release']
+          repository, version, digest = record['repository'], record['tag'], record['index_digest']
+          revision = record['source_revision_verified']
+          assert re.fullmatch(r'[0-9a-f]{40}', revision)
+          assert re.fullmatch(r'\d+\.\d+\.\d+(?:-[A-Za-z0-9.-]+)?', version)
+          with urllib.request.urlopen('https://auth.docker.io/token?service=registry.docker.io&scope=repository:'+repository+':pull', timeout=30) as response:
+              token = json.load(response)['token']
+          request = urllib.request.Request('https://registry-1.docker.io/v2/'+repository+'/manifests/'+version, headers={'Authorization':'Bearer '+token, 'Accept':'application/vnd.oci.image.index.v1+json'})
+          with urllib.request.urlopen(request, timeout=30) as response:
+              content = response.read()
+          assert 'sha256:'+hashlib.sha256(content).hexdigest() == digest
+          pathlib.Path('container-release.json').write_text(json.dumps(record, indent=2)+'\n')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as stream:
+              stream.write(f'version={version}\nrevision={revision}\n')
+          PYTHON
+      - name: Create the release at the image's exact source revision
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.image.outputs.version }}
+          REVISION: ${{ steps.image.outputs.revision }}
+        run: |
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            echo 'Release already exists; leaving its tag and assets unchanged.'
+            exit 0
+          fi
+          options=()
+          if [[ "$VERSION" == *-* ]]; then options+=(--prerelease); fi
+          gh release create "v$VERSION" container-release.json \
+            --target "$REVISION" --title "Document parsing pipeline $VERSION" \
+            --notes-file "docs/releases/$VERSION.md" "${options[@]}"
