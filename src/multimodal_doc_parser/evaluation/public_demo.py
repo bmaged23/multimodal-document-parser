@@ -42,7 +42,13 @@ def referenced_assets(value: Any) -> set[str]:
     return set()
 
 
-def build_public_demo(showcase: Path, destination: Path, selection_path: Path) -> Path:
+def build_public_demo(
+    showcase: Path,
+    destination: Path,
+    selection_path: Path,
+    *,
+    evidence_directory: Path | None = None,
+) -> Path:
     showcase, destination = showcase.resolve(), destination.resolve()
     if destination.exists() or destination.is_relative_to(showcase):
         raise ValueError("Use a fresh demo directory outside the saved showcase")
@@ -63,7 +69,13 @@ def build_public_demo(showcase: Path, destination: Path, selection_path: Path) -
     verified("catalog.json")
     destination.parent.mkdir(parents=True, exist_ok=True)
     staging = Path(tempfile.mkdtemp(prefix=".public-demo-", dir=destination.parent))
-    catalog = {**original, "cases": [], "runs": {}, "public_excerpt": True}
+    catalog = {
+        **original,
+        "version": selection.version,
+        "cases": [],
+        "runs": {},
+        "public_excerpt": True,
+    }
     sources = []
     try:
         for spec in selection.cases:
@@ -168,8 +180,15 @@ def build_public_demo(showcase: Path, destination: Path, selection_path: Path) -
             )
         for relative in inventory:
             if relative.startswith("evidence/"):
-                copy_asset(verified(relative), staging / relative)
-        template = verified("index.html").read_text()
+                if evidence_directory is None:
+                    copy_asset(verified(relative), staging / relative)
+                else:
+                    copy_asset(
+                        safe_file(evidence_directory, Path(relative).name), staging / relative
+                    )
+        verified("index.html")
+        viewer_template = Path(__file__).with_name("showcase_template.html")
+        template = viewer_template.read_text().replace("__DEMO_VERSION__", selection.version)
         template = template.replace(
             "Completion is not accuracy", "Full saved selection; not just demo excerpts"
         ).replace("Read-only artifact showcase", "Public saved-output demo · no live inference")
@@ -184,6 +203,7 @@ def build_public_demo(showcase: Path, destination: Path, selection_path: Path) -
                 private_inputs_included=False,
                 selection_sha256=digest(selection_path),
                 source_catalog_sha256=digest(showcase / "catalog.json"),
+                viewer_template_sha256=digest(viewer_template),
                 presentation="Numeric table tokens stay intact; source and predictions unchanged.",
                 sources=sources,
                 artifacts={

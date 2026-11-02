@@ -1,0 +1,57 @@
+{
+  "recorded_at": "2026-11-02T13:43:11.559732+00:00",
+  "selected_pages": 54,
+  "documents": 4,
+  "runs": 12,
+  "private_inputs_included": false,
+  "inference_requests": 0,
+  "javascript_errors": [],
+  "http_failures": [],
+  "checks": [
+    "four documents visible together",
+    "all 12 saved model/stage selections",
+    "NASA financial table",
+    "IMF complex table",
+    "IRENA chart/table stages",
+    "original PDF page lookup",
+    "retained diary failures",
+    "five output formats in one dropdown",
+    "reader-local expand control and document selector",
+    "collapsed metrics",
+    "PDF fetched only on request",
+    "three-model evidence explanation",
+    "source-region highlighting",
+    "all four PDF hashes",
+    "mobile overflow"
+  ],
+  "scope": "Expanded saved-output demo; not live inference",
+  "public_url": "https://bmaged23.github.io/multimodal-document-parser/?v=2.0",
+  "public_hosting_verified": false,
+  "local_browser_verified": true,
+  "archive": {
+    "release_tag": "v0.1.0-rc.2",
+    "asset": "public-demo-v2.zip",
+    "sha256": "2091b5dc90e998f1d559a606d2f92bca58872a3dbdff0b5266e15ec36a3b6b73",
+    "demo_version": "2.0",
+    "selected_pages": 54,
+    "models": [
+      "PaddleOCR-VL-1.6",
+      "dots.mocr Q4_K_M language + Q8_0 projector",
+      "Unlimited-OCR 2 NF4/FP16 vision"
+    ],
+    "private_inputs_included": false,
+    "inference_requests": 0,
+    "documents": 4
+  },
+  "artifact_inventory_files": 631,
+  "document_page_counts": {
+    "NASA": 18,
+    "IRENA": 15,
+    "IMF statistical tables": 16,
+    "Handwritten diary": 5
+  },
+  "last_full_suite_passed": 137,
+  "targeted_demo_suite_passed": 10,
+  "pipeline_diagram_verification": "docs/assets/pipeline-diagram-verification.json",
+  "docker_hub_overview_source": "docs/docker/docker-hub-overview.md"
+}

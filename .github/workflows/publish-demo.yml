@@ -36,8 +36,8 @@ jobs:
           assert hashlib.sha256(archive.read_bytes()).hexdigest() == pin['sha256']
           with zipfile.ZipFile(archive) as bundle:
               members = bundle.infolist()
-              assert len(members) <= 500
-              assert sum(item.file_size for item in members) <= 150*1024*1024
+              assert len(members) <= 2000
+              assert sum(item.file_size for item in members) <= 500*1024*1024
               for item in members:
                   path = pathlib.PurePosixPath(item.filename)
                   assert not path.is_absolute() and '..' not in path.parts and '\\' not in item.filename

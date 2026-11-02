@@ -1,7 +1,7 @@
 {
-  "captured_at_utc": "2026-11-02T10:52:29.431785+00:00",
+  "captured_at_utc": "2026-11-02T13:52:35.244251+00:00",
   "note": "Actual browser screenshots of saved public excerpts; no model inference or image synthesis.",
-  "demo_build_manifest_sha256": "85a557d89a9c694468cfa17e48781defa00f44986a8368705e4bf8041684a1aa",
+  "demo_build_manifest_sha256": "bb51c4c59f62b3067340c40de04fc6092fe00f29d0b51c44334273785d450dcd",
   "presentation": "Expanded review; output zoom 125%; selected source region highlighted.",
   "images": [
     {
@@ -14,7 +14,7 @@
       "saved_page_number": 3,
       "stage": "source_checked",
       "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
-      "sha256": "cbfad90b57cba3e6fd01424db2cbbbe1681e37f52208545cb1b3c15ac0ec3c51",
+      "sha256": "9651b854ecabea9b6d888322304abcbe904e7a149243af1a1c9dcb20ad38c3e7",
       "viewport": {
         "width": 1800,
         "height": 1120
@@ -30,7 +30,7 @@
       "saved_page_number": 4,
       "stage": "source_checked",
       "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
-      "sha256": "aca68ebb9f1157abbb84dd6510d08e15ed7b3e2070d7e0295bdb29b94e60fbf0",
+      "sha256": "35e9a6699e07f3c0ad7ac46c9237727a9bfc6eb3e62e3cdb1abfde262014df91",
       "viewport": {
         "width": 1800,
         "height": 1120
@@ -46,7 +46,7 @@
       "saved_page_number": 4,
       "stage": "ocr",
       "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
-      "sha256": "828cbc476071db9a8bf47ee0b22bf910a0fbd88eb3c46c697ac519ff97690700",
+      "sha256": "1b552cb62cdfdb14d754cbf37ead2bb7fbe56fcaa4bb5825857d614a72f7738d",
       "viewport": {
         "width": 1800,
         "height": 1120
@@ -62,7 +62,7 @@
       "saved_page_number": 6,
       "stage": "ocr",
       "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
-      "sha256": "807c89ddda7d1e51f551f720e7e333847529e59d4c787dcfa4f67dd76126aff9",
+      "sha256": "5c384fc985c59eb91ee247f2b0caa44188c163e48281f695497770c6939ed3a5",
       "viewport": {
         "width": 1800,
         "height": 1120
@@ -78,7 +78,7 @@
       "saved_page_number": 4,
       "stage": "ocr",
       "source_url": "https://npgallery.nps.gov/AssetDetail/539a8c6d-d1c2-40ec-9729-ba874f53ccb1",
-      "sha256": "13f4eabd2effd82fcd9d5ed266a5d82acad367ba7434fd8cc6bb9a4ce766ccec",
+      "sha256": "e97720b2821baa89abfe74921acb81e07c81701e5f4fd138ec262045443d5846",
       "viewport": {
         "width": 1800,
         "height": 1120

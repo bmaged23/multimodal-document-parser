@@ -90,6 +90,7 @@ orchestrate setup, repeatable experiments, deployment checks and presentations.
 | --- | --- |
 | [build_evaluation_showcase.py](visualization/build_evaluation_showcase.py) | Build the read-only parser/pipeline showcase from saved runs, without inference. |
 | [build_public_demo.py](visualization/build_public_demo.py) | Create allowlisted public excerpts from checksum-verified saved results. |
+| [render_parsing_pipeline_animation.py](visualization/render_parsing_pipeline_animation.py) | Draw the implementation-checked animated pipeline and demo banner. |
 | [capture_public_demo_gallery.py](visualization/capture_public_demo_gallery.py) | Capture five real output previews with source attribution. |
 | [build_unlimited_ocr_2_review.py](visualization/build_unlimited_ocr_2_review.py) | Create a diagnostic PDF/Markdown review without claiming canonical normalization. |
 | [capture_review_preview.py](visualization/capture_review_preview.py) | Capture a report preview using the optional browser dependency group. |

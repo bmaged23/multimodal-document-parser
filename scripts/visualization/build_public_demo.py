@@ -14,7 +14,14 @@ def main() -> None:
         "--selection", type=Path, default=Path("evaluation/public-demo-selection.json")
     )
     args = parser.parse_args()
-    print(build_public_demo(args.showcase_directory, args.output_directory, args.selection))
+    print(
+        build_public_demo(
+            args.showcase_directory,
+            args.output_directory,
+            args.selection,
+            evidence_directory=Path("evaluation/results"),
+        )
+    )
 
 
 if __name__ == "__main__":

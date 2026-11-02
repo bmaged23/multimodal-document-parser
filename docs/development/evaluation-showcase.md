@@ -1,16 +1,16 @@
 # Browse saved parsing evidence
 
-**[Open the public demo](https://bmaged23.github.io/multimodal-document-parser/)**
-or [download the portable ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v1.zip).
-It contains seven selected public-source pages, all three OCR configurations,
-and IRENA OCR/enriched/source-reviewed stages. It runs no live model requests.
+**[Open the public demo](https://bmaged23.github.io/multimodal-document-parser/?v=2.0)**
+or [download the portable ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v2.zip).
+It contains 54 selected public-source pages, all three OCR configurations,
+and IRENA/IMF OCR/enriched/source-reviewed stages. It runs no live model requests.
 
 ## Run the downloaded demo
 
-After downloading `public-demo-v1.zip`, use Python 3's standard library only:
+After downloading `public-demo-v2.zip`, use Python 3's standard library only:
 
 ```bash
-python3 -m zipfile -e public-demo-v1.zip public-demo
+python3 -m zipfile -e public-demo-v2.zip public-demo
 python3 -m http.server 8765 --bind 127.0.0.1 --directory public-demo
 ```
 
@@ -20,7 +20,10 @@ No project environment, model download, GPU or cloud key is needed for this path
 
 ## Public demo versus the full local explorer
 
-The public bundle is a curated excerpt: original page mappings, failures and
+The public bundle contains 18 NASA pages, 15 IRENA pages, 16 IMF statistical-table
+pages and all five diary pages. Separately credited third-party photo pages and
+IMF narrative pages stay out of the public bundle; the full saved selections
+remain local. The public bundle is a curated selection: original page mappings, failures and
 source attribution remain attached. Completion/timing cards describe the full
 saved evaluation selection, not just the displayed excerpts. Downloadable JSON
 is explicitly per-page excerpt data rather than a complete canonical Document.
@@ -42,7 +45,13 @@ The build requires the local saved runs listed in `evaluation/showcase-cases.jso
 they are excluded from Git and the container. A fresh checkout alone does not
 contain those predictions. Missing runs remain explicitly unavailable.
 
-Use **Expand review** to give the PDF and extraction the window. Drag the divider
+All four documents appear together in the sidebar. Use **Expand PDF + output**,
+located beside the reader heading, to give both panes the window. A document
+selector remains available while expanded. Enter an original PDF page number
+to jump; arrows skip pages outside the published selection. Output formats use
+one dropdown, while metrics and display settings stay collapsed until requested.
+The full PDF is fetched only when you choose **PDF viewer**; page-image mode
+avoids that extra download. Drag the divider
 to resize them; zoom the source and output independently. Comparison uses model
 or stage tabs by default, with optional side-by-side output. Page navigation
 synchronizes the source and extraction and retains original publication pages.
@@ -90,7 +99,7 @@ of Git, release assets and Pages. Screenshot inputs and hashes are in
 
 ## Hosted validation
 
-The [public demo browser check](../../evaluation/results/public-demo-validation-v1.json)
+The [public demo browser check](../../evaluation/results/public-demo-validation-v2.json)
 verified all three model selectors, the five output formats, original page mapping,
 failed outputs, pipeline-stage source highlights, all hosted subset-PDF hashes,
 expanded desktop geometry and mobile overflow. The full local suite passed 137

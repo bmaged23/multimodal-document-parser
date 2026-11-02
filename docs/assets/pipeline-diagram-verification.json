@@ -1,0 +1,66 @@
+{
+  "scope": "Deployed PaddleOCR parsing path, not the separate RAG pipeline or evaluation-only source corrections",
+  "review": "Input preparation, OCR-only bypass, optional Gemma cloud branch, raw evidence retention and export calls checked against implementation",
+  "implementation_sha256": {
+    "src/multimodal_doc_parser/pipeline_services/stage_handlers.py": "d199afe5c36c2fb6e2e00dcc1cd1cd468dfd0d7d7cf0ef0ff99e91305778bd3e",
+    "src/multimodal_doc_parser/pdf_preparation/prepare_document.py": "5b952fd5e450cd1d724f4918ebd16f1d356e799fbec2d7ea41b2bb432b0e6423",
+    "src/multimodal_doc_parser/parser_adapters/parsing_run.py": "bdea26f6c13e57cc0ff13572d02fd761a15f5d0d6c1288580f0fea4f869d3858",
+    "src/multimodal_doc_parser/parser_adapters/paddleocr_adapter.py": "9b715e2f53a178efde0ce70c3a2736990f222a028d97b0fd7bd9246eb500450c",
+    "src/multimodal_doc_parser/visual_enrichment/ollama.py": "0fba249be087c96c1fd8f366b4feff60f3c6543b3c66585bdddb869d955437b3",
+    "src/multimodal_doc_parser/document_exports/readable_exports.py": "1eb5602b5b4d924babe208256f52b8a5bfe2c6fb78e6ac9f84f1d100581cb0a6",
+    "src/multimodal_doc_parser/review_interface/html_report.py": "6d3db89531bc283cba5f0934855805ebddb313df39716b3528982c9c493014c0"
+  },
+  "released_image_source_revision": "5d3c1ba9ccf00917307e0616292632b9e232f1e3",
+  "matches_released_runtime_sources": true,
+  "nodes": [
+    "input",
+    "pages",
+    "ocr",
+    "json",
+    "exports",
+    "evidence",
+    "vlm"
+  ],
+  "edges": [
+    [
+      "input",
+      "pages"
+    ],
+    [
+      "pages",
+      "ocr"
+    ],
+    [
+      "ocr",
+      "json"
+    ],
+    [
+      "json",
+      "exports"
+    ],
+    [
+      "json",
+      "vlm"
+    ],
+    [
+      "vlm",
+      "exports"
+    ],
+    [
+      "ocr",
+      "evidence"
+    ],
+    [
+      "vlm",
+      "evidence"
+    ]
+  ],
+  "animated_frames": 48,
+  "animation_duration_ms": 4800,
+  "assets": {
+    "parsing-pipeline.gif": "2f68552e625225f852a317eb46f6e1ea9a4e71d31d408c68783cc99117d27cc5",
+    "parsing-pipeline.svg": "d13711edbc97a20a7d3648114877a4d03b2e48a253bec0d1685e3f374ac3478a",
+    "parsing-pipeline-poster.png": "91f2cd4a48c7ab9266a4baa8ed0320b4d1e7726c63d8f4ffa80f42bd37dd9821",
+    "interactive-demo-banner.svg": "a94e1ea54a9817075b5b8d476ada6041e78707b26a3bbd0bce83b1821b9f50e1"
+  }
+}

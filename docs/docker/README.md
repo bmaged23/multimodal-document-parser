@@ -1,5 +1,8 @@
 # Docker image and deployment
 
+[Docker Hub overview](https://hub.docker.com/r/bmaged23/multimodal-document-parser) ·
+[Version-controlled overview text](docker-hub-overview.md)
+
 Parse PDF and `.docx` files with Docker and a compatible NVIDIA GPU; cloud chart/image descriptions also require an Ollama API key.
 Legacy `.doc` and encrypted documents are unsupported, and extraction quality varies with the document.
 

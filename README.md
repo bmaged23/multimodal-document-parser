@@ -12,15 +12,20 @@ Chunking, retrieval and the RAG agent are secondary downstream studies.
 
 ## Live demo
 
-**[Open the interactive parsing demo →](https://bmaged23.github.io/multimodal-document-parser/)**
+[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=2.0)
+
+**Click the banner to try the interactive demo—no setup, GPU or API key needed.**
 
 Browse saved results with the **PDF on the left and extraction on the right**.
 Switch between all three models, compare OCR/enriched/source-reviewed stages,
 and inspect rendered Markdown, Markdown source, JSON, raw replies and source boxes.
-No GPU, account or API key is needed: this is a read-only demo of **7 curated
-public-source pages**, not a live upload/inference service.
+The reader now includes **54 saved pages across NASA, IRENA charts, IMF complex
+tables and historical handwriting**. Choose a document in the sidebar, switch
+its model or pipeline stage, and use **Expand PDF + output** beside the reading
+area. Metrics and zoom are optional settings; output formats use one dropdown.
+This is a read-only saved-output demo, not a live upload/inference service.
 
-[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v1.zip) ·
+[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v2.zip) ·
 [Local demo instructions](docs/development/evaluation-showcase.md#run-the-downloaded-demo) ·
 [Parsing/model evaluation](docs/parsing-evaluation/README.md) ·
 [Parsing pipeline](docs/parsing-pipeline/README.md) ·
@@ -83,14 +88,14 @@ not generated mockups. [Page mappings and screenshot hashes](docs/assets/readme-
 
 ## How the parsing pipeline works
 
-```mermaid
-flowchart LR
-    A[PDF or DOCX] --> B[Render pages]
-    B --> C[OCR text and layout]
-    C --> D[Canonical document JSON]
-    D --> E[Optional cloud visual descriptions]
-    E --> F[JSON, Markdown and HTML review]
-```
+![Animated parsing pipeline with incoming and outgoing data-flow arrows](docs/assets/parsing-pipeline.gif)
+
+The animation shows the deployed **PaddleOCR path**: OCR-only output goes straight
+to exports, while optional visual enrichment sends crops and page context to
+**Gemma through Ollama Cloud**. Raw responses and failures are retained.
+[Static diagram](docs/assets/parsing-pipeline.svg) ·
+[Implementation checks and source hashes](docs/assets/pipeline-diagram-verification.json)
+
 
 1. **Prepare:** convert DOCX to PDF when needed, then render page images and record source identity.
 2. **Parse:** extract text, headings, tables and visual regions, retaining raw model responses.
@@ -142,10 +147,22 @@ cover only one small development table, not a general table benchmark.
 
 ## Evaluate the final pipeline separately
 
-The IRENA/IMF development evaluation covers **46 selected pages**. It tests
-extraction, normalization and visual enrichment against selected source assertions.
+**What does “final pipeline” mean here?** It is the evaluated saved-report
+version assembled from **PaddleOCR → normalized document JSON → Gemma visual
+descriptions → disclosed source-based postprocessing and review → exports**.
+The earlier baseline is a previous snapshot of this assembled pipeline, not a
+separate raw-model accuracy score.
 
-| Selected source check | Initial baseline | Source-reviewed final pipeline |
+The reviewed version links table structure and captions, explicitly marks inferred
+headers, and corrects selected chart values using native PDF text/vector evidence.
+Those evaluation-specific repairs are documented; they do not mean every new
+uploaded PDF is automatically corrected or independently verified.
+
+We checked **46 selected pages: 20 IRENA pages and 26 IMF appendix pages** against
+specific source assertions. In the table, **277/277 means 277 selected cell-text
+checks matched**, not 277 tables or perfect accuracy across all document content.
+
+| Selected source check | Earlier pipeline snapshot | Final source-reviewed snapshot |
 | --- | ---: | ---: |
 | Table-cell text | 277/277 | 277/277 |
 | Merged-cell span attributes | 40/40 | 40/40 |
@@ -404,11 +421,29 @@ Preparation and parsing have separate APIs and workers; the document pipeline an
 agentic RAG APIs are separate applications. Jobs return IDs for progress tracking
 and versioned output artifacts. Bearer authentication protects document data.
 
+### Main API endpoints
+
+| API / native port | Main endpoints |
+| --- | --- |
+| Document pipeline · 8100 | `POST /v1/documents`, `POST /v1/pipelines`, `GET /v1/pipelines/{id}` |
+| PDF/DOCX preparation · 8101 | `POST /v1/documents`, `POST /v1/jobs`, `GET /v1/jobs/{id}` |
+| Parsing · 8102 | `POST /v1/jobs`, `GET /v1/jobs/{id}` |
+| Chunking · 8103 | `POST /v1/jobs`, `GET /v1/jobs/{id}` |
+| Embedding/indexing · 8104 | `POST /v1/jobs`, `GET /v1/jobs/{id}` |
+| Retrieval · 8105 | `POST /v1/search` |
+| Agentic RAG · 8106 | `POST /v1/rag/runs`, `GET /v1/rag/runs/{id}` |
+
+Shared routes include `GET /v1/artifacts/{id}` and
+`GET /v1/artifacts/{id}/files/{filename}` for outputs, `/health/ready` for readiness,
+and `/docs` for interactive API documentation. Data/job routes use bearer auth;
+long jobs return IDs for polling. Parsing-only Docker Compose exposes **8101/8102**;
+the full optional stack exposes pipeline **8100** and RAG **8106**.
+
 [API README: installation, startup, endpoints and request examples](docs/api/README.md)
 
 ## Docker
 
-**[Public Docker Hub image · 0.1.0-rc.2](https://hub.docker.com/r/bmaged23/multimodal-document-parser/tags?name=0.1.0-rc.2)**
+**[Public Docker Hub image · 0.1.0-rc.2](https://hub.docker.com/r/bmaged23/multimodal-document-parser)**
 
 Parse PDF and `.docx` files with Docker and a compatible NVIDIA GPU; cloud chart/image descriptions also require an Ollama API key.
 Legacy `.doc` and encrypted documents are unsupported, and extraction quality varies with the document.
@@ -431,7 +466,7 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.2
 | --- | --- |
 | Public GPU parsing image | [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser) |
 | Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.2](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.2) |
-| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v1.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
+| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v2.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
 
 The container package is distributed through Docker Hub; it is a separate registry
 from GitHub Packages. Release records identify the exact tested image/source and

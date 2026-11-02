@@ -14,11 +14,11 @@ from playwright.sync_api import sync_playwright
 from multimodal_doc_parser.evaluation.rag_benchmark import digest
 
 EXAMPLES = [
-    ("table", "pipeline", "irena-pipeline", "irena-final", 1, "element_00020"),
-    ("chart", "pipeline", "irena-pipeline", "irena-final", 2, "element_00036"),
-    ("image", "parsers", "nasa-financial", "nasa-paddle", 1, None),
-    ("text", "parsers", "nasa-financial", "nasa-paddle", 2, None),
-    ("handwriting", "parsers", "handwriting", "diary-paddle", 3, None),
+    ("table", "pipeline", "irena-pipeline", "irena-final", 15, "element_00020"),
+    ("chart", "pipeline", "irena-pipeline", "irena-final", 16, "element_00036"),
+    ("image", "parsers", "nasa-financial", "nasa-paddle", 4, None),
+    ("text", "parsers", "nasa-financial", "nasa-paddle", 6, None),
+    ("handwriting", "parsers", "handwriting", "diary-paddle", 6, None),
 ]
 
 
@@ -46,6 +46,8 @@ def main() -> None:
             errors = []
             page.on("pageerror", lambda error: errors.append(str(error)))
             for category, section, case_id, run_id, number, element_id in EXAMPLES:
+                case = next(c for c in catalog["cases"] if c["id"] == case_id)
+                number = case["original_pages"].index(number) + 1
                 query = urlencode(
                     dict(section=section, case=case_id, run=run_id, page=number, focus=1)
                 )
@@ -68,7 +70,9 @@ def main() -> None:
                     f'article[data-element="{element_id}"]'
                 )
                 article.wait_for()
+                page.locator("#view-settings summary").click()
                 page.locator("#output-zoom").select_option("125")
+                page.locator("#view-settings summary").click()
                 article.scroll_into_view_if_needed()
                 article.locator("button").click()
                 page.wait_for_function("!document.getElementById('source-box').hidden")

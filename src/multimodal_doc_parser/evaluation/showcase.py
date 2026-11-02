@@ -426,7 +426,12 @@ def build_showcase(
             if path.exists():
                 copy_asset(path, staging / "evidence" / name)
         save(staging / "catalog.json", catalog)
-        copy_asset(Path(__file__).with_name("showcase_template.html"), staging / "index.html")
+        (staging / "index.html").write_text(
+            Path(__file__)
+            .with_name("showcase_template.html")
+            .read_text()
+            .replace("__DEMO_VERSION__", "local")
+        )
         save(
             staging / "build-manifest.json",
             dict(

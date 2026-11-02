@@ -1,23 +1,87 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "cases": [
     {
       "id": "nasa-financial",
-      "saved_pages": [4, 6],
-      "attribution": "NASA FY2024 Agency Financial Report; original PDF pages 4 and 6. Apollo photograph: NASA. No NASA endorsement is implied.",
-      "rights_note": "Selected NASA-authored narrative and the Apollo 11 photograph explicitly credited to NASA; other report photographs and third-party media are excluded. https://www.nasa.gov/nasa-brand-center/images-and-media/"
+      "saved_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20
+      ],
+      "attribution": "NASA FY2024 Agency Financial Report, first-20-page evaluation selection. 18 pages shown; separately credited Johns Hopkins APL and Rocket Lab photo pages are omitted. NASA and the credited photographers are the source; no endorsement is implied.",
+      "rights_note": "NASA-authored report pages and NASA-credited media retained for informational evaluation. Original PDF pages 12 and 18, with separately credited third-party photographs, are excluded. https://www.nasa.gov/nasa-brand-center/images-and-media/"
     },
     {
       "id": "handwriting",
-      "saved_pages": [1, 2, 4],
+      "saved_pages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "attribution": "Lucinda Davis Diary, 1874. Courtesy of North Cascades NPS Complex Museum Collection, Aerial Photograph Collection. Includes failed model outputs.",
-      "rights_note": "NPS identifies this digital asset as public domain. Original PDF pages 4, 5 and 6; source attribution retained."
+      "rights_note": "NPS identifies this asset as public domain. All five evaluated pages retained in saved order: original PDF pages 4, 5, 7, 6, 74, including model failures."
     },
     {
       "id": "irena-pipeline",
-      "saved_pages": [3, 4],
-      "attribution": "© IRENA 2025. Renewable Power Generation Costs in 2024, International Renewable Energy Agency, Abu Dhabi. Original PDF pages 15–16; final stage includes disclosed source corrections.",
-      "rights_note": "IRENA permits reproduction with source/copyright acknowledgement unless otherwise stated. Selected IRENA table/chart pages only; separately credited third-party photographs are excluded. Copyright notice: original report page 2."
+      "saved_pages": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "attribution": "\u00a9 IRENA 2025. Renewable Power Generation Costs in 2024, International Renewable Energy Agency, Abu Dhabi. 15 text/table/chart pages from the 20-page evaluation selection; source-reviewed stage includes disclosed corrections.",
+      "rights_note": "IRENA permits reproduction with source/copyright acknowledgement. Five pages containing separately credited Shutterstock photographs are excluded: saved pages 1, 5, 13, 14, 20. Full original runs remain preserved locally."
+    },
+    {
+      "id": "imf-pipeline",
+      "saved_pages": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "attribution": "Source: IMF, World Economic Outlook, October 2025, Statistical Appendix. \u00a9 International Monetary Fund. 16 statistical-table pages from the 26-page evaluation selection; model predictions may contain errors and are not official IMF data.",
+      "rights_note": "Statistical data tables reproduced with attribution under IMF Data terms. Explanatory narrative pages are excluded. Source PDF and saved model transformations are distinguished; no IMF endorsement is implied. https://www.imf.org/en/About/copyright-and-terms"
     }
   ]
 }
