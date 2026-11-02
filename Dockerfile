@@ -66,6 +66,7 @@ USER root
 COPY --from=dots-native /opt/dots-built/ /opt/dots/bin/
 COPY --from=dots-native /src/LICENSE /app/third_party/llama.cpp.LICENSE
 COPY --from=dots-cuda-libraries /usr/local/cuda-12.6/ /usr/local/cuda-12.6/
+COPY --from=dots-cuda-libraries /usr/lib/x86_64-linux-gnu/libnccl.so.2 /opt/dots/bin/libnccl.so.2
 COPY backends/dots_mocr_runtime/runtime-lock.json backends/dots_mocr_runtime/native-build-lock.json ./backends/dots_mocr_runtime/
 ENV DOTS_SERVER_BINARY=/opt/dots/bin/llama-server DOTS_MODEL_DIRECTORY=/cache/dots_mocr \
     DOTS_SERVICE_URL=http://127.0.0.1:8010/v1 GGML_CUDA_PDL=0 \
