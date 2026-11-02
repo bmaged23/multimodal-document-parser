@@ -63,6 +63,7 @@ for name in ['.env', '.cache', 'outputs', 'data/input_documents', '.git']:
     assert not (root / name).exists(), name
 assert pathlib.Path('/app/THIRD_PARTY_NOTICES.md').exists()
 assert pathlib.Path('/opt/dots/bin/llama-server').exists()
+assert not pathlib.Path('/usr/local/cuda-12.6/lib64/stubs/libcuda.so.1').exists()
 assert not pathlib.Path('/app/backends/paddleocr_runtime/.venv').exists()
 base = 'http://127.0.0.1:8000'
 assert json.load(urllib.request.urlopen(base + '/health/ready'))['status'] == 'ready'

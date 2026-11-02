@@ -47,18 +47,23 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ADD --checksum=sha256:2b37ffa871595f90b94164f6c510ad9a34bd7f94da21557cc9878587e163af37 \
     https://github.com/ggml-org/llama.cpp/archive/refs/tags/b11960.tar.gz /tmp/llama.tar.gz
 RUN mkdir /src && tar -xzf /tmp/llama.tar.gz -C /src --strip-components=1 \
-    && cmake -S /src -B /build -G Ninja -DGGML_CUDA=ON \
+    && ln -s libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1
+# Link against the toolkit stub only while building; never copy it to the runtime.
+RUN --mount=type=cache,id=dots-b11960-cuda126,target=/build,sharing=locked \
+    cmake -S /src -B /build -G Ninja -DGGML_CUDA=ON \
        -DCMAKE_CUDA_ARCHITECTURES=$CUDA_ARCHITECTURES -DGGML_CUDA_USE_PDL=OFF \
+       -DCMAKE_EXE_LINKER_FLAGS=-Wl,-rpath-link,/usr/local/cuda/lib64/stubs \
        -DGGML_CUDA_FA_ALL_QUANTS=OFF -DGGML_CUDA_GRAPHS=OFF -DGGML_NATIVE=OFF \
        -DLLAMA_CURL=OFF -DLLAMA_BUILD_TESTS=OFF -DLLAMA_BUILD_EXAMPLES=OFF \
        -DLLAMA_BUILD_SERVER=ON -DCMAKE_BUILD_TYPE=Release \
-    && cmake --build /build --target llama-server --parallel $NATIVE_BUILD_JOBS
+    && cmake --build /build --target llama-server --parallel $NATIVE_BUILD_JOBS \
+    && mkdir -p /opt/dots-built && cp -a /build/bin/. /opt/dots-built/
 
 FROM nvidia/cuda:12.6.3-runtime-ubuntu22.04 AS dots-cuda-libraries
 
 FROM api AS parsing
 USER root
-COPY --from=dots-native /build/bin/ /opt/dots/bin/
+COPY --from=dots-native /opt/dots-built/ /opt/dots/bin/
 COPY --from=dots-native /src/LICENSE /app/third_party/llama.cpp.LICENSE
 COPY --from=dots-cuda-libraries /usr/local/cuda-12.6/ /usr/local/cuda-12.6/
 COPY backends/dots_mocr_runtime/runtime-lock.json backends/dots_mocr_runtime/native-build-lock.json ./backends/dots_mocr_runtime/
