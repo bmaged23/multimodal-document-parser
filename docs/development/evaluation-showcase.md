@@ -5,6 +5,19 @@ or [download the portable ZIP](https://github.com/bmaged23/multimodal-document-p
 It contains seven selected public-source pages, all three OCR configurations,
 and IRENA OCR/enriched/source-reviewed stages. It runs no live model requests.
 
+## Run the downloaded demo
+
+After downloading `public-demo-v1.zip`, use Python 3's standard library only:
+
+```bash
+python3 -m zipfile -e public-demo-v1.zip public-demo
+python3 -m http.server 8765 --bind 127.0.0.1 --directory public-demo
+```
+
+Open `http://localhost:8765/`. Serve the files over HTTP rather than opening
+`index.html` as a local file, because the viewer fetches its saved JSON assets.
+No project environment, model download, GPU or cloud key is needed for this path.
+
 ## Public demo versus the full local explorer
 
 The public bundle is a curated excerpt: original page mappings, failures and
@@ -74,3 +87,11 @@ asset pinned by [digest](../../evaluation/public-demo-bundle.json), verifies its
 file inventory and publishes static files. Full private/local archives stay out
 of Git, release assets and Pages. Screenshot inputs and hashes are in
 [gallery provenance](../assets/readme-gallery.provenance.json).
+
+## Hosted validation
+
+The [public demo browser check](../../evaluation/results/public-demo-validation-v1.json)
+verified all three model selectors, the five output formats, original page mapping,
+failed outputs, pipeline-stage source highlights, all hosted subset-PDF hashes,
+expanded desktop geometry and mobile overflow. The full local suite passed 137
+tests, including five public-excerpt isolation/integrity tests.

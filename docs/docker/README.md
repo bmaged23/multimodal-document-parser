@@ -215,3 +215,12 @@ request; its value is absent from source and logs. The first
 [hosted container validation](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41422591707)
 passed both image builds and the parsing runtime smoke test. Automated publishing
 is verified by the successful release run linked above.
+
+## GitHub Release and portable demonstration
+
+[GitHub Release v0.1.0-rc.2](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.2)
+collects the exact image record, source tag, portable public demo, file inventory
+and checksums. The [live demo](https://bmaged23.github.io/multimodal-document-parser/)
+serves saved excerpts without model calls. The public container package remains
+on [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser);
+no GHCR mirror is claimed.

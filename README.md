@@ -21,7 +21,7 @@ No GPU, account or API key is needed: this is a read-only demo of **7 curated
 public-source pages**, not a live upload/inference service.
 
 [Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v1.zip) ·
-[Run the full local explorer](docs/development/evaluation-showcase.md) ·
+[Local demo instructions](docs/development/evaluation-showcase.md#run-the-downloaded-demo) ·
 [Parsing/model evaluation](docs/parsing-evaluation/README.md) ·
 [Parsing pipeline](docs/parsing-pipeline/README.md) ·
 [All documentation](docs/README.md)

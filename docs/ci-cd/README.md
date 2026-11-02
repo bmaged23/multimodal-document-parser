@@ -102,7 +102,9 @@ Creating a release does not rerun OCR evaluation.
 - [Initial hosted container validation](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41422591707): passed API/parsing builds and parsing runtime checks.
 - Docker Hub `0.1.0-rc.1`: published locally, anonymous digest verified, SBOM/provenance present. This is not claimed as a hosted release run.
 - [First automated release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424942053): passed and published `0.1.0-rc.2`; anonymous source-revision, SBOM and provenance checks passed.
-- GitHub release environment: variables and encrypted secret configured. No live server deployment is claimed.
+- GitHub release environment: variables and encrypted secret configured. No live inference server deployment is claimed.
+- [GitHub Release record](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41435425406): passed, with the verified image source tag.
+- [Public demo deployment](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41436916959): passed; live browser and PDF-hash checks passed.
 
 [Docker instructions and evidence](../docker/README.md) ·
 [Machine-readable release validation](../../evaluation/results/container-release-validation-v1.json)

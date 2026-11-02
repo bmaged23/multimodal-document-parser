@@ -1,0 +1,59 @@
+{
+  "recorded_at": "2026-11-02T11:31:57.167484+00:00",
+  "url": "https://bmaged23.github.io/multimodal-document-parser/",
+  "public_hosting_verified": true,
+  "cases": 3,
+  "selected_pages": 7,
+  "runs": 9,
+  "private_inputs_included": false,
+  "inference_requests": 0,
+  "checks": [
+    "three OCR model selectors",
+    "content/Markdown preview/Markdown source/JSON/raw tabs",
+    "original-page navigation",
+    "preserved Unlimited and dots failures",
+    "source-reviewed pipeline table and source-region highlight",
+    "all three hosted PDF excerpt hashes",
+    "expanded desktop geometry",
+    "mobile overflow",
+    "no browser JavaScript errors or HTTP failures"
+  ],
+  "scope": "Hosted curated saved-output excerpts; not a live inference service or the full 71-page local explorer",
+  "deployment_workflow": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41436916959",
+  "release_record_workflow": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41435425406",
+  "source_ci": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41436917019",
+  "local_test_suite_passed": 137,
+  "strict_mypy_source_files": 55,
+  "ruff_format": true,
+  "ruff_lint": true,
+  "archive": {
+    "release_tag": "v0.1.0-rc.2",
+    "asset": "public-demo-v1.zip",
+    "sha256": "a0a4f74638afceddf1204e27e32789e681dc4473d5045fca56a7aaff3979124b",
+    "demo_version": "1.0",
+    "selected_pages": 7,
+    "models": [
+      "PaddleOCR-VL-1.6",
+      "dots.mocr Q4_K_M language + Q8_0 projector",
+      "Unlimited-OCR 2 NF4/FP16 vision"
+    ],
+    "private_inputs_included": false,
+    "inference_requests": 0
+  },
+  "artifact_inventory_files": 104,
+  "readme_gallery": {
+    "previews": 5,
+    "visible_by_default": 1,
+    "collapsed": 4,
+    "categories": [
+      "table",
+      "chart",
+      "image",
+      "text",
+      "handwriting"
+    ],
+    "provenance": "docs/assets/readme-gallery.provenance.json"
+  },
+  "package_registry": "Docker Hub",
+  "github_packages_mirror_published": false
+}
