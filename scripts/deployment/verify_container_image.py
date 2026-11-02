@@ -84,7 +84,8 @@ print('Non-root API, storage, authentication, OpenAPI and image exclusions passe
                     print(docker("logs", name))
                     raise
                 time.sleep(1)
-        print(docker("exec", name, "/opt/dots/bin/llama-server", "--version"))
+        # A CPU-only hosted runner has no host libcuda: inspect linkage there,
+        # and execute the native binary only in an NVIDIA-enabled container.
         native_probe = """
 import subprocess
 from multimodal_doc_parser.pipeline_services.contracts import ParsingJob, PipelineJob
@@ -136,6 +137,18 @@ print('Worker/VLM imports, DOCX-to-PDF conversion and page rendering passed')
 """
         print(docker("exec", name, "/app/.venv/bin/python", "-c", preparation_probe))
         if args.gpu:
+            print(
+                docker(
+                    "run",
+                    "--rm",
+                    "--gpus",
+                    "all",
+                    "--entrypoint",
+                    "/opt/dots/bin/llama-server",
+                    args.image,
+                    "--version",
+                )
+            )
             devices = docker(
                 "run",
                 "--rm",
