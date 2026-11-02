@@ -1,0 +1,59 @@
+{
+  "recorded_at": "2026-11-02T16:33:27.978470+00:00",
+  "selected_pages": 53,
+  "documents": 4,
+  "runs": 12,
+  "private_inputs_included": false,
+  "inference_requests": 0,
+  "javascript_errors": [],
+  "http_failures": [],
+  "checks": [
+    "four documents visible together",
+    "all 12 saved model/stage selections",
+    "NASA financial table",
+    "IMF complex table",
+    "IRENA chart/table stages",
+    "original PDF page lookup",
+    "all four author-written assignment pages across three models",
+    "five output formats in one dropdown",
+    "reader-local expand control and document selector",
+    "collapsed metrics",
+    "PDF fetched only on request",
+    "three-model evidence explanation",
+    "source-region highlighting",
+    "all four PDF hashes",
+    "mobile overflow"
+  ],
+  "public_url": "https://bmaged23.github.io/multimodal-document-parser/?v=3.0",
+  "public_hosting_verified": false,
+  "local_browser_verified": true,
+  "last_full_suite_passed": 140,
+  "archive": {
+    "release_tag": "v0.1.0-rc.2",
+    "asset": "public-demo-v3.zip",
+    "sha256": "ed2e0e498dd937d9d74a9948d8fe8ae0e2a13ca75310845dc828cf9057a3bdd5",
+    "demo_version": "3.0",
+    "selected_pages": 53,
+    "models": [
+      "PaddleOCR-VL-1.6",
+      "dots.mocr Q4_K_M language + Q8_0 projector",
+      "Unlimited-OCR 2 NF4/FP16 vision"
+    ],
+    "private_inputs_included": false,
+    "inference_requests": 0,
+    "documents": 4
+  },
+  "artifact_inventory_files": 639,
+  "document_page_counts": {
+    "NASA": 18,
+    "IRENA": 15,
+    "IMF statistical tables": 16,
+    "Author handwritten mathematics": 4
+  },
+  "selected_handwriting_results": "evaluation/results/author-handwritten-mathematics-comparison-v1.json",
+  "preserved_model_archives_verified": {
+    "PaddleOCR-VL-1.6": 93,
+    "dots.mocr-Q4_K_M-mmproj-Q8_0": 168,
+    "Unlimited-OCR-2-NF4-FP16-vision": 37
+  }
+}

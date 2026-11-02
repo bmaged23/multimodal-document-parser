@@ -23,6 +23,14 @@ marked in the source. They are useful layout/extraction cases; their scientific
 claims are not independently verified. This is not an independently sourced
 collection of 186 research articles.
 
+## Current author-written handwriting case
+
+The current demo uses four photographs of the author’s mathematical assignment
+in place of the historical diary. These original inputs are supplied locally,
+not fetched by the public-corpus downloader below. The [case selection and hashes](../../evaluation/test_cases/author-handwritten-mathematics-four-pages.json)
+record their page order and the shared four-page PDF. [Handwriting study](author-handwritten-mathematics.md).
+Historical diary sources and predictions remain preserved.
+
 ## Files and provenance
 
 Local originals: `data/input_documents/evaluation_corpus/` (ignored by Git).

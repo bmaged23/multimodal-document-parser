@@ -471,10 +471,11 @@ class Batch:
         )
         print(f"Saved {case['name']} report: {run / 'review.html'}", flush=True)
 
-    def run(self) -> None:
+    def run(self, cases: list[dict] | None = None) -> None:
         self.checkpoint()
         try:
-            self.cases.extend(prepare_cases(self.suffix))
+            self.cases.extend(prepare_cases(self.suffix) if cases is None else cases)
+            self.state["total_pages"] = sum(case["total_pages"] for case in self.cases)
             for case in self.cases:
                 run = Path(case["run_directory"])
                 if run.exists():
@@ -498,7 +499,8 @@ class Batch:
                     },
                 )
             self.current = self.cases[0]
-            prepare_nasa_reference(self.current)
+            if cases is None:
+                prepare_nasa_reference(self.current)
             self.state["status"] = "running"
             for case in self.cases:
                 self.current = case

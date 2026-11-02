@@ -1,9 +1,9 @@
 {
   "release_tag": "v0.1.0-rc.2",
-  "asset": "public-demo-v2.zip",
-  "sha256": "2091b5dc90e998f1d559a606d2f92bca58872a3dbdff0b5266e15ec36a3b6b73",
-  "demo_version": "2.0",
-  "selected_pages": 54,
+  "asset": "public-demo-v3.zip",
+  "sha256": "ed2e0e498dd937d9d74a9948d8fe8ae0e2a13ca75310845dc828cf9057a3bdd5",
+  "demo_version": "3.0",
+  "selected_pages": 53,
   "models": [
     "PaddleOCR-VL-1.6",
     "dots.mocr Q4_K_M language + Q8_0 projector",

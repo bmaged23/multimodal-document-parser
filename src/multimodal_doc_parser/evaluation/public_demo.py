@@ -91,7 +91,11 @@ def build_public_demo(
             current.update(
                 original_pages=[case["original_pages"][n - 1] for n in numbers],
                 page_count=len(numbers),
-                preview_page=1,
+                preview_page=(
+                    numbers.index(case["preview_page"]) + 1
+                    if case.get("preview_page") in numbers
+                    else 1
+                ),
                 page_images=[],
                 description=(
                     f"{len(numbers)} curated demo pages from the {case['page_count']}-page "

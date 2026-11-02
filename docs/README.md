@@ -14,7 +14,7 @@ unverified. Detailed experiment reports are linked from each guide rather than
 presented as one undifferentiated benchmark.
 
 - [Live saved-output demo](https://bmaged23.github.io/multimodal-document-parser/)
-- [Hosted demo verification](../evaluation/results/public-demo-validation-v2.json)
+- [Hosted demo verification](../evaluation/results/public-demo-validation-v3.json)
 - [Interactive explorer and local reproduction](development/evaluation-showcase.md)
 - [Unlimited-OCR 2 GPU evaluation](evaluation/unlimited-ocr-2-gpu-results.md)
 - [API setup and request examples](api/README.md)
@@ -32,3 +32,5 @@ Private PDFs, raw predictions, full local question/evidence records, model weigh
 and credentials are excluded from Git and package distributions. Curated
 public-source screenshots and non-private measured summaries remain in the
 repository. See [screenshot provenance](assets/showcase-provenance.json).
+
+- [Author handwritten mathematics comparison](evaluation/author-handwritten-mathematics.md)

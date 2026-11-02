@@ -42,7 +42,7 @@ generation limits and failure status accompany the saved runs. Details:
 ## Inputs and references
 
 The corpus includes financial reports, illustrated/scientific material, complex
-tables and historical handwritten scans. Downloading a corpus is distinct from
+tables, author-written mathematical assignments and historical handwritten scans. Downloading a corpus is distinct from
 completing inference or scoring every page.
 
 - [Corpus manifest](../../evaluation/corpus-manifest.json): source URLs, hashes,
@@ -75,6 +75,13 @@ no independent accuracy reference. The sensor checks cover one small table.
 
 [Machine-readable profile](../../evaluation/results/parser-comparison-showcase-v1.json)
 and [measurement scope](../evaluation/quantized-gpu-batch.md).
+
+## Author handwritten mathematics
+
+The current demo replaces the diary with four author-provided assignment photos.
+[Study methodology and results](../evaluation/author-handwritten-mathematics.md)
+separate selected prose/math checks from ordered truth-table cells and runtime.
+The historical diary measurements above remain archived evidence.
 
 ## Metrics and what they establish
 

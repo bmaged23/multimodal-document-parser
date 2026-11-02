@@ -1,6 +1,6 @@
 # Preserved evaluation artifacts
 
-The three PaddleOCR-VL-1.6 baselines are saved:
+The original three PaddleOCR-VL-1.6 baselines remain saved:
 
 1. Original private multimodal PDF: both pages, plus original GPU-run provenance.
 2. NASA financial report: first 20 pages of the 127-page source.
@@ -18,10 +18,18 @@ in its BF16/CPU archive namespace. Its executable support and weight downloads
 were retired; registry entries are under `retired_cases`, excluded from new active
 snapshot batches. The working GPU approach remains supported.
 
+The current handwriting showcase instead uses four author-written mathematics
+photos. New predictions are preserved separately for all three retained model
+profiles; none replaces an old snapshot. Original JPEGs, the shared PDF, selected
+references and their checksums are also retained under
+`outputs/evaluation_archive/source_inputs/author-handwritten-mathematics-four-pages-01/`.
+[Current handwriting study](author-handwritten-mathematics.md).
+
 Registry: `evaluation/preserved-runs.json`. Local model namespaces:
 
 - `outputs/evaluation_archive/PaddleOCR-VL-1.6_output/`
 - `outputs/evaluation_archive/dots.mocr-Q4_K_M-mmproj-Q8_0_output/`
+- `outputs/evaluation_archive/Unlimited-OCR-2-NF4-FP16-vision_output/`
 
 The latest snapshot index is `outputs/evaluation_archive/latest-snapshots.json`,
 grouped by model under `models`. Every timestamped snapshot includes a SHA-256

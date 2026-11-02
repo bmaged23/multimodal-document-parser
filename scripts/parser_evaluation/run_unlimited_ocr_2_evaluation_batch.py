@@ -46,16 +46,18 @@ def terminate(process: subprocess.Popen) -> None:
             process.wait()
 
 
-def main() -> None:
-    if STATE.exists():
+def main(*, cases: list[dict] | None = None, state_path: Path | None = None) -> None:
+    cases = CASES if cases is None else cases
+    state_path = STATE if state_path is None else state_path
+    if state_path.exists():
         raise ValueError("Batch state already exists; use a new batch for another attempt")
-    for case in CASES:
+    for case in cases:
         if (ROOT / "outputs/parser_runs" / case["run"]).exists():
             raise ValueError("Output already exists")
     state = {
         "status": "running",
         "supervisor_pid": os.getpid(),
-        "total_pages": 25,
+        "total_pages": sum(len(case["original_pdf_pages"]) for case in cases),
         "attempted_pages": 0,
         "completed_pages": 0,
         "failed_pages": 0,
@@ -68,8 +70,8 @@ def main() -> None:
         },
         "cases": [],
     }
-    write(STATE, state)
-    for case in CASES:
+    write(state_path, state)
+    for case in cases:
         bundle = ROOT / "outputs/parsed_documents" / case["bundle"]
         source = json.loads((bundle / "document.json").read_text())
         assert len(source["pages"]) == len(case["original_pdf_pages"])
@@ -109,7 +111,7 @@ def main() -> None:
             job = run / "page-jobs" / f"page_{number:04d}"
             progress.update(current_page=number, page_started_at_unix=time.time())
             write(run / "run-status.json", progress)
-            write(STATE, state)
+            write(state_path, state)
             started = time.perf_counter()
             with (run / "page-jobs" / f"page_{number:04d}.log").open("w") as log:
                 process = subprocess.Popen(
@@ -133,7 +135,7 @@ def main() -> None:
                 )
                 progress["worker_pid"] = process.pid
                 write(run / "run-status.json", progress)
-                write(STATE, state)
+                write(state_path, state)
                 try:
                     code = process.wait(timeout=720)
                     error = None
@@ -185,7 +187,7 @@ def main() -> None:
             state["failed_pages"] += int(not success)
             state["updated_at_utc"] = datetime.now(UTC).isoformat()
             write(run / "run-status.json", progress)
-            write(STATE, state)
+            write(state_path, state)
             print(
                 f"{case['name']}: {progress['attempted_pages']}/{progress['total_pages']}; "
                 f"{progress['completed_pages']} stopped normally; "
@@ -213,10 +215,10 @@ def main() -> None:
         module.RUN, module.CASE = run, case["id"]
         archive = module.archive()
         progress["archive_directory"] = str(archive.relative_to(ROOT))
-        write(STATE, state)
+        write(state_path, state)
     state["status"] = "completed" if not state["failed_pages"] else "completed_with_errors"
     state["updated_at_utc"] = datetime.now(UTC).isoformat()
-    write(STATE, state)
+    write(state_path, state)
     print("GPU batch finished; outputs archived.", flush=True)
 
 

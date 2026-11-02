@@ -180,6 +180,6 @@ is published with anonymous manifest verification, SBOM and provenance.
 The public GitHub repository is connected and CI runs on source pushes.
 Python/browser CI passed, and the Docker Hub environment token is configured.
 Hosted API/parsing image checks and the first automated Docker Hub release
-(`0.1.0-rc.2`) passed. The 54-page, four-document public saved-output demo is deployed on
+(`0.1.0-rc.2`) passed. The 53-page, four-document public saved-output demo is deployed on
 GitHub Pages and browser-verified; a live hosted inference service remains separate.
 The GitHub Release contains the image record, portable demo, manifest and checksums.

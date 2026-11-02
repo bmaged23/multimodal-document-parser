@@ -268,7 +268,8 @@ def experimental_run(run: Path, target: Path) -> tuple[dict[str, Any], Document]
             entry.get("status") == "completed_generation" and raw.get("finish_reason") == "stop"
         )
         message = (
-            "Generated output; accuracy unscored. Not canonical document JSON."
+            "Generated output; not canonical document JSON. Full-page accuracy is unscored; "
+            "selected source checks, where available, are reported separately under Evidence."
             if complete
             else "Incomplete or failed generation. Available text is diagnostic only."
         )
@@ -421,10 +422,13 @@ def build_showcase(
             "rag-comparison-source-review-v1.json",
             "parser-comparison-showcase-v1.json",
             "gemma-selection-checkpoint-v1.json",
+            "author-handwritten-mathematics-comparison-v1.json",
         ]:
             path = project / "evaluation/results" / name
             if path.exists():
                 copy_asset(path, staging / "evidence" / name)
+                if name == "author-handwritten-mathematics-comparison-v1.json":
+                    catalog["math_evaluation"] = "evidence/" + name
         save(staging / "catalog.json", catalog)
         (staging / "index.html").write_text(
             Path(__file__)

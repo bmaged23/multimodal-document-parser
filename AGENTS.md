@@ -32,7 +32,7 @@ The registry is `evaluation/preserved-runs.json`. Frozen local snapshots live in
 Do not delete or overwrite these snapshots unless the user explicitly requests it.
 When extraction or normalization changes, preserve a new snapshot separately.
 
-The final handwriting selection completed five pages. Quantized dots.mocr now
+The earlier diary selection completed five pages. Quantized dots.mocr now
 also has two preserved runs of the original two-page input, using separate
 project/upstream prompts. Use `docs/evaluation/dots-mocr-local-validation.md` for
 their quality limitations. Check run status and archive indexes before claiming
@@ -51,3 +51,13 @@ The quantized GPU batch `01` attempted NASA 20 pages (20 accepted) and the diary
 selection five pages (three accepted; source pages 5 and 7 hit the output token
 limit). Both are archived under the exact quantized model namespace. Preserve
 failures and report the diary as partial; see docs/evaluation/quantized-gpu-batch.md.
+
+# Current handwriting showcase
+
+The user replaced the demo’s historical diary with four photos of their own
+mathematics assignment, ordered by handwritten page numbers 1–4. The current
+case is `author-handwritten-mathematics-four-pages-01`. Preserve its source JPEGs,
+shared PDF, predictions and per-model archives, as well as all earlier diary runs.
+See `docs/evaluation/author-handwritten-mathematics.md` and the preservation
+registry for results. Selected assistant-reviewed math/text checks and ordered
+truth-table cells are not full-document accuracy or independent human labels.

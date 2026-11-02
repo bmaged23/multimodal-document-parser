@@ -1,0 +1,72 @@
+{
+  "case_id": "author-handwritten-mathematics-four-pages-01",
+  "source_filename": "author_handwritten_mathematics_four_pages.pdf",
+  "source_sha256": "699f592fda553d61c1360f92ab19208fe9c735dea1ce3c57980397de01c910ea",
+  "render_dpi": 144,
+  "original_pdf_pages": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "ordering": "Visible handwritten page numbers 1, 2, 3, 4; not download order",
+  "original_images": [
+    {
+      "page": 1,
+      "filename": "assignment_page_01.jpeg",
+      "sha256": "fe68ec932e1219bc308e4c7d7b0c06ef0fff40403c0daab0e4f548f673424248",
+      "width": 1600,
+      "height": 1200
+    },
+    {
+      "page": 2,
+      "filename": "assignment_page_02.jpeg",
+      "sha256": "e2dacffb059459448505055d20be34e4e6a0d5f6abfcabe9f25a1e24a1f0a71f",
+      "width": 1200,
+      "height": 1600
+    },
+    {
+      "page": 3,
+      "filename": "assignment_page_03.jpeg",
+      "sha256": "061540549a09ff1e1f2425bfccf1291ff11384d1bd8ff8e3415ad823ff282007",
+      "width": 1200,
+      "height": 1600
+    },
+    {
+      "page": 4,
+      "filename": "assignment_page_04.jpeg",
+      "sha256": "4fc4985dabedb5b8462184f5729d328aebbd613749c4bf2a4d3a8a3dbcef7ee1",
+      "width": 1200,
+      "height": 1600
+    }
+  ],
+  "rendered_images": [
+    {
+      "page": 1,
+      "sha256": "9b65ca7431faaa5df7ba1b3630a1bfa644119880c45be330e8f4f0b2d129c901"
+    },
+    {
+      "page": 2,
+      "sha256": "9252b26feae0db45f17453fdb0acb20d75a99d245b2336705386c972f8e51b32"
+    },
+    {
+      "page": 3,
+      "sha256": "9b94e7f7752898079c0b121e2ad130b7544b31aad31452ce21546187adbe7b54"
+    },
+    {
+      "page": 4,
+      "sha256": "d4e011078d4cb7631b3fb096b79712911f538707b1153f865ee3a5e6555f7c7a"
+    }
+  ],
+  "preprocessing": "Original JPEGs embedded without enhancement; shared PDF rendered once",
+  "coverage": [
+    "prose",
+    "set notation",
+    "Venn diagrams",
+    "functions",
+    "truth table"
+  ],
+  "rights_note": "Author-provided handwritten assignment; author requested public demo use",
+  "reference_policy": "Transcribe as written; exclude ambiguous/crossed-out spans from scored references",
+  "prepared_bundle": "outputs/parsed_documents/699f592fda553d61c1360f92ab19208fe9c735dea1ce3c57980397de01c910ea-dpi-144"
+}

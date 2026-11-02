@@ -18,7 +18,7 @@ EXAMPLES = [
     ("chart", "pipeline", "irena-pipeline", "irena-final", 16, "element_00036"),
     ("image", "parsers", "nasa-financial", "nasa-paddle", 4, None),
     ("text", "parsers", "nasa-financial", "nasa-paddle", 6, None),
-    ("handwriting", "parsers", "handwriting", "diary-paddle", 6, None),
+    ("handwriting", "parsers", "handwriting", "math-paddle", 4, "element_00023"),
 ]
 
 

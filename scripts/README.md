@@ -39,6 +39,8 @@ orchestrate setup, repeatable experiments, deployment checks and presentations.
 | Script | Responsibility |
 | --- | --- |
 | [archive_evaluation_runs.py](parser_evaluation/archive_evaluation_runs.py) | Create immutable, checksum-inventoried evaluation snapshots and watch final exports. |
+| [evaluate_handwritten_math_comparison.py](parser_evaluation/evaluate_handwritten_math_comparison.py) | Score frozen selected handwriting assertions and ordered truth-table cells; save per-check results. |
+| [run_handwritten_math_comparison.py](parser_evaluation/run_handwritten_math_comparison.py) | Prepare four author-provided photographs and run the three retained GPU profiles sequentially. |
 | [evaluate_source_review.py](parser_evaluation/evaluate_source_review.py) | Reproduce source-reviewed quality checks against a saved parser run; no inference. |
 | [finalize_saved_visual_quality.py](parser_evaluation/finalize_saved_visual_quality.py) | Apply source-only quality checks to saved model responses without new inference. |
 | [run_final_quality_repair.py](parser_evaluation/run_final_quality_repair.py) | Replay saved OCR and run one bounded visual repair batch; never launch GPU OCR. |

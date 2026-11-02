@@ -1,0 +1,248 @@
+{
+  "version": "1.0",
+  "cases": [
+    {
+      "id": "nasa-financial",
+      "title": "NASA financial report",
+      "description": "20 selected pages with financial tables, mixed layouts and illustrations.",
+      "group": "parsers",
+      "private": false,
+      "original_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
+      "runs": [
+        {
+          "id": "nasa-paddle",
+          "label": "PaddleOCR-VL-1.6",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "paddleocr-nasa-first20-reference-01"
+        },
+        {
+          "id": "nasa-dots",
+          "label": "dots.mocr · Q4_K_M (4-bit) + Q8_0 projector (8-bit)",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-q4-k-m-nasa-first20-01"
+        },
+        {
+          "id": "nasa-unlimited",
+          "label": "Unlimited-OCR 2 · NF4",
+          "stage": "experimental",
+          "kind": "unlimited",
+          "directory": "unlimited-ocr-2-nf4-nasa-first20-01"
+        }
+      ],
+      "preview_page": 11
+    },
+    {
+      "id": "handwriting",
+      "title": "Handwritten diary",
+      "description": "Five handwritten pages. Failed and incomplete model outputs remain visible.",
+      "group": "parsers",
+      "private": false,
+      "original_pages": [
+        4,
+        5,
+        7,
+        6,
+        74
+      ],
+      "source_url": "https://npgallery.nps.gov/AssetDetail/539a8c6d-d1c2-40ec-9729-ba874f53ccb1",
+      "runs": [
+        {
+          "id": "diary-paddle",
+          "label": "PaddleOCR-VL-1.6",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "lucinda-davis-handwriting-replacement-5-paddleocr-vl-1.6"
+        },
+        {
+          "id": "diary-dots",
+          "label": "dots.mocr · Q4_K_M (4-bit) + Q8_0 projector (8-bit)",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-q4-k-m-diary-five-01"
+        },
+        {
+          "id": "diary-unlimited",
+          "label": "Unlimited-OCR 2 · NF4",
+          "stage": "experimental",
+          "kind": "unlimited",
+          "directory": "unlimited-ocr-2-nf4-diary-five-01"
+        }
+      ],
+      "preview_page": 1
+    },
+    {
+      "id": "irena-pipeline",
+      "title": "IRENA · charts and tables",
+      "description": "Trace normalized OCR, visual enrichment and source-checked final output across 20 pages.",
+      "group": "pipeline",
+      "private": false,
+      "original_pages": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
+      "runs": [
+        {
+          "id": "irena-ocr",
+          "label": "PaddleOCR · normalized OCR",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "irena-mixed-content-20-paddleocr-vl-1.6-01"
+        },
+        {
+          "id": "irena-enriched",
+          "label": "PaddleOCR + Gemma · enriched",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "irena-mixed-content-20-paddleocr-gemma4-31b-01"
+        },
+        {
+          "id": "irena-final",
+          "label": "Final pipeline · source checked",
+          "stage": "source_checked",
+          "kind": "canonical",
+          "directory": "irena-final-source-checked-03"
+        }
+      ],
+      "preview_page": 3
+    },
+    {
+      "id": "imf-pipeline",
+      "title": "IMF · complex tables",
+      "description": "26 appendix pages with merged headers, country rows and continued tables.",
+      "group": "pipeline",
+      "private": false,
+      "original_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "source_url": "https://www.imf.org/-/media/files/publications/weo/2025/october/english/statsappendix.pdf",
+      "runs": [
+        {
+          "id": "imf-ocr",
+          "label": "PaddleOCR · normalized OCR",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "imf-complex-tables-26-paddleocr-vl-1.6-01"
+        },
+        {
+          "id": "imf-enriched",
+          "label": "PaddleOCR + Gemma · enriched",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "imf-complex-tables-26-paddleocr-gemma4-31b-01"
+        },
+        {
+          "id": "imf-final",
+          "label": "Final pipeline · source checked",
+          "stage": "source_checked",
+          "kind": "canonical",
+          "directory": "imf-final-source-checked-03"
+        }
+      ],
+      "preview_page": 12
+    },
+    {
+      "id": "original-private",
+      "title": "Original multimodal sample",
+      "description": "Private two-page regression sample. Included only in explicitly private local builds.",
+      "group": "parsers",
+      "private": true,
+      "original_pages": [
+        1,
+        2
+      ],
+      "source_url": null,
+      "runs": [
+        {
+          "id": "original-paddle",
+          "label": "PaddleOCR-VL-1.6",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "paddleocr-vl-1.6-reviewed"
+        },
+        {
+          "id": "original-dots",
+          "label": "dots.mocr · Q4_K_M (4-bit) + Q8_0 projector (8-bit)",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-q4-k-m-original-rerun-03"
+        },
+        {
+          "id": "original-unlimited",
+          "label": "Unlimited-OCR 2 · NF4",
+          "stage": "experimental",
+          "kind": "unlimited",
+          "directory": "unlimited-ocr-2-nf4-original-two-pages-01"
+        }
+      ],
+      "preview_page": 1
+    }
+  ]
+}

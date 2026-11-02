@@ -12,20 +12,20 @@ Chunking, retrieval and the RAG agent are secondary downstream studies.
 
 ## Live demo
 
-[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=2.0)
+[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=3.0)
 
 **Click the banner to try the interactive demo—no setup, GPU or API key needed.**
 
 Browse saved results with the **PDF on the left and extraction on the right**.
 Switch between all three models, compare OCR/enriched/source-reviewed stages,
 and inspect rendered Markdown, Markdown source, JSON, raw replies and source boxes.
-The reader now includes **54 saved pages across NASA, IRENA charts, IMF complex
-tables and historical handwriting**. Choose a document in the sidebar, switch
+The reader now includes **53 saved pages across NASA, IRENA charts, IMF complex
+tables and the author’s handwritten mathematics assignment**. Choose a document in the sidebar, switch
 its model or pipeline stage, and use **Expand PDF + output** beside the reading
 area. Metrics and zoom are optional settings; output formats use one dropdown.
 This is a read-only saved-output demo, not a live upload/inference service.
 
-[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v2.zip) ·
+[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v3.zip) ·
 [Local demo instructions](docs/development/evaluation-showcase.md#run-the-downloaded-demo) ·
 [Parsing/model evaluation](docs/parsing-evaluation/README.md) ·
 [Parsing pipeline](docs/parsing-pipeline/README.md) ·
@@ -72,13 +72,13 @@ paragraph to its saved text extraction; model outputs remain inspectable.
 </details>
 
 <details>
-<summary><strong>Handwriting — historical scan beside the saved transcription</strong></summary>
+<summary><strong>Handwriting — the author’s mathematical assignment and truth table</strong></summary>
 
-![Historical handwritten diary beside PaddleOCR's saved transcription](docs/assets/demo-handwriting.png)
+![Author-written mathematics and truth table beside PaddleOCR's saved transcription](docs/assets/demo-handwriting.png)
 
-Lucinda Davis Diary, 1874, original PDF page 6. Transcription errors are not hidden
-or corrected for this preview. Courtesy of North Cascades NPS Complex Museum
-Collection, Aerial Photograph Collection; NPS identifies the asset as public domain.
+The author’s assignment, page 4 of four original photos. Transcription errors
+remain visible. [Three-model handwriting evaluation](docs/evaluation/author-handwritten-mathematics.md).
+The previous diary outputs remain archived.
 
 </details>
 
@@ -130,7 +130,7 @@ we have no matched full-precision GPU comparison.
 | --- | ---: | ---: | ---: |
 | NASA financial report, selected 20 pages | 20 accepted | 20 accepted | 20 completed generations |
 | Median measured page time on that NASA selection | 155.7 s | 25.9 s | 108.1 s generation-only |
-| Handwritten diary, selected 5 pages | 5 saved | 3 accepted; 2 token-limit failures | 3 completed; 2 timeouts |
+| Historical diary, archived 5-page selection | 5 saved | 3 accepted; 2 token-limit failures | 3 completed; 2 timeouts |
 | Selected cell assertions on one small sensor table | 20/20 | 20/20 | 20/20 |
 
 Accepted or generated pages are not necessarily accurate pages. Backend timing
@@ -144,6 +144,25 @@ cover only one small development table, not a general table benchmark.
 [Paddle/dots batch findings](docs/evaluation/quantized-gpu-batch.md) ·
 [Unlimited-OCR 2 findings](docs/evaluation/unlimited-ocr-2-gpu-results.md) ·
 [Hardware and limits](docs/development/hardware-report.md)
+
+### Author-written mathematics · four photos
+
+The current handwriting demo uses the author’s own assignment. These are selected
+assistant-reviewed presence checks, not independent annotations or full-page accuracy.
+Ambiguous/crossed-out spans are excluded; original mathematical mistakes stay unchanged.
+
+| Tested profile | Text spans /18 | Math expressions /19 | Ordered truth-table cells /20 |
+| --- | ---: | ---: | ---: |
+| PaddleOCR-VL-1.6 | 8/18 | 5/19 | 20/20 |
+| dots.mocr Q4_K_M + Q8_0 | 17/18 | 12/19 | 20/20 |
+| Unlimited-OCR 2 NF4/FP16 | 9/18 | 2/19 | 20/20 |
+
+PaddleOCR and dots completed 4/4 pages; Unlimited completed 2/4 and timed out on
+pages 1 and 3. Missing outputs count as unrecovered checks. dots recovered the
+most selected text/math on this case; Unlimited preserved more Venn-diagram
+regions on page 2. Time budgets, precision and internal preprocessing differ.
+[Method, timings and failures](docs/evaluation/author-handwritten-mathematics.md) ·
+[Every saved check](evaluation/results/author-handwritten-mathematics-comparison-v1.json).
 
 ## Evaluate the final pipeline separately
 
@@ -297,7 +316,7 @@ uv run document-parser compare outputs/parser_runs/paddleocr-run \
 
 Four public-source PDFs (410 pages) are available through the reproducible
 [corpus manifest](evaluation/corpus-manifest.json): long financial/scientific
-reports, illustrated spreads, and a real handwritten diary. See the
+reports, illustrated spreads, and an author-written mathematical assignment. See the
 [case matrix and evaluation plan](docs/evaluation/evaluation-corpus.md).
 
 ```bash
@@ -466,7 +485,7 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.2
 | --- | --- |
 | Public GPU parsing image | [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser) |
 | Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.2](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.2) |
-| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v2.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
+| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v3.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
 
 The container package is distributed through Docker Hub; it is a separate registry
 from GitHub Packages. Release records identify the exact tested image/source and

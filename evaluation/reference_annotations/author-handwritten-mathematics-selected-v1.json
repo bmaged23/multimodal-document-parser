@@ -1,0 +1,338 @@
+{
+  "version": "1.0",
+  "case_id": "author-handwritten-mathematics-four-pages-01",
+  "created_at_utc": "2026-11-02T15:19:57.509309+00:00",
+  "reviewer": "assistant visual source review before reading model predictions",
+  "annotation_status": "Selected assistant-reviewed reference spans, not independent human ground truth",
+  "scope": "37 selected text/math assertions plus the 4×5 truth-table body; not full-page transcription accuracy",
+  "source_selection": "evaluation/test_cases/author-handwritten-mathematics-four-pages.json",
+  "rules": [
+    "Transcribe the written assignment; do not correct its mathematics, spelling or grammar.",
+    "Ignore wholly crossed-out text; ambiguous spans and cropped page-1 top line are excluded.",
+    "Alternatives only allow explicit notation/format variants; no semantic paraphrase grading.",
+    "Selected-span presence does not measure hallucination precision or full-page CER/WER.",
+    "Truth-table cells must be recovered in row/column order; unstructured prose does not count as a table."
+  ],
+  "excluded_ambiguities": [
+    "Page 1: B upper bound, overwritten interval brackets and cropped top equation",
+    "Page 2: overwritten first subset symbol, crossed-out b) answers and drawn shading boundaries",
+    "Page 3: crossed-out union members, overwritten Cartesian-product entries and one handwritten variable resembling 9",
+    "Page 4: crossed-out final formula; label describing non-propositions is written inconsistently"
+  ],
+  "assertions": [
+    {
+      "id": "finite-set",
+      "page": 1,
+      "category": "math",
+      "expected": "M={1,2,3}",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "set-builder",
+      "page": 1,
+      "category": "math",
+      "expected": "M={x∈N|1≤x≤3}",
+      "accepted_format_variants": [
+        "M={x∈N,1≤x≤3}"
+      ]
+    },
+    {
+      "id": "natural-numbers",
+      "page": 1,
+      "category": "math",
+      "expected": "A={x∈N}",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "digit-set",
+      "page": 1,
+      "category": "math",
+      "expected": "C={0,1,2,3,4,5,6,7,8,9}",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "direct-values",
+      "page": 1,
+      "category": "text",
+      "expected": "it has the direct values",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "all-elements",
+      "page": 1,
+      "category": "text",
+      "expected": "I need to write all of its elements",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "interval-boundaries",
+      "page": 1,
+      "category": "text",
+      "expected": "with the closed or open boundaries",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "natural-explanation",
+      "page": 1,
+      "category": "text",
+      "expected": "the set is only natural numbers",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "union",
+      "page": 2,
+      "category": "math",
+      "expected": "H∪S",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "skiing-difference",
+      "page": 2,
+      "category": "math",
+      "expected": "S∪(H\\C)",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "female-regulars",
+      "page": 2,
+      "category": "math",
+      "expected": "F∩R",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "male-customers",
+      "page": 2,
+      "category": "math",
+      "expected": "C\\F",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "male-regulars",
+      "page": 2,
+      "category": "math",
+      "expected": "(C\\F)∩R",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "nonregular-male-customers",
+      "page": 2,
+      "category": "math",
+      "expected": "C\\(F∪R)",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "hiking-skiing",
+      "page": 2,
+      "category": "text",
+      "expected": "Everyone who likes hiking also likes skiing",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "cycling-exclusion",
+      "page": 2,
+      "category": "text",
+      "expected": "but don't like cycling",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "female-description",
+      "page": 2,
+      "category": "text",
+      "expected": "the set of all Female regulars",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "male-description",
+      "page": 2,
+      "category": "text",
+      "expected": "the set of all male customers",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "intersection",
+      "page": 3,
+      "category": "math",
+      "expected": "{2,3,5}",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "difference",
+      "page": 3,
+      "category": "math",
+      "expected": "A1\\A2={-1,6,7}",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "product-cardinality",
+      "page": 3,
+      "category": "math",
+      "expected": "9×6×4=216",
+      "accepted_format_variants": [
+        "9*6*4=216",
+        "9x6x4=216"
+      ]
+    },
+    {
+      "id": "g-after-f",
+      "page": 3,
+      "category": "math",
+      "expected": "(g∘f)(x)=(2x+1)^2",
+      "accepted_format_variants": [
+        "g(f(x))=(2x+1)^2"
+      ]
+    },
+    {
+      "id": "f-after-g",
+      "page": 3,
+      "category": "math",
+      "expected": "(f∘g)(x)=2x^2+1",
+      "accepted_format_variants": [
+        "f(g(x))=2x^2+1"
+      ]
+    },
+    {
+      "id": "linear-map",
+      "page": 3,
+      "category": "math",
+      "expected": "(x,y,z)↦(x+y,y+z)",
+      "accepted_format_variants": [
+        "(x,y,z)→(x+y,y+z)"
+      ]
+    },
+    {
+      "id": "composition-title",
+      "page": 3,
+      "category": "text",
+      "expected": "Composition of function",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "not-injective",
+      "page": 3,
+      "category": "text",
+      "expected": "F is Not injective",
+      "accepted_format_variants": [
+        "F is not injective"
+      ]
+    },
+    {
+      "id": "surjective",
+      "page": 3,
+      "category": "text",
+      "expected": "F is surjective",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "not-bijective",
+      "page": 3,
+      "category": "text",
+      "expected": "F is Not bijective",
+      "accepted_format_variants": [
+        "F is not bijective"
+      ]
+    },
+    {
+      "id": "sun",
+      "page": 4,
+      "category": "text",
+      "expected": "the sun is shining",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "addition-as-written",
+      "page": 4,
+      "category": "text",
+      "expected": "the addition of 2+2 equal 5",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "pizza-question",
+      "page": 4,
+      "category": "text",
+      "expected": "Do you love pizza",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "pizza-command",
+      "page": 4,
+      "category": "text",
+      "expected": "Eat the pizza",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "neither-nor",
+      "page": 4,
+      "category": "text",
+      "expected": "Neither P nor Q means",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "negated-sun",
+      "page": 4,
+      "category": "text",
+      "expected": "the sun is not shining AND",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "false-statement-as-written",
+      "page": 4,
+      "category": "math",
+      "expected": "2+2=5",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "conjunction-of-negations",
+      "page": 4,
+      "category": "math",
+      "expected": "¬P∧¬Q",
+      "accepted_format_variants": []
+    },
+    {
+      "id": "negated-disjunction",
+      "page": 4,
+      "category": "math",
+      "expected": "¬(P∨Q)",
+      "accepted_format_variants": []
+    }
+  ],
+  "truth_table": {
+    "page": 4,
+    "headers": [
+      "P",
+      "Q",
+      "¬P",
+      "¬Q",
+      "¬P∧¬Q"
+    ],
+    "rows": [
+      [
+        "T",
+        "T",
+        "F",
+        "F",
+        "F"
+      ],
+      [
+        "T",
+        "F",
+        "F",
+        "T",
+        "F"
+      ],
+      [
+        "F",
+        "T",
+        "T",
+        "F",
+        "F"
+      ],
+      [
+        "F",
+        "F",
+        "T",
+        "T",
+        "T"
+      ]
+    ]
+  }
+}

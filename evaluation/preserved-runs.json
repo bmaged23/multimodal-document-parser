@@ -639,6 +639,42 @@
       "notes": "Final source-only quality postprocessing of saved raw OCR and saved Gemma responses. No new GPU OCR or VLM inference in this stage. Inferred header roles and native-PDF endpoint records are explicitly labelled; pipeline scores must not be presented as raw VLM accuracy.",
       "reference_annotations": "outputs/parser_runs/paddleocr-gemma4-31b-visual-enrichment-01/source-derived-visual-reference.json",
       "comparison_report": "outputs/parser_runs/original-final-source-checked-03/visual-spot-checks.json"
+    },
+    {
+      "id": "paddleocr_author_handwritten_mathematics_four_pages_01",
+      "model_name": "PaddleOCR-VL-1.6",
+      "run_directory": "outputs/parser_runs/paddleocr-author-handwritten-mathematics-four-pages-01",
+      "expected_evaluation_pages": 4,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "selection_manifest": "evaluation/test_cases/author-handwritten-mathematics-four-pages.json",
+      "notes": "New GPU inference on all four author-provided pages; no source correction",
+      "reference_annotations": "evaluation/reference_annotations/author-handwritten-mathematics-selected-v1.json",
+      "selected_evaluation_results": "evaluation/results/author-handwritten-mathematics-comparison-v1.json",
+      "source_archive_directory": "outputs/evaluation_archive/source_inputs/author-handwritten-mathematics-four-pages-01"
+    },
+    {
+      "id": "dots_mocr_q4_author_handwritten_mathematics_four_pages_01",
+      "model_name": "dots.mocr-Q4_K_M-mmproj-Q8_0",
+      "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-author-handwritten-mathematics-four-pages-01",
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 4,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "selection_manifest": "evaluation/test_cases/author-handwritten-mathematics-four-pages.json",
+      "notes": "New quantized GPU inference on every requested page. Isolated page jobs preserve failures; only accepted pages appear in canonical output. Missing pages are not completed extractions. Comparisons cover accepted matching pages only.",
+      "comparison_report": "outputs/parser_comparisons/author-math-paddle-vs-dots-01/comparison.json",
+      "reference_annotations": "evaluation/reference_annotations/author-handwritten-mathematics-selected-v1.json",
+      "selected_evaluation_results": "evaluation/results/author-handwritten-mathematics-comparison-v1.json",
+      "source_archive_directory": "outputs/evaluation_archive/source_inputs/author-handwritten-mathematics-four-pages-01"
     }
   ],
   "archive_layout": "{archive_root}/{model_name}_output/{case_id}/{timestamp}_{status}_{pages}",
@@ -729,6 +765,23 @@
       ],
       "archive_directory": "outputs/evaluation_archive/Unlimited-OCR-2-NF4-FP16-vision_output/unlimited_ocr_2_nf4_diary_five_01/20261031T002246332989Z_completed_with_errors",
       "notes": "Diagnostic probe; not normalized project Document JSON."
+    },
+    {
+      "id": "unlimited_ocr_2_nf4_author_handwritten_mathematics_four_pages_01",
+      "run_directory": "outputs/parser_runs/unlimited-ocr-2-nf4-author-handwritten-mathematics-four-pages-01",
+      "model_name": "Unlimited-OCR-2-NF4-FP16-vision",
+      "expected_evaluation_pages": 4,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "archive_directory": "outputs/evaluation_archive/Unlimited-OCR-2-NF4-FP16-vision_output/unlimited_ocr_2_nf4_author_handwritten_mathematics_four_pages_01/20261102T162935678572Z_completed_with_errors",
+      "notes": "Diagnostic probe; not normalized project Document JSON.",
+      "reference_annotations": "evaluation/reference_annotations/author-handwritten-mathematics-selected-v1.json",
+      "selected_evaluation_results": "evaluation/results/author-handwritten-mathematics-comparison-v1.json",
+      "source_archive_directory": "outputs/evaluation_archive/source_inputs/author-handwritten-mathematics-four-pages-01"
     }
   ],
   "quality_reviews": [

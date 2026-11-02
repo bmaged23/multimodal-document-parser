@@ -1,16 +1,16 @@
 # Browse saved parsing evidence
 
-**[Open the public demo](https://bmaged23.github.io/multimodal-document-parser/?v=2.0)**
-or [download the portable ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v2.zip).
-It contains 54 selected public-source pages, all three OCR configurations,
+**[Open the public demo](https://bmaged23.github.io/multimodal-document-parser/?v=3.0)**
+or [download the portable ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v3.zip).
+It contains 53 selected public/author-provided pages, all three OCR configurations,
 and IRENA/IMF OCR/enriched/source-reviewed stages. It runs no live model requests.
 
 ## Run the downloaded demo
 
-After downloading `public-demo-v2.zip`, use Python 3's standard library only:
+After downloading `public-demo-v3.zip`, use Python 3's standard library only:
 
 ```bash
-python3 -m zipfile -e public-demo-v2.zip public-demo
+python3 -m zipfile -e public-demo-v3.zip public-demo
 python3 -m http.server 8765 --bind 127.0.0.1 --directory public-demo
 ```
 
@@ -21,7 +21,7 @@ No project environment, model download, GPU or cloud key is needed for this path
 ## Public demo versus the full local explorer
 
 The public bundle contains 18 NASA pages, 15 IRENA pages, 16 IMF statistical-table
-pages and all five diary pages. Separately credited third-party photo pages and
+pages and all four author-written assignment pages. Separately credited third-party photo pages and
 IMF narrative pages stay out of the public bundle; the full saved selections
 remain local. The public bundle is a curated selection: original page mappings, failures and
 source attribution remain attached. Completion/timing cards describe the full
@@ -58,7 +58,7 @@ synchronizes the source and extraction and retains original publication pages.
 Content, Markdown preview/source, canonical JSON and saved raw replies are separate.
 Source-region buttons highlight the corresponding PDF area.
 
-The default public-source selection includes NASA, a handwritten NPS diary,
+The default public-source selection includes NASA, the author’s handwritten mathematics assignment,
 IRENA and IMF. Private examples require explicit `--include-private` and must stay
 local. Bundles contain source PDFs and outputs: review source permissions before
 hosting them. External images from untrusted model Markdown are blocked; the
@@ -88,8 +88,9 @@ The builder verifies saved checksums and source identity, refuses private-inclus
 showcases and copies only selected pages/assets. It preserves the original saved
 payloads/page numbers in excerpts and creates a separate subset PDF for viewing.
 IRENA attribution is required; separately credited third-party photos are excluded.
-NASA's Apollo photograph is explicitly credited to NASA; NPS marks the diary asset
-public domain and its requested collection credit is retained.
+NASA's Apollo photograph is explicitly credited to NASA. The assignment is
+original work supplied by its author for this public demo. Earlier diary assets
+and their NPS collection attribution remain in versioned historical bundles.
 
 [Pages deployment](../../.github/workflows/publish-demo.yml) downloads the release
 asset pinned by [digest](../../evaluation/public-demo-bundle.json), verifies its
@@ -99,8 +100,8 @@ of Git, release assets and Pages. Screenshot inputs and hashes are in
 
 ## Hosted validation
 
-The [public demo browser check](../../evaluation/results/public-demo-validation-v2.json)
+The [public demo browser check](../../evaluation/results/public-demo-validation-v3.json)
 verified all three model selectors, the five output formats, original page mapping,
 failed outputs, pipeline-stage source highlights, all hosted subset-PDF hashes,
-expanded desktop geometry and mobile overflow. The full local suite passed 137
+expanded desktop geometry and mobile overflow. The full local suite passed 140
 tests, including five public-excerpt isolation/integrity tests.

@@ -4,7 +4,7 @@
 The GPU parsing pipeline combines PaddleOCR-VL-1.6 with optional chart/image
 interpretation through Gemma on Ollama Cloud.
 
-[![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=2.0)
+[![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=3.0)
 
 [Source and evaluation](https://github.com/bmaged23/multimodal-document-parser) ·
 [Complete Docker setup](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/docker/README.md) ·
