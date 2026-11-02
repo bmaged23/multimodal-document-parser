@@ -321,20 +321,31 @@ def execute_stage(stage: str, request: dict[str, Any], settings: ServiceSettings
                 else None,
             )
         if stage == "parsing":
+            from multimodal_doc_parser.parser_adapters.defaults import DOTS_MAX_TOKENS, DOTS_VERSION
             from multimodal_doc_parser.parser_adapters.parsing_run import parse_prepared_document
+            from multimodal_doc_parser.pipeline_services.dots_runtime import dots_server
 
             parsing = ParsingJob.model_validate(request)
             source = store.resolve(parsing.source_artifact_id, "prepared")
             ocr_output = directory / "ocr"
             with gpu_lease(settings):
-                parse_prepared_document(
-                    source,
-                    ocr_output,
-                    settings.paddle_runtime,
-                    backend=parsing.backend,
-                    device="gpu:0",
-                    base_url=settings.dots_url,
+                manager = (
+                    dots_server(settings, directory)
+                    if parsing.backend == "dots-mocr"
+                    else contextlib.nullcontext()
                 )
+                with manager as runtime_metadata:
+                    parse_prepared_document(
+                        source,
+                        ocr_output,
+                        settings.paddle_runtime,
+                        backend=parsing.backend,
+                        device="gpu:0",
+                        base_url=settings.dots_url,
+                        model_version=DOTS_VERSION if parsing.backend == "dots-mocr" else None,
+                        max_tokens=DOTS_MAX_TOKENS,
+                        runtime_metadata_path=runtime_metadata,
+                    )
             if parsing.enrich_visuals:
                 from multimodal_doc_parser.visual_enrichment.ollama import enrich_document
 

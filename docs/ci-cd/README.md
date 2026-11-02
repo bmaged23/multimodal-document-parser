@@ -1,5 +1,7 @@
 # Continuous integration and Docker Hub delivery
 
+**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](../evaluation/parser-model-selection.md).
+
 The workflows validate source changes and publish a versioned GPU parsing image.
 Publishing an image does not automatically deploy an internet-facing API or demo.
 
@@ -43,11 +45,11 @@ Passing tests checks software behavior; it does not establish OCR accuracy.
 ```bash
 docker build --target parsing -t document-parser:check .
 uv run --locked python scripts/deployment/verify_container_image.py document-parser:check
-# On an NVIDIA-enabled host, additionally verify real CUDA execution:
+# On an NVIDIA-enabled host, additionally verify native CUDA device discovery:
 uv run --locked python scripts/deployment/verify_container_image.py document-parser:check --gpu
 ```
 
-Cold GPU builds need 40–50 GB of temporary space on Docker's data disk. The
+CUDA native builds need substantial temporary space on Docker's data disk. The
 [runner preparation script](../../scripts/deployment/prepare_hosted_container_runner.sh)
 reclaims unused toolchains only on ephemeral GitHub-hosted Linux runners and
 requires 40 GiB free; it refuses local or self-hosted execution. Never run its
@@ -130,3 +132,8 @@ GitHub Packages is a separate registry: a Docker Hub push does not create a GHCR
 package or fill GitHub's Packages sidebar. A GHCR mirror is optional, not a second
 required runtime or a claim that an unpublished package exists. See the
 [GitHub Container registry documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
+
+The parsing target builds the pinned dots CUDA native server instead of Paddle.
+Hosted image checks verify shared-library linkage and quantized default contracts
+without downloading model weights. Real GPU parsing remains a separate local
+release check; passing CPU-hosted CI alone does not establish it.

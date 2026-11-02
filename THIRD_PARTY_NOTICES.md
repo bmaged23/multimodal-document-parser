@@ -26,3 +26,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Native dots serving runtime
+
+The parsing image builds llama.cpp tag b11960 from checksum-pinned source. Its MIT
+license is included at `/app/third_party/llama.cpp.LICENSE`. NVIDIA CUDA 12.6 runtime
+libraries retain their upstream licensing; model weights are downloaded separately
+under the conversion/model terms recorded in the runtime lock.

@@ -1,5 +1,7 @@
 # PaddleOCR inference runtime
 
+**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](../../docs/evaluation/parser-model-selection.md).
+
 This uv project isolates GPU/framework dependencies from the document application.
 It runs the **complete** PaddleOCR-VL-1.6 pipeline (layout detection plus VLM),
 one rendered input page at a time. The application launches it as a subprocess.

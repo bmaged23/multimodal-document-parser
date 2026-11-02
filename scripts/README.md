@@ -110,3 +110,15 @@ tests, workflows and documentation use the new paths. Historical archive manifes
 keep their original source paths and hashes: frozen evidence is not rewritten.
 Private PDFs, model weights and `outputs/evaluation_archive/` remain in their
 existing ignored locations.
+
+## Original-weight comparison and production release
+
+- `parser_evaluation/prepare_dots_mocr_cloud_test.py`: preserve matched sent PNGs for the GPU-only Colab experiment.
+- `parser_evaluation/run_dots_mocr_unquantized_gpu.py`: pinned original HF GPU worker; no quantized or CPU fallback.
+- `parser_evaluation/import_dots_mocr_cloud_results.py`: verify and import cloud replies without reusing predictions.
+- `parser_evaluation/evaluate_parser_corpus.py`: compare all 31 shared pages against native text and preserved selected source annotations.
+- `deployment/configure_container_secrets.py`: initialize private Compose credentials without replacing existing files.
+- `deployment/verify_container_image.py`: check the dots-native image and optional CUDA device discovery.
+
+Private inputs and references remain under ignored output directories. Model choice
+and measured memory are documented in [the selection report](../docs/evaluation/parser-model-selection.md).

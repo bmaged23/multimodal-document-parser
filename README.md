@@ -1,9 +1,11 @@
 # Multimodal Document Parser
 
-[![CI](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml)
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.2-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
+**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](docs/evaluation/parser-model-selection.md).
 
-Compare **PaddleOCR-VL-1.6**, **quantized dots.mocr**, and **Unlimited-OCR 2**
+[![CI](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.3-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
+
+Compare **dots.mocr Q4/Q8**, **original dots.mocr BF16**, **PaddleOCR-VL-1.6**, and **Unlimited-OCR 2**
 on real document selections. Inspect extracted text, tables, charts, images,
 failures and runtime beside the original source pages.
 
@@ -12,12 +14,12 @@ Chunking, retrieval and the RAG agent are secondary downstream studies.
 
 ## Live demo
 
-[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=3.0)
+[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=4.0)
 
 **Click the banner to try the interactive demo—no setup, GPU or API key needed.**
 
 Browse saved results with the **PDF on the left and extraction on the right**.
-Switch between all three models, compare OCR/enriched/source-reviewed stages,
+Switch between all four profiles, compare OCR/enriched/source-reviewed stages,
 and inspect rendered Markdown, Markdown source, JSON, raw replies and source boxes.
 The reader now includes **53 saved pages across NASA, IRENA charts, IMF complex
 tables and the author’s handwritten mathematics assignment**. Choose a document in the sidebar, switch
@@ -25,7 +27,7 @@ its model or pipeline stage, and use **Expand PDF + output** beside the reading
 area. Metrics and zoom are optional settings; output formats use one dropdown.
 This is a read-only saved-output demo, not a live upload/inference service.
 
-[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v3.zip) ·
+[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.3/public-demo-v3.zip) ·
 [Local demo instructions](docs/development/evaluation-showcase.md#run-the-downloaded-demo) ·
 [Parsing/model evaluation](docs/parsing-evaluation/README.md) ·
 [Parsing pipeline](docs/parsing-pipeline/README.md) ·
@@ -74,7 +76,7 @@ paragraph to its saved text extraction; model outputs remain inspectable.
 <details>
 <summary><strong>Handwriting — the author’s mathematical assignment and truth table</strong></summary>
 
-![Author-written mathematics and truth table beside PaddleOCR's saved transcription](docs/assets/demo-handwriting.png)
+![Author-written mathematics and truth table beside quantized dots.mocr's saved transcription](docs/assets/demo-handwriting.png)
 
 The author’s assignment, page 4 of four original photos. Transcription errors
 remain visible. [Three-model handwriting evaluation](docs/evaluation/author-handwritten-mathematics.md).
@@ -90,7 +92,7 @@ not generated mockups. [Page mappings and screenshot hashes](docs/assets/readme-
 
 ![Animated parsing pipeline with incoming and outgoing data-flow arrows](docs/assets/parsing-pipeline.gif)
 
-The animation shows the deployed **PaddleOCR path**: OCR-only output goes straight
+The animation shows the deployed **quantized dots.mocr path**: OCR-only output goes straight
 to exports, while optional visual enrichment sends crops and page context to
 **Gemma through Ollama Cloud**. Raw responses and failures are retained.
 [Static diagram](docs/assets/parsing-pipeline.svg) ·
@@ -103,8 +105,8 @@ to exports, while optional visual enrichment sends crops and page context to
 4. **Describe visuals:** optionally send chart/image crops to Gemma through Ollama Cloud; retain generated descriptions, numbers, uncertainty and provenance separately from OCR.
 5. **Review and export:** compare the source with JSON, Markdown and HTML; keep failures and inferred structure visible. Chunking/RAG is an optional downstream study.
 
-The deployed service defaults to **PaddleOCR**. dots.mocr uses a separately configured
-GPU server; **Unlimited-OCR 2 is an experimental saved-output evaluation path**,
+The deployed service defaults to **quantized dots.mocr**. The container worker manages
+its CUDA server; PaddleOCR remains an optional native backend; **Unlimited-OCR 2 is an experimental saved-output evaluation path**,
 not an integrated production backend. Source-reviewed evaluation repairs are
 identified explicitly; they do not guarantee correct extraction for every upload.
 [Detailed pipeline README](docs/parsing-pipeline/README.md).
@@ -122,9 +124,10 @@ enrichment executes on Ollama Cloud, not on this laptop GPU.
 **dots.mocr demo quantization:** the language model uses **Q4_K_M (4-bit)**
 and the vision projector uses **Q8_0 (8-bit)**. These saved results come from that
 quantized GPU configuration; quantization precision is distinct from model
-parameter count. They do not represent unquantized dots.mocr performance. Full precision may
-improve output quality, but its effect and any change in ranking are unmeasured;
-we have no matched full-precision GPU comparison.
+parameter count. The public demo retains this quantized baseline. A separate
+original-weight BF16 run on a Colab T4 now covers the same 31 input PNGs:
+[unquantized versus retained parser profiles](docs/evaluation/dots-mocr-colab-bf16-comparison.md).
+Different hardware, backends and conversion lineage prevent isolating quantization alone.
 
 | Observed case | PaddleOCR-VL-1.6 | Quantized dots.mocr | Unlimited-OCR 2 NF4/FP16 |
 | --- | ---: | ---: | ---: |
@@ -169,6 +172,27 @@ most selected text/math on this case; Unlimited preserved more Venn-diagram
 regions on page 2. Time budgets, precision and internal preprocessing differ.
 [Method, timings and failures](docs/evaluation/author-handwritten-mathematics.md) ·
 [Every saved check](evaluation/results/author-handwritten-mathematics-comparison-v1.json).
+
+### Original dots.mocr BF16 · Colab follow-up
+
+Re-scoring all four profiles with the unchanged handwriting reference gives
+**32/37** selected checks for original BF16 dots.mocr, **29/37** for quantized
+dots.mocr, **13/37** for PaddleOCR and **11/37** for Unlimited-OCR. All score
+20/20 ordered truth-table cells. BF16 improves selected mathematics recovery
+(15/19 versus 12/19); prose ties (17/18).
+
+Across the 31 matched pages, BF16 finished 30 generations and passed the strict
+canonical schema on 28; quantized dots passed on 29. Better selected handwriting
+does not imply better output validity everywhere. NASA has completion/timing
+measurements, without a full-page accuracy reference.
+[Four-profile method and limitations](docs/evaluation/dots-mocr-colab-bf16-comparison.md) ·
+[Per-check metrics](evaluation/results/author-handwritten-mathematics-four-profiles-v1.json).
+
+The [complete four-profile, 31-page comparison](docs/evaluation/parser-corpus-four-profiles.md)
+covers NASA, the original multimodal sample, the historical diary and the author
+assignment. It reports printed-text recovery, selected table/visual checks and
+failures separately; [metrics and per-page evidence](evaluation/results/parser-corpus-four-profiles-v1.json)
+are saved alongside it.
 
 ## Evaluate the final pipeline separately
 
@@ -294,7 +318,9 @@ identity, content types, limits, and a synthetic JSON example.
 ## Parse and review
 
 ```bash
-uv sync --project backends/paddleocr_runtime --locked
+uv run python scripts/model_runtimes/setup_dots_mocr_runtime.py
+uv run python scripts/model_runtimes/build_dots_mocr_runtime.py --jobs 4
+# In a separate terminal: uv run python scripts/model_runtimes/serve_dots_mocr.py
 uv run document-parser parse outputs/parsed_documents/<document-hash>-dpi-144
 ```
 
@@ -302,7 +328,8 @@ The command prints the HTML review path. Open it with the accompanying assets,
 or serve its run directory locally. The original PDF appears on the left and
 extracted content on the right, with Markdown/JSON tabs and source-box inspection.
 See [parsing and review instructions](docs/development/paddleocr-parsing-and-html-review.md)
-for runtime requirements, commands, limitations, and browser checks.
+for the optional Paddle runtime. The default dots setup is documented in
+[the dots runtime README](backends/dots_mocr_runtime/README.md).
 
 ## Compare parsers
 
@@ -468,19 +495,19 @@ the full optional stack exposes pipeline **8100** and RAG **8106**.
 
 ## Docker
 
-**[Public Docker Hub image · 0.1.0-rc.2](https://hub.docker.com/r/bmaged23/multimodal-document-parser)**
+**[Public Docker Hub image · 0.1.0-rc.3](https://hub.docker.com/r/bmaged23/multimodal-document-parser)**
 
 Parse PDF and `.docx` files with Docker and a compatible NVIDIA GPU; cloud chart/image descriptions also require an Ollama API key.
 Legacy `.doc` and encrypted documents are unsupported, and extraction quality varies with the document.
 
-The public Linux amd64 image packages PDF/DOCX preparation, PaddleOCR GPU parsing,
-JSON/Markdown/HTML exports and the Ollama Cloud client. Gemma runs remotely;
-model credentials and Gemma weights are not bundled. The dots.mocr comparison
-runtime is separate. Local GPU checks cover `0.1.0-rc.1`; `0.1.0-rc.2` passed
-hosted API, conversion and runtime checks.
+The Linux amd64 parsing image packages PDF/DOCX preparation, quantized dots.mocr
+GPU parsing, JSON/Markdown/HTML exports and the Ollama Cloud client. The worker
+starts its pinned CUDA runtime and verifies Q4/Q8 downloads on first use.
+Gemma runs remotely; credentials, BF16 weights and Paddle runtime are not bundled.
+Earlier `0.1.0-rc.1`/`0.1.0-rc.2` images retain their historical Paddle configuration.
 
 ```bash
-docker pull bmaged23/multimodal-document-parser:0.1.0-rc.2
+docker pull bmaged23/multimodal-document-parser:0.1.0-rc.3
 ```
 
 [Docker README: clone, pull, secrets, GPU setup, Compose and verification](docs/docker/README.md)
@@ -490,8 +517,8 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.2
 | Artifact | Where to find it |
 | --- | --- |
 | Public GPU parsing image | [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser) |
-| Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.2](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.2) |
-| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v3.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
+| Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.3](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.3) |
+| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.3/public-demo-v3.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
 
 The container package is distributed through Docker Hub; it is a separate registry
 from GitHub Packages. Release records identify the exact tested image/source and
@@ -504,6 +531,6 @@ behavior. Separate jobs validate container builds; version tags or manual releas
 publish to Docker Hub with an SBOM and build provenance. The first Python/browser
 CI and hosted API/parsing container checks passed. The first
 [automated release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424942053)
-also passed, publishing `0.1.0-rc.2` with verified public access.
+also passed, publishing `0.1.0-rc.3` with verified public access.
 
 [CI/CD README: workflows, triggers, configuration and release process](docs/ci-cd/README.md)

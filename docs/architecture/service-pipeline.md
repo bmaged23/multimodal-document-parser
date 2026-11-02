@@ -72,10 +72,10 @@ hash remain separate. Pagination depends on installed fonts. Legacy `.doc`,
 encrypted documents and external DOCX image relationships are unsupported.
 DOCX conversion requires the documents image or a host LibreOffice installation.
 
-The parsing worker uses the existing isolated PaddleOCR GPU runtime by default,
-then Gemma 4 31B through Ollama Cloud for visuals. `enrich_visuals=false` requests
-OCR-only output. The optional dots backend needs a separately configured GPU
-server; the Compose default provisions Paddle, not a dots server.
+The parsing worker defaults to quantized dots.mocr (Q4_K_M language + Q8_0 projector).
+The parsing image manages a CUDA 12.6 server within each GPU job lease and releases
+it afterward. Native development may configure an external DOTS_SERVICE_URL.
+PaddleOCR remains available through its separate optional native environment.
 
 Chunking creates `parents.jsonl`, `children.jsonl`, `chunk_manifest.json`,
 `validation.json` and `review.html`. Logical continued tables share a parent,

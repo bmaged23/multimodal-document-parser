@@ -272,7 +272,7 @@
               "dots-mocr"
             ],
             "title": "Backend",
-            "default": "paddleocr"
+            "default": "dots-mocr"
           },
           "enrich_visuals": {
             "type": "boolean",

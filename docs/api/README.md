@@ -1,5 +1,7 @@
 # Service APIs
 
+**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](../evaluation/parser-model-selection.md).
+
 Parse PDF and `.docx` files with Docker and a compatible NVIDIA GPU; cloud chart/image descriptions also require an Ollama API key.
 Legacy `.doc` and encrypted documents are unsupported, and extraction quality varies with the document.
 
@@ -14,7 +16,9 @@ then run these commands from the repository root:
 
 ```bash
 uv sync --locked --extra api --extra chunking
-uv sync --project backends/paddleocr_runtime --locked
+uv run python scripts/model_runtimes/setup_dots_mocr_runtime.py
+uv run python scripts/model_runtimes/build_dots_mocr_runtime.py --jobs 4
+# Separate terminal: uv run python scripts/model_runtimes/serve_dots_mocr.py
 uv run --locked --extra api python scripts/service_management/configure_service_secrets.py
 ```
 
@@ -88,7 +92,7 @@ PREPARED_ARTIFACT_ID=replace_with_completed_preparation_artifact_id
 curl --fail-with-body http://127.0.0.1:8102/v1/jobs \
   -H "Authorization: Bearer $PIPELINE_API_KEY" \
   -H 'Content-Type: application/json' \
-  -d "{\"source_artifact_id\":\"$PREPARED_ARTIFACT_ID\",\"backend\":\"paddleocr\",\"enrich_visuals\":false}"
+  -d "{\"source_artifact_id\":\"$PREPARED_ARTIFACT_ID\",\"backend\":\"dots-mocr\",\"enrich_visuals\":false}"
 ```
 
 Poll the parsing job on port 8102. Its completed `result.artifact_id` identifies

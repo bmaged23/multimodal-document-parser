@@ -24,7 +24,7 @@ def main() -> None:
     sys.stdout.reconfigure(line_buffering=True)
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("image")
-    parser.add_argument("--gpu", action="store_true", help="Also execute a small CUDA tensor")
+    parser.add_argument("--gpu", action="store_true", help="Also verify native CUDA GPU discovery")
     args = parser.parse_args()
     name = "parser-smoke-" + uuid.uuid4().hex[:12]
     key = secrets.token_urlsafe(32)
@@ -62,7 +62,8 @@ root = pathlib.Path('/app')
 for name in ['.env', '.cache', 'outputs', 'data/input_documents', '.git']:
     assert not (root / name).exists(), name
 assert pathlib.Path('/app/THIRD_PARTY_NOTICES.md').exists()
-assert pathlib.Path('/app/backends/paddleocr_runtime/.venv/bin/python').exists()
+assert pathlib.Path('/opt/dots/bin/llama-server').exists()
+assert not pathlib.Path('/app/backends/paddleocr_runtime/.venv').exists()
 base = 'http://127.0.0.1:8000'
 assert json.load(urllib.request.urlopen(base + '/health/ready'))['status'] == 'ready'
 try:
@@ -82,28 +83,21 @@ print('Non-root API, storage, authentication, OpenAPI and image exclusions passe
                     print(docker("logs", name))
                     raise
                 time.sleep(1)
-        runtime = "/app/backends/paddleocr_runtime/.venv/bin/python"
-        print(
-            docker(
-                "exec",
-                name,
-                runtime,
-                "-c",
-                "import subprocess; from pathlib import Path; "
-                "from importlib.metadata import version; "
-                "assert version('paddleocr') == '3.6.0'; "
-                "assert version('paddlepaddle-gpu') == '3.2.1'; "
-                "core=Path('/app/backends/paddleocr_runtime/.venv/lib/python3.12/'"
-                "'site-packages/paddle/base/libpaddle.so'); assert core.is_file(); "
-                "linked=subprocess.run(['ldd',str(core)],check=True,"
-                "capture_output=True,text=True); "
-                "missing={line.split()[0] for line in linked.stdout.splitlines() "
-                "if 'not found' in line}; "
-                "assert missing <= {'libcuda.so.1'}, 'Missing runtime libraries: '+str(missing); "
-                "print('GPU package metadata/shared libraries passed; "
-                "host libcuda is supplied by the NVIDIA runtime')",
-            )
-        )
+        print(docker("exec", name, "/opt/dots/bin/llama-server", "--version"))
+        native_probe = """
+import subprocess
+from multimodal_doc_parser.pipeline_services.contracts import ParsingJob, PipelineJob
+from multimodal_doc_parser.parser_adapters.defaults import DOTS_RUNTIME
+assert ParsingJob.model_fields['backend'].default == 'dots-mocr'
+assert PipelineJob.model_fields['backend'].default == 'dots-mocr'
+assert len([a for a in DOTS_RUNTIME['artifacts'] if a['kind']=='model']) == 2
+result = subprocess.run(['ldd','/opt/dots/bin/libggml-cuda.so'],
+                        capture_output=True, text=True, check=True)
+missing = {line.split()[0] for line in result.stdout.splitlines() if 'not found' in line}
+assert missing <= {'libcuda.so.1'}, missing
+print('Pinned quantized dots configuration, native shared libraries and API defaults passed')
+"""
+        print(docker("exec", name, "/app/.venv/bin/python", "-c", native_probe))
         print(docker("exec", name, "libreoffice", "--version"))
         preparation_probe = """
 import json, tempfile, zipfile
@@ -141,27 +135,18 @@ print('Worker/VLM imports, DOCX-to-PDF conversion and page rendering passed')
 """
         print(docker("exec", name, "/app/.venv/bin/python", "-c", preparation_probe))
         if args.gpu:
-            print(
-                docker(
-                    "run",
-                    "--rm",
-                    "--gpus",
-                    "all",
-                    "-e",
-                    "PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK=True",
-                    "-e",
-                    "DISABLE_MODEL_SOURCE_CHECK=True",
-                    "--entrypoint",
-                    runtime,
-                    args.image,
-                    "-c",
-                    "import paddle; assert paddle.is_compiled_with_cuda(); "
-                    "from paddleocr import PaddleOCRVL; assert callable(PaddleOCRVL); "
-                    "paddle.set_device('gpu:0'); "
-                    "assert float(paddle.ones([2, 2]).sum()) == 4; "
-                    "print('CUDA tensor passed; GPUs:', paddle.device.cuda.device_count())",
-                )
+            devices = docker(
+                "run",
+                "--rm",
+                "--gpus",
+                "all",
+                "--entrypoint",
+                "/opt/dots/bin/llama-server",
+                args.image,
+                "--list-devices",
             )
+            assert "CUDA0:" in devices, devices
+            print(devices)
         print(
             json.dumps(
                 dict(

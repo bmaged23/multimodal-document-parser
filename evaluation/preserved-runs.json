@@ -675,6 +675,112 @@
       "reference_annotations": "evaluation/reference_annotations/author-handwritten-mathematics-selected-v1.json",
       "selected_evaluation_results": "evaluation/results/author-handwritten-mathematics-comparison-v1.json",
       "source_archive_directory": "outputs/evaluation_archive/source_inputs/author-handwritten-mathematics-four-pages-01"
+    },
+    {
+      "id": "dots_mocr_original_hf_bf16_colab_original-multimodal-2-pages_01",
+      "model_name": "dots.mocr-original-HF-BF16-Colab-T4-SDPA",
+      "run_directory": "outputs/parser_runs/dots-mocr-bf16-colab-original-multimodal-2-pages-01",
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "related_run_directories": [
+        "outputs/parser_runs/dots-mocr-original-hf-bf16-colab-31-pages-01"
+      ],
+      "reproduction_files": [
+        "outputs/maintenance/dots-mocr-unquantized-cloud-2026-11-02/matched-colab-inputs-v2/run_gpu_test.py",
+        "outputs/maintenance/dots-mocr-unquantized-cloud-2026-11-02/matched-colab-inputs-v2/layout-prompt.txt",
+        "scripts/parser_evaluation/import_dots_mocr_cloud_results.py"
+      ],
+      "notes": "Original pinned HF floating weights on Colab GPU; source-lineage and runtime confounds retained."
+    },
+    {
+      "id": "dots_mocr_original_hf_bf16_colab_nasa-first-20-pages_01",
+      "model_name": "dots.mocr-original-HF-BF16-Colab-T4-SDPA",
+      "run_directory": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01",
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 20,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "related_run_directories": [
+        "outputs/parser_runs/dots-mocr-original-hf-bf16-colab-31-pages-01"
+      ],
+      "reproduction_files": [
+        "outputs/maintenance/dots-mocr-unquantized-cloud-2026-11-02/matched-colab-inputs-v2/run_gpu_test.py",
+        "outputs/maintenance/dots-mocr-unquantized-cloud-2026-11-02/matched-colab-inputs-v2/layout-prompt.txt",
+        "scripts/parser_evaluation/import_dots_mocr_cloud_results.py"
+      ],
+      "notes": "Original pinned HF floating weights on Colab GPU; source-lineage and runtime confounds retained.",
+      "selection_manifest": "evaluation/test_cases/nasa-first-20-dots-mocr.json"
+    },
+    {
+      "id": "dots_mocr_original_hf_bf16_colab_historical-diary-5-pages_01",
+      "model_name": "dots.mocr-original-HF-BF16-Colab-T4-SDPA",
+      "run_directory": "outputs/parser_runs/dots-mocr-bf16-colab-historical-diary-5-pages-01",
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 5,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "related_run_directories": [
+        "outputs/parser_runs/dots-mocr-original-hf-bf16-colab-31-pages-01"
+      ],
+      "reproduction_files": [
+        "outputs/maintenance/dots-mocr-unquantized-cloud-2026-11-02/matched-colab-inputs-v2/run_gpu_test.py",
+        "outputs/maintenance/dots-mocr-unquantized-cloud-2026-11-02/matched-colab-inputs-v2/layout-prompt.txt",
+        "scripts/parser_evaluation/import_dots_mocr_cloud_results.py"
+      ],
+      "notes": "Original pinned HF floating weights on Colab GPU; source-lineage and runtime confounds retained.",
+      "selection_manifest": "evaluation/test_cases/lucinda-davis-handwriting-replacement-5.json"
+    },
+    {
+      "id": "dots_mocr_original_hf_bf16_colab_author-mathematics-4-pages_01",
+      "model_name": "dots.mocr-original-HF-BF16-Colab-T4-SDPA",
+      "run_directory": "outputs/parser_runs/dots-mocr-bf16-colab-author-mathematics-4-pages-01",
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 4,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "related_run_directories": [
+        "outputs/parser_runs/dots-mocr-original-hf-bf16-colab-31-pages-01"
+      ],
+      "reproduction_files": [
+        "outputs/maintenance/dots-mocr-unquantized-cloud-2026-11-02/matched-colab-inputs-v2/run_gpu_test.py",
+        "outputs/maintenance/dots-mocr-unquantized-cloud-2026-11-02/matched-colab-inputs-v2/layout-prompt.txt",
+        "scripts/parser_evaluation/import_dots_mocr_cloud_results.py"
+      ],
+      "notes": "Original pinned HF floating weights on Colab GPU; source-lineage and runtime confounds retained.",
+      "selection_manifest": "evaluation/test_cases/author-handwritten-mathematics-four-pages.json"
     }
   ],
   "archive_layout": "{archive_root}/{model_name}_output/{case_id}/{timestamp}_{status}_{pages}",

@@ -14,6 +14,9 @@ class ServiceSettings:
     urls: dict[str, str] = field(default_factory=dict)
     paddle_runtime: Path = Path("backends/paddleocr_runtime")
     dots_url: str = "http://127.0.0.1:8010/v1"
+    dots_binary: Path | None = None
+    dots_models: Path = Path(".cache/dots_mocr")
+    dots_startup_seconds: float = 180
     embedding_cache: Path = Path(".cache/embeddings")
 
     @classmethod
@@ -40,5 +43,9 @@ class ServiceSettings:
                 os.getenv("PADDLE_RUNTIME_DIRECTORY", "backends/paddleocr_runtime")
             ),
             dots_url=os.getenv("DOTS_SERVICE_URL", "http://127.0.0.1:8010/v1"),
+            dots_binary=Path(os.environ["DOTS_SERVER_BINARY"])
+            if os.getenv("DOTS_SERVER_BINARY")
+            else None,
+            dots_models=Path(os.getenv("DOTS_MODEL_DIRECTORY", ".cache/dots_mocr")),
             embedding_cache=Path(os.getenv("EMBEDDING_CACHE", ".cache/embeddings")),
         )

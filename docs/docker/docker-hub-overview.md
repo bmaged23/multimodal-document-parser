@@ -1,22 +1,22 @@
 # Multimodal Document Parser
 
 **Turn PDF and DOCX files into source-linked JSON, Markdown and HTML review reports.**
-The GPU parsing pipeline combines PaddleOCR-VL-1.6 with optional chart/image
+The GPU parsing pipeline combines quantized dots.mocr (Q4_K_M language + Q8_0 projector) with optional chart/image
 interpretation through Gemma on Ollama Cloud.
 
-[![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=3.0)
+[![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=4.0)
 
 [Source and evaluation](https://github.com/bmaged23/multimodal-document-parser) ·
 [Complete Docker setup](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/docker/README.md) ·
 [API guide](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/api/README.md) ·
-[Release and checksums](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.2)
+[Release and checksums](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.3)
 
 ## What this image does
 
 ![Animated parsing pipeline](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/parsing-pipeline.gif)
 
 1. Prepare PDF pages, or convert DOCX to PDF using bundled LibreOffice.
-2. Run PaddleOCR on a compatible NVIDIA GPU to extract text, layout, tables and visual regions.
+2. Run quantized dots.mocr on a compatible NVIDIA GPU to extract text, layout, tables and visual regions.
 3. Normalize supported output into canonical document JSON with source coordinates and visual crops.
 4. Optionally send visual crops and page context to Ollama Cloud for generated descriptions and chart values.
 5. Export JSON, Markdown and HTML with linked source pages, assets, provenance and visible warnings.
@@ -28,12 +28,12 @@ not silently presented as verified source facts.
 ## Pull the public image
 
 ```bash
-docker pull bmaged23/multimodal-document-parser:0.1.0-rc.2
+docker pull bmaged23/multimodal-document-parser:0.1.0-rc.3
 ```
 
 **Platform:** Linux amd64. Live OCR requires a compatible NVIDIA GPU and host
 container GPU support. Development used an NVIDIA GeForce GTX 1660 Ti with 6 GB
-VRAM. OCR weights download to a persistent cache on first use.
+VRAM. The image includes its CUDA 12.6/sm75 native server; checksum-pinned Q4/Q8 weights download to a persistent cache on first use. The worker starts and releases the server per job. Paddle and BF16 weights are not bundled.
 
 Docker Hub distributes the image; it does not host a running parsing API. The
 interactive demo above displays saved outputs and needs no GPU, account or key.
@@ -45,7 +45,7 @@ Clone the source to obtain the supported Compose configuration:
 ```bash
 git clone https://github.com/bmaged23/multimodal-document-parser.git
 cd multimodal-document-parser
-export PARSER_IMAGE=bmaged23/multimodal-document-parser:0.1.0-rc.2
+export PARSER_IMAGE=bmaged23/multimodal-document-parser:0.1.0-rc.3
 ```
 
 Create the local secret files using the **secret setup step in the
@@ -97,12 +97,10 @@ not image layers or build arguments.
 
 ## Scope and evaluation
 
-The repository evaluates **PaddleOCR-VL-1.6, quantized dots.mocr and experimental
-Unlimited-OCR 2**. This deployment image packages the **PaddleOCR parsing path**.
-The separate dots server uses Q4_K_M (4-bit) language weights and a Q8_0 (8-bit)
-vision projector; neither its server nor weights are bundled here. Unlimited-OCR
-2 remains a diagnostic evaluation path. The optional full chunking/RAG stack is
-configured separately in the repository.
+The repository compares PaddleOCR-VL-1.6, dots.mocr Q4/Q8, original dots.mocr BF16
+and experimental Unlimited-OCR 2. This image uses **quantized dots.mocr** by default;
+its native server is bundled and verified weights download separately. The optional
+full chunking/RAG stack is configured separately.
 
 PDF and `.docx` are supported; legacy `.doc` and encrypted documents are not.
 Extraction quality varies with layout, handwriting, image resolution and model
@@ -111,7 +109,7 @@ not a guarantee that every new document is automatically corrected.
 
 ## Release verification
 
-Version `0.1.0-rc.2` passed source/browser CI, hosted image/runtime checks and
+Version `0.1.0-rc.3` passed source/browser CI, hosted image/runtime checks and
 anonymous registry verification. It includes SPDX SBOM and SLSA build provenance.
 Actual local CUDA tensor validation covers the earlier `0.1.0-rc.1` image; hosted
 runners have no GPU. These checks establish software/runtime behavior, not OCR
@@ -120,3 +118,12 @@ redistributed in the container.
 
 [CI/CD process](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/ci-cd/README.md) ·
 [Measured parser comparisons](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/parsing-evaluation/README.md)
+
+## Why this profile
+
+Original BF16 dots.mocr achieved our best selected handwritten-mathematics result
+(32/37 vs quantized 29/37), with 8,739 MiB / **8.53 GiB peak PyTorch-allocated
+GPU memory** on Colab T4. It does not win every category; printed-text recovery
+is essentially tied. Quantized dots is the production default for the 6 GB
+laptop. Peak allocation is not total device memory or a minimum VRAM requirement.
+[Full comparison and memory scope](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/evaluation/parser-model-selection.md).

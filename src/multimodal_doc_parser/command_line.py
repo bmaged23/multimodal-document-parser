@@ -7,6 +7,7 @@ from pathlib import Path
 
 from multimodal_doc_parser.document_schema.document import Document
 from multimodal_doc_parser.evaluation.parser_comparison import compare_parser_runs
+from multimodal_doc_parser.parser_adapters.defaults import DOTS_MAX_TOKENS, DOTS_MODEL, DOTS_VERSION
 from multimodal_doc_parser.parser_adapters.parsing_run import (
     ParsingRunError,
     parse_prepared_document,
@@ -44,13 +45,13 @@ def main() -> None:
         type=Path,
         help="Import saved page_XXXX.json results instead of running inference",
     )
-    parse.add_argument("--backend", choices=["paddleocr", "dots-mocr"], default="paddleocr")
+    parse.add_argument("--backend", choices=["paddleocr", "dots-mocr"], default="dots-mocr")
     parse.add_argument("--base-url", default="http://127.0.0.1:8010/v1")
-    parse.add_argument("--model", default="dots.mocr-Q4_K_M")
+    parse.add_argument("--model", default=DOTS_MODEL)
     parse.add_argument("--model-version", help="Exact revision and quantization of dots.mocr")
     parse.add_argument("--server-kind", choices=["llama-cpp", "vllm"], default="llama-cpp")
     parse.add_argument("--timeout-seconds", type=float, default=300)
-    parse.add_argument("--max-tokens", type=int, default=8192)
+    parse.add_argument("--max-tokens", type=int, default=DOTS_MAX_TOKENS)
     parse.add_argument("--max-pixels", type=int, default=1_000_000)
     parse.add_argument("--runtime-metadata", type=Path)
     compare = commands.add_parser(
@@ -181,7 +182,12 @@ def main() -> None:
                 backend=args.backend,
                 base_url=args.base_url,
                 model=args.model,
-                model_version=args.model_version,
+                model_version=args.model_version
+                or (
+                    DOTS_VERSION
+                    if args.model == DOTS_MODEL and args.server_kind == "llama-cpp"
+                    else None
+                ),
                 server_kind=args.server_kind,
                 timeout_seconds=args.timeout_seconds,
                 max_tokens=args.max_tokens,

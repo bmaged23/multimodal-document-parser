@@ -1,0 +1,92 @@
+{
+  "case": "NASA FY2024 financial report, first 20 selected pages",
+  "document_id": "sha256:bc73868c89045132a265a9b6f6aa62b43ce09a8830f7f622c025b2f53a934f66",
+  "pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "parsers": [
+    {
+      "model_identity": [
+        "PaddleOCR-VL:1.6"
+      ],
+      "accepted_pages": 20,
+      "selected_comparison_pages": 20,
+      "median_page_seconds": 155.74430055750008,
+      "mean_page_seconds": 200.91168887345006,
+      "slowest_page_seconds": 690.3288311409999,
+      "peak_sampled_device_memory_mib": 5959,
+      "initialization_seconds": 105.72988362599943,
+      "measurement_scope": "GPU 0 total device memory sampled once per second; not allocator peak Retained from the original run, not remeasured for this subset reference.",
+      "quality_reference_status": "not_scored"
+    },
+    {
+      "model_identity": [
+        "dots.mocr:dots.mocr; GGUF@5cd9f01392968881af86dfde7bc60b9cb412f87a; Q4_K_M+mmproj-Q8_0"
+      ],
+      "accepted_pages": 20,
+      "selected_comparison_pages": 20,
+      "median_page_seconds": 25.863808125500782,
+      "mean_page_seconds": 26.376737787100183,
+      "slowest_page_seconds": 39.9996666699999,
+      "peak_sampled_device_memory_mib": 5914,
+      "initialization_seconds": null,
+      "measurement_scope": "Sum of isolated per-page HTTP-client measurements. Same shared GPU server; server startup excluded. Accepted envelopes map single-page jobs to parent pages. Original job responses/logs retained under page-jobs.",
+      "quality_reference_status": "not_scored"
+    },
+    {
+      "model_identity": [
+        "baidu/Unlimited-OCR-2@c14071b549f4fcab10909f3c4acc6a2edb366947"
+      ],
+      "execution_profile": "NF4 language / FP16 vision / PyTorch attention fallback",
+      "canonical_parser_backend": false,
+      "completed_generation_pages": 20,
+      "selected_comparison_pages": 20,
+      "median_page_seconds": 108.07936154149957,
+      "mean_page_seconds": 120.75874612749995,
+      "slowest_page_seconds": 233.6219310790002,
+      "peak_torch_allocated_memory_mib": 3150.1318359375,
+      "measurement_scope": "Experimental NF4 language / FP16 vision with compatibility changes. Generation-only page timing; repeated per-page model loading and process startup excluded. PyTorch allocator memory is not sampled total-device memory.",
+      "quality_reference_status": "not_scored",
+      "saved_run_status": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/run-status.json",
+      "saved_run_status_sha256": "6b544b7f6caf532d51bcca346d5f6f10915e196153e2a32e999d07adeac0e580"
+    },
+    {
+      "model_identity": [
+        "dots.mocr original HF BF16 · Colab T4 · SDPA"
+      ],
+      "accepted_pages": 20,
+      "selected_comparison_pages": 20,
+      "median_page_seconds": 61.667291771999885,
+      "quality_reference_status": "not_scored",
+      "gpu": "Tesla T4"
+    }
+  ],
+  "source_comparison": "outputs/parser_comparisons/nasa-first20-paddleocr-vs-dots-mocr-q4-01/comparison.json",
+  "limitations": "Matched document pages, but backend timing scopes, preprocessing and inference image dimensions differ. Observed timings are not a controlled speedup or accuracy ranking. No independent accuracy reference for these 20 pages. Source-reviewed enriched pipeline checks are a separate experiment. Unlimited-OCR 2 is a diagnostic raw-generation path, not the canonical comparison adapter; successful generation is not accuracy. BF16 uses a Colab T4; other profiles use the local GTX 1660 Ti. Different backends and hardware prevent causal quantization or speedup claims.",
+  "hardware": {
+    "gpu": "NVIDIA GeForce GTX 1660 Ti",
+    "vram_mib": 6144,
+    "advertised_vram_gb": 6,
+    "environment": "Linux x86_64 under WSL2",
+    "execution": "Sequential local OCR runs; Ollama Cloud visual descriptions use remote hardware."
+  }
+}

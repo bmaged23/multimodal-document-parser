@@ -26,8 +26,8 @@ NODES = [
     (
         "ocr",
         (590, 190, 825, 335),
-        "PaddleOCR-VL-1.6",
-        ["GPU text + layout", "Tables + visual regions"],
+        "dots.mocr Q4_K_M",
+        ["Q4 language + Q8 projector", "Tables + visual regions"],
         "#087e71",
     ),
     (
@@ -111,8 +111,8 @@ def verify_implementation():
         ],
         "src/multimodal_doc_parser/pdf_preparation/prepare_document.py": ["prepare_document"],
         "src/multimodal_doc_parser/parser_adapters/parsing_run.py": ["parse_prepared_document"],
-        "src/multimodal_doc_parser/parser_adapters/paddleocr_adapter.py": [
-            "normalize_paddleocr_results"
+        "src/multimodal_doc_parser/parser_adapters/dots_mocr_adapter.py": [
+            "normalize_dots_mocr_results"
         ],
         "src/multimodal_doc_parser/visual_enrichment/ollama.py": ["enrich_document"],
         "src/multimodal_doc_parser/document_exports/readable_exports.py": ["document_markdown"],
@@ -133,7 +133,7 @@ def verify_implementation():
     assert 'provider="ollama-cloud", model="gemma4:31b"' in stage
     parsing = (ROOT / "src/multimodal_doc_parser/parser_adapters/parsing_run.py").read_text()
     for token in [
-        "normalize_paddleocr_results",
+        "normalize_dots_mocr_results",
         "write_html_report",
         "document_markdown",
         '"inference.log"',
@@ -151,7 +151,7 @@ def main():
     draw.text((40, 35), "HOW THE PARSING PIPELINE WORKS", font=font(31, True), fill="#173441")
     draw.text(
         (40, 90),
-        "The deployed PaddleOCR path · local GPU + optional cloud visual descriptions",
+        "The deployed quantized dots path · local GPU + optional cloud visual descriptions",
         font=font(22),
         fill="#54717e",
     )
@@ -221,7 +221,7 @@ def main():
     svg.append(
         '<g font-family="DejaVu Sans,Arial,sans-serif" fill="#173441"><text '
         'x="40" y="65" font-size="31" font-weight="700">HOW THE PARSING PIPELINE '
-        'WORKS</text><text x="40" y="112" font-size="22">Deployed PaddleOCR path:'
+        'WORKS</text><text x="40" y="112" font-size="22">Deployed quantized dots path:'
         " local GPU and optional Ollama Cloud visual descriptions</text>"
     )
     for _, _, points, color in EDGES:
@@ -276,7 +276,7 @@ def main():
     }
     record = {
         "scope": (
-            "Deployed PaddleOCR parsing path, not the separate RAG pipeline or "
+            "Deployed quantized dots parsing path, not the separate RAG pipeline or "
             "evaluation-only source corrections"
         ),
         "review": (

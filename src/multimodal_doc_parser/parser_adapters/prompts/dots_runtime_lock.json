@@ -1,0 +1,41 @@
+{
+  "format_version": "1.0",
+  "backend": "dots.mocr",
+  "model_version": "dots.mocr; GGUF@5cd9f01392968881af86dfde7bc60b9cb412f87a; Q4_K_M+mmproj-Q8_0",
+  "server_model_alias": "dots.mocr-Q4_K_M",
+  "runtime": "llama.cpp-b11960-cuda12.8-linux-x64",
+  "conversion_repository": "prithivMLmods/dots.mocr-GGUF",
+  "original_model_repository": "dots-studio/dots.mocr",
+  "original_revision_note": "Official model revision observed during integration; the converter does not pin its original source revision. Conversion revision and downloaded hashes are exact; original source equivalence is unverified.",
+  "artifacts": [
+    {
+      "filename": "llama-b11960-bin-ubuntu-cuda-12.8-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11960/llama-b11960-bin-ubuntu-cuda-12.8-x64.tar.gz",
+      "size_bytes": 182524002,
+      "sha256": "64d57beb9abb637c177c6afb313760a0c0782224cac71e74869eed5b8f9a1ea4",
+      "kind": "runtime_archive"
+    },
+    {
+      "filename": "cudart-llama-b11960-bin-ubuntu-cuda-12.8-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11960/cudart-llama-b11960-bin-ubuntu-cuda-12.8-x64.tar.gz",
+      "size_bytes": 594371478,
+      "sha256": "7c4d5974bd39649df649649e5d71950688a70e37aaae00bf11afbb656ea2cc56",
+      "kind": "runtime_archive"
+    },
+    {
+      "filename": "dots.mocr.Q4_K_M.gguf",
+      "url": "https://huggingface.co/prithivMLmods/dots.mocr-GGUF/resolve/5cd9f01392968881af86dfde7bc60b9cb412f87a/dots.mocr.Q4_K_M.gguf",
+      "size_bytes": 1117318944,
+      "sha256": "e09f3b2a415f85e5cf7f69868d5c331abc3a9432770a7b64d12e8e6c3ab67d89",
+      "kind": "model"
+    },
+    {
+      "filename": "dots.mocr.mmproj-q8_0.gguf",
+      "url": "https://huggingface.co/prithivMLmods/dots.mocr-GGUF/resolve/5cd9f01392968881af86dfde7bc60b9cb412f87a/dots.mocr.mmproj-q8_0.gguf",
+      "size_bytes": 1344068544,
+      "sha256": "065248b59f7dc65771d45640ab688a57e2fe1fff78d4e5d44085e027bc4521cb",
+      "kind": "model"
+    }
+  ],
+  "observed_original_revision": "e539fbb52280393adc081b289ec597430a0f9031"
+}

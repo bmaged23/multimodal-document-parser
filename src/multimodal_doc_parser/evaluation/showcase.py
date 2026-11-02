@@ -37,6 +37,7 @@ class ShowcaseCase(BaseModel):
     private: bool
     original_pages: list[int] = Field(min_length=1)
     preview_page: int = Field(default=1, ge=1)
+    preferred_run: str | None = None
     source_url: str | None
     runs: list[SavedRun] = Field(min_length=1)
 
@@ -45,6 +46,14 @@ class ShowcaseManifest(BaseModel):
     model_config = ConfigDict(extra="forbid")
     version: Literal["1.0"]
     cases: list[ShowcaseCase]
+    math_evaluation: str = Field(
+        default="author-handwritten-mathematics-comparison-v1.json",
+        pattern=r"^[a-z0-9-]+\.json$",
+    )
+    parser_evaluation: str = Field(
+        default="parser-comparison-showcase-v1.json",
+        pattern=r"^[a-z0-9-]+\.json$",
+    )
 
 
 def safe_file(root: Path, relative: str) -> Path:
@@ -129,7 +138,18 @@ def raw_page(run: Path, number: int, kind: str) -> str | None:
         return str(json.loads(path.read_text()).get("text", "")) if path.exists() else None
     paths = sorted((run / "raw").glob(f"*/page_{number:04}.json"))
     if not paths:
-        return None
+        responses = sorted((run / "raw").glob(f"*/response_{number:04}.json"))
+        if len(responses) > 1:
+            raise ValueError("Ambiguous raw response artifact")
+        if not responses:
+            return None
+        response = json.loads(responses[0].read_text())
+        content = response.get("content")
+        if isinstance(content, str):
+            return content
+        choices = response.get("choices", [])
+        content = choices[0].get("message", {}).get("content") if choices else None
+        return content if isinstance(content, str) else None
     if len(paths) != 1:
         raise ValueError("Ambiguous raw page artifact")
     data = json.loads(paths[0].read_text())
@@ -220,12 +240,19 @@ def canonical_run(run: Path, target: Path, spec: SavedRun) -> tuple[dict[str, An
             )
         )
     finite = [v for v in times.values() if isinstance(v, (int, float))]
+    allocated = [
+        json.loads(p.read_text()).get("peak_allocated_mib", 0)
+        for p in (run / "raw/dots_mocr").glob("response_*.json")
+    ]
+    allocated_peak = max(allocated, default=0)
     metrics = dict(
         completed=len(accepted) if acceptance_known else None,
         attempted=len(document.pages),
         median_seconds=statistics.median(finite) if finite else None,
-        memory_mib=inference.get("peak_sampled_device_memory_mib"),
-        memory_scope="Sampled total GPU-device memory, not allocator peak",
+        memory_mib=allocated_peak or inference.get("peak_sampled_device_memory_mib"),
+        memory_scope="PyTorch peak allocated; not total device memory"
+        if allocated_peak
+        else "Sampled total GPU-device memory, not allocator peak",
         timing_scope=(
             "Inherited OCR page timings; later pipeline work excluded"
             if spec.stage != "ocr"
@@ -244,7 +271,17 @@ def canonical_run(run: Path, target: Path, spec: SavedRun) -> tuple[dict[str, An
 
 def experimental_run(run: Path, target: Path) -> tuple[dict[str, Any], Document]:
     status = json.loads(safe_file(run, "run-status.json").read_text())
-    prepared = Path(status["prepared_bundle"]).resolve()
+    prepared_root = run.parent.parent.resolve() / "parsed_documents"
+    if "prepared_bundle" in status:
+        prepared = Path(status["prepared_bundle"]).resolve()
+    else:
+        # Early validation jobs recorded document identity without a bundle path.
+        candidates = list(
+            prepared_root.glob(status["document_id"].removeprefix("sha256:") + "-dpi-*")
+        )
+        if len(candidates) != 1:
+            raise ValueError("Experimental run needs one unambiguous prepared source bundle")
+        prepared = candidates[0].resolve()
     # The original bundle is metadata, not an arbitrary path supplied by a browser.
     if not prepared.is_relative_to(run.parent.parent.resolve() / "parsed_documents"):
         raise ValueError("Experimental source bundle is outside prepared artifacts")
@@ -420,15 +457,23 @@ def build_showcase(
         for name in [
             "rag-structural-comparison-v2.json",
             "rag-comparison-source-review-v1.json",
-            "parser-comparison-showcase-v1.json",
+            manifest.parser_evaluation,
             "gemma-selection-checkpoint-v1.json",
-            "author-handwritten-mathematics-comparison-v1.json",
+            "parser-model-selection-v1.json",
+            "parser-corpus-four-profiles-v1.json",
+            manifest.math_evaluation,
         ]:
             path = project / "evaluation/results" / name
             if path.exists():
                 copy_asset(path, staging / "evidence" / name)
-                if name == "author-handwritten-mathematics-comparison-v1.json":
+                if name == manifest.math_evaluation:
                     catalog["math_evaluation"] = "evidence/" + name
+                if name == manifest.parser_evaluation:
+                    catalog["parser_evaluation"] = "evidence/" + name
+                if name == "parser-model-selection-v1.json":
+                    catalog["model_selection"] = json.loads(path.read_text())
+                if name == "parser-corpus-four-profiles-v1.json":
+                    catalog["corpus_evaluation"] = "evidence/" + name
         save(staging / "catalog.json", catalog)
         (staging / "index.html").write_text(
             Path(__file__)

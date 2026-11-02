@@ -1,6 +1,8 @@
 # dots.mocr runtime
 
-The second parser uses an OpenAI-compatible HTTP server. The main uv environment
+**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](../../docs/evaluation/parser-model-selection.md).
+
+The default parser uses an OpenAI-compatible HTTP server. The main uv environment
 needs no Torch, vLLM, or CUDA Python packages; PaddleOCR retains its own environment.
 
 For the 6 GiB laptop, `runtime-lock.json` pins a community GGUF conversion:
@@ -48,7 +50,7 @@ The default endpoint is `http://127.0.0.1:8010/v1`, with model alias
 The server's advertised model ID is checked before sending page content.
 `DOTS_MOCR_API_KEY` optionally supplies authentication without writing the key to outputs.
 
-Each request has a 300-second socket timeout, an 8,192-output-token cap, and a
+Each request has a 300-second socket timeout, a 6,144-output-token cap by default in CLI/API (8,192-token server context), and a
 1-million-pixel input budget. `--timeout-seconds`, `--max-tokens`, and `--max-pixels`
 make these settings explicit. A timeout stops the client; remote server cancellation
 is server-dependent. A timed-out request must not be counted as a completed page.

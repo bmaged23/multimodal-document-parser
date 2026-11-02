@@ -1,7 +1,7 @@
 {
-  "captured_at_utc": "2026-11-02T16:31:55.438119+00:00",
+  "captured_at_utc": "2026-11-02T21:49:18.772922+00:00",
   "note": "Actual browser screenshots of saved public excerpts; no model inference or image synthesis.",
-  "demo_build_manifest_sha256": "32999f6a2973ee76a39d3dfd3a50150181c774e60d1b22fd20cc2682684fe8d8",
+  "demo_build_manifest_sha256": "db35819d7e4a2a3111c0b9a83b0434f329db29fd338338833e9890e5b93ed4ba",
   "presentation": "Expanded review; output zoom 125%; selected source region highlighted.",
   "images": [
     {
@@ -40,13 +40,13 @@
       "file": "demo-image.png",
       "category": "image",
       "case": "nasa-financial",
-      "run": "nasa-paddle",
-      "source_element_id": "element_00028",
+      "run": "nasa-dots",
+      "source_element_id": "element_00037",
       "original_pdf_page": 4,
       "saved_page_number": 4,
       "stage": "ocr",
       "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
-      "sha256": "1722b4e078fd4180a1aeff953c1c28b68e1d3a6fe5e75e05dfe1c72c92ffe8f5",
+      "sha256": "7ae2cc1117352d14c378ce6a99246596d9197a0b7c42b109b77af7067aadcbff",
       "viewport": {
         "width": 1800,
         "height": 1120
@@ -56,13 +56,13 @@
       "file": "demo-text.png",
       "category": "text",
       "case": "nasa-financial",
-      "run": "nasa-paddle",
-      "source_element_id": "element_00060",
+      "run": "nasa-dots",
+      "source_element_id": "element_00063",
       "original_pdf_page": 6,
       "saved_page_number": 6,
       "stage": "ocr",
       "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
-      "sha256": "fb608b63137b13f0237d6c9a0611c18b8652e357279b0b17277b0129265c3e40",
+      "sha256": "f2ab193ec509cf9ac646cbee00882c40ea4339060aeb0f8233b1f461b7b87e96",
       "viewport": {
         "width": 1800,
         "height": 1120
@@ -72,13 +72,13 @@
       "file": "demo-handwriting.png",
       "category": "handwriting",
       "case": "handwriting",
-      "run": "math-paddle",
-      "source_element_id": "element_00023",
+      "run": "math-dots",
+      "source_element_id": "element_00064",
       "original_pdf_page": 4,
       "saved_page_number": 4,
       "stage": "ocr",
       "source_url": null,
-      "sha256": "2ea3ed2f28a98786ea029a515ab27076a6b40638a4a7aa65b9fa17e40ededb09",
+      "sha256": "b2b265fc55ebbf883b7fbf87c5c5b1ac92766175a00731ae0978a34c274e5a70",
       "viewport": {
         "width": 1800,
         "height": 1120

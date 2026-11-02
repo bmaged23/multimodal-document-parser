@@ -1,0 +1,2519 @@
+{
+  "version": "1.0",
+  "recorded_at_utc": "2026-11-02T20:53:43.507598+00:00",
+  "scope": "All 31 shared pages; complete PDF-native text on 22 pages plus selected source checks on scans and structures",
+  "source_inventory": [
+    {
+      "case": "nasa-financial",
+      "source_sha256": "sha256:bc73868c89045132a265a9b6f6aa62b43ce09a8830f7f622c025b2f53a934f66",
+      "pages": 20,
+      "original_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "case": "handwriting",
+      "source_sha256": "sha256:699f592fda553d61c1360f92ab19208fe9c735dea1ce3c57980397de01c910ea",
+      "pages": 4,
+      "original_pages": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "case": "original-private",
+      "source_sha256": "sha256:be2ebf36f35c4b66f958ef7e7c2b273ad704b9ff3e6748df1942435ff3257cde",
+      "pages": 2,
+      "original_pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "case": "historical-diary",
+      "source_sha256": "sha256:221a9811f6739f6788ab8faca2b29bf7b87086a680adc2284188f88d237b4637",
+      "pages": 5,
+      "original_pages": [
+        4,
+        5,
+        7,
+        6,
+        74
+      ]
+    }
+  ],
+  "reference_status": "Retrospective assistant source review plus PDF-native text; not independent human labels or held-out benchmark",
+  "source_annotations_sha256": "feb85a90fb46e27770d6e49ce1c3b6733c054e720a8ba73cbdcb1703278a4343",
+  "native_text_reference_sha256": "627dcca72069ff6948e4ec4cada3afcaeee3285da673060487f39c3877181396",
+  "math_reference_sha256": "6ac8d425a088c909e2143de6495fe9351d69fff93c4d95496ae2194f2af31825",
+  "math_evaluator_sha256": "48a403e72932c5e88b5834c6963c8bd39f5590fdfba39111a6b372f5ee3cbc2f",
+  "evaluator_sha256": "0014e1b867c54848cca01af474b511c53031ebc29b330e4aa95ed06412559c0b",
+  "reference_exclusions": [
+    "Faint rotated annotations on diary selected page 1; no trustworthy complete transcription",
+    "Diary page 5 ambiguous names, signature, right-page entries and most cursive text",
+    "Moon tables and calendar digits have detection checks but no full cell-level reference",
+    "Math exclusions remain those in frozen assignment reference"
+  ],
+  "profiles": [
+    {
+      "profile": "PaddleOCR-VL-1.6",
+      "requested_pages": 31,
+      "finished_generations": 31,
+      "canonical_accepted": 31,
+      "cases": [
+        {
+          "case": "nasa-financial",
+          "requested": 20,
+          "finished_generations": 20,
+          "canonical_accepted": 20,
+          "printed_text": {
+            "reference_tokens": 6826,
+            "prediction_tokens": 6434,
+            "matched_tokens": 6404,
+            "word_edit_operations": 2371,
+            "precision": 0.9953372707491451,
+            "recall": 0.9381775564019924,
+            "f1": 0.9659125188536953,
+            "word_error_rate": 0.34734837386463524,
+            "pages": 20
+          },
+          "run_directory": "outputs/parser_runs/paddleocr-nasa-first20-reference-01"
+        },
+        {
+          "case": "handwriting",
+          "requested": 4,
+          "finished_generations": 4,
+          "canonical_accepted": 4,
+          "printed_text": null,
+          "run_directory": "outputs/parser_runs/paddleocr-author-handwritten-mathematics-four-pages-01"
+        },
+        {
+          "case": "original-private",
+          "requested": 2,
+          "finished_generations": 2,
+          "canonical_accepted": 2,
+          "printed_text": {
+            "reference_tokens": 287,
+            "prediction_tokens": 245,
+            "matched_tokens": 245,
+            "word_edit_operations": 80,
+            "precision": 1.0,
+            "recall": 0.8536585365853658,
+            "f1": 0.9210526315789473,
+            "word_error_rate": 0.2787456445993031,
+            "pages": 2
+          },
+          "run_directory": "outputs/parser_runs/paddleocr-vl-1.6-reviewed"
+        },
+        {
+          "case": "historical-diary",
+          "requested": 5,
+          "finished_generations": 5,
+          "canonical_accepted": 5,
+          "printed_text": null,
+          "run_directory": "outputs/parser_runs/lucinda-davis-handwriting-replacement-5-paddleocr-vl-1.6"
+        }
+      ],
+      "printed_text": {
+        "reference_tokens": 7113,
+        "prediction_tokens": 6679,
+        "matched_tokens": 6649,
+        "word_edit_operations": 2451,
+        "precision": 0.9955083096271897,
+        "recall": 0.9347673274286518,
+        "f1": 0.9641821345707656,
+        "word_error_rate": 0.34458034584563474,
+        "pages": 22
+      },
+      "strict_pipeline_printed_text": {
+        "reference_tokens": 7113,
+        "prediction_tokens": 6679,
+        "matched_tokens": 6649,
+        "word_edit_operations": 2451,
+        "precision": 0.9955083096271897,
+        "recall": 0.9347673274286518,
+        "f1": 0.9641821345707656,
+        "word_error_rate": 0.34458034584563474,
+        "pages": 22
+      },
+      "diary_printed_spans": {
+        "passed": 20,
+        "checked": 31
+      },
+      "diary_handwriting_spans": {
+        "passed": 2,
+        "checked": 5
+      },
+      "assignment_assertions": {
+        "passed": 13,
+        "checked": 37
+      },
+      "assignment_categories": {
+        "text": {
+          "passed": 8,
+          "checked": 18
+        },
+        "math": {
+          "passed": 5,
+          "checked": 19
+        }
+      },
+      "assignment_table_cells": {
+        "passed": 20,
+        "checked": 20
+      },
+      "nasa_budget_cells": {
+        "passed": 24,
+        "checked": 24
+      },
+      "nasa_goal_rowspans": {
+        "passed": 4,
+        "checked": 4
+      },
+      "sensor_cells_and_spans": {
+        "passed": 20,
+        "checked": 20
+      },
+      "chart_category_value_pairs": {
+        "passed": 0,
+        "checked": 3
+      },
+      "visual_localization": {
+        "chart": {
+          "0.25": {
+            "passed": 1,
+            "checked": 1
+          },
+          "0.5": {
+            "passed": 1,
+            "checked": 1
+          }
+        },
+        "diagram": {
+          "0.25": {
+            "passed": 7,
+            "checked": 10
+          },
+          "0.5": {
+            "passed": 6,
+            "checked": 10
+          }
+        },
+        "infographic": {
+          "0.25": {
+            "passed": 0,
+            "checked": 1
+          },
+          "0.5": {
+            "passed": 0,
+            "checked": 1
+          }
+        },
+        "photo": {
+          "0.25": {
+            "passed": 9,
+            "checked": 10
+          },
+          "0.5": {
+            "passed": 9,
+            "checked": 10
+          }
+        },
+        "table": {
+          "0.25": {
+            "passed": 4,
+            "checked": 5
+          },
+          "0.5": {
+            "passed": 3,
+            "checked": 5
+          }
+        }
+      },
+      "printed_document_macro_f1": 0.9434825752163214
+    },
+    {
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "requested_pages": 31,
+      "finished_generations": 29,
+      "canonical_accepted": 29,
+      "cases": [
+        {
+          "case": "nasa-financial",
+          "requested": 20,
+          "finished_generations": 20,
+          "canonical_accepted": 20,
+          "printed_text": {
+            "reference_tokens": 6826,
+            "prediction_tokens": 6488,
+            "matched_tokens": 6466,
+            "word_edit_operations": 2233,
+            "precision": 0.9966091245376079,
+            "recall": 0.947260474655728,
+            "f1": 0.9713083971759051,
+            "word_error_rate": 0.3271315558159977,
+            "pages": 20
+          },
+          "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01"
+        },
+        {
+          "case": "handwriting",
+          "requested": 4,
+          "finished_generations": 4,
+          "canonical_accepted": 4,
+          "printed_text": null,
+          "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-author-handwritten-mathematics-four-pages-01"
+        },
+        {
+          "case": "original-private",
+          "requested": 2,
+          "finished_generations": 2,
+          "canonical_accepted": 2,
+          "printed_text": {
+            "reference_tokens": 287,
+            "prediction_tokens": 263,
+            "matched_tokens": 263,
+            "word_edit_operations": 70,
+            "precision": 1.0,
+            "recall": 0.9163763066202091,
+            "f1": 0.9563636363636364,
+            "word_error_rate": 0.24390243902439024,
+            "pages": 2
+          },
+          "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-local-validation-02-upstream-prompt"
+        },
+        {
+          "case": "historical-diary",
+          "requested": 5,
+          "finished_generations": 3,
+          "canonical_accepted": 3,
+          "printed_text": null,
+          "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-diary-five-01"
+        }
+      ],
+      "printed_text": {
+        "reference_tokens": 7113,
+        "prediction_tokens": 6751,
+        "matched_tokens": 6729,
+        "word_edit_operations": 2303,
+        "precision": 0.9967412235224411,
+        "recall": 0.9460143399409532,
+        "f1": 0.9707155222158107,
+        "word_error_rate": 0.32377337269787715,
+        "pages": 22
+      },
+      "strict_pipeline_printed_text": {
+        "reference_tokens": 7113,
+        "prediction_tokens": 6751,
+        "matched_tokens": 6729,
+        "word_edit_operations": 2303,
+        "precision": 0.9967412235224411,
+        "recall": 0.9460143399409532,
+        "f1": 0.9707155222158107,
+        "word_error_rate": 0.32377337269787715,
+        "pages": 22
+      },
+      "diary_printed_spans": {
+        "passed": 12,
+        "checked": 31
+      },
+      "diary_handwriting_spans": {
+        "passed": 3,
+        "checked": 5
+      },
+      "assignment_assertions": {
+        "passed": 29,
+        "checked": 37
+      },
+      "assignment_categories": {
+        "text": {
+          "passed": 17,
+          "checked": 18
+        },
+        "math": {
+          "passed": 12,
+          "checked": 19
+        }
+      },
+      "assignment_table_cells": {
+        "passed": 20,
+        "checked": 20
+      },
+      "nasa_budget_cells": {
+        "passed": 24,
+        "checked": 24
+      },
+      "nasa_goal_rowspans": {
+        "passed": 4,
+        "checked": 4
+      },
+      "sensor_cells_and_spans": {
+        "passed": 20,
+        "checked": 20
+      },
+      "chart_category_value_pairs": {
+        "passed": 0,
+        "checked": 3
+      },
+      "visual_localization": {
+        "chart": {
+          "0.25": {
+            "passed": 1,
+            "checked": 1
+          },
+          "0.5": {
+            "passed": 0,
+            "checked": 1
+          }
+        },
+        "diagram": {
+          "0.25": {
+            "passed": 6,
+            "checked": 10
+          },
+          "0.5": {
+            "passed": 6,
+            "checked": 10
+          }
+        },
+        "infographic": {
+          "0.25": {
+            "passed": 0,
+            "checked": 1
+          },
+          "0.5": {
+            "passed": 0,
+            "checked": 1
+          }
+        },
+        "photo": {
+          "0.25": {
+            "passed": 10,
+            "checked": 10
+          },
+          "0.5": {
+            "passed": 10,
+            "checked": 10
+          }
+        },
+        "table": {
+          "0.25": {
+            "passed": 2,
+            "checked": 5
+          },
+          "0.5": {
+            "passed": 2,
+            "checked": 5
+          }
+        }
+      },
+      "printed_document_macro_f1": 0.9638360167697708
+    },
+    {
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "requested_pages": 31,
+      "finished_generations": 27,
+      "canonical_accepted": null,
+      "cases": [
+        {
+          "case": "nasa-financial",
+          "requested": 20,
+          "finished_generations": 20,
+          "canonical_accepted": null,
+          "printed_text": {
+            "reference_tokens": 6826,
+            "prediction_tokens": 6384,
+            "matched_tokens": 6352,
+            "word_edit_operations": 2391,
+            "precision": 0.9949874686716792,
+            "recall": 0.9305596249633753,
+            "f1": 0.9616956850870553,
+            "word_error_rate": 0.3502783474948725,
+            "pages": 20
+          },
+          "run_directory": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01"
+        },
+        {
+          "case": "handwriting",
+          "requested": 4,
+          "finished_generations": 2,
+          "canonical_accepted": null,
+          "printed_text": null,
+          "run_directory": "outputs/parser_runs/unlimited-ocr-2-nf4-author-handwritten-mathematics-four-pages-01"
+        },
+        {
+          "case": "original-private",
+          "requested": 2,
+          "finished_generations": 2,
+          "canonical_accepted": null,
+          "printed_text": {
+            "reference_tokens": 287,
+            "prediction_tokens": 245,
+            "matched_tokens": 243,
+            "word_edit_operations": 86,
+            "precision": 0.9918367346938776,
+            "recall": 0.8466898954703833,
+            "f1": 0.9135338345864662,
+            "word_error_rate": 0.29965156794425085,
+            "pages": 2
+          },
+          "run_directory": "outputs/parser_runs/unlimited-ocr-2-nf4-original-two-pages-01"
+        },
+        {
+          "case": "historical-diary",
+          "requested": 5,
+          "finished_generations": 3,
+          "canonical_accepted": null,
+          "printed_text": null,
+          "run_directory": "outputs/parser_runs/unlimited-ocr-2-nf4-diary-five-01"
+        }
+      ],
+      "printed_text": {
+        "reference_tokens": 7113,
+        "prediction_tokens": 6629,
+        "matched_tokens": 6595,
+        "word_edit_operations": 2477,
+        "precision": 0.9948710212701765,
+        "recall": 0.9271755939828483,
+        "f1": 0.9598311745015282,
+        "word_error_rate": 0.3482356249121327,
+        "pages": 22
+      },
+      "strict_pipeline_printed_text": null,
+      "diary_printed_spans": {
+        "passed": 10,
+        "checked": 31
+      },
+      "diary_handwriting_spans": {
+        "passed": 1,
+        "checked": 5
+      },
+      "assignment_assertions": {
+        "passed": 11,
+        "checked": 37
+      },
+      "assignment_categories": {
+        "text": {
+          "passed": 9,
+          "checked": 18
+        },
+        "math": {
+          "passed": 2,
+          "checked": 19
+        }
+      },
+      "assignment_table_cells": {
+        "passed": 20,
+        "checked": 20
+      },
+      "nasa_budget_cells": {
+        "passed": 24,
+        "checked": 24
+      },
+      "nasa_goal_rowspans": {
+        "passed": 3,
+        "checked": 4
+      },
+      "sensor_cells_and_spans": {
+        "passed": 20,
+        "checked": 20
+      },
+      "chart_category_value_pairs": {
+        "passed": 0,
+        "checked": 3
+      },
+      "visual_localization": {
+        "chart": {
+          "0.25": {
+            "passed": 1,
+            "checked": 1
+          },
+          "0.5": {
+            "passed": 1,
+            "checked": 1
+          }
+        },
+        "diagram": {
+          "0.25": {
+            "passed": 10,
+            "checked": 10
+          },
+          "0.5": {
+            "passed": 10,
+            "checked": 10
+          }
+        },
+        "infographic": {
+          "0.25": {
+            "passed": 0,
+            "checked": 1
+          },
+          "0.5": {
+            "passed": 0,
+            "checked": 1
+          }
+        },
+        "photo": {
+          "0.25": {
+            "passed": 9,
+            "checked": 10
+          },
+          "0.5": {
+            "passed": 9,
+            "checked": 10
+          }
+        },
+        "table": {
+          "0.25": {
+            "passed": 2,
+            "checked": 5
+          },
+          "0.5": {
+            "passed": 2,
+            "checked": 5
+          }
+        }
+      },
+      "printed_document_macro_f1": 0.9376147598367608
+    },
+    {
+      "profile": "dots.mocr original BF16",
+      "requested_pages": 31,
+      "finished_generations": 30,
+      "canonical_accepted": 28,
+      "cases": [
+        {
+          "case": "nasa-financial",
+          "requested": 20,
+          "finished_generations": 20,
+          "canonical_accepted": 20,
+          "printed_text": {
+            "reference_tokens": 6826,
+            "prediction_tokens": 6489,
+            "matched_tokens": 6467,
+            "word_edit_operations": 2232,
+            "precision": 0.996609647095084,
+            "recall": 0.94740697333724,
+            "f1": 0.9713856552760045,
+            "word_error_rate": 0.3269850571344858,
+            "pages": 20
+          },
+          "run_directory": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01"
+        },
+        {
+          "case": "handwriting",
+          "requested": 4,
+          "finished_generations": 4,
+          "canonical_accepted": 4,
+          "printed_text": null,
+          "run_directory": "outputs/parser_runs/dots-mocr-bf16-colab-author-mathematics-4-pages-01"
+        },
+        {
+          "case": "original-private",
+          "requested": 2,
+          "finished_generations": 2,
+          "canonical_accepted": 0,
+          "printed_text": {
+            "reference_tokens": 287,
+            "prediction_tokens": 272,
+            "matched_tokens": 263,
+            "word_edit_operations": 70,
+            "precision": 0.9669117647058824,
+            "recall": 0.9163763066202091,
+            "f1": 0.9409660107334525,
+            "word_error_rate": 0.24390243902439024,
+            "pages": 2
+          },
+          "run_directory": "outputs/parser_runs/dots-mocr-bf16-colab-original-multimodal-2-pages-01"
+        },
+        {
+          "case": "historical-diary",
+          "requested": 5,
+          "finished_generations": 4,
+          "canonical_accepted": 4,
+          "printed_text": null,
+          "run_directory": "outputs/parser_runs/dots-mocr-bf16-colab-historical-diary-5-pages-01"
+        }
+      ],
+      "printed_text": {
+        "reference_tokens": 7113,
+        "prediction_tokens": 6761,
+        "matched_tokens": 6730,
+        "word_edit_operations": 2302,
+        "precision": 0.9954148794557018,
+        "recall": 0.946154927597357,
+        "f1": 0.9701600115323626,
+        "word_error_rate": 0.32363278504147336,
+        "pages": 22
+      },
+      "strict_pipeline_printed_text": {
+        "reference_tokens": 7113,
+        "prediction_tokens": 6489,
+        "matched_tokens": 6467,
+        "word_edit_operations": 2519,
+        "precision": 0.996609647095084,
+        "recall": 0.9091803739631661,
+        "f1": 0.9508895750624908,
+        "word_error_rate": 0.35414030648109096,
+        "pages": 22
+      },
+      "diary_printed_spans": {
+        "passed": 18,
+        "checked": 31
+      },
+      "diary_handwriting_spans": {
+        "passed": 3,
+        "checked": 5
+      },
+      "assignment_assertions": {
+        "passed": 32,
+        "checked": 37
+      },
+      "assignment_categories": {
+        "text": {
+          "passed": 17,
+          "checked": 18
+        },
+        "math": {
+          "passed": 15,
+          "checked": 19
+        }
+      },
+      "assignment_table_cells": {
+        "passed": 20,
+        "checked": 20
+      },
+      "nasa_budget_cells": {
+        "passed": 24,
+        "checked": 24
+      },
+      "nasa_goal_rowspans": {
+        "passed": 4,
+        "checked": 4
+      },
+      "sensor_cells_and_spans": {
+        "passed": 20,
+        "checked": 20
+      },
+      "chart_category_value_pairs": {
+        "passed": 0,
+        "checked": 3
+      },
+      "visual_localization": {
+        "chart": {
+          "0.25": {
+            "passed": 0,
+            "checked": 1
+          },
+          "0.5": {
+            "passed": 0,
+            "checked": 1
+          }
+        },
+        "diagram": {
+          "0.25": {
+            "passed": 10,
+            "checked": 10
+          },
+          "0.5": {
+            "passed": 10,
+            "checked": 10
+          }
+        },
+        "infographic": {
+          "0.25": {
+            "passed": 0,
+            "checked": 1
+          },
+          "0.5": {
+            "passed": 0,
+            "checked": 1
+          }
+        },
+        "photo": {
+          "0.25": {
+            "passed": 9,
+            "checked": 10
+          },
+          "0.5": {
+            "passed": 8,
+            "checked": 10
+          }
+        },
+        "table": {
+          "0.25": {
+            "passed": 3,
+            "checked": 5
+          },
+          "0.5": {
+            "passed": 3,
+            "checked": 5
+          }
+        }
+      },
+      "printed_document_macro_f1": 0.9561758330047285
+    }
+  ],
+  "page_results": [
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0001.json",
+      "artifact_sha256": "b951efb33747534cdbc933f5ee80abab452f9a02ed3e7b5029aa96c5943c154c",
+      "printed_text": {
+        "reference_tokens": 10,
+        "prediction_tokens": 10,
+        "matched_tokens": 10,
+        "word_edit_operations": 5
+      },
+      "scored_text_sha256": "00ccc82e4150fd4206e01bc468e3d5de8477c51c25f59a402a4b45160eda1881"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0002.json",
+      "artifact_sha256": "b73898024addfac84c26e3e40f41fcf3b07efb9faaee8bac8f4e2f9282416917",
+      "printed_text": {
+        "reference_tokens": 200,
+        "prediction_tokens": 150,
+        "matched_tokens": 150,
+        "word_edit_operations": 62
+      },
+      "scored_text_sha256": "c4458c3d4ca2e45a6aa61834e6ef7e2e137712a7e4d00a76eccebbd7e043fc41"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 3,
+      "original_page": 3,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0003.json",
+      "artifact_sha256": "a62788aab269b34bbbca54166d475b0e84994cde468721ab74538ece5cfdf108",
+      "printed_text": {
+        "reference_tokens": 321,
+        "prediction_tokens": 322,
+        "matched_tokens": 321,
+        "word_edit_operations": 148
+      },
+      "scored_text_sha256": "7b454c053b1ddf7d0a8605d684b893c42b7f1e574461c2884ac30e0f86c53b56"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 4,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0004.json",
+      "artifact_sha256": "d5b0b32af0924388aac71164344a2b6814b0ab970f5132ced775971228634777",
+      "printed_text": {
+        "reference_tokens": 246,
+        "prediction_tokens": 221,
+        "matched_tokens": 220,
+        "word_edit_operations": 137
+      },
+      "scored_text_sha256": "8c537bc76fd661a39d3ba8cffa871ffc8fe8f3bf23c9e999a637be1365c0da78"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 5,
+      "original_page": 5,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0005.json",
+      "artifact_sha256": "d80584b98999f4b3d1e74506dc693d8d1d92911833880ab7a2cd5e637de2920b",
+      "printed_text": {
+        "reference_tokens": 266,
+        "prediction_tokens": 265,
+        "matched_tokens": 265,
+        "word_edit_operations": 37
+      },
+      "scored_text_sha256": "67808e0f0eaf8a097f48638df4535c4bc368ac59511f29491f23121f0f80d1e5"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 6,
+      "original_page": 6,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0006.json",
+      "artifact_sha256": "fb61f1597834acdc2910e08a4c241fab1a73156697a0dc3d684c3b09829b336d",
+      "printed_text": {
+        "reference_tokens": 672,
+        "prediction_tokens": 673,
+        "matched_tokens": 672,
+        "word_edit_operations": 130
+      },
+      "scored_text_sha256": "f218d3c20e4d5cd36e29c3ef2d2e416c1afc7f5fc0437556a10fc3392590f9cc"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 7,
+      "original_page": 7,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0007.json",
+      "artifact_sha256": "c036cc8f6e3b2271ffc58d83477275040945c9989d498eec6e989b099d3c873e",
+      "printed_text": {
+        "reference_tokens": 650,
+        "prediction_tokens": 652,
+        "matched_tokens": 650,
+        "word_edit_operations": 74
+      },
+      "scored_text_sha256": "cd87b0794a6035689413d1c2319b9dbadcfafb3fe8c128fe389f92dde6caa350"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 8,
+      "original_page": 8,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0008.json",
+      "artifact_sha256": "83ed19e80496928bd222783cc97f8df7761fa12e61f9a64ae01702d3a2c1c652",
+      "printed_text": {
+        "reference_tokens": 146,
+        "prediction_tokens": 121,
+        "matched_tokens": 121,
+        "word_edit_operations": 29
+      },
+      "scored_text_sha256": "776f992e77e5261f4732fe60f64fad920107bd480e2c754bd509831cdcd04143"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 9,
+      "original_page": 9,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0009.json",
+      "artifact_sha256": "1b15d8219ff4381b11c25378ad87783813a0d6874536f8a138d3f5111c9993eb",
+      "printed_text": {
+        "reference_tokens": 593,
+        "prediction_tokens": 596,
+        "matched_tokens": 587,
+        "word_edit_operations": 140
+      },
+      "scored_text_sha256": "4eb6214913d85a7f164ae0c9feb23ad00aba1a2e0d35194f9f8121544b138512"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 10,
+      "original_page": 10,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0010.json",
+      "artifact_sha256": "8018d19d145e4a6db0f96bb80efbe7b0ab50eeca1f5d6588ecb7778cdc30e67f",
+      "printed_text": {
+        "reference_tokens": 400,
+        "prediction_tokens": 378,
+        "matched_tokens": 374,
+        "word_edit_operations": 232
+      },
+      "scored_text_sha256": "30e078e9e9fce846d90a87133097f869e64f4f6cf421fb0b06849cc435dec82d"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 11,
+      "original_page": 11,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0011.json",
+      "artifact_sha256": "af04ffd2b7c8ba731db42852072176b3a0262b7b08d4d6df85fca654015be4e3",
+      "printed_text": {
+        "reference_tokens": 351,
+        "prediction_tokens": 193,
+        "matched_tokens": 191,
+        "word_edit_operations": 259
+      },
+      "scored_text_sha256": "1f705dc25ef78ac15fec8c6e6cb582d681c53349be702474d9f9fbea219a0df1"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 12,
+      "original_page": 12,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0012.json",
+      "artifact_sha256": "5b307b777fd84e5e73fbd66a41f9d6b60f2f244d924d95951713a01bbf962269",
+      "printed_text": {
+        "reference_tokens": 313,
+        "prediction_tokens": 314,
+        "matched_tokens": 313,
+        "word_edit_operations": 22
+      },
+      "scored_text_sha256": "098c5d13907076ba2b96e916b06278c8d0885c3e671490b76977f8b7678fc1b8"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 13,
+      "original_page": 13,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0013.json",
+      "artifact_sha256": "7008b27d3438c01b7595cfd58c370913b0c9688fac292fd6036c57e282d9d3c0",
+      "printed_text": {
+        "reference_tokens": 181,
+        "prediction_tokens": 182,
+        "matched_tokens": 181,
+        "word_edit_operations": 72
+      },
+      "scored_text_sha256": "bce0e78bcd6d73a7f3bfdf6f3b3c330de0b1d3417cfd0208ab9b64aef722b8ad"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 14,
+      "original_page": 14,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0014.json",
+      "artifact_sha256": "079876d64b96f1f99aeff696ca2dd46c85bc2822956e78604121d904bfd03685",
+      "printed_text": {
+        "reference_tokens": 101,
+        "prediction_tokens": 77,
+        "matched_tokens": 76,
+        "word_edit_operations": 37
+      },
+      "scored_text_sha256": "8af7593228253a90617c733c7c1de54094307fdaf5ce1b9bea03c5b665f6c2ca"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 15,
+      "original_page": 15,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0015.json",
+      "artifact_sha256": "2427f2a8e196498ae2de52251adfb323b8556eda2eeef9f4bfa16d246a1cfa90",
+      "printed_text": {
+        "reference_tokens": 328,
+        "prediction_tokens": 286,
+        "matched_tokens": 284,
+        "word_edit_operations": 70
+      },
+      "scored_text_sha256": "c32810258360d7c6d218a3a96da7a7de2221645f8b0cc03fe9c3eab52621d79a"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 16,
+      "original_page": 16,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0016.json",
+      "artifact_sha256": "ae00bd159509c339775ef3e6bc1e4416db86bf46d3618cf87c3971fe212bf52a",
+      "printed_text": {
+        "reference_tokens": 291,
+        "prediction_tokens": 292,
+        "matched_tokens": 291,
+        "word_edit_operations": 75
+      },
+      "scored_text_sha256": "a860b04d0db82c1bc6965ffd4c83410a7e06d52bbcb16fbd97a15c61ee138d21"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 17,
+      "original_page": 17,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0017.json",
+      "artifact_sha256": "16cf6270b2d78b89893f13465e9fbc6f9393287a9df76373506caeee620c5ee8",
+      "printed_text": {
+        "reference_tokens": 338,
+        "prediction_tokens": 305,
+        "matched_tokens": 305,
+        "word_edit_operations": 186
+      },
+      "scored_text_sha256": "8af543f361149884327029aed5af973070db763ff7fd66d603235dcd1c440ecf"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 18,
+      "original_page": 18,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0018.json",
+      "artifact_sha256": "641f08f2c85a342ecb6c9d255e49a1dd348ddfe37620a8ca5552e5f5878d0ca3",
+      "printed_text": {
+        "reference_tokens": 736,
+        "prediction_tokens": 737,
+        "matched_tokens": 735,
+        "word_edit_operations": 264
+      },
+      "scored_text_sha256": "4cda587b973beb8476561ba0c7ab298cb81c4513de575e2430c370506d5d5346"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 19,
+      "original_page": 19,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0019.json",
+      "artifact_sha256": "43b766cac1cfd610541086f179672d6eaca9741d7ae039a52da876752a8efeb7",
+      "printed_text": {
+        "reference_tokens": 565,
+        "prediction_tokens": 566,
+        "matched_tokens": 565,
+        "word_edit_operations": 359
+      },
+      "scored_text_sha256": "c3517ece1467ec9376bedc065fc7d59e4b0fc24106e4519b25ff98abf37ded87"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 20,
+      "original_page": 20,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-nasa-first20-reference-01/raw/paddleocr/page_0020.json",
+      "artifact_sha256": "e875a0a3e708508b310a6d138f017324a3122f20be4db90b5d08ecf35d5e6f19",
+      "printed_text": {
+        "reference_tokens": 118,
+        "prediction_tokens": 94,
+        "matched_tokens": 93,
+        "word_edit_operations": 33
+      },
+      "scored_text_sha256": "24c47b9b8572f424941d8a055ab9538786291619ec6376838f5906b6f3976cdd"
+    },
+    {
+      "case": "handwriting",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-author-handwritten-mathematics-four-pages-01/raw/paddleocr/page_0001.json",
+      "artifact_sha256": "16bbdbfb45dda0bbd0c85607cbb5ed4f539bd9bbea28cc905b99249ed4983e46"
+    },
+    {
+      "case": "handwriting",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-author-handwritten-mathematics-four-pages-01/raw/paddleocr/page_0002.json",
+      "artifact_sha256": "11e387f010898cfdcb4047799bb091908765f74cea55b7e6e9554093b5842451"
+    },
+    {
+      "case": "handwriting",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 3,
+      "original_page": 3,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-author-handwritten-mathematics-four-pages-01/raw/paddleocr/page_0003.json",
+      "artifact_sha256": "7f9d13c3778228e0e86bd7ceb078990539e967658248b91380ec0357e24b76d0"
+    },
+    {
+      "case": "handwriting",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 4,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-author-handwritten-mathematics-four-pages-01/raw/paddleocr/page_0004.json",
+      "artifact_sha256": "3e62e6c8371afee3c5ebe086a740aaafde5e22c5e761b85f3c0e01b7f94c5fb4"
+    },
+    {
+      "case": "original-private",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-vl-1.6-reviewed/raw/paddleocr/page_0001.json",
+      "artifact_sha256": "f95d21983c281165e43b5d04d2996f5326a0ad53648a36d7f73d837f734e387a",
+      "printed_text": {
+        "reference_tokens": 176,
+        "prediction_tokens": 154,
+        "matched_tokens": 154,
+        "word_edit_operations": 38
+      },
+      "scored_text_sha256": "2c93f8e9bee067ed5f572fe219c00e2c5d9ecaaa7090b3c1d2e976adddb8de18"
+    },
+    {
+      "case": "original-private",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/paddleocr-vl-1.6-reviewed/raw/paddleocr/page_0002.json",
+      "artifact_sha256": "0844fbadb354b116173a55d357b7c0a7d1938fee4a8e1b040b877f6947652a23",
+      "printed_text": {
+        "reference_tokens": 111,
+        "prediction_tokens": 91,
+        "matched_tokens": 91,
+        "word_edit_operations": 42
+      },
+      "scored_text_sha256": "89bb29974175f03b53ab73271f3ead9c4ae9aad487c3245cebb5e883c99d83bd"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 1,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/lucinda-davis-handwriting-replacement-5-paddleocr-vl-1.6/raw/paddleocr/page_0001.json",
+      "artifact_sha256": "ddfc62c8cf8ad9f7886ec6b436d11697e42375f8c35e1cdef72bafe89835f586"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 2,
+      "original_page": 5,
+      "complete": true,
+      "artifact": "outputs/parser_runs/lucinda-davis-handwriting-replacement-5-paddleocr-vl-1.6/raw/paddleocr/page_0002.json",
+      "artifact_sha256": "157cf3fe9090e47061f591a0914ab8bba93ac44240b1cd5c5f9400041c42b2b2"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 3,
+      "original_page": 7,
+      "complete": true,
+      "artifact": "outputs/parser_runs/lucinda-davis-handwriting-replacement-5-paddleocr-vl-1.6/raw/paddleocr/page_0003.json",
+      "artifact_sha256": "618f67d55664569e6774c9831a949f13070a927284b60902a42046b908a62f71"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 4,
+      "original_page": 6,
+      "complete": true,
+      "artifact": "outputs/parser_runs/lucinda-davis-handwriting-replacement-5-paddleocr-vl-1.6/raw/paddleocr/page_0004.json",
+      "artifact_sha256": "d3f3a0461fc8342d449de325aed73ab0379dc10dfb2c2024252bfd0f5da7fa37"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "PaddleOCR-VL-1.6",
+      "page": 5,
+      "original_page": 74,
+      "complete": true,
+      "artifact": "outputs/parser_runs/lucinda-davis-handwriting-replacement-5-paddleocr-vl-1.6/raw/paddleocr/page_0005.json",
+      "artifact_sha256": "d59984aa30e4ebcf2e8371fafd0b8711f77d2885a64aa01104ee4238872280bd"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0001.json",
+      "artifact_sha256": "afaff6384e817ea44454a3c1fc1354cdcae3d70a1c9e9aa5ac6232089c32bb48",
+      "printed_text": {
+        "reference_tokens": 10,
+        "prediction_tokens": 10,
+        "matched_tokens": 10,
+        "word_edit_operations": 5
+      },
+      "scored_text_sha256": "43cde907b97c78a22eb80c42b63049750e563bce9b0bdcc9df99099d02f3060d"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0002.json",
+      "artifact_sha256": "310a0019718c60e40b37a7421e5fd190401c9ebd459aa15750da653ac6d14f15",
+      "printed_text": {
+        "reference_tokens": 200,
+        "prediction_tokens": 151,
+        "matched_tokens": 150,
+        "word_edit_operations": 62
+      },
+      "scored_text_sha256": "1a396245df3c072d38565f434275aed4d2d72966535f73c7dc3f0a864fc3e1f3"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 3,
+      "original_page": 3,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0003.json",
+      "artifact_sha256": "ee9f3220dbb8e5cadb6d7dd4eae37773ecbb57ca4c7e7ee1920127bc74acc2b3",
+      "printed_text": {
+        "reference_tokens": 321,
+        "prediction_tokens": 321,
+        "matched_tokens": 321,
+        "word_edit_operations": 148
+      },
+      "scored_text_sha256": "a03297162ca01f5198340ecee57c601efbb86f6ac3e0d0b19de57fc3b00ae9f5"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 4,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0004.json",
+      "artifact_sha256": "a58aab8e6ea2547f06d949f4b4367d34ae34d721fa42509ca4eddffc72a82839",
+      "printed_text": {
+        "reference_tokens": 246,
+        "prediction_tokens": 222,
+        "matched_tokens": 220,
+        "word_edit_operations": 138
+      },
+      "scored_text_sha256": "dbdcbdced6333ea7383024a09bef1fcd7e50e0f7d2a510ed94d1a847db769d0a"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 5,
+      "original_page": 5,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0005.json",
+      "artifact_sha256": "1d9c055559839e5c3e6e8643528c4f0a51754de23af911d6774adea53f79b477",
+      "printed_text": {
+        "reference_tokens": 266,
+        "prediction_tokens": 267,
+        "matched_tokens": 266,
+        "word_edit_operations": 39
+      },
+      "scored_text_sha256": "92d7832e8a6bdc1220c93ea05e840c63241b842970f72d13e5112377c48935ae"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 6,
+      "original_page": 6,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0006.json",
+      "artifact_sha256": "60ee18519916d35d4acdd471ab048aa6eb695923c2979e7d5942683961ce71b9",
+      "printed_text": {
+        "reference_tokens": 672,
+        "prediction_tokens": 674,
+        "matched_tokens": 672,
+        "word_edit_operations": 34
+      },
+      "scored_text_sha256": "3acb4a4dab0de14e616b1f2f61015259aa21424b7ffe7529deaf759a6912f7ac"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 7,
+      "original_page": 7,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0007.json",
+      "artifact_sha256": "33fb1baf0e7e61247d26b43b43532f44be4c0256e832a03c65456dffd3429d65",
+      "printed_text": {
+        "reference_tokens": 650,
+        "prediction_tokens": 648,
+        "matched_tokens": 646,
+        "word_edit_operations": 74
+      },
+      "scored_text_sha256": "16ceaafb28d51f0de7dc0f2991f9d62fe1bc5b852a60ba2691bd1f1acd51c210"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 8,
+      "original_page": 8,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0008.json",
+      "artifact_sha256": "6ed2204855eef6dad3b96d34651eafe97bd96926599f0fb336149734da8955d4",
+      "printed_text": {
+        "reference_tokens": 146,
+        "prediction_tokens": 122,
+        "matched_tokens": 121,
+        "word_edit_operations": 29
+      },
+      "scored_text_sha256": "5f60796c43ee86b9d7fe3abd6aec2c6d839724d82b8d27d581acc7da27be36e8"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 9,
+      "original_page": 9,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0009.json",
+      "artifact_sha256": "19f79e22f044dffba2a005a707aa20d92e4db03c001b560666449c0bc87893f0",
+      "printed_text": {
+        "reference_tokens": 593,
+        "prediction_tokens": 594,
+        "matched_tokens": 593,
+        "word_edit_operations": 137
+      },
+      "scored_text_sha256": "e4a50321f340acf364a856a779f912fccc7f28ab26f7ca617268557c94c0863a"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 10,
+      "original_page": 10,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0010.json",
+      "artifact_sha256": "08f1c74b0a789608bb237e354204a88045740f9e191975b3991c93b6ee09b208",
+      "printed_text": {
+        "reference_tokens": 400,
+        "prediction_tokens": 376,
+        "matched_tokens": 375,
+        "word_edit_operations": 196
+      },
+      "scored_text_sha256": "f9232b9b8c73910d7bab1ff63fbc0a0a626d807f2d483333828b2a190d97f854"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 11,
+      "original_page": 11,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0011.json",
+      "artifact_sha256": "6ca18e31b4432cd1ca24300f0bd3d50c6284860bf501bea432297cd19caf2eac",
+      "printed_text": {
+        "reference_tokens": 351,
+        "prediction_tokens": 241,
+        "matched_tokens": 240,
+        "word_edit_operations": 249
+      },
+      "scored_text_sha256": "d4844e388712adce49a99815d975b7f0103c8d2bbb4ce439b0b2a9809735bbcd"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 12,
+      "original_page": 12,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0012.json",
+      "artifact_sha256": "75ea30a18fe4e0360cac6f6aff7e92d7d82abe4503c1addf4b857b40675283c0",
+      "printed_text": {
+        "reference_tokens": 313,
+        "prediction_tokens": 314,
+        "matched_tokens": 313,
+        "word_edit_operations": 22
+      },
+      "scored_text_sha256": "7ca7f27a53c4d4a44dc15cf99938f55cb58ebac6042d41e3db2659b609de7ab9"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 13,
+      "original_page": 13,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0013.json",
+      "artifact_sha256": "a5efb2c37343c26eb152d3677767a5e59105f517deda9b54513573f720288ed4",
+      "printed_text": {
+        "reference_tokens": 181,
+        "prediction_tokens": 182,
+        "matched_tokens": 181,
+        "word_edit_operations": 70
+      },
+      "scored_text_sha256": "84d5e1b9780010c2413ef7f866bd5537254f8baad237ad52ef99e34e48a42ee6"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 14,
+      "original_page": 14,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0014.json",
+      "artifact_sha256": "cbd636231bd6d84cf4f45e3eae3afc08dab07faee0d1f527fe456fc5fa694807",
+      "printed_text": {
+        "reference_tokens": 101,
+        "prediction_tokens": 77,
+        "matched_tokens": 76,
+        "word_edit_operations": 37
+      },
+      "scored_text_sha256": "68daeb9fec4d0b82ecdc0e8718c04b998700d1c30c38218db000aa507d0fe88c"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 15,
+      "original_page": 15,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0015.json",
+      "artifact_sha256": "b451a57bdb8c786e6eb54f551baafc48a57e641dbe95d3b0d6bb5539de0902a3",
+      "printed_text": {
+        "reference_tokens": 328,
+        "prediction_tokens": 294,
+        "matched_tokens": 291,
+        "word_edit_operations": 77
+      },
+      "scored_text_sha256": "f433db52fdfcc999d23558751877a679c13a7e6a8e69232aa117b46951dae2f0"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 16,
+      "original_page": 16,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0016.json",
+      "artifact_sha256": "7a72e41664b2edac0ad63cc94c9e43b533c3f0ae16d1858e7c716afaded10c08",
+      "printed_text": {
+        "reference_tokens": 291,
+        "prediction_tokens": 292,
+        "matched_tokens": 291,
+        "word_edit_operations": 75
+      },
+      "scored_text_sha256": "588a2b943fee7244e5c7eeb95df826e1e2c556c01ae1efdc54e6cb2b912adab2"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 17,
+      "original_page": 17,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0017.json",
+      "artifact_sha256": "334636caafaa186a860ce3598da1ff9942ade51bba43a51e4d7ff04aa9e70804",
+      "printed_text": {
+        "reference_tokens": 338,
+        "prediction_tokens": 306,
+        "matched_tokens": 306,
+        "word_edit_operations": 186
+      },
+      "scored_text_sha256": "7a774ec8448e472e8d4568560f6eba8aa2f4884caa6f0417e53338c62cfcedb4"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 18,
+      "original_page": 18,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0018.json",
+      "artifact_sha256": "5ce07cf0ac4b2cef204df2b96f1d34102061ec275b2348867240ffc872e6905b",
+      "printed_text": {
+        "reference_tokens": 736,
+        "prediction_tokens": 737,
+        "matched_tokens": 736,
+        "word_edit_operations": 263
+      },
+      "scored_text_sha256": "7b5679e86da4bf1748d7523e3b5406b77b524c29cd140ead843cb1aff154c376"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 19,
+      "original_page": 19,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0019.json",
+      "artifact_sha256": "e4d3c2c4709d8ac62d33a5a21b2b84c8c59c41596b7bafe473329c7a2ccc4929",
+      "printed_text": {
+        "reference_tokens": 565,
+        "prediction_tokens": 566,
+        "matched_tokens": 565,
+        "word_edit_operations": 359
+      },
+      "scored_text_sha256": "a93f43fd81021f61cb925a6f38c0261f0a05ea69cc6acdc16d0648bb41a78861"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 20,
+      "original_page": 20,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01/raw/dots_mocr/page_0020.json",
+      "artifact_sha256": "60ac1a1aa7bdaf58d81263ec5ab858a1c2e21940ec8cb7aaf76d3ce3a68a20aa",
+      "printed_text": {
+        "reference_tokens": 118,
+        "prediction_tokens": 94,
+        "matched_tokens": 93,
+        "word_edit_operations": 33
+      },
+      "scored_text_sha256": "4789952ff06530293876c62b14dd1d0c63e8f5c5db51e12eefe0471c14c7dacd"
+    },
+    {
+      "case": "handwriting",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-author-handwritten-mathematics-four-pages-01/raw/dots_mocr/page_0001.json",
+      "artifact_sha256": "cbd40a1c918a1c1af922af34389d95421748edd8216c0f70748552734b916f64"
+    },
+    {
+      "case": "handwriting",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-author-handwritten-mathematics-four-pages-01/raw/dots_mocr/page_0002.json",
+      "artifact_sha256": "5638df8a9958554361a38a7447f2514d46321a4282c3505597268ee94d59a89f"
+    },
+    {
+      "case": "handwriting",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 3,
+      "original_page": 3,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-author-handwritten-mathematics-four-pages-01/raw/dots_mocr/page_0003.json",
+      "artifact_sha256": "3915c7c3ec5b76b6aea96884df40a01843d732c4027e13a49321bdb3bb8fc463"
+    },
+    {
+      "case": "handwriting",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 4,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-author-handwritten-mathematics-four-pages-01/raw/dots_mocr/page_0004.json",
+      "artifact_sha256": "0a61129bb08953b7ad0d679995858b95706c2251997705409689bbbea04e4d58"
+    },
+    {
+      "case": "original-private",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-local-validation-02-upstream-prompt/raw/dots_mocr/page_0001.json",
+      "artifact_sha256": "785d6ad104f544c15f7dfa094a24be80e24684fd1af36f1995c922abceb759a9",
+      "printed_text": {
+        "reference_tokens": 176,
+        "prediction_tokens": 163,
+        "matched_tokens": 163,
+        "word_edit_operations": 37
+      },
+      "scored_text_sha256": "4c9b7d302ecbc4d2c428c148a6495fef2cd428079a8c73384638770f5454df23"
+    },
+    {
+      "case": "original-private",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-local-validation-02-upstream-prompt/raw/dots_mocr/page_0002.json",
+      "artifact_sha256": "a2294d4f3b2a1491731bb1828a525960d6e06f41bbd61a53f2f2c749f5619705",
+      "printed_text": {
+        "reference_tokens": 111,
+        "prediction_tokens": 100,
+        "matched_tokens": 100,
+        "word_edit_operations": 33
+      },
+      "scored_text_sha256": "85a464e5634d5cf3f8b70c8e4bfce662a2286dd0b39be3875a7b76327dd31338"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 1,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-diary-five-01/raw/dots_mocr/page_0001.json",
+      "artifact_sha256": "d0a401646249f83b19546b9b85759760741fc3b304bc1c1e2afdef3d755ff69d"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 2,
+      "original_page": 5,
+      "complete": false,
+      "artifact": null
+    },
+    {
+      "case": "historical-diary",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 3,
+      "original_page": 7,
+      "complete": false,
+      "artifact": null
+    },
+    {
+      "case": "historical-diary",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 4,
+      "original_page": 6,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-diary-five-01/raw/dots_mocr/page_0004.json",
+      "artifact_sha256": "a112f88d1a18e2bddf54bfc68c5869bd04b6afd0260501f69194b5e6ba47b480"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "dots.mocr Q4_K_M + Q8_0",
+      "page": 5,
+      "original_page": 74,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-q4-k-m-diary-five-01/raw/dots_mocr/page_0005.json",
+      "artifact_sha256": "274c1309e59c3c3277468e9318a226f20584cc673239aa4d4a164e1c15ff1b53"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0001.json",
+      "artifact_sha256": "660656e6330f70cf8801c49cf028451e8da69c6bb783c32e6803b81b6b2afb84",
+      "printed_text": {
+        "reference_tokens": 10,
+        "prediction_tokens": 10,
+        "matched_tokens": 10,
+        "word_edit_operations": 5
+      },
+      "scored_text_sha256": "4f8ec1b598bbda281843067f48d55fb0484dbc753494edfd3a8547910d3f4a6c"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0002.json",
+      "artifact_sha256": "1c98bb75778bc5b540dadc878a91bab5d482fbb1d7cd75361498facfa717f1a5",
+      "printed_text": {
+        "reference_tokens": 200,
+        "prediction_tokens": 150,
+        "matched_tokens": 150,
+        "word_edit_operations": 62
+      },
+      "scored_text_sha256": "d177411e60692c9554f3a7354583e4a76023edbbae3a3f7110130bc7de60b86b"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 3,
+      "original_page": 3,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0003.json",
+      "artifact_sha256": "e24dcce4ea50186e5c39867cbc07a33d3860e8b4b955185326c46971d144fb1f",
+      "printed_text": {
+        "reference_tokens": 321,
+        "prediction_tokens": 287,
+        "matched_tokens": 287,
+        "word_edit_operations": 166
+      },
+      "scored_text_sha256": "e4a795709f0ca126c4925b5e7e3b5e34eeb7c8d2eababc2d359d59e04b46961c"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 4,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0004.json",
+      "artifact_sha256": "f900cf7a7b378276e8200c8114a38cbfa972d8078d80b9abe7c9d6d9500ccab7",
+      "printed_text": {
+        "reference_tokens": 246,
+        "prediction_tokens": 221,
+        "matched_tokens": 219,
+        "word_edit_operations": 138
+      },
+      "scored_text_sha256": "723dc11a65d241edd8fadde4196bb21918eefae9b97af36fcbda349b07b4efec"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 5,
+      "original_page": 5,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0005.json",
+      "artifact_sha256": "a86765e8d59ae7b1d8059964a9b3f1708be1fc879cf034e3a47081178bbab40a",
+      "printed_text": {
+        "reference_tokens": 266,
+        "prediction_tokens": 266,
+        "matched_tokens": 265,
+        "word_edit_operations": 38
+      },
+      "scored_text_sha256": "b6c96edcefa1b9f6c2f0b7f5bd7b75cb82dd053cf8ec6c1d4dfb1075c340ce81"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 6,
+      "original_page": 6,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0006.json",
+      "artifact_sha256": "5416a70ba53262c366e8e6781d218aaf83df30b839ad17764918aaabdfa9f625",
+      "printed_text": {
+        "reference_tokens": 672,
+        "prediction_tokens": 672,
+        "matched_tokens": 671,
+        "word_edit_operations": 130
+      },
+      "scored_text_sha256": "5a19722761b0db2dd201a17d4922cd4eb5c065e8f279e7d6ea1025feb32fdbc6"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 7,
+      "original_page": 7,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0007.json",
+      "artifact_sha256": "44e271c31cc9efbbb0d063642e71cbc850af53068962c981c271ec41ae7878ee",
+      "printed_text": {
+        "reference_tokens": 650,
+        "prediction_tokens": 650,
+        "matched_tokens": 648,
+        "word_edit_operations": 73
+      },
+      "scored_text_sha256": "b89c1ec0604eae8b7680775a3ef14429d82bc2e4156702e8356ee972a7a06bc6"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 8,
+      "original_page": 8,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0008.json",
+      "artifact_sha256": "321cbb6b256a066c81415034a2989ec6224c7586c8fb2941a3b0bdb23fb942d1",
+      "printed_text": {
+        "reference_tokens": 146,
+        "prediction_tokens": 121,
+        "matched_tokens": 121,
+        "word_edit_operations": 29
+      },
+      "scored_text_sha256": "ce9e7ede9d24e6a663320e839c0acc67b00cf6db20ecef7ee760b09a12133cb4"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 9,
+      "original_page": 9,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0009.json",
+      "artifact_sha256": "73453a1b5c3d52650ce5a87a06e614245dd08068e050ee0f6feee05b4c984e36",
+      "printed_text": {
+        "reference_tokens": 593,
+        "prediction_tokens": 596,
+        "matched_tokens": 584,
+        "word_edit_operations": 142
+      },
+      "scored_text_sha256": "d68dab61579bb30615926c96e44529e1b1cb44cf8c6ac2dae6bc631e8945c7b2"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 10,
+      "original_page": 10,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0010.json",
+      "artifact_sha256": "94ea33a53f816bc012b3ddf6ce986a1bd79a30e6b1e95c200f9c7824531ca4e9",
+      "printed_text": {
+        "reference_tokens": 400,
+        "prediction_tokens": 376,
+        "matched_tokens": 374,
+        "word_edit_operations": 231
+      },
+      "scored_text_sha256": "c0964a89011591131499fb52e16c0e91549f9718c0b3506f725fe903992394fe"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 11,
+      "original_page": 11,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0011.json",
+      "artifact_sha256": "eaf8a273ab54d6be36626836c2627de6f12e68ce918ca95cbb7fd039567fd761",
+      "printed_text": {
+        "reference_tokens": 351,
+        "prediction_tokens": 192,
+        "matched_tokens": 189,
+        "word_edit_operations": 259
+      },
+      "scored_text_sha256": "e70103cd68558c3973bb68208eeac7688161b5703814c5dc8494a8179e45c22b"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 12,
+      "original_page": 12,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0012.json",
+      "artifact_sha256": "1837e8b51f5441c8d23810247dc4f140f0532900aa148ac9ca635e3019a410a1",
+      "printed_text": {
+        "reference_tokens": 313,
+        "prediction_tokens": 313,
+        "matched_tokens": 313,
+        "word_edit_operations": 22
+      },
+      "scored_text_sha256": "7b2acaa2d73a6cfe223a2929a45c62c024391300da326e97e223b6b056d0de15"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 13,
+      "original_page": 13,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0013.json",
+      "artifact_sha256": "1217c6d6fa8cbf63a8fe86c0eab592c0281dec8b853c7550360bed90a1835c98",
+      "printed_text": {
+        "reference_tokens": 181,
+        "prediction_tokens": 183,
+        "matched_tokens": 178,
+        "word_edit_operations": 72
+      },
+      "scored_text_sha256": "f2f8e787382346fe6b4a235e9e0111b78b95172ff917092c573e0abeb06a1928"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 14,
+      "original_page": 14,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0014.json",
+      "artifact_sha256": "6887dd3bcb4f5bdf068de2d2cc1012af77f59fef422d4b08621ddd9de847ecae",
+      "printed_text": {
+        "reference_tokens": 101,
+        "prediction_tokens": 76,
+        "matched_tokens": 76,
+        "word_edit_operations": 37
+      },
+      "scored_text_sha256": "5563a827cb1f204a07495808a24a6eb61e75d1e213cbe3054e4c901fd34949b7"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 15,
+      "original_page": 15,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0015.json",
+      "artifact_sha256": "4f60a394fac1f7e21109f240d9f8ae3ec502477bfc5d2457475406bece010be4",
+      "printed_text": {
+        "reference_tokens": 328,
+        "prediction_tokens": 280,
+        "matched_tokens": 278,
+        "word_edit_operations": 64
+      },
+      "scored_text_sha256": "3db67d5933689bad2f0998f1d5258a7c45c1a0d0cb18e53296044ae7033267e0"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 16,
+      "original_page": 16,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0016.json",
+      "artifact_sha256": "a9b43cb6a6bdce138f4e6ad44da74ef04057ee953c9afeab06463a29f9901387",
+      "printed_text": {
+        "reference_tokens": 291,
+        "prediction_tokens": 291,
+        "matched_tokens": 291,
+        "word_edit_operations": 74
+      },
+      "scored_text_sha256": "d23be8d00dc0c9bdac9d76ee8f9c369ff62343ab9fb7920fb0094751e705bfcb"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 17,
+      "original_page": 17,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0017.json",
+      "artifact_sha256": "a88e65cae13b24bfa59be85f68fb6d0f5c93f3cef23094ac0907d88f9a246004",
+      "printed_text": {
+        "reference_tokens": 338,
+        "prediction_tokens": 306,
+        "matched_tokens": 306,
+        "word_edit_operations": 194
+      },
+      "scored_text_sha256": "9373c02f9178737643cf74dd05ca1712dd792cd4ead1e5412b5048db950b25e8"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 18,
+      "original_page": 18,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0018.json",
+      "artifact_sha256": "09e7981b1fc8c33d0c53cf648c8cba2c3b43074f86784272560120c1fb2a8842",
+      "printed_text": {
+        "reference_tokens": 736,
+        "prediction_tokens": 736,
+        "matched_tokens": 734,
+        "word_edit_operations": 264
+      },
+      "scored_text_sha256": "97ad706a451034830d9757927f64b4bd36546ba76e5f99ad13d2d3064db90aa3"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 19,
+      "original_page": 19,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0019.json",
+      "artifact_sha256": "dce0f5bca7288df9d6fe194c6977c22adb623db27ce4f3871886f4a639112269",
+      "printed_text": {
+        "reference_tokens": 565,
+        "prediction_tokens": 565,
+        "matched_tokens": 565,
+        "word_edit_operations": 358
+      },
+      "scored_text_sha256": "56c1b64c46320233ec37ba920898f362e57fc147e8081b1cb4e844da4b792c1b"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 20,
+      "original_page": 20,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/page_0020.json",
+      "artifact_sha256": "2ccc2d0b9cfb6dd93730d4b12649a6835346a39de40f3f601bb8c22d883c8ef2",
+      "printed_text": {
+        "reference_tokens": 118,
+        "prediction_tokens": 93,
+        "matched_tokens": 93,
+        "word_edit_operations": 33
+      },
+      "scored_text_sha256": "cce3b874b7eff10e5a6212e2c9118125b6133f3949d33fade22fa27fc3062657"
+    },
+    {
+      "case": "handwriting",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 1,
+      "original_page": 1,
+      "complete": false,
+      "artifact": null
+    },
+    {
+      "case": "handwriting",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-author-handwritten-mathematics-four-pages-01/page_0002.json",
+      "artifact_sha256": "756e74e38d4803086606ff9d4c3f7daa6bb8dbf6e3a429d8b6075cf666ef58a9"
+    },
+    {
+      "case": "handwriting",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 3,
+      "original_page": 3,
+      "complete": false,
+      "artifact": null
+    },
+    {
+      "case": "handwriting",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 4,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-author-handwritten-mathematics-four-pages-01/page_0004.json",
+      "artifact_sha256": "96d66f664acb51e799a91377e6bc40ac6cbfe9b4565b6db17010167fe2a70e8f"
+    },
+    {
+      "case": "original-private",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-original-two-pages-01/page_0001.json",
+      "artifact_sha256": "203585b379b14162289cae8ddc67bab92ac0ea621f11f7ab2a86fbebf591c4c3",
+      "printed_text": {
+        "reference_tokens": 176,
+        "prediction_tokens": 154,
+        "matched_tokens": 154,
+        "word_edit_operations": 38
+      },
+      "scored_text_sha256": "126affebaf558e83459dc395a888f1450931e28a217b094698024d62a897a2a5"
+    },
+    {
+      "case": "original-private",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-original-two-pages-01/page_0002.json",
+      "artifact_sha256": "000c62121083e2e2b39d165fb23596e251ab0096150f1bc3fbc5d146b4835e28",
+      "printed_text": {
+        "reference_tokens": 111,
+        "prediction_tokens": 91,
+        "matched_tokens": 89,
+        "word_edit_operations": 48
+      },
+      "scored_text_sha256": "3672b9c18b1a4a5d73ad7b32f837d48fd70af23cbae1b169c076096f1bf45ebe"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 1,
+      "original_page": 4,
+      "complete": false,
+      "artifact": null
+    },
+    {
+      "case": "historical-diary",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 2,
+      "original_page": 5,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-diary-five-01/page_0002.json",
+      "artifact_sha256": "e0ae8fef3fb3d5b72a14e79ef138f9aae498cd6a95751a357eabbe10359c1122"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 3,
+      "original_page": 7,
+      "complete": false,
+      "artifact": null
+    },
+    {
+      "case": "historical-diary",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 4,
+      "original_page": 6,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-diary-five-01/page_0004.json",
+      "artifact_sha256": "9fffcbb393151e410dab36b82ea951d98d7ccffc28acd54379b14e9a35263427"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "Unlimited-OCR 2 NF4/FP16",
+      "page": 5,
+      "original_page": 74,
+      "complete": true,
+      "artifact": "outputs/parser_runs/unlimited-ocr-2-nf4-diary-five-01/page_0005.json",
+      "artifact_sha256": "815218405b0476e0c566723b95b71ddf6338e9c949bc2b2336a226d75790a085"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0001.json",
+      "artifact_sha256": "c227d9683f014421a3a50c42fc28d8c6e193afebf2fa87dc225db4d8b340f6a5",
+      "printed_text": {
+        "reference_tokens": 10,
+        "prediction_tokens": 10,
+        "matched_tokens": 10,
+        "word_edit_operations": 5
+      },
+      "scored_text_sha256": "7492a42ebde1898f76a44be20804dfdb9c0c54f6c495d4fed65baea61be5b5ea"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0002.json",
+      "artifact_sha256": "94b5e4e022d9a59ca28d754241176d10c797010391f24e0348fb515574352359",
+      "printed_text": {
+        "reference_tokens": 200,
+        "prediction_tokens": 151,
+        "matched_tokens": 150,
+        "word_edit_operations": 62
+      },
+      "scored_text_sha256": "61951d92a4076d2c1dadce2ee9f16af1f2faacf96271fa51c26bf5fbfe269c91"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 3,
+      "original_page": 3,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0003.json",
+      "artifact_sha256": "fa51feac084ca44f465508e3899fa7d40ac56829a5da2d7883133810f6d79250",
+      "printed_text": {
+        "reference_tokens": 321,
+        "prediction_tokens": 322,
+        "matched_tokens": 321,
+        "word_edit_operations": 148
+      },
+      "scored_text_sha256": "69d417f0e6c7383b7d620bbbb4d66d373de7963635486da2d2c1867d9e0d3e2a"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 4,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0004.json",
+      "artifact_sha256": "07c80a594ba939232f41a8ce9fe9938aa53eb750c41f690ac4e42eba75e26f70",
+      "printed_text": {
+        "reference_tokens": 246,
+        "prediction_tokens": 222,
+        "matched_tokens": 220,
+        "word_edit_operations": 138
+      },
+      "scored_text_sha256": "dbdcbdced6333ea7383024a09bef1fcd7e50e0f7d2a510ed94d1a847db769d0a"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 5,
+      "original_page": 5,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0005.json",
+      "artifact_sha256": "58dfcdd04fcf2e4b23b17f8cd7ac80afed284a1b7fbb94d4f618a78359c4fb14",
+      "printed_text": {
+        "reference_tokens": 266,
+        "prediction_tokens": 267,
+        "matched_tokens": 266,
+        "word_edit_operations": 39
+      },
+      "scored_text_sha256": "4509788518e18d9946201adbaa91a47764d2ea50acaeac220b8e013285264386"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 6,
+      "original_page": 6,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0006.json",
+      "artifact_sha256": "083067acb0ed727d064226ab4559563fd2f1afb8a1b33340d5a353b0346f0d63",
+      "printed_text": {
+        "reference_tokens": 672,
+        "prediction_tokens": 674,
+        "matched_tokens": 672,
+        "word_edit_operations": 34
+      },
+      "scored_text_sha256": "3acb4a4dab0de14e616b1f2f61015259aa21424b7ffe7529deaf759a6912f7ac"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 7,
+      "original_page": 7,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0007.json",
+      "artifact_sha256": "8603288bd35846d19c450e90a1b114a974995cabc6cb19301fb4bcd143ce6044",
+      "printed_text": {
+        "reference_tokens": 650,
+        "prediction_tokens": 648,
+        "matched_tokens": 647,
+        "word_edit_operations": 73
+      },
+      "scored_text_sha256": "3c084cdfb9273b318845519e6c017ab228733c08ca4744fbbabddb59bc431770"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 8,
+      "original_page": 8,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0008.json",
+      "artifact_sha256": "cf967d717c15b7ef0a02ceb4d42ed109651755810b0261c1272cc199848cb405",
+      "printed_text": {
+        "reference_tokens": 146,
+        "prediction_tokens": 122,
+        "matched_tokens": 121,
+        "word_edit_operations": 29
+      },
+      "scored_text_sha256": "5f60796c43ee86b9d7fe3abd6aec2c6d839724d82b8d27d581acc7da27be36e8"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 9,
+      "original_page": 9,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0009.json",
+      "artifact_sha256": "6afe9eda7fda834d0ce4bed816953364993cd03698b6189b932c6104a82a4a3f",
+      "printed_text": {
+        "reference_tokens": 593,
+        "prediction_tokens": 594,
+        "matched_tokens": 593,
+        "word_edit_operations": 137
+      },
+      "scored_text_sha256": "e4a50321f340acf364a856a779f912fccc7f28ab26f7ca617268557c94c0863a"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 10,
+      "original_page": 10,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0010.json",
+      "artifact_sha256": "0ed97aa5d74d741017c36bac7f3a8d1e977379db28f9fec78db928d4f5ea7ba2",
+      "printed_text": {
+        "reference_tokens": 400,
+        "prediction_tokens": 376,
+        "matched_tokens": 375,
+        "word_edit_operations": 196
+      },
+      "scored_text_sha256": "f9232b9b8c73910d7bab1ff63fbc0a0a626d807f2d483333828b2a190d97f854"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 11,
+      "original_page": 11,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0011.json",
+      "artifact_sha256": "fd3b23250d7aa86394f3e18ca6043323d54cd89da91a2cc2c8be286391609018",
+      "printed_text": {
+        "reference_tokens": 351,
+        "prediction_tokens": 241,
+        "matched_tokens": 240,
+        "word_edit_operations": 249
+      },
+      "scored_text_sha256": "d4844e388712adce49a99815d975b7f0103c8d2bbb4ce439b0b2a9809735bbcd"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 12,
+      "original_page": 12,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0012.json",
+      "artifact_sha256": "96b6e5cd24750131767d5e5182d6bbd2c278c9ae2b191ff2ee04b69bd101dabe",
+      "printed_text": {
+        "reference_tokens": 313,
+        "prediction_tokens": 314,
+        "matched_tokens": 313,
+        "word_edit_operations": 22
+      },
+      "scored_text_sha256": "cafb88276ed7cdb2d05c2964edaa068e6ff95ecc7b2f771e910b2ca130607b64"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 13,
+      "original_page": 13,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0013.json",
+      "artifact_sha256": "53e07ba93e92915364cd0081cdfe33f38e8fa3397f486ff9bc4596b9d7beba60",
+      "printed_text": {
+        "reference_tokens": 181,
+        "prediction_tokens": 182,
+        "matched_tokens": 181,
+        "word_edit_operations": 70
+      },
+      "scored_text_sha256": "84d5e1b9780010c2413ef7f866bd5537254f8baad237ad52ef99e34e48a42ee6"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 14,
+      "original_page": 14,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0014.json",
+      "artifact_sha256": "ab050d1db30c4e09dded8faa9931765d1a95ac7f3fc2745890c80e5afe3ebba1",
+      "printed_text": {
+        "reference_tokens": 101,
+        "prediction_tokens": 77,
+        "matched_tokens": 76,
+        "word_edit_operations": 37
+      },
+      "scored_text_sha256": "68daeb9fec4d0b82ecdc0e8718c04b998700d1c30c38218db000aa507d0fe88c"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 15,
+      "original_page": 15,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0015.json",
+      "artifact_sha256": "6cb6697143fe811cd7e641c3b8712ee70b4ee4844958e14e81824e79540707f4",
+      "printed_text": {
+        "reference_tokens": 328,
+        "prediction_tokens": 294,
+        "matched_tokens": 291,
+        "word_edit_operations": 77
+      },
+      "scored_text_sha256": "732c6ea9fcdc00b1b3fdaecceace7164531e309b9c65315c59b74df0f20c5797"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 16,
+      "original_page": 16,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0016.json",
+      "artifact_sha256": "c4badc1e0b549ad81ccbbe35f3080fdb06f27266dde0b9fdfd0a36d2a708f34c",
+      "printed_text": {
+        "reference_tokens": 291,
+        "prediction_tokens": 292,
+        "matched_tokens": 291,
+        "word_edit_operations": 75
+      },
+      "scored_text_sha256": "d78c81675935c8e22c2bd4159927fb9f204f721a150b5ebd05522996975ff90d"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 17,
+      "original_page": 17,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0017.json",
+      "artifact_sha256": "0411406399a19b10a007276cee9f272035b201b3755fc43c434331a02c35f6c7",
+      "printed_text": {
+        "reference_tokens": 338,
+        "prediction_tokens": 306,
+        "matched_tokens": 306,
+        "word_edit_operations": 186
+      },
+      "scored_text_sha256": "2c4b6b65bd8442ebb5c5a849704a0c0128452a4507c0f6f7bcbe7858a951a2f1"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 18,
+      "original_page": 18,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0018.json",
+      "artifact_sha256": "d9f5eebef222c36e8bb3f094a57cc139e5a7317cbafa549395359835a19ef212",
+      "printed_text": {
+        "reference_tokens": 736,
+        "prediction_tokens": 737,
+        "matched_tokens": 736,
+        "word_edit_operations": 263
+      },
+      "scored_text_sha256": "288647f6756277485018f673e96901a87e79b93d10b6d719742d9cd3a200d906"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 19,
+      "original_page": 19,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0019.json",
+      "artifact_sha256": "8a8631c5f318aa2635039e7a73c8a91fac430d1432b0f669811b0c154a6c3411",
+      "printed_text": {
+        "reference_tokens": 565,
+        "prediction_tokens": 566,
+        "matched_tokens": 565,
+        "word_edit_operations": 359
+      },
+      "scored_text_sha256": "a93f43fd81021f61cb925a6f38c0261f0a05ea69cc6acdc16d0648bb41a78861"
+    },
+    {
+      "case": "nasa-financial",
+      "profile": "dots.mocr original BF16",
+      "page": 20,
+      "original_page": 20,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-nasa-first-20-pages-01/raw/dots_mocr/page_0020.json",
+      "artifact_sha256": "a1c0cce610a97c6033d005b2114c07916cd18476cb97a33bdc54ff52332b94a5",
+      "printed_text": {
+        "reference_tokens": 118,
+        "prediction_tokens": 94,
+        "matched_tokens": 93,
+        "word_edit_operations": 33
+      },
+      "scored_text_sha256": "b60e80dd74e10ed6c88bb19671e714074a3b5d1b194c8430786f0db01eb251c9"
+    },
+    {
+      "case": "handwriting",
+      "profile": "dots.mocr original BF16",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-author-mathematics-4-pages-01/raw/dots_mocr/page_0001.json",
+      "artifact_sha256": "2067cc92f22d06625ead90c920ac9e6dbccaea08beb2c8cb082404ca83d4b26f"
+    },
+    {
+      "case": "handwriting",
+      "profile": "dots.mocr original BF16",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-author-mathematics-4-pages-01/raw/dots_mocr/page_0002.json",
+      "artifact_sha256": "686f337549b9a057340b6494870ff4f95a8ce669be5667e53e3bd30e94b37639"
+    },
+    {
+      "case": "handwriting",
+      "profile": "dots.mocr original BF16",
+      "page": 3,
+      "original_page": 3,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-author-mathematics-4-pages-01/raw/dots_mocr/page_0003.json",
+      "artifact_sha256": "d6420aed9234069be0322a0880e8fd040a12c9786ebd4040739eaf0a4ea14d49"
+    },
+    {
+      "case": "handwriting",
+      "profile": "dots.mocr original BF16",
+      "page": 4,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-author-mathematics-4-pages-01/raw/dots_mocr/page_0004.json",
+      "artifact_sha256": "1f9a4a4aa716052c900463901a82e1b9d1d651348293f00afb91bacc2a6f1266"
+    },
+    {
+      "case": "original-private",
+      "profile": "dots.mocr original BF16",
+      "page": 1,
+      "original_page": 1,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-original-multimodal-2-pages-01/raw/dots_mocr/response_0001.json",
+      "artifact_sha256": "e1d24ffb303f7a67476538a15f73f2d416c9608ac6dc9b8e0e03cdad3e2c9687",
+      "printed_text": {
+        "reference_tokens": 176,
+        "prediction_tokens": 172,
+        "matched_tokens": 163,
+        "word_edit_operations": 37
+      },
+      "scored_text_sha256": "8afe3eb43a8c5b0a9fca4f0cdb90103dd9cab76c75546c32e803869cdf66ac8f"
+    },
+    {
+      "case": "original-private",
+      "profile": "dots.mocr original BF16",
+      "page": 2,
+      "original_page": 2,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-original-multimodal-2-pages-01/raw/dots_mocr/response_0002.json",
+      "artifact_sha256": "796fe3881f2e59992bd2e6e6ace3cef70bda50407ed18ffaab266716e56de4d4",
+      "printed_text": {
+        "reference_tokens": 111,
+        "prediction_tokens": 100,
+        "matched_tokens": 100,
+        "word_edit_operations": 33
+      },
+      "scored_text_sha256": "b3211b01606bd0b6862b23b7ebecac06bc73fe5923334d35e22400a4496c379d"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "dots.mocr original BF16",
+      "page": 1,
+      "original_page": 4,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-historical-diary-5-pages-01/raw/dots_mocr/page_0001.json",
+      "artifact_sha256": "ed13161c2afdf529ea2691facd14b05b82964cc2a8c002b37aaff58e5b6d2400"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "dots.mocr original BF16",
+      "page": 2,
+      "original_page": 5,
+      "complete": false,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-historical-diary-5-pages-01/raw/dots_mocr/response_0002.json",
+      "artifact_sha256": "6785db18aff18213b65e27a4f54077cc973d38e17e541e05b4469e3cb9c360a6"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "dots.mocr original BF16",
+      "page": 3,
+      "original_page": 7,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-historical-diary-5-pages-01/raw/dots_mocr/page_0003.json",
+      "artifact_sha256": "529501f61bc861a67446633bc157de9d0082eb31ae517808ad780798fd6b1c19"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "dots.mocr original BF16",
+      "page": 4,
+      "original_page": 6,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-historical-diary-5-pages-01/raw/dots_mocr/page_0004.json",
+      "artifact_sha256": "dded7378fdbe25f7f00582cf24ff3114bad1fa2401d94fb02d4e71e35f578ca3"
+    },
+    {
+      "case": "historical-diary",
+      "profile": "dots.mocr original BF16",
+      "page": 5,
+      "original_page": 74,
+      "complete": true,
+      "artifact": "outputs/parser_runs/dots-mocr-bf16-colab-historical-diary-5-pages-01/raw/dots_mocr/page_0005.json",
+      "artifact_sha256": "4e369ddcdd5b439506ce7b8a29dcf5046d344b3d41c15d4c3992602868fca41c"
+    }
+  ],
+  "limitations": [
+    "IRENA/IMF lack outputs from all four profiles and are excluded from ranking.",
+    "Printed token F1 measures content overlap including repetitions, not semantic correctness, layout or reading order.",
+    "WER uses native PDF sequence; differences include source text-layer order and omitted raster-only text.",
+    "Missing, timed-out and unparseable generations contribute empty text and failed checks; no completed-page-only accuracy.",
+    "Raw content of schema-invalid pages is scored separately from strict canonical pipeline yield.",
+    "Scanned pages have selected assertions, not complete CER/WER references.",
+    "Visual checks measure localization recall at IoU 0.5 with 0.25 sensitivity; partial region annotations cannot establish precision or semantic description quality.",
+    "Only three bar category/value pairs are available; no general chart-model ranking.",
+    "Assignment scores reuse unchanged selected reference/evaluator; no model answers repaired.",
+    "Different hardware, image preprocessing, runtime backends and conversion lineage prevent causal quantization and speedup claims.",
+    "Original Q4 comparison uses the upstream-prompt job matching BF16 sent PNGs, rather than the later project-prompt rerun."
+  ]
+}

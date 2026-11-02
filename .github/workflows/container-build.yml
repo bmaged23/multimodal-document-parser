@@ -2,7 +2,7 @@ name: Container build validation
 
 on:
   pull_request:
-    paths: ['Dockerfile', 'compose*.yaml', '.dockerignore', '.github/workflows/**', 'pyproject.toml', 'uv.lock', 'backends/paddleocr_runtime/**', 'scripts/deployment/verify_container_image.py', 'scripts/deployment/prepare_hosted_container_runner.sh', 'src/**']
+    paths: ['Dockerfile', 'compose*.yaml', '.dockerignore', '.github/workflows/**', 'pyproject.toml', 'uv.lock', 'backends/dots_mocr_runtime/**', 'scripts/deployment/verify_container_image.py', 'scripts/deployment/prepare_hosted_container_runner.sh', 'src/**']
   workflow_dispatch:
 
 permissions:

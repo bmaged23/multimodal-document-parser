@@ -1,5 +1,7 @@
 # Parsing pipeline
 
+**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](../evaluation/parser-model-selection.md).
+
 [Project overview](../../README.md) · [Parsing evaluation](../parsing-evaluation/README.md) ·
 [Secondary chunking/RAG](../chunking-and-rag/README.md)
 
@@ -11,7 +13,7 @@ the preferred comparison candidate: it recovered substantially more selected
 text/math checks on the four-page author-written assignment than the other two
 tested profiles. Formulas still require review. See the
 [handwriting findings and limits](../evaluation/author-handwritten-mathematics.md).
-The deployed service continues to default to PaddleOCR; dots uses its separate GPU runtime.
+The deployed service defaults to quantized dots. Its container worker manages the CUDA server; native development can use an external dots endpoint.
 
 ## Processing flow
 
@@ -29,7 +31,7 @@ flowchart LR
 | Stage | Responsibility | Preserved evidence |
 | --- | --- | --- |
 | Preparation | SHA-256 input identity, page geometry, rendering | Exact PDF snapshot, page images, preparation metadata |
-| Parsing | PaddleOCR or configured dots GPU backend | Raw responses, model/runtime/prompt settings, per-page state |
+| Parsing | Quantized dots GPU backend by default; optional native Paddle | Raw responses, model/runtime/prompt settings, per-page state |
 | Normalization | Reading order, hierarchy, coordinates, table grids/spans | Canonical JSON, normalization notes and original backend data |
 | Visual enrichment | Descriptions, chart values/units and flowchart relations | Crops, page context, effective prompts, native responses and provenance |
 | Source review | Selected assertions, inferred roles, PDF-based corrections | Separate references, adjustment methods, warnings and before/after scores |

@@ -18,7 +18,7 @@ class PreparationJob(SchemaModel):
 
 class ParsingJob(SchemaModel):
     source_artifact_id: ArtifactId
-    backend: Literal["paddleocr", "dots-mocr"] = "paddleocr"
+    backend: Literal["paddleocr", "dots-mocr"] = "dots-mocr"
     enrich_visuals: bool = True
 
 
@@ -50,7 +50,7 @@ class RAGRequest(SchemaModel):
 
 
 class PipelineJob(PreparationJob):
-    backend: Literal["paddleocr", "dots-mocr"] = "paddleocr"
+    backend: Literal["paddleocr", "dots-mocr"] = "dots-mocr"
     chunk_settings: ChunkSettings = Field(default_factory=ChunkSettings)
 
 

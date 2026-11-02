@@ -96,6 +96,7 @@ def snapshot(case: dict, archive_root: Path) -> dict:
                 "backends/paddleocr_runtime/run_inference.py",
             ]
         )
+        runtime_files = case.get("reproduction_files", runtime_files)
         for relative in [
             "pyproject.toml",
             "uv.lock",

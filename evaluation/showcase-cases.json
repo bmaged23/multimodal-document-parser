@@ -40,20 +40,28 @@
         },
         {
           "id": "nasa-dots",
-          "label": "dots.mocr \u00b7 Q4_K_M (4-bit) + Q8_0 projector (8-bit)",
+          "label": "dots.mocr · Q4_K_M (4-bit) + Q8_0 projector (8-bit)",
           "stage": "ocr",
           "kind": "canonical",
           "directory": "dots-mocr-q4-k-m-nasa-first20-01"
         },
         {
           "id": "nasa-unlimited",
-          "label": "Unlimited-OCR 2 \u00b7 NF4",
+          "label": "Unlimited-OCR 2 · NF4",
           "stage": "experimental",
           "kind": "unlimited",
           "directory": "unlimited-ocr-2-nf4-nasa-first20-01"
+        },
+        {
+          "id": "nasa-first-20-pages-bf16",
+          "label": "dots.mocr original BF16 · Colab T4 · SDPA",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-bf16-colab-nasa-first-20-pages-01"
         }
       ],
-      "preview_page": 11
+      "preview_page": 11,
+      "preferred_run": "nasa-dots"
     },
     {
       "id": "handwriting",
@@ -78,25 +86,33 @@
         },
         {
           "id": "math-dots",
-          "label": "dots.mocr \u00b7 Q4_K_M (4-bit) + Q8_0 projector (8-bit)",
+          "label": "dots.mocr · Q4_K_M (4-bit) + Q8_0 projector (8-bit)",
           "stage": "ocr",
           "kind": "canonical",
           "directory": "dots-mocr-q4-k-m-author-handwritten-mathematics-four-pages-01"
         },
         {
           "id": "math-unlimited",
-          "label": "Unlimited-OCR 2 \u00b7 NF4",
+          "label": "Unlimited-OCR 2 · NF4",
           "stage": "experimental",
           "kind": "unlimited",
           "directory": "unlimited-ocr-2-nf4-author-handwritten-mathematics-four-pages-01"
+        },
+        {
+          "id": "author-mathematics-4-pages-bf16",
+          "label": "dots.mocr original BF16 · Colab T4 · SDPA",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-bf16-colab-author-mathematics-4-pages-01"
         }
       ],
-      "preview_page": 4
+      "preview_page": 4,
+      "preferred_run": "math-dots"
     },
     {
       "id": "irena-pipeline",
-      "title": "IRENA \u00b7 charts and tables",
-      "description": "Trace normalized OCR, visual enrichment and source-checked final output across 20 pages.",
+      "title": "IRENA · charts and tables",
+      "description": "Historical PaddleOCR pipeline evaluation. Trace normalized OCR, visual enrichment and source-checked final output across 20 pages.",
       "group": "pipeline",
       "private": false,
       "original_pages": [
@@ -125,21 +141,21 @@
       "runs": [
         {
           "id": "irena-ocr",
-          "label": "PaddleOCR \u00b7 normalized OCR",
+          "label": "PaddleOCR · normalized OCR",
           "stage": "ocr",
           "kind": "canonical",
           "directory": "irena-mixed-content-20-paddleocr-vl-1.6-01"
         },
         {
           "id": "irena-enriched",
-          "label": "PaddleOCR + Gemma \u00b7 enriched",
+          "label": "PaddleOCR + Gemma · enriched",
           "stage": "enriched",
           "kind": "canonical",
           "directory": "irena-mixed-content-20-paddleocr-gemma4-31b-01"
         },
         {
           "id": "irena-final",
-          "label": "Final pipeline \u00b7 source checked",
+          "label": "Final pipeline · source checked",
           "stage": "source_checked",
           "kind": "canonical",
           "directory": "irena-final-source-checked-03"
@@ -149,8 +165,8 @@
     },
     {
       "id": "imf-pipeline",
-      "title": "IMF \u00b7 complex tables",
-      "description": "26 appendix pages with merged headers, country rows and continued tables.",
+      "title": "IMF · complex tables",
+      "description": "Historical PaddleOCR pipeline evaluation. 26 appendix pages with merged headers, country rows and continued tables.",
       "group": "pipeline",
       "private": false,
       "original_pages": [
@@ -185,21 +201,21 @@
       "runs": [
         {
           "id": "imf-ocr",
-          "label": "PaddleOCR \u00b7 normalized OCR",
+          "label": "PaddleOCR · normalized OCR",
           "stage": "ocr",
           "kind": "canonical",
           "directory": "imf-complex-tables-26-paddleocr-vl-1.6-01"
         },
         {
           "id": "imf-enriched",
-          "label": "PaddleOCR + Gemma \u00b7 enriched",
+          "label": "PaddleOCR + Gemma · enriched",
           "stage": "enriched",
           "kind": "canonical",
           "directory": "imf-complex-tables-26-paddleocr-gemma4-31b-01"
         },
         {
           "id": "imf-final",
-          "label": "Final pipeline \u00b7 source checked",
+          "label": "Final pipeline · source checked",
           "stage": "source_checked",
           "kind": "canonical",
           "directory": "imf-final-source-checked-03"
@@ -228,20 +244,30 @@
         },
         {
           "id": "original-dots",
-          "label": "dots.mocr \u00b7 Q4_K_M (4-bit) + Q8_0 projector (8-bit)",
+          "label": "dots.mocr · Q4_K_M (4-bit) + Q8_0 projector (8-bit)",
           "stage": "ocr",
           "kind": "canonical",
           "directory": "dots-mocr-q4-k-m-original-rerun-03"
         },
         {
           "id": "original-unlimited",
-          "label": "Unlimited-OCR 2 \u00b7 NF4",
+          "label": "Unlimited-OCR 2 · NF4",
           "stage": "experimental",
           "kind": "unlimited",
           "directory": "unlimited-ocr-2-nf4-original-two-pages-01"
+        },
+        {
+          "id": "original-multimodal-2-pages-bf16",
+          "label": "dots.mocr original BF16 · Colab T4 · SDPA",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-bf16-colab-original-multimodal-2-pages-01"
         }
       ],
-      "preview_page": 1
+      "preview_page": 1,
+      "preferred_run": "original-dots"
     }
-  ]
+  ],
+  "math_evaluation": "author-handwritten-mathematics-four-profiles-v1.json",
+  "parser_evaluation": "parser-four-profiles-operational-v1.json"
 }

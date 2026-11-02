@@ -1,0 +1,722 @@
+{
+  "version": "1.0",
+  "scope": "Matched-input profile comparison; not a causal quantization experiment",
+  "total_pages": 31,
+  "bf16_finished_generations": 30,
+  "bf16_accepted_pages": 28,
+  "matched_input_pngs": 31,
+  "cloud_runtime": {
+    "model": "dots-studio/dots.mocr",
+    "revision": "e539fbb52280393adc081b289ec597430a0f9031",
+    "gpu": "Tesla T4",
+    "gpu_vram_bytes": 15637086208,
+    "device": "cuda:0",
+    "weight_dtype": "torch.bfloat16",
+    "parameter_dtype_counts": {
+      "torch.bfloat16": 3039179264
+    },
+    "quantization": null,
+    "attention": "sdpa",
+    "unused_flash_import_shim": true,
+    "model_load_seconds": 110.02204097800006,
+    "max_new_tokens": 6144,
+    "page_seconds": 300,
+    "temperature": 0,
+    "sampling": false,
+    "versions": {
+      "torch": "2.11.0+cu130",
+      "transformers": "4.57.6",
+      "accelerate": "1.15.0",
+      "pillow": "11.3.0"
+    }
+  },
+  "precision_note": "BF16 parameter storage recorded; quantization disabled. Torch support can include emulation; native BF16 arithmetic is not independently attested.",
+  "cases": [
+    {
+      "id": "original-multimodal-2-pages",
+      "source_document_id": "sha256:be2ebf36f35c4b66f958ef7e7c2b273ad704b9ff3e6748df1942435ff3257cde",
+      "requested_pages": 2,
+      "q4_accepted_pages": 2,
+      "bf16_finished_generations": 2,
+      "bf16_accepted_pages": 0,
+      "bf16_failures": [
+        {
+          "page": 1,
+          "reason": "missing_layout_category"
+        },
+        {
+          "page": 2,
+          "reason": "bounding_box_collapses_after_clipping"
+        }
+      ],
+      "q4_page_median_seconds": 28.93143440300082,
+      "bf16_accepted_page_median_seconds": null,
+      "baseline_max_tokens": 4096,
+      "bf16_max_tokens": 6144,
+      "timing_scope": "Different hardware/backends; accepted timings exclude loading and failures"
+    },
+    {
+      "id": "nasa-first-20-pages",
+      "source_document_id": "sha256:bc73868c89045132a265a9b6f6aa62b43ce09a8830f7f622c025b2f53a934f66",
+      "requested_pages": 20,
+      "q4_accepted_pages": 20,
+      "bf16_finished_generations": 20,
+      "bf16_accepted_pages": 20,
+      "bf16_failures": [],
+      "q4_page_median_seconds": 25.863808125500782,
+      "bf16_accepted_page_median_seconds": 61.667291771999885,
+      "baseline_max_tokens": 6144,
+      "bf16_max_tokens": 6144,
+      "timing_scope": "Different hardware/backends; accepted timings exclude loading and failures"
+    },
+    {
+      "id": "historical-diary-5-pages",
+      "source_document_id": "sha256:221a9811f6739f6788ab8faca2b29bf7b87086a680adc2284188f88d237b4637",
+      "requested_pages": 5,
+      "q4_accepted_pages": 3,
+      "bf16_finished_generations": 4,
+      "bf16_accepted_pages": 4,
+      "bf16_failures": [
+        {
+          "page": 2,
+          "reason": "incomplete_generation"
+        }
+      ],
+      "q4_page_median_seconds": 20.640320432000408,
+      "bf16_accepted_page_median_seconds": 102.49137605150008,
+      "baseline_max_tokens": 6144,
+      "bf16_max_tokens": 6144,
+      "timing_scope": "Different hardware/backends; accepted timings exclude loading and failures"
+    },
+    {
+      "id": "author-mathematics-4-pages",
+      "source_document_id": "sha256:699f592fda553d61c1360f92ab19208fe9c735dea1ce3c57980397de01c910ea",
+      "requested_pages": 4,
+      "q4_accepted_pages": 4,
+      "bf16_finished_generations": 4,
+      "bf16_accepted_pages": 4,
+      "bf16_failures": [],
+      "q4_page_median_seconds": 23.531384628000524,
+      "bf16_accepted_page_median_seconds": 53.663350401000116,
+      "baseline_max_tokens": 6144,
+      "bf16_max_tokens": 6144,
+      "timing_scope": "Different hardware/backends; accepted timings exclude loading and failures"
+    }
+  ],
+  "handwriting": {
+    "annotation_status": "Selected assistant-reviewed reference spans, not independent human ground truth",
+    "reference_sha256": "6ac8d425a088c909e2143de6495fe9351d69fff93c4d95496ae2194f2af31825",
+    "evaluator_sha256": "48a403e72932c5e88b5834c6963c8bd39f5590fdfba39111a6b372f5ee3cbc2f",
+    "q4": {
+      "selected_assertions": {
+        "passed": 29,
+        "checked": 37
+      },
+      "categories": {
+        "text": {
+          "passed": 17,
+          "checked": 18
+        },
+        "math": {
+          "passed": 12,
+          "checked": 19
+        }
+      },
+      "truth_table": {
+        "checked": 20,
+        "passed": 20,
+        "ordered_header_matched": true,
+        "detected_tables": 1,
+        "exact_shape": true,
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          }
+        ]
+      }
+    },
+    "bf16": {
+      "selected_assertions": {
+        "passed": 32,
+        "checked": 37
+      },
+      "categories": {
+        "text": {
+          "passed": 17,
+          "checked": 18
+        },
+        "math": {
+          "passed": 15,
+          "checked": 19
+        }
+      },
+      "truth_table": {
+        "checked": 20,
+        "passed": 20,
+        "ordered_header_matched": true,
+        "detected_tables": 1,
+        "exact_shape": true,
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          }
+        ]
+      }
+    },
+    "paired_checks": [
+      {
+        "id": "finite-set",
+        "page": 1,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "set-builder",
+        "page": 1,
+        "category": "math",
+        "q4_passed": false,
+        "bf16_passed": true
+      },
+      {
+        "id": "natural-numbers",
+        "page": 1,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "digit-set",
+        "page": 1,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "direct-values",
+        "page": 1,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "all-elements",
+        "page": 1,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "interval-boundaries",
+        "page": 1,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "natural-explanation",
+        "page": 1,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "union",
+        "page": 2,
+        "category": "math",
+        "q4_passed": false,
+        "bf16_passed": false
+      },
+      {
+        "id": "skiing-difference",
+        "page": 2,
+        "category": "math",
+        "q4_passed": false,
+        "bf16_passed": false
+      },
+      {
+        "id": "female-regulars",
+        "page": 2,
+        "category": "math",
+        "q4_passed": false,
+        "bf16_passed": true
+      },
+      {
+        "id": "male-customers",
+        "page": 2,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "male-regulars",
+        "page": 2,
+        "category": "math",
+        "q4_passed": false,
+        "bf16_passed": true
+      },
+      {
+        "id": "nonregular-male-customers",
+        "page": 2,
+        "category": "math",
+        "q4_passed": false,
+        "bf16_passed": false
+      },
+      {
+        "id": "hiking-skiing",
+        "page": 2,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "cycling-exclusion",
+        "page": 2,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "female-description",
+        "page": 2,
+        "category": "text",
+        "q4_passed": false,
+        "bf16_passed": false
+      },
+      {
+        "id": "male-description",
+        "page": 2,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "intersection",
+        "page": 3,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "difference",
+        "page": 3,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "product-cardinality",
+        "page": 3,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "g-after-f",
+        "page": 3,
+        "category": "math",
+        "q4_passed": false,
+        "bf16_passed": false
+      },
+      {
+        "id": "f-after-g",
+        "page": 3,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "linear-map",
+        "page": 3,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "composition-title",
+        "page": 3,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "not-injective",
+        "page": 3,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "surjective",
+        "page": 3,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "not-bijective",
+        "page": 3,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "sun",
+        "page": 4,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "addition-as-written",
+        "page": 4,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "pizza-question",
+        "page": 4,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "pizza-command",
+        "page": 4,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "neither-nor",
+        "page": 4,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "negated-sun",
+        "page": 4,
+        "category": "text",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "false-statement-as-written",
+        "page": 4,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "conjunction-of-negations",
+        "page": 4,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      },
+      {
+        "id": "negated-disjunction",
+        "page": 4,
+        "category": "math",
+        "q4_passed": true,
+        "bf16_passed": true
+      }
+    ]
+  },
+  "sensor_table": {
+    "results": {
+      "Q4": {
+        "passed": 20,
+        "checked": 20
+      },
+      "BF16": {
+        "passed": 20,
+        "checked": 20
+      }
+    },
+    "reference_sha256": "b6259426516be66d8600ef58b3e2ab306e688f27499819ffb75f8be675a9388d",
+    "scope": "20 earlier assistant-reviewed raw cell text/span checks; not full-page accuracy. BF16 raw cells scored despite whole-page schema rejection."
+  },
+  "limitations": [
+    "GGUF source revision is not pinned; checkpoint equivalence is unverified.",
+    "Hardware, implementation, attention and some token budgets differ.",
+    "Selected checks are assistant-reviewed, not human labels or full-document accuracy.",
+    "Strict adapter failures and diary timeout retained; no output repaired or rerun."
+  ]
+}

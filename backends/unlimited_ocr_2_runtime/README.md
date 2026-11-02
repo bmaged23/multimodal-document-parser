@@ -1,5 +1,7 @@
 # Unlimited-OCR 2 GPU experiment
 
+**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](../../docs/evaluation/parser-model-selection.md).
+
 This isolated uv runtime probes `baidu/Unlimited-OCR-2`, pinned to revision
 `c14071b549f4fcab10909f3c4acc6a2edb366947`. It is an experimental diagnostic
 runner, not an integrated canonical parser backend. Do not claim model quality or

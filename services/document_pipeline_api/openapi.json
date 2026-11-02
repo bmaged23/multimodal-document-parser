@@ -723,7 +723,7 @@
               "dots-mocr"
             ],
             "title": "Backend",
-            "default": "paddleocr"
+            "default": "dots-mocr"
           },
           "enrich_visuals": {
             "type": "boolean",
@@ -766,7 +766,7 @@
               "dots-mocr"
             ],
             "title": "Backend",
-            "default": "paddleocr"
+            "default": "dots-mocr"
           },
           "chunk_settings": {
             "$ref": "#/components/schemas/ChunkSettings"

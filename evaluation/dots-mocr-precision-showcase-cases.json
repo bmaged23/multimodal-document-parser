@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "cases": [
+    {
+      "id": "precision-original-multimodal-2-pages",
+      "title": "Original Multimodal 2 Pages",
+      "description": "Matched inputs: Q4/Q8 local GPU versus original HF BF16 Colab T4. Raw replies retain strict-format failures.",
+      "group": "parsers",
+      "private": true,
+      "original_pages": [
+        1,
+        2
+      ],
+      "preview_page": 1,
+      "source_url": null,
+      "runs": [
+        {
+          "id": "original-multimodal-2-pages-q4",
+          "label": "dots.mocr Q4_K_M + Q8_0 · local GTX 1660 Ti",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-q4-k-m-local-validation-02-upstream-prompt"
+        },
+        {
+          "id": "original-multimodal-2-pages-bf16",
+          "label": "dots.mocr original BF16 · Colab T4 · SDPA",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-bf16-colab-original-multimodal-2-pages-01"
+        }
+      ]
+    },
+    {
+      "id": "precision-nasa-first-20-pages",
+      "title": "Nasa First 20 Pages",
+      "description": "Matched inputs: Q4/Q8 local GPU versus original HF BF16 Colab T4. Raw replies retain strict-format failures.",
+      "group": "parsers",
+      "private": false,
+      "original_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "preview_page": 1,
+      "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
+      "runs": [
+        {
+          "id": "nasa-first-20-pages-q4",
+          "label": "dots.mocr Q4_K_M + Q8_0 · local GTX 1660 Ti",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-q4-k-m-nasa-first20-01"
+        },
+        {
+          "id": "nasa-first-20-pages-bf16",
+          "label": "dots.mocr original BF16 · Colab T4 · SDPA",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-bf16-colab-nasa-first-20-pages-01"
+        }
+      ]
+    },
+    {
+      "id": "precision-historical-diary-5-pages",
+      "title": "Historical Diary 5 Pages",
+      "description": "Matched inputs: Q4/Q8 local GPU versus original HF BF16 Colab T4. Raw replies retain strict-format failures.",
+      "group": "parsers",
+      "private": false,
+      "original_pages": [
+        4,
+        5,
+        7,
+        6,
+        74
+      ],
+      "preview_page": 1,
+      "source_url": "https://npgallery.nps.gov/AssetDetail/539a8c6d-d1c2-40ec-9729-ba874f53ccb1",
+      "runs": [
+        {
+          "id": "historical-diary-5-pages-q4",
+          "label": "dots.mocr Q4_K_M + Q8_0 · local GTX 1660 Ti",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-q4-k-m-diary-five-01"
+        },
+        {
+          "id": "historical-diary-5-pages-bf16",
+          "label": "dots.mocr original BF16 · Colab T4 · SDPA",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-bf16-colab-historical-diary-5-pages-01"
+        }
+      ]
+    },
+    {
+      "id": "precision-author-mathematics-4-pages",
+      "title": "Author Mathematics 4 Pages",
+      "description": "Matched inputs: Q4/Q8 local GPU versus original HF BF16 Colab T4. Raw replies retain strict-format failures.",
+      "group": "parsers",
+      "private": false,
+      "original_pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "preview_page": 4,
+      "source_url": null,
+      "runs": [
+        {
+          "id": "author-mathematics-4-pages-q4",
+          "label": "dots.mocr Q4_K_M + Q8_0 · local GTX 1660 Ti",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-q4-k-m-author-handwritten-mathematics-four-pages-01"
+        },
+        {
+          "id": "author-mathematics-4-pages-bf16",
+          "label": "dots.mocr original BF16 · Colab T4 · SDPA",
+          "stage": "ocr",
+          "kind": "canonical",
+          "directory": "dots-mocr-bf16-colab-author-mathematics-4-pages-01"
+        }
+      ]
+    }
+  ]
+}

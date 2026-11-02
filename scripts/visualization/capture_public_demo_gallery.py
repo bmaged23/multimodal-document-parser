@@ -16,9 +16,9 @@ from multimodal_doc_parser.evaluation.rag_benchmark import digest
 EXAMPLES = [
     ("table", "pipeline", "irena-pipeline", "irena-final", 15, "element_00020"),
     ("chart", "pipeline", "irena-pipeline", "irena-final", 16, "element_00036"),
-    ("image", "parsers", "nasa-financial", "nasa-paddle", 4, None),
-    ("text", "parsers", "nasa-financial", "nasa-paddle", 6, None),
-    ("handwriting", "parsers", "handwriting", "math-paddle", 4, "element_00023"),
+    ("image", "parsers", "nasa-financial", "nasa-dots", 4, None),
+    ("text", "parsers", "nasa-financial", "nasa-dots", 6, None),
+    ("handwriting", "parsers", "handwriting", "math-dots", 4, None),
 ]
 
 
@@ -62,7 +62,13 @@ def main() -> None:
                 )
                 data = next(p for p in payload["pages"] if p["number"] == number)
                 if element_id is None:
-                    kind = "image" if category == "image" else "text"
+                    kind = (
+                        "image"
+                        if category == "image"
+                        else "table"
+                        if category == "handwriting"
+                        else "text"
+                    )
                     elements = [e for e in data["json"]["elements"] if e["type"] == kind]
                     element = max(elements, key=lambda e: len(e.get("text", "")))
                     element_id = element["id"]

@@ -94,6 +94,14 @@ jobs:
           IMAGE: ${{ vars.DOCKERHUB_IMAGE }}
           DIGEST: ${{ steps.publish.outputs.digest }}
         run: echo "Published $IMAGE@$DIGEST" >> "$GITHUB_STEP_SUMMARY"
+      - name: Synchronize Docker Hub overview
+        uses: peter-evans/dockerhub-description@v5
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{ vars.DOCKERHUB_IMAGE }}
+          readme-filepath: docs/docker/docker-hub-overview.md
+          short-description: Quantized dots.mocr GPU PDF/DOCX parsing, structured exports and cloud visual enrichment
       - name: Verify anonymous access to published digest
         env:
           IMAGE: ${{ vars.DOCKERHUB_IMAGE }}

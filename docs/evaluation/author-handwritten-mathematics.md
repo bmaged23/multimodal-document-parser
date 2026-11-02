@@ -148,3 +148,13 @@ use a new case/run identifier for another inference attempt. Individual
 Predictions, raw replies, logs, page-level status and model-named checksum
 archives remain local; sanitized metrics and the public saved-output demo are
 published separately.
+
+## Original-weight Colab follow-up
+
+The original three-profile results above remain frozen. The separate BF16 Colab
+run was scored using the same reference and evaluator: 32/37 selected assertions
+(text 17/18, math 15/19), versus quantized dots 29/37. Both retain 20/20 ordered
+truth-table cells. [Four-profile evaluation and limits](dots-mocr-colab-bf16-comparison.md)
+records hardware differences, strict-schema failures and saved per-check metrics.
+
+Current production selection and measured BF16 GPU peak (8.53 GiB): [model selection](parser-model-selection.md). Historical predictions and scores above are unchanged.

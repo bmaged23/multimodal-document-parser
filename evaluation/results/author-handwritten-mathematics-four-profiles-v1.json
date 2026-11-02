@@ -1,0 +1,2439 @@
+{
+  "version": "1.0",
+  "recorded_at_utc": "2026-11-02T20:33:36.523008+00:00",
+  "source_sha256": "699f592fda553d61c1360f92ab19208fe9c735dea1ce3c57980397de01c910ea",
+  "reference": "evaluation/reference_annotations/author-handwritten-mathematics-selected-v1.json",
+  "reference_sha256": "6ac8d425a088c909e2143de6495fe9351d69fff93c4d95496ae2194f2af31825",
+  "evaluator_sha256": "48a403e72932c5e88b5834c6963c8bd39f5590fdfba39111a6b372f5ee3cbc2f",
+  "annotation_status": "Selected assistant-reviewed reference spans, not independent human ground truth",
+  "scope": "37 selected text/math assertions plus the 4×5 truth-table body; not full-page transcription accuracy",
+  "limitations": [
+    "Transcribe the written assignment; do not correct its mathematics, spelling or grammar.",
+    "Ignore wholly crossed-out text; ambiguous spans and cropped page-1 top line are excluded.",
+    "Alternatives only allow explicit notation/format variants; no semantic paraphrase grading.",
+    "Selected-span presence does not measure hallucination precision or full-page CER/WER.",
+    "Truth-table cells must be recovered in row/column order; unstructured prose does not count as a table.",
+    "Different hardware, backends and conversion lineage; not a causal quantization test."
+  ],
+  "gpu": "Baseline profiles: GTX 1660 Ti 6 GiB; original HF BF16: Colab Tesla T4",
+  "results": [
+    {
+      "model": "PaddleOCR-VL-1.6",
+      "run_directory": "outputs/parser_runs/paddleocr-author-handwritten-mathematics-four-pages-01",
+      "run_status": "completed",
+      "requested_pages": 4,
+      "completed_pages": 4,
+      "selected_assertions": {
+        "passed": 13,
+        "checked": 37
+      },
+      "categories": {
+        "text": {
+          "passed": 8,
+          "checked": 18
+        },
+        "math": {
+          "passed": 5,
+          "checked": 19
+        }
+      },
+      "diagram_diagnostics": {
+        "page": 2,
+        "canonical_model_image_regions": 3,
+        "experimental_raw_image_regions": null,
+        "scope": "Image-region count only; not diagram semantic accuracy or recall. Native full-photo recovery is not credited as model recognition."
+      },
+      "truth_table": {
+        "checked": 20,
+        "passed": 20,
+        "ordered_header_matched": true,
+        "detected_tables": 1,
+        "exact_shape": true,
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          }
+        ]
+      },
+      "page_seconds": [
+        1263.7082636800005,
+        59.64238381299947,
+        781.2167735980001,
+        51.931658179000806
+      ],
+      "initialization_seconds": 25.370444791999034,
+      "page_load_seconds": [],
+      "page_attempt_seconds_including_load": [],
+      "page_output_diagnostics": [
+        {
+          "page": 1,
+          "characters": 8349,
+          "scored_text_sha256": "542cf87e07f083c26c5c08ebeeb6c4a9dbfc900419be1e7b0bb54b3b0889f348",
+          "max_repeated_16_token_sequence_count": 492
+        },
+        {
+          "page": 2,
+          "characters": 1165,
+          "scored_text_sha256": "9f175b40feda13702bfb394b83b9ee8584f4106ec88e964545ba3d011ab77f5f",
+          "max_repeated_16_token_sequence_count": 2
+        },
+        {
+          "page": 3,
+          "characters": 495,
+          "scored_text_sha256": "785407e3bf30de34c58366aca350d858863dd5877ebd7df82733b1d9564b6434",
+          "max_repeated_16_token_sequence_count": 1
+        },
+        {
+          "page": 4,
+          "characters": 666,
+          "scored_text_sha256": "5cdae2d7eea06776f2f2026be38536f28c38c41ad55034eab701a94f1402af3e",
+          "max_repeated_16_token_sequence_count": 5
+        }
+      ],
+      "median_page_seconds": 420.4295787054998,
+      "timing_scope": "Runtime page timings; model loading excluded; missing/failed page timings may be absent",
+      "checks": [
+        {
+          "id": "finite-set",
+          "page": 1,
+          "category": "math",
+          "expected": "M={1,2,3}",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "set-builder",
+          "page": 1,
+          "category": "math",
+          "expected": "M={x∈N|1≤x≤3}",
+          "accepted_format_variants": [
+            "M={x∈N,1≤x≤3}"
+          ],
+          "passed": true,
+          "matched_variant": "M={x∈N|1≤x≤3}",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "natural-numbers",
+          "page": 1,
+          "category": "math",
+          "expected": "A={x∈N}",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "digit-set",
+          "page": 1,
+          "category": "math",
+          "expected": "C={0,1,2,3,4,5,6,7,8,9}",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "direct-values",
+          "page": 1,
+          "category": "text",
+          "expected": "it has the direct values",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "all-elements",
+          "page": 1,
+          "category": "text",
+          "expected": "I need to write all of its elements",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "I need to write all of its elements",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "interval-boundaries",
+          "page": 1,
+          "category": "text",
+          "expected": "with the closed or open boundaries",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "with the closed or open boundaries",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "natural-explanation",
+          "page": 1,
+          "category": "text",
+          "expected": "the set is only natural numbers",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "union",
+          "page": 2,
+          "category": "math",
+          "expected": "H∪S",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "skiing-difference",
+          "page": 2,
+          "category": "math",
+          "expected": "S∪(H\\C)",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "female-regulars",
+          "page": 2,
+          "category": "math",
+          "expected": "F∩R",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "male-customers",
+          "page": 2,
+          "category": "math",
+          "expected": "C\\F",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "male-regulars",
+          "page": 2,
+          "category": "math",
+          "expected": "(C\\F)∩R",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "nonregular-male-customers",
+          "page": 2,
+          "category": "math",
+          "expected": "C\\(F∪R)",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "hiking-skiing",
+          "page": 2,
+          "category": "text",
+          "expected": "Everyone who likes hiking also likes skiing",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Everyone who likes hiking also likes skiing",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "cycling-exclusion",
+          "page": 2,
+          "category": "text",
+          "expected": "but don't like cycling",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "but don't like cycling",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "female-description",
+          "page": 2,
+          "category": "text",
+          "expected": "the set of all Female regulars",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "male-description",
+          "page": 2,
+          "category": "text",
+          "expected": "the set of all male customers",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the set of all male customers",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "intersection",
+          "page": 3,
+          "category": "math",
+          "expected": "{2,3,5}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "{2,3,5}",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "difference",
+          "page": 3,
+          "category": "math",
+          "expected": "A1\\A2={-1,6,7}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "A1\\A2={-1,6,7}",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "product-cardinality",
+          "page": 3,
+          "category": "math",
+          "expected": "9×6×4=216",
+          "accepted_format_variants": [
+            "9*6*4=216",
+            "9x6x4=216"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "g-after-f",
+          "page": 3,
+          "category": "math",
+          "expected": "(g∘f)(x)=(2x+1)^2",
+          "accepted_format_variants": [
+            "g(f(x))=(2x+1)^2"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "f-after-g",
+          "page": 3,
+          "category": "math",
+          "expected": "(f∘g)(x)=2x^2+1",
+          "accepted_format_variants": [
+            "f(g(x))=2x^2+1"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "linear-map",
+          "page": 3,
+          "category": "math",
+          "expected": "(x,y,z)↦(x+y,y+z)",
+          "accepted_format_variants": [
+            "(x,y,z)→(x+y,y+z)"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "composition-title",
+          "page": 3,
+          "category": "text",
+          "expected": "Composition of function",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "not-injective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is Not injective",
+          "accepted_format_variants": [
+            "F is not injective"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "surjective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is surjective",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "not-bijective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is Not bijective",
+          "accepted_format_variants": [
+            "F is not bijective"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "sun",
+          "page": 4,
+          "category": "text",
+          "expected": "the sun is shining",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the sun is shining",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "addition-as-written",
+          "page": 4,
+          "category": "text",
+          "expected": "the addition of 2+2 equal 5",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the addition of 2+2 equal 5",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "pizza-question",
+          "page": 4,
+          "category": "text",
+          "expected": "Do you love pizza",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "pizza-command",
+          "page": 4,
+          "category": "text",
+          "expected": "Eat the pizza",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "neither-nor",
+          "page": 4,
+          "category": "text",
+          "expected": "Neither P nor Q means",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "negated-sun",
+          "page": 4,
+          "category": "text",
+          "expected": "the sun is not shining AND",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the sun is not shining AND",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "false-statement-as-written",
+          "page": 4,
+          "category": "math",
+          "expected": "2+2=5",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "2+2=5",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "conjunction-of-negations",
+          "page": 4,
+          "category": "math",
+          "expected": "¬P∧¬Q",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "¬P∧¬Q",
+          "output_origin": "raw block content"
+        },
+        {
+          "id": "negated-disjunction",
+          "page": 4,
+          "category": "math",
+          "expected": "¬(P∨Q)",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw block content"
+        }
+      ]
+    },
+    {
+      "model": "dots.mocr Q4_K_M + Q8_0 projector",
+      "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-author-handwritten-mathematics-four-pages-01",
+      "run_status": "completed",
+      "requested_pages": 4,
+      "completed_pages": 4,
+      "selected_assertions": {
+        "passed": 29,
+        "checked": 37
+      },
+      "categories": {
+        "text": {
+          "passed": 17,
+          "checked": 18
+        },
+        "math": {
+          "passed": 12,
+          "checked": 19
+        }
+      },
+      "diagram_diagnostics": {
+        "page": 2,
+        "canonical_model_image_regions": 2,
+        "experimental_raw_image_regions": null,
+        "scope": "Image-region count only; not diagram semantic accuracy or recall. Native full-photo recovery is not credited as model recognition."
+      },
+      "truth_table": {
+        "checked": 20,
+        "passed": 20,
+        "ordered_header_matched": true,
+        "detected_tables": 1,
+        "exact_shape": true,
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          }
+        ]
+      },
+      "page_seconds": [
+        20.057434023998212,
+        25.28537655599939,
+        32.93291855200005,
+        21.777392700001656
+      ],
+      "initialization_seconds": null,
+      "page_load_seconds": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "page_attempt_seconds_including_load": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "page_output_diagnostics": [
+        {
+          "page": 1,
+          "characters": 910,
+          "scored_text_sha256": "1da02b99dc321ad416aafcd6f5642c685f5f5dcf51b77081014950dcefc60595",
+          "max_repeated_16_token_sequence_count": 1
+        },
+        {
+          "page": 2,
+          "characters": 1099,
+          "scored_text_sha256": "381dbe7f45d8a4e31024be30c39fadb39e59fa87f8f39b2fd3c7c8c590622323",
+          "max_repeated_16_token_sequence_count": 1
+        },
+        {
+          "page": 3,
+          "characters": 2058,
+          "scored_text_sha256": "e47cec6e11d8ed1124eb58fe6a956a85646f411ff54f7ef8975f4f6bd7d36b66",
+          "max_repeated_16_token_sequence_count": 10
+        },
+        {
+          "page": 4,
+          "characters": 710,
+          "scored_text_sha256": "93073900bece61a8f4681d5103868c65b51e5e586c33da46a62cdbc59a400cef",
+          "max_repeated_16_token_sequence_count": 5
+        }
+      ],
+      "median_page_seconds": 23.531384628000524,
+      "timing_scope": "Runtime page timings; model loading excluded; missing/failed page timings may be absent",
+      "checks": [
+        {
+          "id": "finite-set",
+          "page": 1,
+          "category": "math",
+          "expected": "M={1,2,3}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "M={1,2,3}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "set-builder",
+          "page": 1,
+          "category": "math",
+          "expected": "M={x∈N|1≤x≤3}",
+          "accepted_format_variants": [
+            "M={x∈N,1≤x≤3}"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "natural-numbers",
+          "page": 1,
+          "category": "math",
+          "expected": "A={x∈N}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "A={x∈N}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "digit-set",
+          "page": 1,
+          "category": "math",
+          "expected": "C={0,1,2,3,4,5,6,7,8,9}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "C={0,1,2,3,4,5,6,7,8,9}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "direct-values",
+          "page": 1,
+          "category": "text",
+          "expected": "it has the direct values",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "it has the direct values",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "all-elements",
+          "page": 1,
+          "category": "text",
+          "expected": "I need to write all of its elements",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "I need to write all of its elements",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "interval-boundaries",
+          "page": 1,
+          "category": "text",
+          "expected": "with the closed or open boundaries",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "with the closed or open boundaries",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "natural-explanation",
+          "page": 1,
+          "category": "text",
+          "expected": "the set is only natural numbers",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the set is only natural numbers",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "union",
+          "page": 2,
+          "category": "math",
+          "expected": "H∪S",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "skiing-difference",
+          "page": 2,
+          "category": "math",
+          "expected": "S∪(H\\C)",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "female-regulars",
+          "page": 2,
+          "category": "math",
+          "expected": "F∩R",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "male-customers",
+          "page": 2,
+          "category": "math",
+          "expected": "C\\F",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "C\\F",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "male-regulars",
+          "page": 2,
+          "category": "math",
+          "expected": "(C\\F)∩R",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "nonregular-male-customers",
+          "page": 2,
+          "category": "math",
+          "expected": "C\\(F∪R)",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "hiking-skiing",
+          "page": 2,
+          "category": "text",
+          "expected": "Everyone who likes hiking also likes skiing",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Everyone who likes hiking also likes skiing",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "cycling-exclusion",
+          "page": 2,
+          "category": "text",
+          "expected": "but don't like cycling",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "but don't like cycling",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "female-description",
+          "page": 2,
+          "category": "text",
+          "expected": "the set of all Female regulars",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "male-description",
+          "page": 2,
+          "category": "text",
+          "expected": "the set of all male customers",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the set of all male customers",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "intersection",
+          "page": 3,
+          "category": "math",
+          "expected": "{2,3,5}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "{2,3,5}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "difference",
+          "page": 3,
+          "category": "math",
+          "expected": "A1\\A2={-1,6,7}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "A1\\A2={-1,6,7}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "product-cardinality",
+          "page": 3,
+          "category": "math",
+          "expected": "9×6×4=216",
+          "accepted_format_variants": [
+            "9*6*4=216",
+            "9x6x4=216"
+          ],
+          "passed": true,
+          "matched_variant": "9×6×4=216",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "g-after-f",
+          "page": 3,
+          "category": "math",
+          "expected": "(g∘f)(x)=(2x+1)^2",
+          "accepted_format_variants": [
+            "g(f(x))=(2x+1)^2"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "f-after-g",
+          "page": 3,
+          "category": "math",
+          "expected": "(f∘g)(x)=2x^2+1",
+          "accepted_format_variants": [
+            "f(g(x))=2x^2+1"
+          ],
+          "passed": true,
+          "matched_variant": "f(g(x))=2x^2+1",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "linear-map",
+          "page": 3,
+          "category": "math",
+          "expected": "(x,y,z)↦(x+y,y+z)",
+          "accepted_format_variants": [
+            "(x,y,z)→(x+y,y+z)"
+          ],
+          "passed": true,
+          "matched_variant": "(x,y,z)↦(x+y,y+z)",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "composition-title",
+          "page": 3,
+          "category": "text",
+          "expected": "Composition of function",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Composition of function",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "not-injective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is Not injective",
+          "accepted_format_variants": [
+            "F is not injective"
+          ],
+          "passed": true,
+          "matched_variant": "F is Not injective",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "surjective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is surjective",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "F is surjective",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "not-bijective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is Not bijective",
+          "accepted_format_variants": [
+            "F is not bijective"
+          ],
+          "passed": true,
+          "matched_variant": "F is Not bijective",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "sun",
+          "page": 4,
+          "category": "text",
+          "expected": "the sun is shining",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the sun is shining",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "addition-as-written",
+          "page": 4,
+          "category": "text",
+          "expected": "the addition of 2+2 equal 5",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the addition of 2+2 equal 5",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "pizza-question",
+          "page": 4,
+          "category": "text",
+          "expected": "Do you love pizza",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Do you love pizza",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "pizza-command",
+          "page": 4,
+          "category": "text",
+          "expected": "Eat the pizza",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Eat the pizza",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "neither-nor",
+          "page": 4,
+          "category": "text",
+          "expected": "Neither P nor Q means",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Neither P nor Q means",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "negated-sun",
+          "page": 4,
+          "category": "text",
+          "expected": "the sun is not shining AND",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the sun is not shining AND",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "false-statement-as-written",
+          "page": 4,
+          "category": "math",
+          "expected": "2+2=5",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "2+2=5",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "conjunction-of-negations",
+          "page": 4,
+          "category": "math",
+          "expected": "¬P∧¬Q",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "¬P∧¬Q",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "negated-disjunction",
+          "page": 4,
+          "category": "math",
+          "expected": "¬(P∨Q)",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "¬(P∨Q)",
+          "output_origin": "raw layout block text"
+        }
+      ]
+    },
+    {
+      "model": "Unlimited-OCR 2 NF4 / FP16 vision",
+      "run_directory": "outputs/parser_runs/unlimited-ocr-2-nf4-author-handwritten-mathematics-four-pages-01",
+      "run_status": "completed_with_errors",
+      "requested_pages": 4,
+      "completed_pages": 2,
+      "selected_assertions": {
+        "passed": 11,
+        "checked": 37
+      },
+      "categories": {
+        "text": {
+          "passed": 9,
+          "checked": 18
+        },
+        "math": {
+          "passed": 2,
+          "checked": 19
+        }
+      },
+      "diagram_diagnostics": {
+        "page": 2,
+        "canonical_model_image_regions": null,
+        "experimental_raw_image_regions": 6,
+        "scope": "Image-region count only; not diagram semantic accuracy or recall. Native full-photo recovery is not credited as model recognition."
+      },
+      "truth_table": {
+        "checked": 20,
+        "passed": 20,
+        "ordered_header_matched": true,
+        "detected_tables": 1,
+        "exact_shape": true,
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          }
+        ]
+      },
+      "page_seconds": [
+        168.621966824001,
+        109.75973559599879
+      ],
+      "initialization_seconds": null,
+      "page_load_seconds": [
+        98.30291672100066,
+        93.04131932499877,
+        21.406089977997908,
+        132.77783618300236
+      ],
+      "page_attempt_seconds_including_load": [
+        720.8069064090014,
+        275.92585291700016,
+        720.508585009,
+        284.5820361929982
+      ],
+      "page_output_diagnostics": [
+        {
+          "page": 1,
+          "characters": 0,
+          "scored_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "max_repeated_16_token_sequence_count": 0
+        },
+        {
+          "page": 2,
+          "characters": 1083,
+          "scored_text_sha256": "b54b949bdb9d283ade3e71b5a9165e6d60d48f346d480f668be21dffbaf9246d",
+          "max_repeated_16_token_sequence_count": 2
+        },
+        {
+          "page": 3,
+          "characters": 0,
+          "scored_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "max_repeated_16_token_sequence_count": 0
+        },
+        {
+          "page": 4,
+          "characters": 646,
+          "scored_text_sha256": "e5c847517b650bd8c1785536f214d0dc345bc8d28921b9cf96bd5f037c3eed66",
+          "max_repeated_16_token_sequence_count": 5
+        }
+      ],
+      "median_page_seconds": 139.1908512099999,
+      "timing_scope": "Runtime page timings; model loading excluded; missing/failed page timings may be absent",
+      "checks": [
+        {
+          "id": "finite-set",
+          "page": 1,
+          "category": "math",
+          "expected": "M={1,2,3}",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "set-builder",
+          "page": 1,
+          "category": "math",
+          "expected": "M={x∈N|1≤x≤3}",
+          "accepted_format_variants": [
+            "M={x∈N,1≤x≤3}"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "natural-numbers",
+          "page": 1,
+          "category": "math",
+          "expected": "A={x∈N}",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "digit-set",
+          "page": 1,
+          "category": "math",
+          "expected": "C={0,1,2,3,4,5,6,7,8,9}",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "direct-values",
+          "page": 1,
+          "category": "text",
+          "expected": "it has the direct values",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "all-elements",
+          "page": 1,
+          "category": "text",
+          "expected": "I need to write all of its elements",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "interval-boundaries",
+          "page": 1,
+          "category": "text",
+          "expected": "with the closed or open boundaries",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "natural-explanation",
+          "page": 1,
+          "category": "text",
+          "expected": "the set is only natural numbers",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "union",
+          "page": 2,
+          "category": "math",
+          "expected": "H∪S",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "skiing-difference",
+          "page": 2,
+          "category": "math",
+          "expected": "S∪(H\\C)",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "female-regulars",
+          "page": 2,
+          "category": "math",
+          "expected": "F∩R",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "male-customers",
+          "page": 2,
+          "category": "math",
+          "expected": "C\\F",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "male-regulars",
+          "page": 2,
+          "category": "math",
+          "expected": "(C\\F)∩R",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "nonregular-male-customers",
+          "page": 2,
+          "category": "math",
+          "expected": "C\\(F∪R)",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "hiking-skiing",
+          "page": 2,
+          "category": "text",
+          "expected": "Everyone who likes hiking also likes skiing",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Everyone who likes hiking also likes skiing",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "cycling-exclusion",
+          "page": 2,
+          "category": "text",
+          "expected": "but don't like cycling",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "but don't like cycling",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "female-description",
+          "page": 2,
+          "category": "text",
+          "expected": "the set of all Female regulars",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the set of all Female regulars",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "male-description",
+          "page": 2,
+          "category": "text",
+          "expected": "the set of all male customers",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the set of all male customers",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "intersection",
+          "page": 3,
+          "category": "math",
+          "expected": "{2,3,5}",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "difference",
+          "page": 3,
+          "category": "math",
+          "expected": "A1\\A2={-1,6,7}",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "product-cardinality",
+          "page": 3,
+          "category": "math",
+          "expected": "9×6×4=216",
+          "accepted_format_variants": [
+            "9*6*4=216",
+            "9x6x4=216"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "g-after-f",
+          "page": 3,
+          "category": "math",
+          "expected": "(g∘f)(x)=(2x+1)^2",
+          "accepted_format_variants": [
+            "g(f(x))=(2x+1)^2"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "f-after-g",
+          "page": 3,
+          "category": "math",
+          "expected": "(f∘g)(x)=2x^2+1",
+          "accepted_format_variants": [
+            "f(g(x))=2x^2+1"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "linear-map",
+          "page": 3,
+          "category": "math",
+          "expected": "(x,y,z)↦(x+y,y+z)",
+          "accepted_format_variants": [
+            "(x,y,z)→(x+y,y+z)"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "composition-title",
+          "page": 3,
+          "category": "text",
+          "expected": "Composition of function",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "not-injective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is Not injective",
+          "accepted_format_variants": [
+            "F is not injective"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "surjective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is surjective",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "not-bijective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is Not bijective",
+          "accepted_format_variants": [
+            "F is not bijective"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "sun",
+          "page": 4,
+          "category": "text",
+          "expected": "the sun is shining",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the sun is shining",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "addition-as-written",
+          "page": 4,
+          "category": "text",
+          "expected": "the addition of 2+2 equal 5",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the addition of 2+2 equal 5",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "pizza-question",
+          "page": 4,
+          "category": "text",
+          "expected": "Do you love pizza",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Do you love pizza",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "pizza-command",
+          "page": 4,
+          "category": "text",
+          "expected": "Eat the pizza",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "neither-nor",
+          "page": 4,
+          "category": "text",
+          "expected": "Neither P nor Q means",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Neither P nor Q means",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "negated-sun",
+          "page": 4,
+          "category": "text",
+          "expected": "the sun is not shining AND",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the sun is not shining AND",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "false-statement-as-written",
+          "page": 4,
+          "category": "math",
+          "expected": "2+2=5",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "2+2=5",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "conjunction-of-negations",
+          "page": 4,
+          "category": "math",
+          "expected": "¬P∧¬Q",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "¬P∧¬Q",
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        },
+        {
+          "id": "negated-disjunction",
+          "page": 4,
+          "category": "math",
+          "expected": "¬(P∨Q)",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "experimental raw block contents; layout envelopes stripped"
+        }
+      ]
+    },
+    {
+      "model": "dots.mocr original HF BF16 · Colab T4 · SDPA",
+      "run_directory": "outputs/parser_runs/dots-mocr-bf16-colab-author-mathematics-4-pages-01",
+      "run_status": "completed",
+      "requested_pages": 4,
+      "completed_pages": 4,
+      "selected_assertions": {
+        "passed": 32,
+        "checked": 37
+      },
+      "categories": {
+        "text": {
+          "passed": 17,
+          "checked": 18
+        },
+        "math": {
+          "passed": 15,
+          "checked": 19
+        }
+      },
+      "diagram_diagnostics": {
+        "page": 2,
+        "canonical_model_image_regions": 6,
+        "experimental_raw_image_regions": null,
+        "scope": "Image-region count only; not diagram semantic accuracy or recall. Native full-photo recovery is not credited as model recognition."
+      },
+      "truth_table": {
+        "checked": 20,
+        "passed": 20,
+        "ordered_header_matched": true,
+        "detected_tables": 1,
+        "exact_shape": true,
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "expected": "F",
+            "actual": "F",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "expected": "T",
+            "actual": "T",
+            "passed": true
+          }
+        ]
+      },
+      "page_seconds": [
+        39.600919783000336,
+        67.5451365570002,
+        83.3102552790001,
+        39.78156424500003
+      ],
+      "initialization_seconds": null,
+      "page_load_seconds": [],
+      "page_attempt_seconds_including_load": [],
+      "page_output_diagnostics": [
+        {
+          "page": 1,
+          "characters": 917,
+          "scored_text_sha256": "90d29b5be97ade4e07950ee85ba72e05958a6513d93890eda97a9e72ddae8f5a",
+          "max_repeated_16_token_sequence_count": 1
+        },
+        {
+          "page": 2,
+          "characters": 1134,
+          "scored_text_sha256": "34bcf17015f02f15bb7ef3ecd28e6fa0a8bb061e8379fdf9940924672d413926",
+          "max_repeated_16_token_sequence_count": 1
+        },
+        {
+          "page": 3,
+          "characters": 1800,
+          "scored_text_sha256": "41a9f92964d4e791836b91e7396d684af65d51a4ba3e9c74974dbfdae19f2751",
+          "max_repeated_16_token_sequence_count": 2
+        },
+        {
+          "page": 4,
+          "characters": 706,
+          "scored_text_sha256": "4d9f769638a1c88efcdaf4b17884badebfc0fa87dddefb77e5f580a7586d86b9",
+          "max_repeated_16_token_sequence_count": 5
+        }
+      ],
+      "median_page_seconds": 53.663350401000116,
+      "timing_scope": "Runtime page timings; model loading excluded; missing/failed page timings may be absent",
+      "checks": [
+        {
+          "id": "finite-set",
+          "page": 1,
+          "category": "math",
+          "expected": "M={1,2,3}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "M={1,2,3}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "set-builder",
+          "page": 1,
+          "category": "math",
+          "expected": "M={x∈N|1≤x≤3}",
+          "accepted_format_variants": [
+            "M={x∈N,1≤x≤3}"
+          ],
+          "passed": true,
+          "matched_variant": "M={x∈N|1≤x≤3}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "natural-numbers",
+          "page": 1,
+          "category": "math",
+          "expected": "A={x∈N}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "A={x∈N}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "digit-set",
+          "page": 1,
+          "category": "math",
+          "expected": "C={0,1,2,3,4,5,6,7,8,9}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "C={0,1,2,3,4,5,6,7,8,9}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "direct-values",
+          "page": 1,
+          "category": "text",
+          "expected": "it has the direct values",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "it has the direct values",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "all-elements",
+          "page": 1,
+          "category": "text",
+          "expected": "I need to write all of its elements",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "I need to write all of its elements",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "interval-boundaries",
+          "page": 1,
+          "category": "text",
+          "expected": "with the closed or open boundaries",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "with the closed or open boundaries",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "natural-explanation",
+          "page": 1,
+          "category": "text",
+          "expected": "the set is only natural numbers",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the set is only natural numbers",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "union",
+          "page": 2,
+          "category": "math",
+          "expected": "H∪S",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "skiing-difference",
+          "page": 2,
+          "category": "math",
+          "expected": "S∪(H\\C)",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "female-regulars",
+          "page": 2,
+          "category": "math",
+          "expected": "F∩R",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "F∩R",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "male-customers",
+          "page": 2,
+          "category": "math",
+          "expected": "C\\F",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "C\\F",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "male-regulars",
+          "page": 2,
+          "category": "math",
+          "expected": "(C\\F)∩R",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "(C\\F)∩R",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "nonregular-male-customers",
+          "page": 2,
+          "category": "math",
+          "expected": "C\\(F∪R)",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "hiking-skiing",
+          "page": 2,
+          "category": "text",
+          "expected": "Everyone who likes hiking also likes skiing",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Everyone who likes hiking also likes skiing",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "cycling-exclusion",
+          "page": 2,
+          "category": "text",
+          "expected": "but don't like cycling",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "but don't like cycling",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "female-description",
+          "page": 2,
+          "category": "text",
+          "expected": "the set of all Female regulars",
+          "accepted_format_variants": [],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "male-description",
+          "page": 2,
+          "category": "text",
+          "expected": "the set of all male customers",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the set of all male customers",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "intersection",
+          "page": 3,
+          "category": "math",
+          "expected": "{2,3,5}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "{2,3,5}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "difference",
+          "page": 3,
+          "category": "math",
+          "expected": "A1\\A2={-1,6,7}",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "A1\\A2={-1,6,7}",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "product-cardinality",
+          "page": 3,
+          "category": "math",
+          "expected": "9×6×4=216",
+          "accepted_format_variants": [
+            "9*6*4=216",
+            "9x6x4=216"
+          ],
+          "passed": true,
+          "matched_variant": "9×6×4=216",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "g-after-f",
+          "page": 3,
+          "category": "math",
+          "expected": "(g∘f)(x)=(2x+1)^2",
+          "accepted_format_variants": [
+            "g(f(x))=(2x+1)^2"
+          ],
+          "passed": false,
+          "matched_variant": null,
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "f-after-g",
+          "page": 3,
+          "category": "math",
+          "expected": "(f∘g)(x)=2x^2+1",
+          "accepted_format_variants": [
+            "f(g(x))=2x^2+1"
+          ],
+          "passed": true,
+          "matched_variant": "(f∘g)(x)=2x^2+1",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "linear-map",
+          "page": 3,
+          "category": "math",
+          "expected": "(x,y,z)↦(x+y,y+z)",
+          "accepted_format_variants": [
+            "(x,y,z)→(x+y,y+z)"
+          ],
+          "passed": true,
+          "matched_variant": "(x,y,z)↦(x+y,y+z)",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "composition-title",
+          "page": 3,
+          "category": "text",
+          "expected": "Composition of function",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Composition of function",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "not-injective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is Not injective",
+          "accepted_format_variants": [
+            "F is not injective"
+          ],
+          "passed": true,
+          "matched_variant": "F is Not injective",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "surjective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is surjective",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "F is surjective",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "not-bijective",
+          "page": 3,
+          "category": "text",
+          "expected": "F is Not bijective",
+          "accepted_format_variants": [
+            "F is not bijective"
+          ],
+          "passed": true,
+          "matched_variant": "F is Not bijective",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "sun",
+          "page": 4,
+          "category": "text",
+          "expected": "the sun is shining",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the sun is shining",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "addition-as-written",
+          "page": 4,
+          "category": "text",
+          "expected": "the addition of 2+2 equal 5",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the addition of 2+2 equal 5",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "pizza-question",
+          "page": 4,
+          "category": "text",
+          "expected": "Do you love pizza",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Do you love pizza",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "pizza-command",
+          "page": 4,
+          "category": "text",
+          "expected": "Eat the pizza",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Eat the pizza",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "neither-nor",
+          "page": 4,
+          "category": "text",
+          "expected": "Neither P nor Q means",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "Neither P nor Q means",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "negated-sun",
+          "page": 4,
+          "category": "text",
+          "expected": "the sun is not shining AND",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "the sun is not shining AND",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "false-statement-as-written",
+          "page": 4,
+          "category": "math",
+          "expected": "2+2=5",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "2+2=5",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "conjunction-of-negations",
+          "page": 4,
+          "category": "math",
+          "expected": "¬P∧¬Q",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "¬P∧¬Q",
+          "output_origin": "raw layout block text"
+        },
+        {
+          "id": "negated-disjunction",
+          "page": 4,
+          "category": "math",
+          "expected": "¬(P∨Q)",
+          "accepted_format_variants": [],
+          "passed": true,
+          "matched_variant": "¬(P∨Q)",
+          "output_origin": "raw layout block text"
+        }
+      ]
+    }
+  ]
+}

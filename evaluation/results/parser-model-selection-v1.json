@@ -1,0 +1,230 @@
+{
+  "version": "1.0",
+  "production_default": "dots.mocr Q4_K_M language + Q8_0 projector",
+  "quality_finding": "Original BF16 dots.mocr achieved the best selected handwritten-mathematics result (32/37 versus Q4 29/37). Printed-text recovery is essentially tied; BF16 is not the winner in every category.",
+  "gpu_memory": {
+    "bf16_peak_allocated_mib": 8739.25732421875,
+    "bf16_peak_allocated_gib": 8.534430980682373,
+    "scope": "Maximum per-page torch.cuda.max_memory_allocated after reset, across all 31 attempts; includes model allocations; not total GPU-device memory or a minimum VRAM requirement.",
+    "gpu": "Tesla T4",
+    "local_quantized_gpu": "NVIDIA GeForce GTX 1660 Ti, 6144 MiB",
+    "local_quantized_peak_sampled_device_mib": 5914
+  },
+  "cases": [
+    {
+      "case": "original-multimodal-2-pages",
+      "pages": [
+        {
+          "page": 1,
+          "peak_allocated_mib": 8738.25732421875,
+          "finish_reason": "stop",
+          "prediction_sha256": "e1d24ffb303f7a67476538a15f73f2d416c9608ac6dc9b8e0e03cdad3e2c9687"
+        },
+        {
+          "page": 2,
+          "peak_allocated_mib": 8739.25732421875,
+          "finish_reason": "stop",
+          "prediction_sha256": "796fe3881f2e59992bd2e6e6ace3cef70bda50407ed18ffaab266716e56de4d4"
+        }
+      ],
+      "peak_allocated_mib": 8739.25732421875
+    },
+    {
+      "case": "nasa-first-20-pages",
+      "pages": [
+        {
+          "page": 1,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "11f9ab75a44ef86d866636ad74b0090816bff31c135ce42f733155e404b7b9b2"
+        },
+        {
+          "page": 2,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "7dfc99cee04b56b1c88915faf1d86408363e929c03372f3e9cfd1a387b9708ec"
+        },
+        {
+          "page": 3,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "8ac4d683c8fc295453eee7f1ea18bb4694b198ca768738edb41ffe4cc07d88de"
+        },
+        {
+          "page": 4,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "c5f3c8c1cc40b5d641431137f66ed27faa038914f86ad8b67e7e22a056a3698f"
+        },
+        {
+          "page": 5,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "d6dc95581fad66e6f4f6d800c73cd2454c498ec2a3f0d32a6644bfb22d94647a"
+        },
+        {
+          "page": 6,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "dd54c7f092de7a0312647963c47e4c5244182a0558b2d7b638f5d6ca2f4e7682"
+        },
+        {
+          "page": 7,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "958b7b91067f2803049599c2b91b9b7d6a1daf794eec4516f1cb2ee276bd89c7"
+        },
+        {
+          "page": 8,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "30510439ebe00534973498ccfc3794b12099709e30b804f3a4a80e9b06b0af2f"
+        },
+        {
+          "page": 9,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "cf32d49ff2e7982fabde8f4428d9ecb6803f6ac10f9f6101d7e3b19656301825"
+        },
+        {
+          "page": 10,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "8afff642660161d4ab370741f2f635bfbf2f6136dd51c29bb4716ad75bf84bdc"
+        },
+        {
+          "page": 11,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "861b917727a4c6f04eae3628d0a7d8b21446611ba6ae9d9358521d750ceaf00c"
+        },
+        {
+          "page": 12,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "fe33b3174d81177789e3f29d7aa5b189beff44034d05eeae70040cb12b529ae2"
+        },
+        {
+          "page": 13,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "733a49ed65c880c131b5c3e0c05bb896c5fc3fa4556e92b248cff9bcd95ea2c4"
+        },
+        {
+          "page": 14,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "b4ff61ca0ca19472eafbbb80eca7ae00cf90e4c731a1b97b88fd5245ff3b6d41"
+        },
+        {
+          "page": 15,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "7983a5dda6c6da847eaa33685b16824cbdad4509d11542695dcecfd62c8f210f"
+        },
+        {
+          "page": 16,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "f1f7b349b78c01e205f9503466b185a09bc379ed669bb2689509a25680fb7a3f"
+        },
+        {
+          "page": 17,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "6180b5e2a1a50c0ffc82eda1e181f73313abc57554cbe73e4decb8fac02fb40a"
+        },
+        {
+          "page": 18,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "4c2002d0b5c8210a5e9b889036bbd390248bad4f2e68d4d033fac6f9d08e752e"
+        },
+        {
+          "page": 19,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "7bc2a32366bcf96b3540e8a972e5707d7d70b51bd21768ce5c424bc987129d73"
+        },
+        {
+          "page": 20,
+          "peak_allocated_mib": 8653.3369140625,
+          "finish_reason": "stop",
+          "prediction_sha256": "5de982dd10ca573bf7686e21da071e99bfdb841774131859efad7785f92a45b8"
+        }
+      ],
+      "peak_allocated_mib": 8653.3369140625
+    },
+    {
+      "case": "historical-diary-5-pages",
+      "pages": [
+        {
+          "page": 1,
+          "peak_allocated_mib": 8713.337890625,
+          "finish_reason": "stop",
+          "prediction_sha256": "7d3e32f68a039943d470bfe7685bfdbbf65cc99b9a2ea4aa37a7ff0d0aa35358"
+        },
+        {
+          "page": 2,
+          "peak_allocated_mib": 8713.337890625,
+          "finish_reason": "time_limit",
+          "prediction_sha256": "6785db18aff18213b65e27a4f54077cc973d38e17e541e05b4469e3cb9c360a6"
+        },
+        {
+          "page": 3,
+          "peak_allocated_mib": 8713.337890625,
+          "finish_reason": "stop",
+          "prediction_sha256": "1c791fe460d5ec2284b8f1bb8433c25a0f61ee7d1397ef35995cff3a8d1bc349"
+        },
+        {
+          "page": 4,
+          "peak_allocated_mib": 8713.337890625,
+          "finish_reason": "stop",
+          "prediction_sha256": "2657537459f4ba4a7122ada2b11c65e3669e55463e40aad9bf292d74a89744bb"
+        },
+        {
+          "page": 5,
+          "peak_allocated_mib": 8687.541015625,
+          "finish_reason": "stop",
+          "prediction_sha256": "2971448d6427a21214bd0f5d4992be40a79ac5d35c23f135bcd4b38977e95a3c"
+        }
+      ],
+      "peak_allocated_mib": 8713.337890625
+    },
+    {
+      "case": "author-mathematics-4-pages",
+      "pages": [
+        {
+          "page": 1,
+          "peak_allocated_mib": 8605.02783203125,
+          "finish_reason": "stop",
+          "prediction_sha256": "eebd9e85c51d203ad646ee5caa44066d152f44daf9a6f9241df403140167f9f4"
+        },
+        {
+          "page": 2,
+          "peak_allocated_mib": 8605.02783203125,
+          "finish_reason": "stop",
+          "prediction_sha256": "9a432d065437874e0b6e6ecb752b676f594b2cefdb38060f9f6e3c0e27696a33"
+        },
+        {
+          "page": 3,
+          "peak_allocated_mib": 8605.02783203125,
+          "finish_reason": "stop",
+          "prediction_sha256": "bd0ac157b41f8fb03f72afc7cb717c903403a140e43f4e030333b5ea62ff4797"
+        },
+        {
+          "page": 4,
+          "peak_allocated_mib": 8605.02783203125,
+          "finish_reason": "stop",
+          "prediction_sha256": "ab40b384bf6582b2035b4c0ea960fd9568683720753b7f2f5204ef4d70babf8c"
+        }
+      ],
+      "peak_allocated_mib": 8605.02783203125
+    }
+  ],
+  "limitations": [
+    "BF16 tested in Colab, not a supported local CPU mode.",
+    "Different hardware/backends/conversion lineage; no isolated quantization-effect claim.",
+    "IRENA/IMF saved pipeline stages remain historical PaddleOCR outputs; default switch does not change or relabel them."
+  ]
+}

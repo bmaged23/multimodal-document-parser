@@ -61,3 +61,13 @@ shared PDF, predictions and per-model archives, as well as all earlier diary run
 See `docs/evaluation/author-handwritten-mathematics.md` and the preservation
 registry for results. Selected assistant-reviewed math/text checks and ordered
 truth-table cells are not full-document accuracy or independent human labels.
+
+# Current production parser
+
+The production CLI/API and container now default to dots.mocr Q4_K_M language
+weights plus Q8_0 projector. Original BF16 dots was explicitly authorized for
+Colab GPU comparison; this does not restore the retired CPU path. Its best
+selected handwritten-mathematics score is 32/37, with 8.53 GiB peak PyTorch
+allocation on T4. Do not call it a universal winner or confuse allocation with
+total VRAM/minimum capacity. Historical Paddle IRENA/IMF outputs stay labeled
+as Paddle and are not relabeled as results from the new default.
