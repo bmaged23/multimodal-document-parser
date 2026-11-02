@@ -98,7 +98,9 @@ def build_public_demo(
                 ),
                 page_images=[],
                 description=(
-                    f"{len(numbers)} curated demo pages from the {case['page_count']}-page "
+                    case["description"]
+                    + " "
+                    + f"{len(numbers)} curated demo pages from the {case['page_count']}-page "
                     "saved selection. Metrics describe that full saved run. " + spec.attribution
                 ),
             )

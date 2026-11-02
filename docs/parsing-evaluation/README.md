@@ -25,13 +25,16 @@ pages 15–16. They are not raw-model accuracy claims.
 ## Models and execution scope
 
 **Hardware:** NVIDIA GeForce GTX 1660 Ti, **6 GB VRAM (6,144 MiB)**, Linux/WSL2.
-OCR backends ran sequentially; cloud visual-enrichment hardware is separate.
+Local OCR backends ran sequentially. Original BF16 dots ran separately on a
+Colab T4, reaching **8.53 GiB peak PyTorch allocation**; cloud visual-enrichment
+hardware is separate.
 
 | Configuration | Evaluated path | Interpretation |
 | --- | --- | --- |
 | PaddleOCR-VL-1.6 | Isolated locked Paddle GPU runtime; canonical JSON/Markdown/HTML | Raw predictions and normalized exports retained |
 | dots.mocr Q4_K_M language + Q8_0 projector | Pinned CUDA 12.6/sm75 native runtime on GTX 1660 Ti | Quantized GPU configuration; do not generalize to BF16 or another quantization |
 | Unlimited-OCR-2 NF4/FP16 vision experiments | Separately preserved diagnostic runs | Not interchangeable with the common normalized comparison contract |
+| Original dots.mocr BF16 | GPU-only Colab T4, original pinned HF weights, SDPA | Best selected handwritten-mathematics score; not an overall winner |
 
 Retired CPU experiments are historical failure evidence, not active execution
 paths. Runtime locks, model identity, quantization, prompts, preprocessing,

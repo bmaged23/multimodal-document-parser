@@ -1,7 +1,7 @@
 {
-  "captured_at_utc": "2026-11-02T21:49:18.772922+00:00",
+  "captured_at_utc": "2026-11-02T22:13:55.112290+00:00",
   "note": "Actual browser screenshots of saved public excerpts; no model inference or image synthesis.",
-  "demo_build_manifest_sha256": "db35819d7e4a2a3111c0b9a83b0434f329db29fd338338833e9890e5b93ed4ba",
+  "demo_build_manifest_sha256": "da378c56aee3346fc3092afc33506cba1d4d0aa9abb8794ff4c3bcb3d014afa9",
   "presentation": "Expanded review; output zoom 125%; selected source region highlighted.",
   "images": [
     {
@@ -14,7 +14,7 @@
       "saved_page_number": 3,
       "stage": "source_checked",
       "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
-      "sha256": "0ab32d77b92a66ce63b65573b05dd70ff199074ab76cf78e789ac41ac5a14b00",
+      "sha256": "325167e0287e564988b46bac77303e0c6ad5cc6d5c71f5cb8e51759aac985366",
       "viewport": {
         "width": 1800,
         "height": 1120
@@ -30,7 +30,7 @@
       "saved_page_number": 4,
       "stage": "source_checked",
       "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
-      "sha256": "697b0f9d1d38c1260b3b8acb40c3b224567be0b543ebd76a00e52ccf83fdbee0",
+      "sha256": "1c731a74f6eb298e0b53565edd47a65bc2865e8b2ee6918f1f71592cf45d88d0",
       "viewport": {
         "width": 1800,
         "height": 1120
@@ -46,7 +46,7 @@
       "saved_page_number": 4,
       "stage": "ocr",
       "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
-      "sha256": "7ae2cc1117352d14c378ce6a99246596d9197a0b7c42b109b77af7067aadcbff",
+      "sha256": "a551f2076815da5634b5bb43ff63a2027e9f3650c4006e4a02a9fac2136092b2",
       "viewport": {
         "width": 1800,
         "height": 1120
@@ -62,7 +62,7 @@
       "saved_page_number": 6,
       "stage": "ocr",
       "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
-      "sha256": "f2ab193ec509cf9ac646cbee00882c40ea4339060aeb0f8233b1f461b7b87e96",
+      "sha256": "d7145fa0a326d551b1f84b9d10d199302b27aba383a5970188c3d7d14c744006",
       "viewport": {
         "width": 1800,
         "height": 1120
@@ -78,7 +78,7 @@
       "saved_page_number": 4,
       "stage": "ocr",
       "source_url": null,
-      "sha256": "b2b265fc55ebbf883b7fbf87c5c5b1ac92766175a00731ae0978a34c274e5a70",
+      "sha256": "3041b906d9b02b156813529c22de86fc7eecc70993953ebdae667c57a546db3a",
       "viewport": {
         "width": 1800,
         "height": 1120

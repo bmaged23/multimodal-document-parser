@@ -39,6 +39,9 @@ def test_public_excerpt_mapping_failures_and_asset_exclusion(showcase_project):
     case = catalog["cases"][0]
     assert case["original_pages"] == [20]
     assert case["page_count"] == 1
+    original_case = json.loads((source / "catalog.json").read_text())["cases"][0]
+    assert case["description"].startswith(original_case["description"])
+    assert "Synthetic fixture, not a model result." in case["description"]
     with pdfium.PdfDocument(destination / case["source"]) as excerpt:
         assert len(excerpt) == 1
         page = excerpt[0]

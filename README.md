@@ -14,7 +14,7 @@ Chunking, retrieval and the RAG agent are secondary downstream studies.
 
 ## Live demo
 
-[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=4.0)
+[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=4.1)
 
 **Click the banner to try the interactive demo—no setup, GPU or API key needed.**
 
@@ -129,12 +129,19 @@ original-weight BF16 run on a Colab T4 now covers the same 31 input PNGs:
 [unquantized versus retained parser profiles](docs/evaluation/dots-mocr-colab-bf16-comparison.md).
 Different hardware, backends and conversion lineage prevent isolating quantization alone.
 
-| Observed case | PaddleOCR-VL-1.6 | Quantized dots.mocr | Unlimited-OCR 2 NF4/FP16 |
-| --- | ---: | ---: | ---: |
-| NASA financial report, selected 20 pages | 20 accepted | 20 accepted | 20 completed generations |
-| Median measured page time on that NASA selection | 155.7 s | 25.9 s | 108.1 s generation-only |
-| Historical diary, archived 5-page selection | 5 saved | 3 accepted; 2 token-limit failures | 3 completed; 2 timeouts |
-| Selected cell assertions on one small sensor table | 20/20 | 20/20 | 20/20 |
+| Observed case | PaddleOCR-VL-1.6 | Quantized dots.mocr | Unlimited-OCR 2 NF4/FP16 | Original dots BF16 |
+| --- | ---: | ---: | ---: | ---: |
+| NASA financial report, selected 20 pages | 20 accepted | 20 accepted | 20 completed generations | 20 accepted |
+| NASA PDF-text-layer token F1 | 96.59% | 97.13% | 96.17% | 97.14% |
+| Median measured NASA page time | 155.7 s | 25.9 s | 108.1 s generation-only | 61.7 s on Colab T4 |
+| Historical diary, archived 5-page selection | 5 accepted | 3 accepted; 2 token-limit failures | 3 completed; 2 timeouts | 4 accepted; 1 time limit |
+| Selected small sensor-table cell checks | 20/20 | 20/20 | 20/20 | 20/20 raw; 0/2 original pages normalize |
+| Peak memory across retained runs | 5,959 MiB device | 5,914 MiB device | 3,150 MiB allocator | **8,739 MiB / 8.53 GiB allocator** |
+
+Device peaks are sampled total GPU memory; allocator peaks are PyTorch maxima.
+They are different metrics, not minimum GPU capacities. BF16 ran on Colab T4;
+the other profiles ran on GTX 1660 Ti (6 GB). Printed token F1 is source-text
+recovery, not overall document accuracy or diagram understanding.
 
 Accepted or generated pages are not necessarily accurate pages. Backend timing
 scopes, initialization, precision, preprocessing and image dimensions differ;
@@ -143,18 +150,18 @@ above. These are operational observations, not a controlled speedup or quality
 ranking. NASA's selection has no independent accuracy reference. The cell checks
 cover only one small development table, not a general table benchmark.
 
-[Three-model comparison data](evaluation/results/parser-comparison-showcase-v1.json) ·
+[Four-profile comparison and per-page data](evaluation/results/parser-corpus-four-profiles-v1.json) ·
 [Paddle/dots batch findings](docs/evaluation/quantized-gpu-batch.md) ·
 [Unlimited-OCR 2 findings](docs/evaluation/unlimited-ocr-2-gpu-results.md) ·
 [Hardware and limits](docs/development/hardware-report.md)
 
 ### Author-written mathematics · four photos
 
-**Finding: quantized dots.mocr was substantially better at handwritten text and
-mathematical notation in our four-page assignment test.** It recovered 29/37
-selected text/math checks, versus PaddleOCR's 13/37 and Unlimited-OCR's 11/37.
-It is our preferred candidate for similar handwritten mathematics PDFs, with
-formula review. This small test does not establish superiority across all handwriting.
+**Finding: original BF16 dots.mocr achieved our best selected handwritten
+mathematics result: 32/37 checks**, versus quantized dots 29/37, PaddleOCR 13/37
+and Unlimited-OCR 11/37. Quantized dots is the production default for the 6 GB
+laptop; BF16 peaked at 8.53 GiB PyTorch allocation on Colab T4. Formula review
+remains necessary, and BF16 does not win every category.
 
 The current handwriting demo uses the author’s own assignment. These are selected
 assistant-reviewed presence checks, not independent annotations or full-page accuracy.
@@ -165,8 +172,9 @@ Ambiguous/crossed-out spans are excluded; original mathematical mistakes stay un
 | PaddleOCR-VL-1.6 | 8/18 | 5/19 | 20/20 |
 | dots.mocr Q4_K_M + Q8_0 | 17/18 | 12/19 | 20/20 |
 | Unlimited-OCR 2 NF4/FP16 | 9/18 | 2/19 | 20/20 |
+| Original dots.mocr BF16 · Colab T4 | **17/18** | **15/19** | 20/20 |
 
-PaddleOCR and dots completed 4/4 pages; Unlimited completed 2/4 and timed out on
+PaddleOCR and both dots profiles completed 4/4 pages; Unlimited completed 2/4 and timed out on
 pages 1 and 3. Missing outputs count as unrecovered checks. dots recovered the
 most selected text/math on this case; Unlimited preserved more Venn-diagram
 regions on page 2. Time budgets, precision and internal preprocessing differ.
