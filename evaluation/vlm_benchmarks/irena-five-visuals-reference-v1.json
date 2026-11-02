@@ -1,0 +1,267 @@
+{
+  "review_version": "1.0",
+  "document_id": "sha256:7f624f343fabbcd213bff4e0431a6d60e6ba42d8041a576b5afce53c73f86e26",
+  "annotation_provenance": "Assistant transcribed selected cells and printed chart labels from rendered source PDF pages at 180 DPI, with a 46-page thumbnail overview. Single annotator; model inventory was seen before annotation, so this is not blind or independent human ground truth. Predictions were not copied into reference values. Created 2026-10-31. Rows and columns are zero-based logical source grid coordinates; table and visual indexes are zero-based within each page in reading order.",
+  "selection_policy": "Development sample chosen for merged headers, wrapped country names, first/last rows, dense chart labels, signs, grouped bars, unlabelled scatter plots and a photographic chapter divider. All source pages overviewed; only the explicit assertions below are scored. No population-level accuracy estimate.",
+  "overview_reviewed_pages": [
+    4,
+    15,
+    9,
+    13,
+    20
+  ],
+  "table_counts": {},
+  "visual_counts": {
+    "4": 1,
+    "15": 1,
+    "9": 1,
+    "13": 1,
+    "20": 1
+  },
+  "table_cells": [],
+  "visuals": [
+    {
+      "page_number": 4,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [
+        {
+          "series": "Solar PV",
+          "label": "2010",
+          "value": 0.417
+        },
+        {
+          "series": "Solar PV",
+          "label": "2024",
+          "value": 0.043
+        },
+        {
+          "series": "CSP",
+          "label": "2010",
+          "value": 0.402
+        },
+        {
+          "series": "CSP",
+          "label": "2024",
+          "value": 0.092
+        },
+        {
+          "series": "Bioenergy",
+          "label": "2010",
+          "value": 0.086
+        },
+        {
+          "series": "Bioenergy",
+          "label": "2024",
+          "value": 0.087
+        },
+        {
+          "series": "Offshore wind",
+          "label": "2010",
+          "value": 0.208
+        },
+        {
+          "series": "Offshore wind",
+          "label": "2024",
+          "value": 0.079
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2010",
+          "value": 0.113
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2024",
+          "value": 0.034
+        },
+        {
+          "series": "Geothermal",
+          "label": "2010",
+          "value": 0.055
+        },
+        {
+          "series": "Geothermal",
+          "label": "2024",
+          "value": 0.06
+        },
+        {
+          "series": "Hydropower",
+          "label": "2010",
+          "value": 0.044
+        },
+        {
+          "series": "Hydropower",
+          "label": "2024",
+          "value": 0.057
+        }
+      ],
+      "series_units": {
+        "Solar PV": "USD/kWh",
+        "CSP": "USD/kWh",
+        "Bioenergy": "USD/kWh",
+        "Offshore wind": "USD/kWh",
+        "Onshore wind": "USD/kWh",
+        "Geothermal": "USD/kWh",
+        "Hydropower": "USD/kWh"
+      },
+      "all_printed_points_annotated": true
+    },
+    {
+      "page_number": 9,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [],
+      "series_units": {},
+      "no_numeric_values": true,
+      "no_data_points": true
+    },
+    {
+      "page_number": 13,
+      "visual_index": 0,
+      "kind": "image",
+      "printed_points": [],
+      "series_units": {}
+    },
+    {
+      "page_number": 15,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [
+        {
+          "series": "cumulative installed capacity",
+          "label": "Africa 2023",
+          "value": 65
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Africa 2024",
+          "value": 70
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Asia 2023",
+          "value": 1961
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Asia 2024",
+          "value": 2374
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Central America and the Caribbean 2023",
+          "value": 19
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Central America and the Caribbean 2024",
+          "value": 19
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Eurasia 2023",
+          "value": 122
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Eurasia 2024",
+          "value": 133
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Europe 2023",
+          "value": 778
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Europe 2024",
+          "value": 850
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Middle East 2023",
+          "value": 37
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Middle East 2024",
+          "value": 41
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "North America 2023",
+          "value": 526
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "North America 2024",
+          "value": 572
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Oceania 2023",
+          "value": 62
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Oceania 2024",
+          "value": 70
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "South America 2023",
+          "value": 290
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "South America 2024",
+          "value": 313
+        }
+      ],
+      "series_units": {
+        "cumulative installed capacity": "GW"
+      },
+      "all_printed_points_annotated": true
+    },
+    {
+      "page_number": 20,
+      "visual_index": 0,
+      "kind": "image",
+      "printed_points": [],
+      "series_units": {}
+    }
+  ],
+  "reading_order": [],
+  "image_rubric": {
+    "annotation_provenance": "Single-assistant source review from the original PDF photographs; not independent human ground truth. Factual coverage is manually assessed from each returned description; keyword presence alone is not treated as correctness.",
+    "photos": {
+      "element_00118": {
+        "features": [
+          "Open wind-turbine nacelle/tower seen close up",
+          "Large circular component suspended from a crane or lifting cables",
+          "A visible person in blue clothing near the open housing",
+          "Clear blue-sky background"
+        ],
+        "unsupported_claim_checks": [
+          "Unprinted equipment make/model",
+          "Unprinted named location",
+          "Confident event/purpose or procedure that cannot be determined from the photograph"
+        ]
+      },
+      "element_00183": {
+        "features": [
+          "Large concrete dam structure",
+          "Water discharging down steep spillways into white spray",
+          "Orange structures/cranes and buildings near the dam",
+          "Green mountainous surroundings"
+        ],
+        "unsupported_claim_checks": [
+          "Unprinted named location",
+          "Unprinted equipment make/model",
+          "Unobservable scientific or operational claims"
+        ]
+      }
+    }
+  }
+}

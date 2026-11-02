@@ -1,0 +1,205 @@
+{
+  "evaluation_id": "irena-imf-source-review-v1",
+  "evaluated_at": "2026-10-31",
+  "status": "completed_with_documented_quality_issues",
+  "scope": "Single-assistant, non-blind source-reviewed development checks. No independent human benchmark, overall accuracy or three-model ranking. RAG chunking has not started.",
+  "models": {
+    "ocr": "PaddleOCR-VL-1.6",
+    "vlm": "gemma4:31b",
+    "vlm_provider": "Ollama Cloud",
+    "vlm_catalog_digest": "221b330d11a8",
+    "vlm_revision_pinned": false
+  },
+  "cases": {
+    "irena": {
+      "document_id": "sha256:7f624f343fabbcd213bff4e0431a6d60e6ba42d8041a576b5afce53c73f86e26",
+      "reference_sha256": "4b4c4bd8c233085051e7b628a79fd836ea125dc01a47875ea42df4f50d49a895",
+      "evaluator_sha256": "468ba5ab5a3b71bc049f3ab2a93a161f0b2a6a15e175fca323488a02b13b062a",
+      "document_json_sha256": "9dd392cda03fbe837127df552dd6cf837103695499979c9611239bf613737291",
+      "summary": {
+        "chart_series_unit": {
+          "passed": 38,
+          "checked": 39
+        },
+        "predicted_numeric_point_supported": {
+          "passed": 141,
+          "checked": 143
+        },
+        "printed_chart_point": {
+          "passed": 141,
+          "checked": 144
+        },
+        "reading_order_anchor_pair": {
+          "passed": 8,
+          "checked": 8
+        },
+        "table_cell_span": {
+          "passed": 14,
+          "checked": 14
+        },
+        "table_cell_text": {
+          "passed": 106,
+          "checked": 106
+        },
+        "table_count_per_page": {
+          "passed": 20,
+          "checked": 20
+        },
+        "table_header_semantics": {
+          "passed": 0,
+          "checked": 19
+        },
+        "unlabelled_chart_no_invented_categories": {
+          "passed": 1,
+          "checked": 2
+        },
+        "unlabelled_chart_numeric_abstention": {
+          "passed": 2,
+          "checked": 2
+        },
+        "visual_count_per_page": {
+          "passed": 19,
+          "checked": 20
+        },
+        "visual_kind": {
+          "passed": 14,
+          "checked": 15
+        }
+      },
+      "inventory": {
+        "pages": 20,
+        "elements": {
+          "page_header": 17,
+          "image": 4,
+          "heading": 24,
+          "text": 72,
+          "footnote": 11,
+          "page_footer": 19,
+          "caption": 25,
+          "table": 2,
+          "chart": 10
+        },
+        "table_cells": 106
+      },
+      "runtime": {
+        "status": "completed",
+        "completed_pages": 20,
+        "total_pages": 20,
+        "total_seconds": 1406.9850708190002,
+        "initialization_seconds": 42.13506416600012,
+        "peak_sampled_device_memory_mib": 5959,
+        "memory_measurement": "GPU 0 total device memory sampled once per second; not allocator peak",
+        "paddleocr_version": "3.6.0",
+        "paddlepaddle_version": "3.2.1"
+      },
+      "page_latency_seconds": {
+        "mean": 68.23315921230008,
+        "median": 62.48163388850003,
+        "max": 213.59723875600002,
+        "scope": "Completed-page attempts only; not end-to-end wall time or all retry work."
+      }
+    },
+    "imf": {
+      "document_id": "sha256:cc32177add7ff4b8f4029bdd17e4d08a2ce68563470f041d957e51db908fbd6a",
+      "reference_sha256": "9fd7021233bc1b463b1d61be53e3d603bfd956911b5022d111aec6e28b0e66b0",
+      "evaluator_sha256": "468ba5ab5a3b71bc049f3ab2a93a161f0b2a6a15e175fca323488a02b13b062a",
+      "document_json_sha256": "92c338ac30bbe68826b29f9ad4b404818f2f036c97c099af639ae1fe52c7a0e7",
+      "summary": {
+        "reading_order_anchor_pair": {
+          "passed": 8,
+          "checked": 8
+        },
+        "table_cell_span": {
+          "passed": 26,
+          "checked": 26
+        },
+        "table_cell_text": {
+          "passed": 171,
+          "checked": 171
+        },
+        "table_count_per_page": {
+          "passed": 26,
+          "checked": 26
+        },
+        "table_header_semantics": {
+          "passed": 0,
+          "checked": 13
+        },
+        "visual_count_per_page": {
+          "passed": 26,
+          "checked": 26
+        }
+      },
+      "inventory": {
+        "pages": 26,
+        "elements": {
+          "page_header": 26,
+          "text": 145,
+          "heading": 14,
+          "footnote": 9,
+          "page_footer": 52,
+          "caption": 36,
+          "table": 17
+        },
+        "table_cells": 4955
+      },
+      "runtime": {
+        "status": "completed",
+        "completed_pages": 26,
+        "total_pages": 26,
+        "total_seconds": 8407.655282186002,
+        "initialization_seconds": 69.31954470800156,
+        "peak_sampled_device_memory_mib": 5959,
+        "memory_measurement": "GPU 0 total device memory sampled once per second; not allocator peak",
+        "paddleocr_version": "3.6.0",
+        "paddlepaddle_version": "3.2.1"
+      },
+      "page_latency_seconds": {
+        "mean": 313.01253616780787,
+        "median": 185.29911168249964,
+        "max": 1710.061048683001,
+        "scope": "Completed-page attempts only; not end-to-end wall time or all retry work."
+      }
+    }
+  },
+  "software_validation": {
+    "unit_integration_browser_tests_passed": 76,
+    "new_evaluator_tests": 10,
+    "ruff_lint": "passed",
+    "ruff_format": "passed",
+    "mypy_source_files": 26
+  },
+  "not_measured": [
+    "full text CER/WER",
+    "full table tree edit metrics",
+    "bounding-box IoU",
+    "independent caption factuality",
+    "hierarchy accuracy",
+    "multi-page table assembly accuracy",
+    "cross-model quality ranking"
+  ],
+  "browser_verification": [
+    {
+      "run_directory": "outputs/parser_runs/irena-mixed-content-20-paddleocr-gemma4-31b-01",
+      "pages": 20,
+      "status": "passed",
+      "per_page_navigation_and_tabs": 20,
+      "table_cells_checked": 106,
+      "merged_cells_preserved": 7,
+      "markdown_images_loaded": 14,
+      "javascript_errors": [],
+      "narrow_viewport_passed": true
+    },
+    {
+      "run_directory": "outputs/parser_runs/imf-complex-tables-26-paddleocr-gemma4-31b-01",
+      "pages": 26,
+      "status": "passed",
+      "per_page_navigation_and_tabs": 26,
+      "table_cells_checked": 4955,
+      "merged_cells_preserved": 54,
+      "markdown_images_loaded": 0,
+      "javascript_errors": [],
+      "narrow_viewport_passed": true
+    }
+  ]
+}

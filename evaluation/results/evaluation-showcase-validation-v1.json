@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-11-01T18:44:53.650395+00:00",
+  "scope": "Local saved-output explorer; no new parsing or cloud inference",
+  "public_source_cases": 4,
+  "run_entries": 12,
+  "selected_source_pages": 71,
+  "private_inputs_included": false,
+  "inference_requests": 0,
+  "full_test_suite": {
+    "passed": 132
+  },
+  "checks": [
+    "Ruff formatting",
+    "Ruff lint",
+    "strict mypy (54 source files)",
+    "Python wheel and sdist build",
+    "source/output geometry, resizing, zoom and comparison tabs",
+    "dots.mocr quantization disclosure visible in demo",
+    "823 build artifact hashes verified"
+  ],
+  "local_preview": "outputs/evaluation_showcase/local-05",
+  "case_manifest_sha256": "46e497bbcca4c13d27433a8681544c0f67413c7bcfc58cb68f45de04f250be09",
+  "public_hosting_verified": false,
+  "limitations": [
+    "Saved model outputs are not independent ground truth.",
+    "Source-reviewed pipeline results include corrections.",
+    "Full-precision dots.mocr quality and rank are unmeasured.",
+    "Local preview needs saved runs absent from a fresh checkout."
+  ]
+}

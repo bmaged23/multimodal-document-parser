@@ -1,0 +1,111 @@
+{
+  "evaluation_id": "gemma-selection-checkpoint-v1",
+  "checked_at_utc": "2026-10-31T16:56:24.167353+00:00",
+  "status": "development_checkpoint_completed_with_known_limitations",
+  "selection": {
+    "model": "gemma4:31b",
+    "provider": "ollama-cloud",
+    "reason": "Confirmed free-account access and user selection; no comparative quality winner established",
+    "local_vlm_inference": false
+  },
+  "source_scored_pages": 46,
+  "selected_final_pipeline_checks": {
+    "table_cell_text": {
+      "passed": 277,
+      "checked": 277
+    },
+    "table_cell_span": {
+      "passed": 40,
+      "checked": 40
+    },
+    "table_header_semantics": {
+      "passed": 32,
+      "checked": 32
+    },
+    "printed_chart_point": {
+      "passed": 144,
+      "checked": 144
+    },
+    "chart_series_unit": {
+      "passed": 39,
+      "checked": 39
+    }
+  },
+  "raw_vlm_five_visuals": {
+    "cases": 5,
+    "printed_chart_values": {
+      "draft": {
+        "passed": 23,
+        "checked": 32
+      },
+      "review": {
+        "passed": 24,
+        "checked": 32
+      }
+    },
+    "photo_review": {
+      "equipment-close-up": {
+        "source_page": 13,
+        "feature_coverage": {
+          "passed": 4,
+          "checked": 4
+        },
+        "unsupported_claims": [
+          {
+            "statement": "being lowered into the nacelle",
+            "severity": "minor",
+            "reason": "The still photograph shows a suspended component, but does not establish its direction of motion."
+          }
+        ],
+        "overall": "Main visible scene is described accurately; motion direction is inferred."
+      },
+      "landscape-dam": {
+        "source_page": 20,
+        "feature_coverage": {
+          "passed": 4,
+          "checked": 4
+        },
+        "unsupported_claims": [],
+        "overall": "Concrete dam, white spray, orange structures/buildings and mountainous surroundings are supported."
+      },
+      "multi-series-line-chart": {
+        "draft": "Broad general-decline description omits that some endpoint costs rise.",
+        "review": "The explicit claim that all seven technologies show a downward endpoint trend is contradicted by the source: bioenergy, geothermal and hydropower rise."
+      }
+    },
+    "scope": "Three chart types and two photographs; cached raw responses, no new model calls"
+  },
+  "limitations": [
+    "Selected single-assistant non-blind development checks, not independent ground truth or full-document accuracy.",
+    "Final chart scores include native-PDF corrections; header roles are inferred.",
+    "Raw Gemma review makes chart-series errors and an unsupported all-technologies-decline claim.",
+    "Equipment photo description infers motion direction unsupported by a still image.",
+    "Alternate cloud models have no quality scores because access was blocked.",
+    "No held-out test set, full text CER/WER, full table structure metric or independent factuality adjudication."
+  ],
+  "evidence": [
+    {
+      "path": "outputs/quality_evaluations/gemma-selection-checkpoint-01/irena-results.json",
+      "sha256": "f435585408e53df172bbdb67e63a620e5e3ac71ed98286498c0810a6954f2c72"
+    },
+    {
+      "path": "outputs/quality_evaluations/gemma-selection-checkpoint-01/imf-results.json",
+      "sha256": "7bdb8dbc85f8b27f4ba75367c986d716440dc53c5379a07c8afe18b6b159552a"
+    },
+    {
+      "path": "outputs/quality_evaluations/ollama-five-models-five-visuals-01/results.json",
+      "sha256": "b068b950503e6a8878d83ed91043e7db67895c6c51ea00cf49d7ee6b899f0235"
+    },
+    {
+      "path": "evaluation/vlm_benchmarks/irena-five-visuals-manual-review-v1.json",
+      "sha256": "e873600df8ca0cd8cde0085ad9423de952cd1fe993f38089c4b8dce1f732896d"
+    }
+  ],
+  "work_performed": {
+    "source_only_rescoring": true,
+    "ocr_pages_rerun": 0,
+    "new_cloud_generation_requests": 0,
+    "rag_chunking_started": false
+  },
+  "next_milestone": "Structure-aware RAG preparation; stop here for user review before implementation."
+}

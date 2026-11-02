@@ -1,0 +1,680 @@
+{
+  "evaluation_id": "adaptive-rag-development-v1",
+  "checked_at_utc": "2026-10-31T20:37:26.772935+00:00",
+  "scope": "Local single-assistant development checks, not independent retrieval/answer accuracy or a production deployment.",
+  "cases": [
+    {
+      "case": "original",
+      "pages": 2,
+      "bundle": "outputs/rag_bundles/original-adaptive-parent-child-02",
+      "document_id": "sha256:be2ebf36f35c4b66f958ef7e7c2b273ad704b9ff3e6748df1942435ff3257cde",
+      "validation": {
+        "status": "passed",
+        "parents": 13,
+        "children": 13,
+        "represented_elements": 32,
+        "excluded_elements": [
+          {
+            "element_id": "element_00020",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00033",
+            "reason": "repeated_page_furniture"
+          }
+        ],
+        "max_child_tokens": 256,
+        "source_elements_accounted_for": 34,
+        "checks": [
+          "source_element_coverage",
+          "lossless_body_slice_coverage",
+          "parent_child_integrity",
+          "exact_token_budgets",
+          "rendered_evidence_identity",
+          "table_cell_reference_coverage",
+          "searchable_context_coverage"
+        ]
+      },
+      "manifest_sha256": "23ab6d98a1d1e178d206e203a29534e3943bd0caffb44a79ba75374aa7d8f660"
+    },
+    {
+      "case": "irena",
+      "pages": 20,
+      "bundle": "outputs/rag_bundles/irena-adaptive-parent-child-02",
+      "document_id": "sha256:7f624f343fabbcd213bff4e0431a6d60e6ba42d8041a576b5afce53c73f86e26",
+      "validation": {
+        "status": "passed",
+        "parents": 52,
+        "children": 95,
+        "represented_elements": 149,
+        "excluded_elements": [
+          {
+            "element_id": "element_00001",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00017",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00018",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00029",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00030",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00038",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00039",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00047",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00048",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00056",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00057",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00066",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00067",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00076",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00077",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00085",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00086",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00094",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00095",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00103",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00104",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00116",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00117",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00125",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00136",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00137",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00138",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00146",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00147",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00156",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00157",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00171",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00172",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00178",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00179",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00184",
+            "reason": "repeated_page_furniture"
+          }
+        ],
+        "max_child_tokens": 350,
+        "source_elements_accounted_for": 185,
+        "checks": [
+          "source_element_coverage",
+          "lossless_body_slice_coverage",
+          "parent_child_integrity",
+          "exact_token_budgets",
+          "rendered_evidence_identity",
+          "table_cell_reference_coverage",
+          "searchable_context_coverage"
+        ]
+      },
+      "manifest_sha256": "f8c0ff0c4a4ed074a194744f0162114b729578dd8e13e86d110c380302f379fe"
+    },
+    {
+      "case": "imf",
+      "pages": 26,
+      "bundle": "outputs/rag_bundles/imf-adaptive-parent-child-02",
+      "document_id": "sha256:cc32177add7ff4b8f4029bdd17e4d08a2ce68563470f041d957e51db908fbd6a",
+      "validation": {
+        "status": "passed",
+        "parents": 23,
+        "children": 584,
+        "represented_elements": 206,
+        "excluded_elements": [
+          {
+            "element_id": "element_00001",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00008",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00017",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00018",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00019",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00023",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00032",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00033",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00034",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00045",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00054",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00055",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00056",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00064",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00066",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00068",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00075",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00076",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00077",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00084",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00094",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00095",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00096",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00101",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00107",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00108",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00109",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00114",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00115",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00116",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00123",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00124",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00125",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00130",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00131",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00132",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00135",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00136",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00137",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00144",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00145",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00146",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00151",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00152",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00153",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00156",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00157",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00158",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00161",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00162",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00163",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00166",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00167",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00168",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00171",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00172",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00173",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00176",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00177",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00178",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00181",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00182",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00183",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00186",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00187",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00188",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00191",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00192",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00193",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00196",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00197",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00198",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00208",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00209",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00210",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00216",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00226",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00227",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00228",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00237",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00239",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00249",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00250",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00251",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00257",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00259",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00267",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00268",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00269",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00284",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00286",
+            "reason": "empty_text"
+          },
+          {
+            "element_id": "element_00298",
+            "reason": "repeated_page_furniture"
+          },
+          {
+            "element_id": "element_00299",
+            "reason": "repeated_page_furniture"
+          }
+        ],
+        "max_child_tokens": 465,
+        "source_elements_accounted_for": 299,
+        "checks": [
+          "source_element_coverage",
+          "lossless_body_slice_coverage",
+          "parent_child_integrity",
+          "exact_token_budgets",
+          "rendered_evidence_identity",
+          "table_cell_reference_coverage",
+          "searchable_context_coverage"
+        ]
+      },
+      "manifest_sha256": "2d3d02a9d74ec2cfa175c7176e650e9bc3fbb0cbf2199d5d4a04126c5ea89cff"
+    }
+  ],
+  "index": {
+    "path": "outputs/rag_indexes/bge-large-hybrid-02",
+    "manifest_sha256": "3bb02239666eac29ad24b55e64c316a4165df81860933f00b827522fc11994cf",
+    "children": 692,
+    "parents": 88,
+    "embedding_windows": 693,
+    "embedding": {
+      "model": "BAAI/bge-large-en-v1.5",
+      "repository": "Qdrant/bge-large-en-v1.5-onnx",
+      "revision": "e93b9305e013fdf771b471426516285da0cca188",
+      "dimensions": 1024,
+      "pooling": "CLS",
+      "normalization": "L2",
+      "query_prefix": "Represent this sentence for searching relevant passages: ",
+      "document_prefix": "",
+      "max_input_tokens": 512,
+      "execution_provider": "CUDAExecutionProvider",
+      "gpu_node_execution_verified": true,
+      "profile_path": ".cache/embeddings/cuda-embedding-profile_2026-10-31_20-07-29.json",
+      "onnxruntime_version": "1.23.2",
+      "artifacts": {
+        "tokenizer_config.json": "0b29c7bfc889e53b36d9dd3e686dd4300f6525110eaa98c76a5dafceb2029f53",
+        "special_tokens_map.json": "5d5b662e421ea9fac075174bb0688ee0d9431699900b90662acd44b2a350503a",
+        "model.onnx": "523c08e39a645aa3760380dee5d4b432b2f3ce7ba77ff2cd9c02c5a896b6a7c5",
+        "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+        "config.json": "0b8f0c3dabc4c4de31802ce85c8da71cf7d48727272e9d80dfe8a8f766ee267f"
+      }
+    }
+  },
+  "retrieval_checks": {
+    "unique_questions": 3,
+    "configurations": 4,
+    "source_hit_at_5": 12,
+    "source_retained_in_context": 12,
+    "runs": 12,
+    "context_budget": 2400,
+    "evidence": "outputs/quality_evaluations/adaptive-rag-retrieval-01/results.json"
+  },
+  "service_smoke": {
+    "evidence": "outputs/quality_evaluations/rag-microservices-smoke-20261031T193109Z/results.json",
+    "status": "passed",
+    "source_unchanged": true,
+    "ocr_rerun": false,
+    "numeric_mentions_present": true,
+    "answer": {
+      "answer": "For sensor BY-04, the mean latency is 23.1 ms and the error rate is 2.6%.",
+      "citations": [
+        "child:27706c11f0f5b630fc44e52d"
+      ],
+      "insufficient_evidence": false
+    }
+  },
+  "software_validation": {
+    "tests_passed": 108,
+    "strict_source_type_checks": 43,
+    "ruff": "passed",
+    "docker_compose_structural_checks": "passed",
+    "docker_build_and_deployment": "not_run_WSL_integration_unavailable",
+    "docx_conversion": "not_run_LibreOffice_unavailable",
+    "wheel_and_source_distribution": "passed",
+    "real_preview_cases": 3,
+    "real_preview_javascript_errors": 0,
+    "live_service_readiness": 7
+  },
+  "limitations": [
+    "Three source-derived retrieval questions; no held-out fixed-size baseline comparison.",
+    "One live cited answer; citation IDs do not establish independent entailment.",
+    "No fresh OCR through microservice orchestration.",
+    "Single-host filesystem/SQLite coordination; no distributed or multi-tenant claim."
+  ],
+  "archive_directory": "outputs/evaluation_archive/BAAI-bge-large-en-v1.5_output/adaptive-rag-v1-20261031T204226Z"
+}

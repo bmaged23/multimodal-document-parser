@@ -1,0 +1,45 @@
+{
+  "status": "completed; answer scoring saved in rag-structural-comparison-v2.json",
+  "algorithm": "simple-structure-v2",
+  "questions": 100,
+  "answerable_questions": 90,
+  "children": [
+    12,
+    79,
+    321
+  ],
+  "maximum_child_tokens": [
+    256,
+    499,
+    500
+  ],
+  "oversized_atomic_exceptions": 0,
+  "source_coverage": "passed for all three saved source documents",
+  "metrics": [
+    {
+      "variant": "simple-structure-dense",
+      "metric": "context_cell_complete",
+      "mean": 0.9,
+      "scored": 90
+    },
+    {
+      "variant": "simple-structure-dense",
+      "metric": "context_cell_evidence_recall",
+      "mean": 0.912962962962963,
+      "scored": 90
+    },
+    {
+      "variant": "simple-structure-hybrid",
+      "metric": "context_cell_complete",
+      "mean": 0.8555555555555555,
+      "scored": 90
+    },
+    {
+      "variant": "simple-structure-hybrid",
+      "metric": "context_cell_evidence_recall",
+      "mean": 0.8907407407407407,
+      "scored": 90
+    }
+  ],
+  "limitations": "Same inspected source-bound silver questions; inferred explanation links are not independent human annotations. No answer-quality winner yet."
+}

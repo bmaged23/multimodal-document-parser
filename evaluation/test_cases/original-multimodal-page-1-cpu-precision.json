@@ -1,0 +1,13 @@
+{
+  "original_document_id": "sha256:be2ebf36f35c4b66f958ef7e7c2b273ad704b9ff3e6748df1942435ff3257cde",
+  "subset_document_id": "sha256:2e30512423fc77a1f0a2c1634a462bfad90b2fd3fbc9e56a96b5b12b2689b757",
+  "page_mapping": [
+    {
+      "sample_page": 1,
+      "original_pdf_page": 1
+    }
+  ],
+  "rendered_rgb_sha256": "5968c69b8b9313c7ea352c243cf0506734f07f44079684dfa7fa52aa78b69d40",
+  "render_dpi": 144,
+  "scope": "Same rendered source pixels; only page 1 is selected for a bounded CPU probe."
+}

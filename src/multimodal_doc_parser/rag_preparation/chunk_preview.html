@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Source-linked RAG chunk review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:15px system-ui;color:#172538;background:#f3f6fa}header{padding:12px 18px;background:#172538;color:white}header h1{font-size:19px;margin:0 0 8px}nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}input,select{min-width:0}input,select,button{font:inherit;padding:6px;max-width:100%}main{display:grid;grid-template-columns:45% 55%;height:calc(100vh - 135px)}iframe{width:100%;height:100%;border:0;background:white}article{min-width:0;overflow-wrap:anywhere;overflow:auto;padding:16px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:12px;border:1px solid #ccd5df;border-radius:5px}.warning{color:#834300}#crop{max-width:100%;max-height:300px}summary{cursor:pointer;font-weight:600}label{max-width:100%;min-width:0;display:flex;gap:6px;align-items:center}#status{font-size:13px;margin-top:7px}a{color:#1856a0}@media(max-width:850px){main{grid-template-columns:1fr;height:auto}iframe{height:50vh}article{overflow:visible}}
+</style>
+<header><h1>Source-linked RAG chunk review</h1><nav>
+<label>Search <input id="search" type="search" placeholder="Text, heading, element ID"></label>
+<label>Page <input id="page" type="number" min="1" style="width:80px" placeholder="All"></label>
+<label>Chunk <select id="child" style="max-width:360px"></select></label>
+<button id="previous">Previous</button><button id="next">Next</button>
+</nav><div id="status"></div></header>
+<main><iframe id="pdf" title="Source PDF"></iframe><article>
+<h2 id="heading"></h2><p id="metadata"></p><p id="warnings" class="warning"></p>
+<h3>Searchable child</h3><pre id="text"></pre>
+<details open><summary>Parent context and provenance</summary><div id="parent"></div></details>
+<details><summary>Child JSON and exact evidence slices</summary><pre id="json"></pre></details>
+<img id="crop" alt="Source visual crop" hidden>
+<p><a href="chunk_manifest.json">Manifest</a> · <a href="validation.json">Validation</a> · <a href="children.jsonl">Children JSONL</a> · <a href="parents.jsonl">Parents JSONL</a></p>
+</article></main>
+<script id="data" type="application/json">__CHUNK_DATA__</script>
+<script>
+'use strict';
+const data=JSON.parse(document.getElementById('data').textContent),$=id=>document.getElementById(id);
+const parents=new Map(data.parents.map(p=>[p.id,p]));let filtered=[];
+function bodyPages(c){const p=parents.get(c.parent_id), parts=new Map(p.parts.map(x=>[x.id,x])), ids=new Set(c.slices.flatMap(x=>parts.get(x.part_id).source_element_ids));return [...new Set(p.source_elements.filter(e=>ids.has(e.id)).flatMap(e=>e.source_regions.map(r=>r.page_number)))];}
+function show(){const child=filtered.find(c=>c.id===$('child').value);if(!child){$('text').textContent='No matching chunks';$('heading').textContent='';$('metadata').textContent='';$('warnings').textContent='';$('parent').replaceChildren();$('json').textContent='';$('crop').hidden=true;return;}
+const parent=parents.get(child.parent_id),pages=bodyPages(child);
+$('heading').textContent=child.heading_path.join(' → ')||'Unsectioned content';
+$('metadata').textContent=`${child.kind} · ${child.token_count} cl100k tokens · pages ${pages.join(', ')} · ${child.id}`;
+$('text').textContent=child.text;$('warnings').textContent=child.quality_warnings.join(' ');$('json').textContent=JSON.stringify(child,null,2);
+$('parent').replaceChildren();for(const part of parent.parts){const box=document.createElement('pre');box.textContent=`${part.role} | ${part.provenance.map(p=>p.method+': '+p.producer).join(', ')}${part.inferred?' | INFERRED':''}\n${part.text}`;$('parent').append(box);}
+const pdfPage=Number($('page').value)||pages[0]||1;$('pdf').src='source.pdf#page='+pdfPage;
+const visual=parent.source_elements.find(e=>e.asset);$('crop').hidden=!visual;if(visual)$('crop').src=visual.asset.path;
+$('status').textContent=`${filtered.length}/${data.children.length} children · ${data.parents.length} parents · validation: ${data.manifest.validation.status}`;
+}
+function filter(){const query=$('search').value.toLowerCase(),page=Number($('page').value);filtered=data.children.filter(c=>(!query||(c.id+' '+c.text+' '+c.heading_path.join(' ')+' '+c.source_element_ids.join(' ')).toLowerCase().includes(query))&&(!page||bodyPages(c).includes(page)));
+$('child').replaceChildren(...filtered.map((c,i)=>{const option=document.createElement('option');option.value=c.id;option.textContent=`${i+1}. ${c.kind}: ${c.heading_path.at(-1)||c.source_element_ids[0]}`;return option;}));$('status').textContent=`${filtered.length}/${data.children.length} children · ${data.parents.length} parents`;show();}
+$('search').addEventListener('input',filter);$('page').addEventListener('input',filter);$('child').addEventListener('change',show);
+for(const [id,delta] of [['previous',-1],['next',1]])$(id).addEventListener('click',()=>{const next=$('child').selectedIndex+delta;if(next>=0&&next<filtered.length){$('child').selectedIndex=next;show();}});
+filter();
+</script></html>

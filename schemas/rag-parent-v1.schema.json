@@ -1,0 +1,1213 @@
+{
+  "$defs": {
+    "AssetReference": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "title": "AssetReference",
+      "type": "object"
+    },
+    "BoundingBox": {
+      "additionalProperties": false,
+      "description": "Normalized top-left coordinates relative to the rendered, rotated page.",
+      "properties": {
+        "x0": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "X0",
+          "type": "number"
+        },
+        "y0": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Y0",
+          "type": "number"
+        },
+        "x1": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "X1",
+          "type": "number"
+        },
+        "y1": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Y1",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x0",
+        "y0",
+        "x1",
+        "y1"
+      ],
+      "title": "BoundingBox",
+      "type": "object"
+    },
+    "CellReference": {
+      "additionalProperties": false,
+      "properties": {
+        "element_id": {
+          "title": "Element Id",
+          "type": "string"
+        },
+        "row": {
+          "minimum": 0,
+          "title": "Row",
+          "type": "integer"
+        },
+        "column": {
+          "minimum": 0,
+          "title": "Column",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "element_id",
+        "row",
+        "column"
+      ],
+      "title": "CellReference",
+      "type": "object"
+    },
+    "ChartElement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Id"
+        },
+        "source_regions": {
+          "items": {
+            "$ref": "#/$defs/SourceRegion"
+          },
+          "minItems": 1,
+          "title": "Source Regions",
+          "type": "array"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "type": {
+          "const": "chart",
+          "default": "chart",
+          "title": "Type",
+          "type": "string"
+        },
+        "asset": {
+          "$ref": "#/$defs/AssetReference"
+        },
+        "caption": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Caption"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VisualDescription"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "series": {
+          "items": {
+            "$ref": "#/$defs/ChartSeries"
+          },
+          "title": "Series",
+          "type": "array"
+        },
+        "series_provenance": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Provenance"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "quality_review": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VisualQualityReview"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "id",
+        "source_regions",
+        "provenance",
+        "asset"
+      ],
+      "title": "ChartElement",
+      "type": "object"
+    },
+    "ChartPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        },
+        "value_basis": {
+          "enum": [
+            "printed_label",
+            "visual_estimate",
+            "unknown"
+          ],
+          "title": "Value Basis",
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "value",
+        "value_basis"
+      ],
+      "title": "ChartPoint",
+      "type": "object"
+    },
+    "ChartSeries": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "points": {
+          "items": {
+            "$ref": "#/$defs/ChartPoint"
+          },
+          "title": "Points",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "points"
+      ],
+      "title": "ChartSeries",
+      "type": "object"
+    },
+    "EvidencePart": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "heading",
+            "text",
+            "formula",
+            "caption",
+            "footnote",
+            "table_header",
+            "table_row",
+            "description",
+            "chart_series",
+            "visual_analysis",
+            "visual_placeholder"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "source_element_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Element Ids",
+          "type": "array"
+        },
+        "cells": {
+          "items": {
+            "$ref": "#/$defs/CellReference"
+          },
+          "title": "Cells",
+          "type": "array"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/Provenance"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "inferred": {
+          "default": false,
+          "title": "Inferred",
+          "type": "boolean"
+        },
+        "context_only": {
+          "default": false,
+          "title": "Context Only",
+          "type": "boolean"
+        },
+        "column_group": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Column Group"
+        }
+      },
+      "required": [
+        "id",
+        "role",
+        "text",
+        "source_element_ids"
+      ],
+      "title": "EvidencePart",
+      "type": "object"
+    },
+    "FlowEdge": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "target": {
+          "minLength": 1,
+          "title": "Target",
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        }
+      },
+      "required": [
+        "source",
+        "target"
+      ],
+      "title": "FlowEdge",
+      "type": "object"
+    },
+    "FlowNode": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "title": "FlowNode",
+      "type": "object"
+    },
+    "FormulaElement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Id"
+        },
+        "source_regions": {
+          "items": {
+            "$ref": "#/$defs/SourceRegion"
+          },
+          "minItems": 1,
+          "title": "Source Regions",
+          "type": "array"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "type": {
+          "const": "formula",
+          "default": "formula",
+          "title": "Type",
+          "type": "string"
+        },
+        "latex": {
+          "title": "Latex",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source_regions",
+        "provenance",
+        "latex"
+      ],
+      "title": "FormulaElement",
+      "type": "object"
+    },
+    "HeadingElement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Id"
+        },
+        "source_regions": {
+          "items": {
+            "$ref": "#/$defs/SourceRegion"
+          },
+          "minItems": 1,
+          "title": "Source Regions",
+          "type": "array"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "type": {
+          "const": "heading",
+          "default": "heading",
+          "title": "Type",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "level": {
+          "maximum": 6,
+          "minimum": 1,
+          "title": "Level",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "source_regions",
+        "provenance",
+        "text",
+        "level"
+      ],
+      "title": "HeadingElement",
+      "type": "object"
+    },
+    "ImageElement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Id"
+        },
+        "source_regions": {
+          "items": {
+            "$ref": "#/$defs/SourceRegion"
+          },
+          "minItems": 1,
+          "title": "Source Regions",
+          "type": "array"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "type": {
+          "const": "image",
+          "default": "image",
+          "title": "Type",
+          "type": "string"
+        },
+        "asset": {
+          "$ref": "#/$defs/AssetReference"
+        },
+        "caption": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Caption"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VisualDescription"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "quality_review": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VisualQualityReview"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "id",
+        "source_regions",
+        "provenance",
+        "asset"
+      ],
+      "title": "ImageElement",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "producer": {
+          "minLength": 1,
+          "title": "Producer",
+          "type": "string"
+        },
+        "model_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Version"
+        },
+        "method": {
+          "enum": [
+            "extracted",
+            "generated",
+            "manual"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "producer",
+        "method"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "SourceRegion": {
+      "additionalProperties": false,
+      "properties": {
+        "page_number": {
+          "exclusiveMinimum": 0,
+          "title": "Page Number",
+          "type": "integer"
+        },
+        "bounding_box": {
+          "$ref": "#/$defs/BoundingBox"
+        }
+      },
+      "required": [
+        "page_number",
+        "bounding_box"
+      ],
+      "title": "SourceRegion",
+      "type": "object"
+    },
+    "TableCell": {
+      "additionalProperties": false,
+      "properties": {
+        "row": {
+          "minimum": 0,
+          "title": "Row",
+          "type": "integer"
+        },
+        "column": {
+          "minimum": 0,
+          "title": "Column",
+          "type": "integer"
+        },
+        "row_span": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "title": "Row Span",
+          "type": "integer"
+        },
+        "column_span": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "title": "Column Span",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "is_header": {
+          "default": false,
+          "title": "Is Header",
+          "type": "boolean"
+        },
+        "header_inferred": {
+          "default": false,
+          "title": "Header Inferred",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "row",
+        "column",
+        "text"
+      ],
+      "title": "TableCell",
+      "type": "object"
+    },
+    "TableElement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Id"
+        },
+        "source_regions": {
+          "items": {
+            "$ref": "#/$defs/SourceRegion"
+          },
+          "minItems": 1,
+          "title": "Source Regions",
+          "type": "array"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "type": {
+          "const": "table",
+          "default": "table",
+          "title": "Type",
+          "type": "string"
+        },
+        "caption": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Caption"
+        },
+        "row_count": {
+          "exclusiveMinimum": 0,
+          "title": "Row Count",
+          "type": "integer"
+        },
+        "column_count": {
+          "exclusiveMinimum": 0,
+          "title": "Column Count",
+          "type": "integer"
+        },
+        "cells": {
+          "items": {
+            "$ref": "#/$defs/TableCell"
+          },
+          "title": "Cells",
+          "type": "array"
+        },
+        "header_inference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Header Inference"
+        },
+        "caption_element_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Caption Element Id"
+        },
+        "footnote_element_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Footnote Element Ids",
+          "type": "array"
+        },
+        "logical_table_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Logical Table Id"
+        },
+        "continuation_index": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Continuation Index"
+        },
+        "column_group": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Column Group"
+        }
+      },
+      "required": [
+        "id",
+        "source_regions",
+        "provenance",
+        "row_count",
+        "column_count",
+        "cells"
+      ],
+      "title": "TableElement",
+      "type": "object"
+    },
+    "TextElement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Id"
+        },
+        "source_regions": {
+          "items": {
+            "$ref": "#/$defs/SourceRegion"
+          },
+          "minItems": 1,
+          "title": "Source Regions",
+          "type": "array"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "type": {
+          "enum": [
+            "text",
+            "list_item",
+            "caption",
+            "footnote",
+            "page_header",
+            "page_footer"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source_regions",
+        "provenance",
+        "type",
+        "text"
+      ],
+      "title": "TextElement",
+      "type": "object"
+    },
+    "VisualAnalysis": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "chart",
+            "image",
+            "flowchart",
+            "unknown"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        },
+        "x_axis": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "X Axis"
+        },
+        "y_axis": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Y Axis"
+        },
+        "series": {
+          "items": {
+            "$ref": "#/$defs/ChartSeries"
+          },
+          "maxItems": 20,
+          "title": "Series",
+          "type": "array"
+        },
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/FlowNode"
+          },
+          "maxItems": 100,
+          "title": "Nodes",
+          "type": "array"
+        },
+        "edges": {
+          "items": {
+            "$ref": "#/$defs/FlowEdge"
+          },
+          "maxItems": 150,
+          "title": "Edges",
+          "type": "array"
+        },
+        "uncertainties": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 30,
+          "title": "Uncertainties",
+          "type": "array"
+        },
+        "plot_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "bar",
+                "line",
+                "scatter",
+                "composite",
+                "other"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Plot Type"
+        }
+      },
+      "required": [
+        "kind",
+        "description"
+      ],
+      "title": "VisualAnalysis",
+      "type": "object"
+    },
+    "VisualDescription": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "analysis": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VisualAnalysis"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "text",
+        "provenance"
+      ],
+      "title": "VisualDescription",
+      "type": "object"
+    },
+    "VisualQualityReview": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "default": "unverified",
+          "enum": [
+            "unverified",
+            "model_reviewed",
+            "source_correlated",
+            "needs_review"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewer"
+        },
+        "adjustments": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Adjustments",
+          "type": "array"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "title": "VisualQualityReview",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "section_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Section Id"
+    },
+    "heading_path": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Heading Path",
+      "type": "array"
+    },
+    "kind": {
+      "enum": [
+        "text",
+        "table",
+        "visual"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "logical_table_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Logical Table Id"
+    },
+    "source_elements": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "caption": "#/$defs/TextElement",
+            "chart": "#/$defs/ChartElement",
+            "footnote": "#/$defs/TextElement",
+            "formula": "#/$defs/FormulaElement",
+            "heading": "#/$defs/HeadingElement",
+            "image": "#/$defs/ImageElement",
+            "list_item": "#/$defs/TextElement",
+            "page_footer": "#/$defs/TextElement",
+            "page_header": "#/$defs/TextElement",
+            "table": "#/$defs/TableElement",
+            "text": "#/$defs/TextElement"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/TextElement"
+          },
+          {
+            "$ref": "#/$defs/HeadingElement"
+          },
+          {
+            "$ref": "#/$defs/FormulaElement"
+          },
+          {
+            "$ref": "#/$defs/TableElement"
+          },
+          {
+            "$ref": "#/$defs/ImageElement"
+          },
+          {
+            "$ref": "#/$defs/ChartElement"
+          }
+        ]
+      },
+      "title": "Source Elements",
+      "type": "array"
+    },
+    "parts": {
+      "items": {
+        "$ref": "#/$defs/EvidencePart"
+      },
+      "title": "Parts",
+      "type": "array"
+    },
+    "child_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Child Ids",
+      "type": "array"
+    },
+    "quality_warnings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Quality Warnings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "document_id",
+    "section_id",
+    "heading_path",
+    "kind",
+    "source_elements",
+    "parts"
+  ],
+  "title": "ParentRecord",
+  "type": "object"
+}

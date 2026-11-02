@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; frame-src 'self'; connect-src 'self'; base-uri 'none'">
+<title>@@TITLE@@ · Document review</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#24334a;background:#eef2f6;font-size:14px}*{box-sizing:border-box}body{margin:0}button,select,input{font:inherit}button,select{border:1px solid #cdd6e2;border-radius:7px;background:white;color:#26374d;padding:8px 12px}button{cursor:pointer}button:hover{background:#edf4ff}button:focus-visible,select:focus-visible,input:focus-visible,article:focus-visible{outline:3px solid #4d8de8;outline-offset:2px}header{height:78px;padding:14px 24px;background:#10233d;color:white;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:13px}.brand-mark{width:38px;height:38px;background:#2d6ed3;border-radius:10px;display:grid;place-items:center;font-size:23px}h1{font-size:17px;margin:0 0 5px}.subtitle{max-width:65vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#afc3df;font-size:12px}.badge{background:#203b5c;padding:7px 12px;border-radius:20px;font-size:12px}main{height:calc(100vh - 78px);display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#cdd6e2}.panel{min-width:0;background:#f7f9fc;display:flex;flex-direction:column;min-height:0}.toolbar{min-height:60px;padding:12px 18px;border-bottom:1px solid #dce3eb;display:flex;align-items:center;gap:8px;background:white;flex-wrap:wrap}.panel-label{font-weight:650;margin-right:auto}.toggle[aria-pressed="true"],.tab[aria-selected="true"]{background:#e8f0ff;color:#1458b8;border-color:#acc8f5}.pdf-frame{width:100%;flex:1;border:0;min-height:0}.page-viewport{overflow:auto;flex:1;padding:24px;background:#e5eaf0}.page-canvas{position:relative;margin:auto;box-shadow:0 3px 18px #18314b25;background:white;max-width:100%}.page-canvas img{display:block;width:100%;height:auto}.source-box{position:absolute;border:3px solid #2674e6;background:#367ee51c;pointer-events:none;display:none}.output-body{overflow:auto;padding:22px;flex:1;scroll-behavior:smooth}.element-card{background:white;border:1px solid #dfe5ed;border-radius:10px;padding:18px 20px;margin-bottom:14px;box-shadow:0 2px 4px #10233d04}.element-card.selected{border-color:#3478d7;box-shadow:0 0 0 2px #3478d722}.element-meta{display:flex;align-items:center;justify-content:space-between;color:#718198;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:9px}.source-link{font-size:11px;padding:4px 7px;color:#2265bc;letter-spacing:0;text-transform:none;border:0;background:#f0f5fd}.element-card h1{font-size:25px}.element-card h2{font-size:21px}.element-card h3{font-size:18px}.element-card p{line-height:1.7;margin:8px 0}.preserve-lines{white-space:pre-wrap;overflow-wrap:anywhere}.table-scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px;margin:10px 0}th,td{border:1px solid #d9e1ec;padding:10px;text-align:left;white-space:pre-wrap}th{background:#eef4ff}td.missing{color:#9d6470}figure{margin:8px 0}figure img{max-width:100%;max-height:420px;object-fit:contain}figcaption{font-size:12px;color:#61748e;margin-top:8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.65 ui-monospace,monospace}.raw-output{background:white;border:1px solid #dfe5ed;border-radius:10px;padding:22px;margin:0}.formula{background:#f1f5fa;padding:15px;border-radius:6px}a{color:#286ac1}.filter-row{padding:10px 18px;background:white;border-bottom:1px solid #dce3eb;display:flex;align-items:center;gap:12px;font-size:12px;color:#61748e}.filter-row label,.filter-row a{white-space:nowrap;flex-shrink:0}.filter-row label{display:flex;align-items:center;gap:4px}.filter-row input[type="search"]{flex:1;min-width:0;width:auto;padding:9px 12px;border:1px solid #d7dfeb;border-radius:7px}.report-notes{font-size:12px;color:#64758b;padding:12px 18px;background:#f7faff;border-top:1px solid #dce3eb;max-height:150px;overflow:auto}.report-notes summary{cursor:pointer}.empty-state{padding:40px;color:#718198}[hidden]{display:none!important}@media(max-width:850px){header{height:auto;min-height:78px;padding:12px}.badge{display:none}main{height:auto;grid-template-columns:1fr}.panel{height:80vh}.toolbar{padding:10px}.output-body{padding:12px}}
+
+.page-navigation{display:flex;align-items:center;gap:6px;margin:0}
+.page-navigation input{width:62px;padding:8px 5px;border:1px solid #cdd6e2;border-radius:7px}
+.page-navigation .page-total{color:#718198;font-size:12px;white-space:nowrap}
+.output-toolbar{align-items:flex-start}.output-tabs{display:flex;flex-wrap:wrap;gap:5px}
+.output-tabs button{font-size:12px;padding:8px 9px}.output-page-label{font-size:11px;color:#64758b;font-weight:400;display:block;margin-top:5px}
+.filter-row{flex-wrap:wrap}.filter-row input[type="search"]{flex-basis:180px}
+.markdown-preview{background:white;border:1px solid #dfe5ed;border-radius:10px;padding:24px;line-height:1.75;overflow-wrap:anywhere}
+.markdown-preview h1{font-size:25px;line-height:1.4;margin:0 0 20px}.markdown-preview h2{font-size:21px;margin-top:26px;line-height:1.4}.markdown-preview h3{font-size:18px}
+.markdown-preview img{display:block;max-width:100%;height:auto;margin:18px auto}
+.markdown-preview pre{background:#f2f5fa;padding:14px;border-radius:6px}.markdown-preview table{display:block;max-width:100%;overflow:auto}
+.table-scroll{max-width:100%;overflow:auto}.table-scroll table{width:max-content;min-width:100%;table-layout:auto}.table-scroll th,.table-scroll td{min-width:90px;max-width:260px;overflow-wrap:normal;word-break:normal}.markdown-preview .table-scroll table{display:table;max-width:none;overflow:visible}.table-scroll caption{text-align:left;white-space:normal}
+.markdown-page,.source-page,.json-page{margin-bottom:18px}.page-heading{font-size:11px;color:#64758b;border-bottom:1px solid #dfe5ed;padding-bottom:9px;margin-bottom:18px;text-transform:uppercase;letter-spacing:1px}
+.page-navigation button:disabled{opacity:.4;cursor:default}.report-notes ul{padding-left:18px}.output-status{font-size:11px;color:#64758b;padding:0 18px 8px;background:white}
+@media(max-width:850px){.markdown-preview{padding:16px}.panel-label{width:100%}.page-navigation{flex-wrap:wrap}}
+.progress-notice{padding:10px 20px;background:#fff2cc;color:#6a4d0b;font-size:12px}body:has(.progress-notice) main{height:calc(100vh - 114px)}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="brand-mark" aria-hidden="true">▤</div><div><h1>Document review</h1><div class="subtitle">@@FILENAME@@ · <span title="@@MODEL_LABEL@@">@@MODEL_LABEL@@</span></div></div></div><div class="badge">@@PAGE_COUNT@@ pages · @@ELEMENT_COUNT@@ elements</div></header>
+@@PROGRESS_NOTICE@@
+<main>
+<section class="panel" aria-label="Original PDF">
+<div class="toolbar"><span class="panel-label">Original document</span>
+<form class="page-navigation" id="page-navigation">
+<button id="previous-page" type="button" aria-label="Previous page">←</button>
+<label for="page-number">Page</label><input id="page-number" type="number" min="1" max="@@PAGE_COUNT@@" value="1" required aria-label="Go to page">
+<span class="page-total">of @@PAGE_COUNT@@</span><button type="submit">Go</button>
+<button id="next-page" type="button" aria-label="Next page">→</button>
+</form>
+<button id="pdf-mode" class="toggle" aria-pressed="true">PDF</button><button id="image-mode" class="toggle" aria-pressed="false">Page + region</button></div>
+<iframe class="pdf-frame" id="pdf-frame" src="source.pdf#page=1" title="Original PDF"></iframe>
+<div class="page-viewport" id="page-viewport" hidden><div class="page-canvas"><img id="page-image" alt="Rendered source page 1"><div class="source-box" id="source-box"></div></div></div>
+<div class="report-notes">Go to a PDF page number to update both panels. <a href="source.pdf" target="_blank" rel="noopener">Open original PDF</a></div>
+</section>
+<section class="panel" aria-label="Extracted document output">
+<div class="toolbar output-toolbar"><span class="panel-label">Extracted output<span class="output-page-label" id="output-page-label">Page 1 of @@PAGE_COUNT@@</span></span>
+<div class="output-tabs" role="tablist" aria-label="Output format">
+<button id="tab-preview" class="tab" role="tab" aria-selected="true" aria-controls="view-preview">Markdown preview</button>
+<button id="tab-markdown" class="tab" role="tab" aria-selected="false" aria-controls="view-markdown">Markdown source</button>
+<button id="tab-content" class="tab" role="tab" aria-selected="false" aria-controls="view-content">Content</button>
+<button id="tab-json" class="tab" role="tab" aria-selected="false" aria-controls="view-json">JSON</button>
+</div></div>
+<div class="filter-row"><input id="search" type="search" aria-label="Search extracted content" placeholder="Search extracted content…"><label><input id="page-only" type="checkbox" checked> Current page only</label><a href="document.md" download>Markdown ↓</a><a href="document.json" download>JSON ↓</a></div>
+<div class="output-status" id="output-status">Showing page 1. Downloads contain the full document.</div>
+<div class="output-body" id="output-body">
+<div id="view-preview" role="tabpanel" aria-labelledby="tab-preview"><div class="markdown-preview" id="preview-full" hidden>@@MARKDOWN_PREVIEW@@</div><div class="markdown-preview" id="preview-pages">@@MARKDOWN_PAGES@@</div></div>
+<div id="view-content" role="tabpanel" aria-labelledby="tab-content" hidden>@@CARDS@@</div>
+<div id="view-markdown" role="tabpanel" aria-labelledby="tab-markdown" hidden><pre class="raw-output" id="markdown-full" hidden>@@MARKDOWN@@</pre><div id="markdown-pages">@@MARKDOWN_SOURCE_PAGES@@</div></div>
+<div id="view-json" role="tabpanel" aria-labelledby="tab-json" hidden><pre class="raw-output" id="json-full" hidden>@@JSON@@</pre><div id="json-pages">@@JSON_PAGES@@</div></div>
+</div>
+<details class="report-notes"><summary>Normalization notes (@@WARNING_COUNT@@) · not accuracy scores</summary><ul>@@WARNING_LIST@@</ul></details>
+</section>
+</main>
+<script>
+'use strict';
+const pageImages=@@PAGE_IMAGES@@;
+const pageCount=pageImages.length;
+const pageInput=document.getElementById('page-number');
+const frame=document.getElementById('pdf-frame');
+const viewport=document.getElementById('page-viewport');
+const image=document.getElementById('page-image');
+const box=document.getElementById('source-box');
+const pageOnly=document.getElementById('page-only');
+const cards=[...document.querySelectorAll('.element-card')];
+let currentPage=1;
+function mode(showImage){
+ frame.hidden=showImage;viewport.hidden=!showImage;
+ document.getElementById('pdf-mode').setAttribute('aria-pressed',String(!showImage));
+ document.getElementById('image-mode').setAttribute('aria-pressed',String(showImage));
+}
+function filter(){
+ const query=document.getElementById('search').value.toLowerCase();
+ const only=pageOnly.checked;
+ cards.forEach(card=>{card.hidden=!card.textContent.toLowerCase().includes(query)||(only&&!card.dataset.pages.split(',').includes(String(currentPage)));});
+ ['preview','markdown','json'].forEach(name=>{
+  document.getElementById(name+'-full').hidden=only||Boolean(query);
+  document.getElementById(name+'-pages').hidden=!only&&!query;
+ });
+ document.querySelectorAll('.markdown-page,.source-page,.json-page').forEach(section=>{
+  section.hidden=(only&&Number(section.dataset.page)!==currentPage)||!section.textContent.toLowerCase().includes(query);
+ });
+ document.getElementById('output-page-label').textContent=only?'Page '+currentPage+' of '+pageCount:'All '+pageCount+' pages';
+ document.getElementById('output-status').textContent=(only?'Showing page '+currentPage+'.':'Showing all pages.')+(document.querySelector('.progress-notice')?' Downloads contain the partial extraction.':' Downloads contain the full document.');
+}
+function navigate(page,synchronize=true){
+ if(!Number.isInteger(page)||page<1||page>pageCount){pageInput.reportValidity();return;}
+ currentPage=page;pageInput.value=String(page);
+ frame.src='source.pdf#page='+page;
+ image.src=pageImages[page-1];image.alt='Rendered source page '+page;
+ image.onload=null;box.style.display='none';
+ if(synchronize)pageOnly.checked=true;
+ document.getElementById('previous-page').disabled=page===1;
+ document.getElementById('next-page').disabled=page===pageCount;
+ filter();document.getElementById('output-body').scrollTop=0;viewport.scrollTop=0;
+}
+function selectCard(card){
+ cards.forEach(item=>item.classList.toggle('selected',item===card));
+ navigate(Number(card.dataset.page));mode(true);
+ const [x0,y0,x1,y1]=card.dataset.box.split(',').map(Number);
+ Object.assign(box.style,{display:'block',left:(x0*100)+'%',top:(y0*100)+'%',width:((x1-x0)*100)+'%',height:((y1-y0)*100)+'%'});
+ image.onload=()=>box.scrollIntoView({block:'center',behavior:'smooth'});
+ if(image.complete)box.scrollIntoView({block:'center',behavior:'smooth'});
+}
+document.getElementById('page-navigation').addEventListener('submit',event=>{event.preventDefault();navigate(Number(pageInput.value));});
+document.getElementById('previous-page').addEventListener('click',()=>navigate(currentPage-1));
+document.getElementById('next-page').addEventListener('click',()=>navigate(currentPage+1));
+document.getElementById('pdf-mode').addEventListener('click',()=>mode(false));
+document.getElementById('image-mode').addEventListener('click',()=>mode(true));
+document.getElementById('search').addEventListener('input',filter);
+pageOnly.addEventListener('change',filter);
+cards.forEach(card=>{
+ card.querySelector('.source-link').addEventListener('click',()=>selectCard(card));
+ card.addEventListener('keydown',event=>{if(event.target===card&&event.key==='Enter')selectCard(card);});
+});
+const tabNames=['preview','content','markdown','json'];
+tabNames.forEach(name=>{
+ document.getElementById('tab-'+name).addEventListener('click',()=>{
+  tabNames.forEach(other=>{
+   document.getElementById('view-'+other).hidden=other!==name;
+   document.getElementById('tab-'+other).setAttribute('aria-selected',String(other===name));
+  });
+  document.getElementById('output-body').scrollTop=0;
+ });
+});
+navigate(1);
+if(document.querySelector('.progress-notice')){
+ const updateProgress=()=>fetch('run-status.json',{cache:'no-store'}).then(response=>response.json()).then(status=>{
+  const notice=document.querySelector('.progress-notice');
+  const count=status.completed_pages??'?';
+  const total=status.total_pages??pageCount;
+  notice.textContent=status.status==='completed'
+   ?'Inference complete. Refresh to see the full report.'
+   :status.status==='completed_with_errors'
+    ?'Finished testing: '+count+'/'+total+' pages accepted. Other pages failed; see extraction notes and diagnostics.'
+    :['interrupted','failed'].includes(status.status)
+    ?'Parsing stopped: '+count+'/'+total+' pages completed. This is a partial report.'
+    :'Processing: '+count+'/'+total+' pages complete. This is a partial extraction; refresh for the latest output.';
+ }).catch(()=>{});
+ updateProgress();setInterval(updateProgress,30000);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+name: Continuous integration
+
+on:
+  push:
+  pull_request:
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  foundation-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.24"
+          enable-cache: true
+      - run: uv sync --locked --extra api --extra chunking
+      - run: uv run --extra api --extra chunking ruff format --check .
+      - run: uv run --extra api --extra chunking ruff check .
+      - run: uv run --extra api --extra chunking mypy
+      - run: uv run --extra api --extra chunking document-parser-check-environment
+      - run: uv run --extra api --extra chunking pytest
+      - run: uv build
+
+  browser-review-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.24"
+          enable-cache: true
+      - run: uv sync --locked --group browser --extra chunking
+      - run: uv run --group browser --extra chunking playwright install --with-deps chromium
+      - run: uv run --group browser --extra chunking pytest tests/browser

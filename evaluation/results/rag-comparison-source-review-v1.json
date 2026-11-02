@@ -1,0 +1,36 @@
+{
+  "reviewer": "Codex assistant; not an independent human adjudicator",
+  "selection": "Purposive disagreements plus shared visual/refusal failures; not a random sample or a full 100-question manual rescore",
+  "questions": 17,
+  "paired_answers": 68,
+  "visual_assets_checked": [
+    {
+      "path": "assets/crops/element_00036.png",
+      "sha256": "9d0fdaac862a5d1716cb17bb47c7d0e11fa1cf0977d2aeea0f93b59c58aef749"
+    },
+    {
+      "path": "assets/crops/element_00002.png",
+      "sha256": "8652f868747ac027ea4db018cccdd83d838df6090ab5f5ff2e9a81463b811f63"
+    },
+    {
+      "path": "assets/crops/element_00040.png",
+      "sha256": "b38b2f348371e1a1e17d2d01fd760465c6808b9fc4ece11c5d430d9df4dffb70"
+    },
+    {
+      "path": "assets/crops/element_00118.png",
+      "sha256": "8a0d0851c112a171b4645f34c05b5edd3c790e0afd681ebbc766de032b7d9f78"
+    },
+    {
+      "path": "assets/crops/element_00183.png",
+      "sha256": "7c0ee0dd31eb406a3e946400cac92ae89eb2bf1d6864231b1a5b07e7d22a9357"
+    },
+    {
+      "path": "assets/crops/recovered_image_00001.png",
+      "sha256": "552eb625e7fdf26b2d58b867a0ab85303ae53fe7b8000e6d2c74efc817cfdfdc"
+    }
+  ],
+  "scope": "Saved source text/cells and direct inspection of one chart and five image crops; no new parsing or model calls",
+  "original_scores_unchanged": true,
+  "limitations": "Small synthetic-control calibration did not catch all corpus judge failures. Scores remain exploratory; manual observations are not a population error estimate.",
+  "recommendation": "Adaptive hybrid one-pass is the best current candidate for completeness, citation support and one-call simplicity. The full agent has no demonstrated overall advantage; safe refusals and visual scoring need a better independent audit before ranking by small point differences."
+}

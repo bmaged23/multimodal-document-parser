@@ -1,0 +1,120 @@
+{
+  "manifest_version": "1.0",
+  "description": "Public-source candidate documents for document parsing evaluation; not a scored benchmark yet.",
+  "documents": [
+    {
+      "id": "nasa_financial_report_2024",
+      "title": "NASA FY2024 Agency Financial Report",
+      "filename": "nasa_fy2024_agency_financial_report.pdf",
+      "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
+      "download_url": "https://www.nasa.gov/wp-content/uploads/2023/11/nasa-fy-2024-afr-1.pdf",
+      "categories": [
+        "long_document",
+        "financial_tables",
+        "charts",
+        "photographs",
+        "mixed_layout",
+        "spanish_text",
+        "organization_diagram"
+      ],
+      "rights_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "rights_notes": "NASA media guidelines apply; individual photographs and other third-party material can have separate rights. Keep source files local and review credits before publishing excerpts.",
+      "sha256": "65ee29adf5f3a92fcd74701696c25dae8f2d18f1ba2e7f4fba2bcfc059acbefc",
+      "size_bytes": 16429425,
+      "page_count": 127,
+      "pages_with_text_layer": 127,
+      "development_pages": [
+        11,
+        30,
+        50,
+        68,
+        118
+      ],
+      "inspection_notes": "Inspected organization diagram, stacked/donut charts, financial tables, and a Spanish appendix. PDF page numbers are 1-based, not printed labels."
+    },
+    {
+      "id": "nasa_earth_science_technology_2024",
+      "title": "NASA Earth Science Technology Office 2024 Annual Report",
+      "filename": "nasa_esto_2024_annual_report.pdf",
+      "source_url": "https://esto.nasa.gov/files/AnnualReports/ESTO_Annual_Report_2024.pdf",
+      "download_url": "https://esto.nasa.gov/files/AnnualReports/ESTO_Annual_Report_2024.pdf",
+      "categories": [
+        "scientific_report",
+        "illustrations",
+        "photographs",
+        "mixed_layout",
+        "two_page_spreads",
+        "text_on_dark_background",
+        "infographics"
+      ],
+      "rights_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "rights_notes": "NASA media guidelines apply; inspect individual image credits before redistributing excerpts.",
+      "sha256": "31a711056b5cea401974721bc84c62ca5e26ad8baf5b19d70661ce012df75b08",
+      "size_bytes": 6771483,
+      "page_count": 21,
+      "pages_with_text_layer": 21,
+      "development_pages": [
+        3,
+        8,
+        10
+      ],
+      "inspection_notes": "Inspected infographics, photographs, multi-column text, dark backgrounds and wide two-page spreads."
+    },
+    {
+      "id": "lucinda_davis_diary_1874",
+      "title": "Lucinda Davis Diary, 1874",
+      "filename": "lucinda_davis_1874_handwritten_diary.pdf",
+      "source_url": "https://npgallery.nps.gov/AssetDetail/539a8c6d-d1c2-40ec-9729-ba874f53ccb1",
+      "download_url": "https://npgallery.nps.gov/GetAsset/539a8c6dd1c240ec9729ba874f53ccb1/original",
+      "categories": [
+        "handwriting",
+        "historical_cursive",
+        "scanned_document",
+        "aged_paper",
+        "mixed_print_and_handwriting",
+        "book_curvature"
+      ],
+      "rights_url": "https://npgallery.nps.gov/AssetDetail/539a8c6d-d1c2-40ec-9729-ba874f53ccb1",
+      "rights_notes": "NPS marks the digital asset public domain and requests credit: Courtesy of North Cascades NPS Complex Museum Collection, Aerial Photograph Collection.",
+      "sha256": "11942a0e92cae94df1454c15132b81b2a75d5282bfb41683a7156dc1374aa91f",
+      "size_bytes": 118494778,
+      "page_count": 76,
+      "pages_with_text_layer": 0,
+      "development_pages": [
+        5,
+        12,
+        35,
+        74
+      ],
+      "inspection_notes": "Pages 12, 35 and 74 visually verified as handwriting; page 5 contains a printed calendar/table. All 76 PDF pages have no text layer. This is historical handwriting by one writer, not a modern handwriting benchmark."
+    },
+    {
+      "id": "ai_scientist_paper_2024",
+      "title": "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery (v3)",
+      "filename": "ai_scientist_2408_06292v3_scientific_paper.pdf",
+      "source_url": "https://arxiv.org/abs/2408.06292v3",
+      "download_url": "https://arxiv.org/pdf/2408.06292v3",
+      "categories": [
+        "long_document",
+        "scientific_paper",
+        "equations",
+        "charts",
+        "tables",
+        "two_column_layout"
+      ],
+      "rights_url": "https://creativecommons.org/licenses/by/4.0/",
+      "rights_notes": "CC BY 4.0, linked from the arXiv record. Credit Chris Lu, Cong Lu, Robert Tjarko Lange, Jakob Foerster, Jeff Clune, David Ha; identify modifications to extracted subsets.",
+      "sha256": "e911f90b0114d5e3fc23a0000177ea670fa9ed79d5f9a664efa2980fdb350507",
+      "size_bytes": 11731143,
+      "page_count": 186,
+      "pages_with_text_layer": 186,
+      "development_pages": [
+        3,
+        7,
+        106,
+        154
+      ],
+      "inspection_notes": "Main paper includes a pipeline diagram and multi-panel plots; appendices include code-like text and AI-generated papers. Use for visual extraction only; scientific claims in generated appendices are not verified."
+    }
+  ]
+}

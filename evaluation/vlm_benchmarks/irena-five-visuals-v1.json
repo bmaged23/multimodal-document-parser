@@ -1,0 +1,52 @@
+{
+  "benchmark_id": "ollama-five-models-five-visuals-v1",
+  "source_document_id": "sha256:7f624f343fabbcd213bff4e0431a6d60e6ba42d8041a576b5afce53c73f86e26",
+  "source_cached_run": "outputs/parser_runs/irena-final-repair-paddleocr-gemma4-31b-02",
+  "models": [
+    "gemma4:31b",
+    "glm-5.3-flash",
+    "deepseek-v4.1-flash",
+    "kimi-k3",
+    "mistral-large-4"
+  ],
+  "reuse_cached_model": "gemma4:31b",
+  "reference": "evaluation/vlm_benchmarks/irena-five-visuals-reference-v1.json",
+  "cases": [
+    {
+      "id": "multi-series-line-chart",
+      "pdf_page": 4,
+      "original_pdf_page": 16,
+      "element_id": "element_00036",
+      "kind": "chart"
+    },
+    {
+      "id": "grouped-bar-chart",
+      "pdf_page": 15,
+      "original_pdf_page": 27,
+      "element_id": "element_00133",
+      "kind": "chart"
+    },
+    {
+      "id": "unlabelled-scatter-plot",
+      "pdf_page": 9,
+      "original_pdf_page": 21,
+      "element_id": "element_00079",
+      "kind": "chart"
+    },
+    {
+      "id": "equipment-close-up",
+      "pdf_page": 13,
+      "original_pdf_page": 25,
+      "element_id": "element_00118",
+      "kind": "image"
+    },
+    {
+      "id": "landscape-dam",
+      "pdf_page": 20,
+      "original_pdf_page": 32,
+      "element_id": "element_00183",
+      "kind": "image"
+    }
+  ],
+  "protocol": "Use the exact saved crop/context image bytes, analysis prompts, schemas and 4096-token/temperature-0 settings from the cached run. Score raw draft and raw review responses separately. No OCR, native-vector corrections or expected-answer data in model calls. Stop further requests to a model on account/billing failures; mark every affected case unavailable, not incorrect. Single-run development comparison, not universal ranking."
+}

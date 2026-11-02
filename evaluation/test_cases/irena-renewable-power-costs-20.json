@@ -1,0 +1,119 @@
+{
+  "title": "IRENA Renewable Power Generation Costs in 2024 \u2014 mixed-content 20-page selection",
+  "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
+  "original_pdf_path": "data/input_documents/evaluation_corpus/irena_renewable_power_generation_costs_2024.pdf",
+  "subset_pdf_path": "data/input_documents/evaluation_corpus/irena_renewable_power_costs_2024_pages_13_to_32.pdf",
+  "original_document_id": "sha256:ffe8ce4bde29616f3edf9ef1a86dbb6ae2d5381a0ecb9bb1f71bb20204b6bada",
+  "subset_document_id": "sha256:7f624f343fabbcd213bff4e0431a6d60e6ba42d8041a576b5afce53c73f86e26",
+  "original_page_count": 216,
+  "subset_page_count": 20,
+  "original_pdf_pages": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "page_mapping": [
+    {
+      "sample_page": 1,
+      "original_pdf_page": 13
+    },
+    {
+      "sample_page": 2,
+      "original_pdf_page": 14
+    },
+    {
+      "sample_page": 3,
+      "original_pdf_page": 15
+    },
+    {
+      "sample_page": 4,
+      "original_pdf_page": 16
+    },
+    {
+      "sample_page": 5,
+      "original_pdf_page": 17
+    },
+    {
+      "sample_page": 6,
+      "original_pdf_page": 18
+    },
+    {
+      "sample_page": 7,
+      "original_pdf_page": 19
+    },
+    {
+      "sample_page": 8,
+      "original_pdf_page": 20
+    },
+    {
+      "sample_page": 9,
+      "original_pdf_page": 21
+    },
+    {
+      "sample_page": 10,
+      "original_pdf_page": 22
+    },
+    {
+      "sample_page": 11,
+      "original_pdf_page": 23
+    },
+    {
+      "sample_page": 12,
+      "original_pdf_page": 24
+    },
+    {
+      "sample_page": 13,
+      "original_pdf_page": 25
+    },
+    {
+      "sample_page": 14,
+      "original_pdf_page": 26
+    },
+    {
+      "sample_page": 15,
+      "original_pdf_page": 27
+    },
+    {
+      "sample_page": 16,
+      "original_pdf_page": 28
+    },
+    {
+      "sample_page": 17,
+      "original_pdf_page": 29
+    },
+    {
+      "sample_page": 18,
+      "original_pdf_page": 30
+    },
+    {
+      "sample_page": 19,
+      "original_pdf_page": 31
+    },
+    {
+      "sample_page": 20,
+      "original_pdf_page": 32
+    }
+  ],
+  "selection_reason": "Continuous content-heavy selection: narrative, numerical tables, multi-series line charts, bar charts and photographs; skips front matter.",
+  "inspection_scope": "Assistant visually checked original pages 13,15,16,25,26,27,28; not every selected page independently reviewed.",
+  "annotation_status": "Parsed and evaluated for selected single-assistant development assertions; not independent human ground truth.",
+  "redistribution_note": "Keep PDFs local and ignored. Preserve publisher attribution; third-party images may have separate terms.",
+  "source_review_reference": "evaluation/reference_annotations/irena-mixed-content-20-source-review-v1.json"
+}

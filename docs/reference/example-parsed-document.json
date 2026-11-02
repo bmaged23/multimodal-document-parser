@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0",
+  "document_id": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "source_filename": "synthetic-example.pdf",
+  "title": "Schema illustration (synthetic)",
+  "status": "parsed",
+  "preparation": {
+    "dpi": 144,
+    "renderer": "synthetic-example"
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "width_points": 612,
+      "height_points": 792,
+      "width_pixels": 1224,
+      "height_pixels": 1584,
+      "rotation_degrees": 0,
+      "image": {
+        "path": "assets/pages/page_0001.png"
+      }
+    }
+  ],
+  "elements": [
+    {
+      "id": "heading_001",
+      "type": "heading",
+      "source_regions": [
+        {
+          "page_number": 1,
+          "bounding_box": {
+            "x0": 0.1,
+            "y0": 0.1,
+            "x1": 0.9,
+            "y1": 0.2
+          }
+        }
+      ],
+      "provenance": {
+        "producer": "synthetic-example",
+        "method": "manual"
+      },
+      "text": "Results",
+      "level": 1
+    },
+    {
+      "id": "text_001",
+      "type": "text",
+      "source_regions": [
+        {
+          "page_number": 1,
+          "bounding_box": {
+            "x0": 0.1,
+            "y0": 0.1,
+            "x1": 0.9,
+            "y1": 0.2
+          }
+        }
+      ],
+      "provenance": {
+        "producer": "synthetic-example",
+        "method": "manual"
+      },
+      "text": "Illustrative results only.",
+      "parent_id": "heading_001"
+    },
+    {
+      "id": "table_001",
+      "type": "table",
+      "source_regions": [
+        {
+          "page_number": 1,
+          "bounding_box": {
+            "x0": 0.1,
+            "y0": 0.1,
+            "x1": 0.9,
+            "y1": 0.2
+          }
+        }
+      ],
+      "provenance": {
+        "producer": "synthetic-example",
+        "method": "manual"
+      },
+      "parent_id": "heading_001",
+      "row_count": 2,
+      "column_count": 2,
+      "cells": [
+        {
+          "row": 0,
+          "column": 0,
+          "text": "Year",
+          "is_header": true
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "text": "Value",
+          "is_header": true
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "text": "2023"
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "text": "18"
+        }
+      ]
+    },
+    {
+      "id": "chart_001",
+      "type": "chart",
+      "source_regions": [
+        {
+          "page_number": 1,
+          "bounding_box": {
+            "x0": 0.1,
+            "y0": 0.1,
+            "x1": 0.9,
+            "y1": 0.2
+          }
+        }
+      ],
+      "provenance": {
+        "producer": "synthetic-example",
+        "method": "manual"
+      },
+      "parent_id": "heading_001",
+      "asset": {
+        "path": "assets/crops/chart_001.png"
+      },
+      "series": [
+        {
+          "name": "Revenue",
+          "unit": "million",
+          "points": [
+            {
+              "label": "2023",
+              "value": 18,
+              "value_basis": "printed_label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "formula_001",
+      "type": "formula",
+      "source_regions": [
+        {
+          "page_number": 1,
+          "bounding_box": {
+            "x0": 0.1,
+            "y0": 0.1,
+            "x1": 0.9,
+            "y1": 0.2
+          }
+        }
+      ],
+      "provenance": {
+        "producer": "synthetic-example",
+        "method": "manual"
+      },
+      "parent_id": "heading_001",
+      "latex": "y = x^2"
+    },
+    {
+      "id": "image_001",
+      "type": "image",
+      "source_regions": [
+        {
+          "page_number": 1,
+          "bounding_box": {
+            "x0": 0.1,
+            "y0": 0.1,
+            "x1": 0.9,
+            "y1": 0.2
+          }
+        }
+      ],
+      "provenance": {
+        "producer": "synthetic-example",
+        "method": "manual"
+      },
+      "parent_id": "heading_001",
+      "asset": {
+        "path": "assets/crops/image_001.png"
+      },
+      "description": {
+        "text": "Synthetic illustration description.",
+        "provenance": {
+          "producer": "synthetic-example",
+          "method": "manual"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "original_document_id": "sha256:65ee29adf5f3a92fcd74701696c25dae8f2d18f1ba2e7f4fba2bcfc059acbefc",
+  "subset_document_id": "sha256:bc73868c89045132a265a9b6f6aa62b43ce09a8830f7f622c025b2f53a934f66",
+  "original_pdf_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "render_dpi": 144,
+  "page_mapping": [
+    {
+      "sample_page": 1,
+      "original_pdf_page": 1
+    },
+    {
+      "sample_page": 2,
+      "original_pdf_page": 2
+    },
+    {
+      "sample_page": 3,
+      "original_pdf_page": 3
+    },
+    {
+      "sample_page": 4,
+      "original_pdf_page": 4
+    },
+    {
+      "sample_page": 5,
+      "original_pdf_page": 5
+    },
+    {
+      "sample_page": 6,
+      "original_pdf_page": 6
+    },
+    {
+      "sample_page": 7,
+      "original_pdf_page": 7
+    },
+    {
+      "sample_page": 8,
+      "original_pdf_page": 8
+    },
+    {
+      "sample_page": 9,
+      "original_pdf_page": 9
+    },
+    {
+      "sample_page": 10,
+      "original_pdf_page": 10
+    },
+    {
+      "sample_page": 11,
+      "original_pdf_page": 11
+    },
+    {
+      "sample_page": 12,
+      "original_pdf_page": 12
+    },
+    {
+      "sample_page": 13,
+      "original_pdf_page": 13
+    },
+    {
+      "sample_page": 14,
+      "original_pdf_page": 14
+    },
+    {
+      "sample_page": 15,
+      "original_pdf_page": 15
+    },
+    {
+      "sample_page": 16,
+      "original_pdf_page": 16
+    },
+    {
+      "sample_page": 17,
+      "original_pdf_page": 17
+    },
+    {
+      "sample_page": 18,
+      "original_pdf_page": 18
+    },
+    {
+      "sample_page": 19,
+      "original_pdf_page": 19
+    },
+    {
+      "sample_page": 20,
+      "original_pdf_page": 20
+    }
+  ],
+  "pixel_verification": "Every rendered page matches the original prepared NASA page in RGB.",
+  "notes": "All selected pages receive new quantized GPU inference; no dots.mocr prediction is reused."
+}

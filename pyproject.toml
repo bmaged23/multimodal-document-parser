@@ -1,0 +1,82 @@
+[project]
+name = "multimodal-doc-parser"
+version = "0.1.0"
+description = "Compare document parsers and produce structured, RAG-ready PDF data."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "markdown-it-py>=3,<5",
+    "nh3>=0.2,<1",
+    "pillow>=11,<13",
+    "pydantic>=2.11,<3",
+    "pypdfium2>=4.30,<6",
+]
+
+[project.scripts]
+document-parser = "multimodal_doc_parser.command_line:main"
+document-parser-check-environment = "multimodal_doc_parser.environment_check:main"
+document-pipeline-service = "multimodal_doc_parser.pipeline_services.service_runtime:main"
+
+[project.optional-dependencies]
+chunking = ["tiktoken>=0.12,<1"]
+rag = [
+    "huggingface-hub>=1,<2",
+    "numpy>=2,<3",
+    "onnxruntime-gpu[cuda,cudnn]>=1.23,<1.24",
+    "tiktoken>=0.12,<1",
+    "tokenizers>=0.23,<1",
+]
+api = [
+    "fastapi>=0.120,<1",
+    "httpx>=0.28,<1",
+    "python-multipart>=0.0.20,<1",
+    "uvicorn>=0.38,<1",
+]
+evaluation = [
+    "langchain-community>=0.3.31,<0.4",
+    "langchain-openai>=0.3.35,<0.4",
+    "ragas>=0.4,<0.5",
+]
+
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+browser = [
+    "playwright>=1.51,<2",
+]
+dev = [
+    "mypy>=1.15,<2",
+    "pytest>=8,<10",
+    "reportlab>=4,<5",
+    "ruff>=0.11,<1",
+    "zstandard==0.25.0",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.hatch.build]
+exclude = [
+    "/.cache/**",
+    "/outputs/**",
+    "/data/input_documents/**",
+    "**/.venv/**",
+    "/.mypy_cache/**",
+    "/.ruff_cache/**",
+    "/.pytest_cache/**",
+]

@@ -1,0 +1,29 @@
+{
+  "captured_at_utc": "2026-11-01T14:45:33.361303+00:00",
+  "source_title": "IRENA Renewable Power Generation Costs in 2024",
+  "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
+  "source_case": "evaluation/test_cases/irena-renewable-power-costs-20.json",
+  "review_run": "outputs/parser_runs/irena-final-source-checked-03",
+  "document_json_sha256": "0c9d409496bd5a12ea999e6abc0fa2285f1a8d3316e3a333429d691a200ed416",
+  "stage": "Final source-reviewed pipeline, not raw model predictions",
+  "capture": "Actual browser review in Page + region / Content mode. Source PDF render at left; structured content at right.",
+  "presentation_adjustments": "Table font/spacing compacted to show all columns; duplicate chart crop hidden in the output pane because its source is already visible at left. Data and provenance text unchanged.",
+  "images": [
+    {
+      "file": "parser-review-table.png",
+      "width": 1600,
+      "height": 1000,
+      "sha256": "a1b50b3d79e13a531427b16d7bb6d072887b9326b1d54df197bc294cb88971b1",
+      "original_pdf_page": 15,
+      "source_element_id": "element_00020"
+    },
+    {
+      "file": "parser-review-chart.png",
+      "width": 1600,
+      "height": 1000,
+      "sha256": "fa571db354d4fbac67b36ef1c7a049a88980e54c9725f6afa06e24da75926b3d",
+      "original_pdf_page": 16,
+      "source_element_id": "element_00036"
+    }
+  ]
+}

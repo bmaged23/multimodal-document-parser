@@ -1,0 +1,1765 @@
+{
+  "review_version": "1.0",
+  "document_id": "sha256:7f624f343fabbcd213bff4e0431a6d60e6ba42d8041a576b5afce53c73f86e26",
+  "annotation_provenance": "Assistant transcribed selected cells and printed chart labels from rendered source PDF pages at 180 DPI, with a 46-page thumbnail overview. Single annotator; model inventory was seen before annotation, so this is not blind or independent human ground truth. Predictions were not copied into reference values. Created 2026-10-31. Rows and columns are zero-based logical source grid coordinates; table and visual indexes are zero-based within each page in reading order.",
+  "selection_policy": "Development sample chosen for merged headers, wrapped country names, first/last rows, dense chart labels, signs, grouped bars, unlabelled scatter plots and a photographic chapter divider. All source pages overviewed; only the explicit assertions below are scored. No population-level accuracy estimate.",
+  "overview_reviewed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "table_counts": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0,
+    "9": 0,
+    "10": 0,
+    "11": 0,
+    "12": 0,
+    "13": 1,
+    "14": 0,
+    "15": 0,
+    "16": 0,
+    "17": 0,
+    "18": 0,
+    "19": 0,
+    "20": 0
+  },
+  "visual_counts": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 1,
+    "7": 2,
+    "8": 0,
+    "9": 1,
+    "10": 0,
+    "11": 1,
+    "12": 0,
+    "13": 1,
+    "14": 1,
+    "15": 1,
+    "16": 1,
+    "17": 1,
+    "18": 0,
+    "19": 0,
+    "20": 1
+  },
+  "table_cells": [
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 0,
+      "column": 0,
+      "text": "",
+      "row_span": 3,
+      "column_span": 1
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 0,
+      "column": 1,
+      "text": "Total installed costs",
+      "row_span": 1,
+      "column_span": 3,
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 1,
+      "column": 1,
+      "text": "(2024 USD/kW)",
+      "row_span": 1,
+      "column_span": 3,
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 0,
+      "column": 4,
+      "text": "Capacity factor",
+      "row_span": 1,
+      "column_span": 3,
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 1,
+      "column": 4,
+      "text": "(%)",
+      "row_span": 1,
+      "column_span": 3,
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 0,
+      "column": 7,
+      "text": "Levelised cost of electricity",
+      "row_span": 1,
+      "column_span": 3,
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 1,
+      "column": 7,
+      "text": "(2024 USD/kWh)",
+      "row_span": 1,
+      "column_span": 3,
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 2,
+      "column": 1,
+      "text": "2010",
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 2,
+      "column": 2,
+      "text": "2024",
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 2,
+      "column": 3,
+      "text": "Percent change",
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 2,
+      "column": 4,
+      "text": "2010",
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 2,
+      "column": 5,
+      "text": "2024",
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 2,
+      "column": 6,
+      "text": "Percent change",
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 2,
+      "column": 7,
+      "text": "2010",
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 2,
+      "column": 8,
+      "text": "2024",
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 2,
+      "column": 9,
+      "text": "Percent change",
+      "is_header": true
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 3,
+      "column": 0,
+      "text": "Bioenergy"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 3,
+      "column": 1,
+      "text": "3 082"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 3,
+      "column": 2,
+      "text": "3 242"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 3,
+      "column": 3,
+      "text": "5%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 3,
+      "column": 4,
+      "text": "72"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 3,
+      "column": 5,
+      "text": "73"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 3,
+      "column": 6,
+      "text": "1%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 3,
+      "column": 7,
+      "text": "0.086"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 3,
+      "column": 8,
+      "text": "0.087"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 3,
+      "column": 9,
+      "text": "1%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 4,
+      "column": 0,
+      "text": "Geothermal"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 4,
+      "column": 1,
+      "text": "3 083"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 4,
+      "column": 2,
+      "text": "4 015"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 4,
+      "column": 3,
+      "text": "30%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 4,
+      "column": 4,
+      "text": "87"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 4,
+      "column": 5,
+      "text": "88"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 4,
+      "column": 6,
+      "text": "1%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 4,
+      "column": 7,
+      "text": "0.055"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 4,
+      "column": 8,
+      "text": "0.060"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 4,
+      "column": 9,
+      "text": "9%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 5,
+      "column": 0,
+      "text": "Hydropower"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 5,
+      "column": 1,
+      "text": "1 494"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 5,
+      "column": 2,
+      "text": "2 267"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 5,
+      "column": 3,
+      "text": "52%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 5,
+      "column": 4,
+      "text": "44"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 5,
+      "column": 5,
+      "text": "48"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 5,
+      "column": 6,
+      "text": "9%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 5,
+      "column": 7,
+      "text": "0.044"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 5,
+      "column": 8,
+      "text": "0.057"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 5,
+      "column": 9,
+      "text": "30%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 6,
+      "column": 0,
+      "text": "Solar PV"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 6,
+      "column": 1,
+      "text": "5 283"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 6,
+      "column": 2,
+      "text": "691"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 6,
+      "column": 3,
+      "text": "-87%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 6,
+      "column": 4,
+      "text": "15"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 6,
+      "column": 5,
+      "text": "17"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 6,
+      "column": 6,
+      "text": "13%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 6,
+      "column": 7,
+      "text": "0.417"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 6,
+      "column": 8,
+      "text": "0.043"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 6,
+      "column": 9,
+      "text": "-90%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 7,
+      "column": 0,
+      "text": "CSP"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 7,
+      "column": 1,
+      "text": "10 703"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 7,
+      "column": 2,
+      "text": "3 677"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 7,
+      "column": 3,
+      "text": "-66%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 7,
+      "column": 4,
+      "text": "30"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 7,
+      "column": 5,
+      "text": "41"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 7,
+      "column": 6,
+      "text": "37%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 7,
+      "column": 7,
+      "text": "0.402"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 7,
+      "column": 8,
+      "text": "0.092"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 7,
+      "column": 9,
+      "text": "-77%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 8,
+      "column": 0,
+      "text": "Onshore wind"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 8,
+      "column": 1,
+      "text": "2 324"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 8,
+      "column": 2,
+      "text": "1 041"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 8,
+      "column": 3,
+      "text": "-55%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 8,
+      "column": 4,
+      "text": "27"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 8,
+      "column": 5,
+      "text": "34"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 8,
+      "column": 6,
+      "text": "26%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 8,
+      "column": 7,
+      "text": "0.113"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 8,
+      "column": 8,
+      "text": "0.034"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 8,
+      "column": 9,
+      "text": "-70%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 9,
+      "column": 0,
+      "text": "Offshore wind"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 9,
+      "column": 1,
+      "text": "5 518"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 9,
+      "column": 2,
+      "text": "2 852"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 9,
+      "column": 3,
+      "text": "-48%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 9,
+      "column": 4,
+      "text": "38"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 9,
+      "column": 5,
+      "text": "42"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 9,
+      "column": 6,
+      "text": "11%"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 9,
+      "column": 7,
+      "text": "0.208"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 9,
+      "column": 8,
+      "text": "0.079"
+    },
+    {
+      "page_number": 3,
+      "table_index": 0,
+      "row": 9,
+      "column": 9,
+      "text": "-62%"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 0,
+      "column": 0,
+      "text": ""
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 0,
+      "column": 1,
+      "text": "China",
+      "is_header": true
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 0,
+      "column": 2,
+      "text": "Germany",
+      "is_header": true
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 0,
+      "column": 3,
+      "text": "Brazil",
+      "is_header": true
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 0,
+      "column": 4,
+      "text": "Australia",
+      "is_header": true
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 1,
+      "column": 0,
+      "text": "Avoided fossil fuel costs (USD billion)"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 1,
+      "column": 1,
+      "text": "179.8"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 1,
+      "column": 2,
+      "text": "16.4"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 1,
+      "column": 3,
+      "text": "28.3"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 1,
+      "column": 4,
+      "text": "5.0"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 2,
+      "column": 0,
+      "text": "Avoided air pollution damages (USD billion)"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 2,
+      "column": 1,
+      "text": "261.1"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 2,
+      "column": 2,
+      "text": "6.0"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 2,
+      "column": 3,
+      "text": "3.9"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 2,
+      "column": 4,
+      "text": "1.9"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 3,
+      "column": 0,
+      "text": "Total (USD billion)"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 3,
+      "column": 1,
+      "text": "440.9"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 3,
+      "column": 2,
+      "text": "22.4"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 3,
+      "column": 3,
+      "text": "32.2"
+    },
+    {
+      "page_number": 13,
+      "table_index": 0,
+      "row": 3,
+      "column": 4,
+      "text": "6.9"
+    }
+  ],
+  "visuals": [
+    {
+      "page_number": 1,
+      "visual_index": 0,
+      "kind": "image",
+      "printed_points": [],
+      "series_units": {}
+    },
+    {
+      "page_number": 4,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [
+        {
+          "series": "Solar PV",
+          "label": "2010",
+          "value": 0.417
+        },
+        {
+          "series": "Solar PV",
+          "label": "2024",
+          "value": 0.043
+        },
+        {
+          "series": "CSP",
+          "label": "2010",
+          "value": 0.402
+        },
+        {
+          "series": "CSP",
+          "label": "2024",
+          "value": 0.092
+        },
+        {
+          "series": "Bioenergy",
+          "label": "2010",
+          "value": 0.086
+        },
+        {
+          "series": "Bioenergy",
+          "label": "2024",
+          "value": 0.087
+        },
+        {
+          "series": "Offshore wind",
+          "label": "2010",
+          "value": 0.208
+        },
+        {
+          "series": "Offshore wind",
+          "label": "2024",
+          "value": 0.079
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2010",
+          "value": 0.113
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2024",
+          "value": 0.034
+        },
+        {
+          "series": "Geothermal",
+          "label": "2010",
+          "value": 0.055
+        },
+        {
+          "series": "Geothermal",
+          "label": "2024",
+          "value": 0.06
+        },
+        {
+          "series": "Hydropower",
+          "label": "2010",
+          "value": 0.044
+        },
+        {
+          "series": "Hydropower",
+          "label": "2024",
+          "value": 0.057
+        }
+      ],
+      "series_units": {
+        "Solar PV": "USD/kWh",
+        "CSP": "USD/kWh",
+        "Bioenergy": "USD/kWh",
+        "Offshore wind": "USD/kWh",
+        "Onshore wind": "USD/kWh",
+        "Geothermal": "USD/kWh",
+        "Hydropower": "USD/kWh"
+      },
+      "all_printed_points_annotated": true
+    },
+    {
+      "page_number": 5,
+      "visual_index": 0,
+      "kind": "image",
+      "printed_points": [],
+      "series_units": {}
+    },
+    {
+      "page_number": 5,
+      "visual_index": 1,
+      "kind": "chart",
+      "printed_points": [
+        {
+          "series": "World",
+          "label": "2022",
+          "value": 0.051
+        },
+        {
+          "series": "World",
+          "label": "2023",
+          "value": 0.042
+        },
+        {
+          "series": "World",
+          "label": "2024",
+          "value": 0.043
+        },
+        {
+          "series": "G20 + EU",
+          "label": "2022",
+          "value": 0.051
+        },
+        {
+          "series": "G20 + EU",
+          "label": "2023",
+          "value": 0.042
+        },
+        {
+          "series": "G20 + EU",
+          "label": "2024",
+          "value": 0.042
+        },
+        {
+          "series": "China",
+          "label": "2022",
+          "value": 0.039
+        },
+        {
+          "series": "China",
+          "label": "2023",
+          "value": 0.036
+        },
+        {
+          "series": "China",
+          "label": "2024",
+          "value": 0.033
+        },
+        {
+          "series": "EU",
+          "label": "2022",
+          "value": 0.076
+        },
+        {
+          "series": "EU",
+          "label": "2023",
+          "value": 0.055
+        },
+        {
+          "series": "EU",
+          "label": "2024",
+          "value": 0.059
+        },
+        {
+          "series": "United States",
+          "label": "2022",
+          "value": 0.06
+        },
+        {
+          "series": "United States",
+          "label": "2023",
+          "value": 0.059
+        },
+        {
+          "series": "United States",
+          "label": "2024",
+          "value": 0.07
+        },
+        {
+          "series": "India",
+          "label": "2022",
+          "value": 0.039
+        },
+        {
+          "series": "India",
+          "label": "2023",
+          "value": 0.042
+        },
+        {
+          "series": "India",
+          "label": "2024",
+          "value": 0.038
+        },
+        {
+          "series": "Brazil",
+          "label": "2022",
+          "value": 0.045
+        },
+        {
+          "series": "Brazil",
+          "label": "2023",
+          "value": 0.042
+        },
+        {
+          "series": "Brazil",
+          "label": "2024",
+          "value": 0.048
+        }
+      ],
+      "series_units": {
+        "World": "USD/kWh",
+        "G20 + EU": "USD/kWh",
+        "China": "USD/kWh",
+        "EU": "USD/kWh",
+        "United States": "USD/kWh",
+        "India": "USD/kWh",
+        "Brazil": "USD/kWh"
+      },
+      "all_printed_points_annotated": true
+    },
+    {
+      "page_number": 6,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [
+        {
+          "series": "Onshore wind - World",
+          "label": "2022",
+          "value": 0.034
+        },
+        {
+          "series": "Onshore wind - World",
+          "label": "2023",
+          "value": 0.033
+        },
+        {
+          "series": "Onshore wind - World",
+          "label": "2024",
+          "value": 0.034
+        },
+        {
+          "series": "Onshore wind - G20 + EU",
+          "label": "2022",
+          "value": 0.034
+        },
+        {
+          "series": "Onshore wind - G20 + EU",
+          "label": "2023",
+          "value": 0.032
+        },
+        {
+          "series": "Onshore wind - G20 + EU",
+          "label": "2024",
+          "value": 0.034
+        },
+        {
+          "series": "Onshore wind - China",
+          "label": "2022",
+          "value": 0.028
+        },
+        {
+          "series": "Onshore wind - China",
+          "label": "2023",
+          "value": 0.026
+        },
+        {
+          "series": "Onshore wind - China",
+          "label": "2024",
+          "value": 0.029
+        },
+        {
+          "series": "Onshore wind - EU",
+          "label": "2022",
+          "value": 0.047
+        },
+        {
+          "series": "Onshore wind - EU",
+          "label": "2023",
+          "value": 0.048
+        },
+        {
+          "series": "Onshore wind - EU",
+          "label": "2024",
+          "value": 0.052
+        },
+        {
+          "series": "Onshore wind - United States",
+          "label": "2022",
+          "value": 0.03
+        },
+        {
+          "series": "Onshore wind - United States",
+          "label": "2023",
+          "value": 0.039
+        },
+        {
+          "series": "Onshore wind - United States",
+          "label": "2024",
+          "value": 0.039
+        },
+        {
+          "series": "Onshore wind - India",
+          "label": "2022",
+          "value": 0.039
+        },
+        {
+          "series": "Onshore wind - India",
+          "label": "2023",
+          "value": 0.047
+        },
+        {
+          "series": "Onshore wind - India",
+          "label": "2024",
+          "value": 0.048
+        },
+        {
+          "series": "Onshore wind - Brazil",
+          "label": "2022",
+          "value": 0.025
+        },
+        {
+          "series": "Onshore wind - Brazil",
+          "label": "2023",
+          "value": 0.025
+        },
+        {
+          "series": "Onshore wind - Brazil",
+          "label": "2024",
+          "value": 0.03
+        },
+        {
+          "series": "Offshore wind - World",
+          "label": "2022",
+          "value": 0.081
+        },
+        {
+          "series": "Offshore wind - World",
+          "label": "2023",
+          "value": 0.076
+        },
+        {
+          "series": "Offshore wind - World",
+          "label": "2024",
+          "value": 0.079
+        },
+        {
+          "series": "Offshore wind - G20 + EU",
+          "label": "2022",
+          "value": 0.078
+        },
+        {
+          "series": "Offshore wind - G20 + EU",
+          "label": "2023",
+          "value": 0.072
+        },
+        {
+          "series": "Offshore wind - G20 + EU",
+          "label": "2024",
+          "value": 0.07
+        },
+        {
+          "series": "Offshore wind - China",
+          "label": "2022",
+          "value": 0.078
+        },
+        {
+          "series": "Offshore wind - China",
+          "label": "2023",
+          "value": 0.072
+        },
+        {
+          "series": "Offshore wind - China",
+          "label": "2024",
+          "value": 0.056
+        },
+        {
+          "series": "Offshore wind - EU",
+          "label": "2022",
+          "value": 0.084
+        },
+        {
+          "series": "Offshore wind - EU",
+          "label": "2023",
+          "value": 0.073
+        },
+        {
+          "series": "Offshore wind - EU",
+          "label": "2024",
+          "value": 0.08
+        },
+        {
+          "series": "Offshore wind - United States",
+          "label": "2023",
+          "value": 0.118
+        },
+        {
+          "series": "Offshore wind - United States",
+          "label": "2024",
+          "value": 0.123
+        }
+      ],
+      "series_units": {
+        "Onshore wind - World": "USD/kWh",
+        "Onshore wind - G20 + EU": "USD/kWh",
+        "Onshore wind - China": "USD/kWh",
+        "Onshore wind - EU": "USD/kWh",
+        "Onshore wind - United States": "USD/kWh",
+        "Onshore wind - India": "USD/kWh",
+        "Onshore wind - Brazil": "USD/kWh",
+        "Offshore wind - World": "USD/kWh",
+        "Offshore wind - G20 + EU": "USD/kWh",
+        "Offshore wind - China": "USD/kWh",
+        "Offshore wind - EU": "USD/kWh",
+        "Offshore wind - United States": "USD/kWh"
+      },
+      "all_printed_points_annotated": true
+    },
+    {
+      "page_number": 7,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [
+        {
+          "series": "Year-on-year percentage reduction 2023-2024",
+          "label": "Solar photovoltaic",
+          "value": 0.6
+        },
+        {
+          "series": "Year-on-year percentage reduction 2023-2024",
+          "label": "Offshore wind",
+          "value": 4
+        },
+        {
+          "series": "Year-on-year percentage reduction 2023-2024",
+          "label": "Onshore wind",
+          "value": 3
+        },
+        {
+          "series": "Year-on-year percentage reduction 2023-2024",
+          "label": "Concentrated solar power",
+          "value": -46
+        },
+        {
+          "series": "Year-on-year percentage reduction 2023-2024",
+          "label": "Bioenergy",
+          "value": 13
+        },
+        {
+          "series": "Year-on-year percentage reduction 2023-2024",
+          "label": "Geothermal",
+          "value": -16
+        },
+        {
+          "series": "Year-on-year percentage reduction 2023-2024",
+          "label": "Hydropower",
+          "value": -2
+        },
+        {
+          "series": "Capacity factor in 2024",
+          "label": "Solar photovoltaic",
+          "value": 17
+        },
+        {
+          "series": "Capacity factor in 2024",
+          "label": "Offshore wind",
+          "value": 42
+        },
+        {
+          "series": "Capacity factor in 2024",
+          "label": "Onshore wind",
+          "value": 34
+        },
+        {
+          "series": "Capacity factor in 2024",
+          "label": "Concentrated solar power",
+          "value": 41
+        },
+        {
+          "series": "Capacity factor in 2024",
+          "label": "Bioenergy",
+          "value": 73
+        },
+        {
+          "series": "Capacity factor in 2024",
+          "label": "Geothermal",
+          "value": 88
+        },
+        {
+          "series": "Capacity factor in 2024",
+          "label": "Hydropower",
+          "value": 48
+        }
+      ],
+      "series_units": {
+        "Year-on-year percentage reduction 2023-2024": "%",
+        "Capacity factor in 2024": "%"
+      },
+      "all_printed_points_annotated": true
+    },
+    {
+      "page_number": 7,
+      "visual_index": 1,
+      "kind": "chart",
+      "printed_points": [
+        {
+          "series": "Solar PV",
+          "label": "2010",
+          "value": 5283
+        },
+        {
+          "series": "Solar PV",
+          "label": "2024",
+          "value": 691
+        },
+        {
+          "series": "Solar PV",
+          "label": "2025",
+          "value": 599
+        },
+        {
+          "series": "Solar PV",
+          "label": "2026",
+          "value": 534
+        },
+        {
+          "series": "Solar PV",
+          "label": "2027",
+          "value": 478
+        },
+        {
+          "series": "Solar PV",
+          "label": "2028",
+          "value": 430
+        },
+        {
+          "series": "Solar PV",
+          "label": "2029",
+          "value": 388
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2010",
+          "value": 2324
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2024",
+          "value": 1041
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2025",
+          "value": 998
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2026",
+          "value": 960
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2027",
+          "value": 925
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2028",
+          "value": 892
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2029",
+          "value": 861
+        }
+      ],
+      "series_units": {
+        "Solar PV": "USD/kW",
+        "Onshore wind": "USD/kW"
+      },
+      "all_printed_points_annotated": true
+    },
+    {
+      "page_number": 9,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [],
+      "series_units": {},
+      "no_numeric_values": true,
+      "no_data_points": true
+    },
+    {
+      "page_number": 11,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [],
+      "series_units": {},
+      "no_numeric_values": true,
+      "no_data_points": true
+    },
+    {
+      "page_number": 13,
+      "visual_index": 0,
+      "kind": "image",
+      "printed_points": [],
+      "series_units": {}
+    },
+    {
+      "page_number": 14,
+      "visual_index": 0,
+      "kind": "image",
+      "printed_points": [],
+      "series_units": {}
+    },
+    {
+      "page_number": 15,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [
+        {
+          "series": "cumulative installed capacity",
+          "label": "Africa 2023",
+          "value": 65
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Africa 2024",
+          "value": 70
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Asia 2023",
+          "value": 1961
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Asia 2024",
+          "value": 2374
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Central America and the Caribbean 2023",
+          "value": 19
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Central America and the Caribbean 2024",
+          "value": 19
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Eurasia 2023",
+          "value": 122
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Eurasia 2024",
+          "value": 133
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Europe 2023",
+          "value": 778
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Europe 2024",
+          "value": 850
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Middle East 2023",
+          "value": 37
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Middle East 2024",
+          "value": 41
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "North America 2023",
+          "value": 526
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "North America 2024",
+          "value": 572
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Oceania 2023",
+          "value": 62
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "Oceania 2024",
+          "value": 70
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "South America 2023",
+          "value": 290
+        },
+        {
+          "series": "cumulative installed capacity",
+          "label": "South America 2024",
+          "value": 313
+        }
+      ],
+      "series_units": {
+        "cumulative installed capacity": "GW"
+      },
+      "all_printed_points_annotated": true
+    },
+    {
+      "page_number": 16,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [
+        {
+          "series": "Solar PV",
+          "label": "2010",
+          "value": 0.417
+        },
+        {
+          "series": "Solar PV",
+          "label": "2024",
+          "value": 0.043
+        },
+        {
+          "series": "CSP",
+          "label": "2010",
+          "value": 0.402
+        },
+        {
+          "series": "CSP",
+          "label": "2024",
+          "value": 0.092
+        },
+        {
+          "series": "Bioenergy",
+          "label": "2010",
+          "value": 0.086
+        },
+        {
+          "series": "Bioenergy",
+          "label": "2024",
+          "value": 0.087
+        },
+        {
+          "series": "Offshore wind",
+          "label": "2010",
+          "value": 0.208
+        },
+        {
+          "series": "Offshore wind",
+          "label": "2024",
+          "value": 0.079
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2010",
+          "value": 0.113
+        },
+        {
+          "series": "Onshore wind",
+          "label": "2024",
+          "value": 0.034
+        },
+        {
+          "series": "Geothermal",
+          "label": "2010",
+          "value": 0.055
+        },
+        {
+          "series": "Geothermal",
+          "label": "2024",
+          "value": 0.06
+        },
+        {
+          "series": "Hydropower",
+          "label": "2010",
+          "value": 0.044
+        },
+        {
+          "series": "Hydropower",
+          "label": "2024",
+          "value": 0.057
+        }
+      ],
+      "series_units": {
+        "Solar PV": "USD/kWh",
+        "CSP": "USD/kWh",
+        "Bioenergy": "USD/kWh",
+        "Offshore wind": "USD/kWh",
+        "Onshore wind": "USD/kWh",
+        "Geothermal": "USD/kWh",
+        "Hydropower": "USD/kWh"
+      },
+      "all_printed_points_annotated": true
+    },
+    {
+      "page_number": 17,
+      "visual_index": 0,
+      "kind": "chart",
+      "printed_points": [
+        {
+          "series": "LCOE",
+          "label": "Bioenergy 2023",
+          "value": 0.073
+        },
+        {
+          "series": "LCOE",
+          "label": "Bioenergy 2024",
+          "value": 0.087
+        },
+        {
+          "series": "LCOE",
+          "label": "Geothermal 2023",
+          "value": 0.072
+        },
+        {
+          "series": "LCOE",
+          "label": "Geothermal 2024",
+          "value": 0.06
+        },
+        {
+          "series": "LCOE",
+          "label": "Hydropower 2023",
+          "value": 0.058
+        },
+        {
+          "series": "LCOE",
+          "label": "Hydropower 2024",
+          "value": 0.057
+        },
+        {
+          "series": "LCOE",
+          "label": "Offshore Wind 2023",
+          "value": 0.076
+        },
+        {
+          "series": "LCOE",
+          "label": "Offshore Wind 2024",
+          "value": 0.079
+        },
+        {
+          "series": "LCOE",
+          "label": "Onshore Wind 2023",
+          "value": 0.033
+        },
+        {
+          "series": "LCOE",
+          "label": "Onshore Wind 2024",
+          "value": 0.034
+        },
+        {
+          "series": "LCOE",
+          "label": "Solar PV 2023",
+          "value": 0.042
+        },
+        {
+          "series": "LCOE",
+          "label": "Solar PV 2024",
+          "value": 0.043
+        },
+        {
+          "series": "LCOE",
+          "label": "CSP 2023",
+          "value": 0.12
+        },
+        {
+          "series": "LCOE",
+          "label": "CSP 2024",
+          "value": 0.092
+        }
+      ],
+      "series_units": {
+        "LCOE": "USD/kWh"
+      },
+      "all_printed_points_annotated": true
+    },
+    {
+      "page_number": 20,
+      "visual_index": 0,
+      "kind": "image",
+      "printed_points": [],
+      "series_units": {}
+    }
+  ],
+  "reading_order": [
+    {
+      "page_number": 3,
+      "anchors": [
+        "Table S1 Total installed cost",
+        "ANNUAL RENEWABLE POWER CAPACITY ADDITIONS",
+        "In 2024, global renewable power",
+        "Capacity additions for other technologies",
+        "In 2024, Asia added",
+        "The growth in renewable power capacity additions"
+      ]
+    },
+    {
+      "page_number": 7,
+      "anchors": [
+        "Figure S4 Global weighted-average",
+        "Future cost declines will slow",
+        "Looking ahead, total installed costs",
+        "Figure S5 Global short-term"
+      ]
+    }
+  ]
+}

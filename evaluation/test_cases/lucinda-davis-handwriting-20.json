@@ -1,0 +1,154 @@
+{
+  "case_id": "lucinda_davis_handwriting_mixed_20",
+  "source_document_id": "lucinda_davis_diary_1874",
+  "source_sha256": "11942a0e92cae94df1454c15132b81b2a75d5282bfb41683a7156dc1374aa91f",
+  "source_filename": "lucinda_davis_1874_handwritten_diary.pdf",
+  "source_url": "https://npgallery.nps.gov/AssetDetail/539a8c6d-d1c2-40ec-9729-ba874f53ccb1",
+  "sample_filename": "lucinda_davis_handwriting_mixed_20_pages.pdf",
+  "original_pdf_pages": [
+    4,
+    5,
+    7,
+    11,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60,
+    68,
+    74,
+    76
+  ],
+  "render_dpi": 300,
+  "coverage": {
+    "printed_reference_tables": [
+      5,
+      7
+    ],
+    "mixed_print_and_handwriting": [
+      4,
+      11
+    ],
+    "handwritten_numerical_ledger": [
+      76
+    ],
+    "cursive_diary_and_memoranda": [
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48,
+      52,
+      56,
+      60,
+      68,
+      74
+    ],
+    "plotted_charts": []
+  },
+  "coverage_notes": "Selection is based on visual inspection. These are 20 scanned PDF pages, mostly two-page book spreads. Two selected reference pages contain print rather than handwriting. No real plotted charts were found in the source; table and chart results must not be conflated. All source pages lack a PDF text layer.",
+  "inference": {
+    "backend": "PaddleOCR-VL-1.6",
+    "device": "gpu:0",
+    "page_window": 1,
+    "gpu_model_instances": 1
+  },
+  "evaluation_status": "No verified transcription or scored accuracy benchmark yet.",
+  "rights_notes": "NPS marks the asset public domain. Credit requested by source: Courtesy of North Cascades NPS Complex Museum Collection, Aerial Photograph Collection.",
+  "sample_sha256": "850dbe2eecdc22082dade89412391fadf9fb389bacf7446feccd1762652d73a9",
+  "page_mapping": [
+    {
+      "sample_page": 1,
+      "original_pdf_page": 4
+    },
+    {
+      "sample_page": 2,
+      "original_pdf_page": 5
+    },
+    {
+      "sample_page": 3,
+      "original_pdf_page": 7
+    },
+    {
+      "sample_page": 4,
+      "original_pdf_page": 11
+    },
+    {
+      "sample_page": 5,
+      "original_pdf_page": 12
+    },
+    {
+      "sample_page": 6,
+      "original_pdf_page": 16
+    },
+    {
+      "sample_page": 7,
+      "original_pdf_page": 20
+    },
+    {
+      "sample_page": 8,
+      "original_pdf_page": 24
+    },
+    {
+      "sample_page": 9,
+      "original_pdf_page": 28
+    },
+    {
+      "sample_page": 10,
+      "original_pdf_page": 32
+    },
+    {
+      "sample_page": 11,
+      "original_pdf_page": 36
+    },
+    {
+      "sample_page": 12,
+      "original_pdf_page": 40
+    },
+    {
+      "sample_page": 13,
+      "original_pdf_page": 44
+    },
+    {
+      "sample_page": 14,
+      "original_pdf_page": 48
+    },
+    {
+      "sample_page": 15,
+      "original_pdf_page": 52
+    },
+    {
+      "sample_page": 16,
+      "original_pdf_page": 56
+    },
+    {
+      "sample_page": 17,
+      "original_pdf_page": 60
+    },
+    {
+      "sample_page": 18,
+      "original_pdf_page": 68
+    },
+    {
+      "sample_page": 19,
+      "original_pdf_page": 74
+    },
+    {
+      "sample_page": 20,
+      "original_pdf_page": 76
+    }
+  ]
+}

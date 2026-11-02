@@ -1,0 +1,142 @@
+{
+  "title": "IMF WEO October 2025 Statistical Appendix \u2014 complex tables",
+  "source_url": "https://www.imf.org/-/media/files/publications/weo/2025/october/english/statsappendix.pdf",
+  "original_pdf_path": "data/input_documents/evaluation_corpus/imf_weo_october_2025_statistical_appendix.pdf",
+  "original_document_id": "sha256:cc32177add7ff4b8f4029bdd17e4d08a2ce68563470f041d957e51db908fbd6a",
+  "original_page_count": 26,
+  "evaluation_page_count": 26,
+  "page_mapping": [
+    {
+      "sample_page": 1,
+      "original_pdf_page": 1,
+      "printed_page": 97
+    },
+    {
+      "sample_page": 2,
+      "original_pdf_page": 2,
+      "printed_page": 98
+    },
+    {
+      "sample_page": 3,
+      "original_pdf_page": 3,
+      "printed_page": 99
+    },
+    {
+      "sample_page": 4,
+      "original_pdf_page": 4,
+      "printed_page": 100
+    },
+    {
+      "sample_page": 5,
+      "original_pdf_page": 5,
+      "printed_page": 101
+    },
+    {
+      "sample_page": 6,
+      "original_pdf_page": 6,
+      "printed_page": 102
+    },
+    {
+      "sample_page": 7,
+      "original_pdf_page": 7,
+      "printed_page": 103
+    },
+    {
+      "sample_page": 8,
+      "original_pdf_page": 8,
+      "printed_page": 104
+    },
+    {
+      "sample_page": 9,
+      "original_pdf_page": 9,
+      "printed_page": 105
+    },
+    {
+      "sample_page": 10,
+      "original_pdf_page": 10,
+      "printed_page": 106
+    },
+    {
+      "sample_page": 11,
+      "original_pdf_page": 11,
+      "printed_page": 107
+    },
+    {
+      "sample_page": 12,
+      "original_pdf_page": 12,
+      "printed_page": 108
+    },
+    {
+      "sample_page": 13,
+      "original_pdf_page": 13,
+      "printed_page": 109
+    },
+    {
+      "sample_page": 14,
+      "original_pdf_page": 14,
+      "printed_page": 110
+    },
+    {
+      "sample_page": 15,
+      "original_pdf_page": 15,
+      "printed_page": 111
+    },
+    {
+      "sample_page": 16,
+      "original_pdf_page": 16,
+      "printed_page": 112
+    },
+    {
+      "sample_page": 17,
+      "original_pdf_page": 17,
+      "printed_page": 113
+    },
+    {
+      "sample_page": 18,
+      "original_pdf_page": 18,
+      "printed_page": 114
+    },
+    {
+      "sample_page": 19,
+      "original_pdf_page": 19,
+      "printed_page": 115
+    },
+    {
+      "sample_page": 20,
+      "original_pdf_page": 20,
+      "printed_page": 116
+    },
+    {
+      "sample_page": 21,
+      "original_pdf_page": 21,
+      "printed_page": 117
+    },
+    {
+      "sample_page": 22,
+      "original_pdf_page": 22,
+      "printed_page": 118
+    },
+    {
+      "sample_page": 23,
+      "original_pdf_page": 23,
+      "printed_page": 119
+    },
+    {
+      "sample_page": 24,
+      "original_pdf_page": 24,
+      "printed_page": 120
+    },
+    {
+      "sample_page": 25,
+      "original_pdf_page": 25,
+      "printed_page": 121
+    },
+    {
+      "sample_page": 26,
+      "original_pdf_page": 26,
+      "printed_page": 122
+    }
+  ],
+  "annotation_status": "Parsed and evaluated for selected single-assistant development assertions; not independent human ground truth.",
+  "source_review_reference": "evaluation/reference_annotations/imf-complex-tables-26-source-review-v1.json"
+}

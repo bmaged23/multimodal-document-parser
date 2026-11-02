@@ -1,0 +1,59 @@
+{
+  "status": "judge validation and retrieval complete; comparative answer scoring in progress",
+  "date": "2026-11-01",
+  "judge": "gpt-oss:120b",
+  "rubric": "contextual-facts-v2",
+  "controls": 30,
+  "trials": 90,
+  "trials_passed": 90,
+  "consistent_controls": 30,
+  "independent_human_validation": false,
+  "original_ragas_correctness_gate": {
+    "passed": 13,
+    "checked": 30,
+    "usable_for_tuning": false
+  },
+  "retrieval": [
+    {
+      "variant": "adaptive-hybrid-plain",
+      "category": "all",
+      "source_evidence_recall": 0.9444444444444444,
+      "complete_source_evidence": 0.9333333333333333,
+      "scored": 90,
+      "average_context_tokens": 1793.72
+    },
+    {
+      "variant": "adaptive-parent-agent",
+      "category": "all",
+      "source_evidence_recall": 0.9611111111111111,
+      "complete_source_evidence": 0.9555555555555556,
+      "scored": 90,
+      "average_context_tokens": 1846.24
+    },
+    {
+      "variant": "adaptive-parent-plain",
+      "category": "all",
+      "source_evidence_recall": 0.95,
+      "complete_source_evidence": 0.9444444444444444,
+      "scored": 90,
+      "average_context_tokens": 1850.11
+    },
+    {
+      "variant": "fixed-dense-plain",
+      "category": "all",
+      "source_evidence_recall": 0.6712962962962963,
+      "complete_source_evidence": 0.6,
+      "scored": 90,
+      "average_context_tokens": 1994.41
+    },
+    {
+      "variant": "fixed-hybrid-plain",
+      "category": "all",
+      "source_evidence_recall": 0.7435185185185185,
+      "complete_source_evidence": 0.6666666666666666,
+      "scored": 90,
+      "average_context_tokens": 2001.87
+    }
+  ],
+  "limitation": "Exploratory comparison on previously inspected source-bound silver questions; source inclusion is not answer accuracy."
+}

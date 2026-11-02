@@ -1,0 +1,53 @@
+# Public parsing deployment: preparation + GPU OCR + cloud visual descriptions.
+name: multimodal-parsing
+
+x-runtime: &runtime
+  image: ${PARSER_IMAGE:-multimodal-document-parsing:release-candidate}
+  init: true
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  tmpfs: [/tmp]
+  volumes: [parsing-data:/data, parsing-models:/cache]
+  secrets: [pipeline_api_key]
+  environment:
+    PIPELINE_API_KEY_FILE: /run/secrets/pipeline_api_key
+
+services:
+  documents-api:
+    <<: *runtime
+    command: [api, --service, documents, --host, 0.0.0.0, --port, '8000']
+    ports: ['127.0.0.1:8101:8000']
+  documents-worker:
+    <<: *runtime
+    command: [worker, --service, documents]
+    healthcheck: {disable: true}
+  parsing-api:
+    <<: *runtime
+    command: [api, --service, parsing, --host, 0.0.0.0, --port, '8000']
+    ports: ['127.0.0.1:8102:8000']
+  parsing-worker:
+    <<: *runtime
+    command: [worker, --service, parsing]
+    healthcheck: {disable: true}
+    secrets: [pipeline_api_key, ollama_api_key]
+    environment:
+      PIPELINE_API_KEY_FILE: /run/secrets/pipeline_api_key
+      OLLAMA_API_KEY_FILE: /run/secrets/ollama_api_key
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  parsing-data:
+  parsing-models:
+
+secrets:
+  pipeline_api_key:
+    file: ./.cache/service_secrets/pipeline_api_key
+  ollama_api_key:
+    file: ./.cache/service_secrets/ollama_api_key

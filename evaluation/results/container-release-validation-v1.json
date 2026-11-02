@@ -1,0 +1,72 @@
+{
+  "recorded_at": "2026-11-02T02:16:59.833427+00:00",
+  "intended_public_repository": "bmaged23/multimodal-document-parser",
+  "docker_target": "parsing",
+  "platform": "linux/amd64",
+  "includes": [
+    "PaddleOCR GPU runtime",
+    "PDF/DOCX preparation",
+    "canonical exports and HTML review",
+    "Ollama Cloud Gemma client"
+  ],
+  "llm_execution": "Ollama Cloud; no Gemma weights in image",
+  "checks_passed": {
+    "pytest": 132,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "strict_mypy": true,
+    "python_package_build": true,
+    "compose_config": true,
+    "known_credentials_absent_from_explicit_image_sources": true,
+    "non_root_api_authentication_storage": true,
+    "shared_library_dependencies": true,
+    "docx_to_pdf_and_page_rendering": true,
+    "gpu_cuda_tensor": true
+  },
+  "container_build": "completed; tested runtime-fixed image",
+  "docker_storage_drive": "C:",
+  "observed_free_gib": 18.0,
+  "docker_engine_restart": "recovered",
+  "gpu_runtime_smoke": "passed: PaddleOCRVL import and CUDA tensor on GTX 1660 Ti",
+  "container_pdf_inference": "not_run",
+  "cloud_inference_requests": 0,
+  "published": true,
+  "repository_public_visibility_verified": true,
+  "next_required": [
+    "Connect GitHub repository and configure Docker Hub release token",
+    "Run hosted CI after source publication"
+  ],
+  "storage_cleanup": {
+    "completed": true,
+    "free_gib_after_cleanup": 25.67,
+    "retained": [
+      "R",
+      "RStudio",
+      "Visual Studio",
+      "latest Windows SDK",
+      "NVIDIA driver",
+      "WSL project environment"
+    ],
+    "docker_storage_relocated": false,
+    "net_freed_gib": 23.19
+  },
+  "current_blocker": null,
+  "restart_checkpoint": "outputs/maintenance/docker-recovery-2026-11-02/restart-checkpoint.json",
+  "global_wsl_shutdown_executed": false,
+  "docker_data_file_preserved": true,
+  "latest_checkpoint": "outputs/maintenance/container-release-2026-11-02/RESUME.md",
+  "tested_platform_manifest_digest": "sha256:4c13e79dd61db82b1298fe8d4a68be8883476f36aaaffbe52fbd7fb3e605bdf7",
+  "storage_recovery": "unused BuildKit cache removal and in-place Docker VHDX trim/compaction; remains on C:",
+  "public_release": {
+    "repository": "bmaged23/multimodal-document-parser",
+    "tag": "0.1.0-rc.1",
+    "index_digest": "sha256:e0db1384543d831159461cda2160a733d4003de9ef244ea6c66b0485bec95e4d",
+    "platform_manifest_digest": "sha256:4c13e79dd61db82b1298fe8d4a68be8883476f36aaaffbe52fbd7fb3e605bdf7",
+    "anonymous_manifest_access": true,
+    "tested_platform_manifest_matches": true,
+    "attestation_predicates": [
+      "https://spdx.dev/Document",
+      "https://slsa.dev/provenance/v0.2"
+    ]
+  }
+}

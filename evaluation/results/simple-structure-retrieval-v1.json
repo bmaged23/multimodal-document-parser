@@ -1,0 +1,44 @@
+{
+  "status": "superseded; retrieval retained, comparative answer scoring stopped after user requested semantic boundaries and related explanations",
+  "dataset_questions": 100,
+  "answerable_questions": 90,
+  "embedding_model": "BAAI/bge-large-en-v1.5",
+  "embedding_dimensions": 1024,
+  "gpu_verified": true,
+  "children": 421,
+  "embedding_windows": 426,
+  "target_tokens": 350,
+  "maximum_tokens": 500,
+  "heading_policy": "Repeat full heading hierarchy in every continuation",
+  "table_policy": "Separate physical tables; repeat caption and column headers",
+  "visual_policy": "Separate each chart/image with caption and heading context",
+  "metrics": [
+    {
+      "variant": "simple-structure-dense",
+      "metric": "context_cell_complete",
+      "mean": 0.9,
+      "scored": 90
+    },
+    {
+      "variant": "simple-structure-dense",
+      "metric": "context_cell_evidence_recall",
+      "mean": 0.9055555555555556,
+      "scored": 90
+    },
+    {
+      "variant": "simple-structure-hybrid",
+      "metric": "context_cell_complete",
+      "mean": 0.9444444444444444,
+      "scored": 90
+    },
+    {
+      "variant": "simple-structure-hybrid",
+      "metric": "context_cell_evidence_recall",
+      "mean": 0.9574074074074074,
+      "scored": 90
+    }
+  ],
+  "interpretation": "Simple structural hybrid has complete expected source evidence for 85/90 answerable questions. The preserved agent has 86/90. This one-question difference is not proof of superior answer quality; scoring is pending.",
+  "limitations": "Same inspected source-bound silver questions. Basic table-header formatting is improved only in the new baseline; production remains unchanged.",
+  "superseded_by": "outputs/quality_evaluations/rag-structural-comparison-v2"
+}

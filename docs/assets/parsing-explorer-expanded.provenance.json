@@ -1,0 +1,9 @@
+{
+  "source": "IRENA Renewable Power Generation Costs in 2024",
+  "original_pdf_page": 15,
+  "selected_page": 3,
+  "run": "irena-final-source-checked-03",
+  "comparison": "irena-mixed-content-20-paddleocr-vl-1.6-01",
+  "stage": "source_checked",
+  "note": "Actual local explorer capture. Source-reviewed final output includes repairs; not raw OCR accuracy. Public source only."
+}

@@ -1,0 +1,126 @@
+name: multimodal-document-platform
+
+x-api: &api
+  build:
+    context: .
+    target: api
+  image: multimodal-document-api:local
+  init: true
+  restart: unless-stopped
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  tmpfs: [/tmp]
+  volumes: [pipeline-data:/data, model-cache:/cache]
+  secrets: [pipeline_api_key]
+  environment: &environment
+    PIPELINE_API_KEY_FILE: /run/secrets/pipeline_api_key
+    DOCUMENTS_SERVICE_URL: http://documents-api:8000
+    PARSING_SERVICE_URL: http://parsing-api:8000
+    CHUNKING_SERVICE_URL: http://chunking-api:8000
+    INDEXING_SERVICE_URL: http://indexing-api:8000
+    RETRIEVAL_SERVICE_URL: http://retrieval-api:8000
+  networks: [backend]
+
+x-worker: &worker
+  <<: *api
+  healthcheck:
+    disable: true
+
+x-gpu: &gpu
+  build:
+    context: .
+    target: gpu
+  image: multimodal-document-gpu:local
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            count: 1
+            capabilities: [gpu]
+
+services:
+  pipeline-api:
+    <<: *api
+    command: [api, --service, pipeline, --host, 0.0.0.0, --port, '8000']
+    ports: ['127.0.0.1:8100:8000']
+  pipeline-worker:
+    <<: *worker
+    command: [worker, --service, pipeline]
+
+  documents-api:
+    <<: *api
+    command: [api, --service, documents, --host, 0.0.0.0, --port, '8000']
+  documents-worker:
+    <<: *worker
+    build:
+      context: .
+      target: documents
+    image: multimodal-document-conversion:local
+    command: [worker, --service, documents]
+
+  parsing-api:
+    <<: *api
+    command: [api, --service, parsing, --host, 0.0.0.0, --port, '8000']
+  parsing-worker:
+    <<: *worker
+    build:
+      context: .
+      target: parsing
+    image: multimodal-document-parsing:local
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: [worker, --service, parsing]
+    secrets: [pipeline_api_key, ollama_api_key]
+    environment:
+      <<: *environment
+      OLLAMA_API_KEY_FILE: /run/secrets/ollama_api_key
+
+  chunking-api:
+    <<: *api
+    command: [api, --service, chunking, --host, 0.0.0.0, --port, '8000']
+  chunking-worker:
+    <<: *worker
+    command: [worker, --service, chunking]
+
+  indexing-api:
+    <<: *api
+    command: [api, --service, indexing, --host, 0.0.0.0, --port, '8000']
+  indexing-worker:
+    <<: [*gpu, *worker]
+    command: [worker, --service, indexing]
+
+  retrieval-api:
+    <<: [*gpu, *api]
+    command: [api, --service, retrieval, --host, 0.0.0.0, --port, '8000']
+
+  rag-api:
+    <<: *api
+    command: [api, --service, rag, --host, 0.0.0.0, --port, '8000']
+    ports: ['127.0.0.1:8106:8000']
+  rag-worker:
+    <<: *worker
+    secrets: [pipeline_api_key, ollama_api_key]
+    environment:
+      <<: *environment
+      OLLAMA_API_KEY_FILE: /run/secrets/ollama_api_key
+    command: [worker, --service, rag]
+
+volumes:
+  pipeline-data:
+  model-cache:
+
+networks:
+  backend:
+
+secrets:
+  pipeline_api_key:
+    file: ./.cache/service_secrets/pipeline_api_key
+  ollama_api_key:
+    file: ./.cache/service_secrets/ollama_api_key

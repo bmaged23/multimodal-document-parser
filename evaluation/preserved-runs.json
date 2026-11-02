@@ -1,0 +1,782 @@
+{
+  "registry_version": "1.0",
+  "archive_root": "outputs/evaluation_archive",
+  "purpose": "User-requested permanent local preservation of model outputs for future evaluation. These are predictions, not verified ground truth.",
+  "cases": [
+    {
+      "id": "original_multimodal_2_pages",
+      "run_directory": "outputs/parser_runs/paddleocr-vl-1.6-reviewed",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "related_run_directories": [
+        "outputs/parser_runs/paddleocr-vl-1.6-local-validation-02"
+      ],
+      "notes": "Original user-supplied private PDF. Preserve both reviewed normalization and original GPU-run provenance; do not publish source content automatically.",
+      "model_name": "PaddleOCR-VL-1.6"
+    },
+    {
+      "id": "nasa_financial_first_20_pages",
+      "run_directory": "outputs/parser_runs/nasa-fy2024-financial-paddleocr-vl-1.6",
+      "expected_evaluation_pages": 20,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "notes": "Source PDF has 127 pages; the user intentionally stopped after 20. Preserve the 20-page extraction as an evaluated subset, without claiming the full report completed.",
+      "model_name": "PaddleOCR-VL-1.6"
+    },
+    {
+      "id": "handwritten_mixed_20_pages",
+      "run_directory": "outputs/parser_runs/lucinda-davis-handwriting-20-paddleocr-vl-1.6",
+      "expected_evaluation_pages": 20,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "selection_manifest": "evaluation/test_cases/lucinda-davis-handwriting-20.json",
+      "notes": "User stopped this attempt after three completed pages and reduced the target. Retain this partial attempt; handwritten_replacement_5_pages is the completed final selection.",
+      "model_name": "PaddleOCR-VL-1.6"
+    },
+    {
+      "id": "handwritten_mixed_5_pages",
+      "run_directory": "outputs/parser_runs/lucinda-davis-handwriting-5-paddleocr-vl-1.6",
+      "expected_evaluation_pages": 5,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "selection_manifest": "evaluation/test_cases/lucinda-davis-handwriting-5.json",
+      "notes": "User stopped this attempt with three completed pages after pending page 73 stalled. Retain separately; the replacement selection completed five pages.",
+      "model_name": "PaddleOCR-VL-1.6"
+    },
+    {
+      "id": "handwritten_replacement_5_pages",
+      "run_directory": "outputs/parser_runs/lucinda-davis-handwriting-replacement-5-paddleocr-vl-1.6",
+      "expected_evaluation_pages": 5,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "selection_manifest": "evaluation/test_cases/lucinda-davis-handwriting-replacement-5.json",
+      "notes": "User replaced pending pages with original PDF pages 6 (printed table and explanatory text) and 74 (handwritten memorandum). First three outputs reused unchanged; stopped attempts retained.",
+      "model_name": "PaddleOCR-VL-1.6"
+    },
+    {
+      "id": "dots_mocr_q4_original_multimodal_2_pages",
+      "model_name": "dots.mocr-Q4_K_M-mmproj-Q8_0",
+      "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-local-validation-01",
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "notes": "Quantized dots.mocr local GPU validation; source-derived table-cell spot checks only, not general OCR accuracy. Conversion lineage to a specific original revision is unverified. Visual review found incomplete chart/flowchart crops; see docs/evaluation/dots-mocr-local-validation.md. Default prompt is the pinned official prompt.",
+      "reference_annotations": "outputs/parser_comparisons/reference_annotations/original-sensor-table.json",
+      "comparison_report": "outputs/parser_comparisons/original-two-pages-paddleocr-vs-dots-mocr-q4/comparison.json"
+    },
+    {
+      "id": "dots_mocr_q4_original_multimodal_2_pages_upstream_prompt",
+      "model_name": "dots.mocr-Q4_K_M-mmproj-Q8_0",
+      "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-local-validation-02-upstream-prompt",
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "notes": "Quantized dots.mocr local GPU validation; source-derived table-cell spot checks only, not general OCR accuracy. Conversion lineage to a specific original revision is unverified. Visual review found incomplete chart/flowchart crops; see docs/evaluation/dots-mocr-local-validation.md. Default prompt is the pinned official prompt.",
+      "reference_annotations": "outputs/parser_comparisons/reference_annotations/original-sensor-table.json",
+      "comparison_report": "outputs/parser_comparisons/original-two-pages-paddleocr-vs-dots-mocr-q4-upstream-prompt/comparison.json"
+    },
+    {
+      "id": "dots_mocr_q4_nasa_first20_01",
+      "model_name": "dots.mocr-Q4_K_M-mmproj-Q8_0",
+      "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-nasa-first20-01",
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 20,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "selection_manifest": "evaluation/test_cases/nasa-first-20-dots-mocr.json",
+      "notes": "New quantized GPU inference on every requested page. Isolated page jobs preserve failures; only accepted pages appear in canonical output. Missing pages are not completed extractions. Comparisons cover accepted matching pages only.",
+      "comparison_report": "outputs/parser_comparisons/nasa-first20-paddleocr-vs-dots-mocr-q4-01/comparison.json"
+    },
+    {
+      "id": "dots_mocr_q4_diary_five_01",
+      "model_name": "dots.mocr-Q4_K_M-mmproj-Q8_0",
+      "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-diary-five-01",
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 5,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "selection_manifest": "evaluation/test_cases/lucinda-davis-handwriting-replacement-5.json",
+      "notes": "New quantized GPU inference on every requested page. Isolated page jobs preserve failures; only accepted pages appear in canonical output. Missing pages are not completed extractions. Comparisons cover accepted matching pages only.",
+      "comparison_report": "outputs/parser_comparisons/diary-five-paddleocr-vs-dots-mocr-q4-01/comparison.json"
+    },
+    {
+      "id": "dots_mocr_q4_original_rerun_03",
+      "run_directory": "outputs/parser_runs/dots-mocr-q4-k-m-original-rerun-03",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "raw_results_subdirectory": "dots_mocr",
+      "model_name": "dots.mocr-Q4_K_M-mmproj-Q8_0",
+      "notes": "Fresh GPU rerun requested by user; official prompt, 6144 output tokens, one million input pixels. Earlier results preserved separately."
+    },
+    {
+      "id": "paddleocr_qwen3_vl_original_visual_enrichment_01",
+      "run_directory": "outputs/parser_runs/paddleocr-qwen3-vl-visual-enrichment-01",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "raw_results_subdirectory": "paddleocr",
+      "model_name": "PaddleOCR-VL-1.6+Qwen3-VL-2B-instruct",
+      "notes": "Original Paddle extraction plus generated Ollama visual enrichment. Check enrichment-manifest separately from OCR run-status for visual failures. Not verified reference annotations."
+    },
+    {
+      "id": "paddleocr_qwen3_vl_original_visual_enrichment_02",
+      "run_directory": "outputs/parser_runs/paddleocr-qwen3-vl-visual-enrichment-02",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "raw_results_subdirectory": "paddleocr",
+      "model_name": "PaddleOCR-VL-1.6+Qwen3-VL-2B-instruct",
+      "notes": "Original Paddle extraction plus generated Ollama visual enrichment. Check enrichment-manifest separately from OCR run-status for visual failures. Not verified reference annotations."
+    },
+    {
+      "id": "paddleocr_qwen3_vl_original_visual_enrichment_03",
+      "run_directory": "outputs/parser_runs/paddleocr-qwen3-vl-visual-enrichment-03",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "raw_results_subdirectory": "paddleocr",
+      "model_name": "PaddleOCR-VL-1.6+Qwen3-VL-2B-instruct",
+      "notes": "Original Paddle extraction plus generated Ollama visual enrichment. Check enrichment-manifest separately from OCR run-status for visual failures. Not verified reference annotations."
+    },
+    {
+      "id": "paddleocr_qwen3_vl_original_visual_enrichment_04",
+      "run_directory": "outputs/parser_runs/paddleocr-qwen3-vl-visual-enrichment-04",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "raw_results_subdirectory": "paddleocr",
+      "model_name": "PaddleOCR-VL-1.6+Qwen3-VL-2B-instruct",
+      "notes": "Original Paddle extraction plus generated Ollama visual enrichment. Check enrichment-manifest separately from OCR run-status for visual failures. Not verified reference annotations."
+    },
+    {
+      "id": "paddleocr_qwen3_5_4b_original_visual_enrichment_01",
+      "run_directory": "outputs/parser_runs/paddleocr-qwen3-5-4b-visual-enrichment-01",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "raw_results_subdirectory": "paddleocr",
+      "model_name": "PaddleOCR-VL-1.6+qwen3.5:4b",
+      "notes": "Original Paddle extraction plus generated Ollama visual enrichment. Check enrichment-manifest separately from OCR run-status for visual failures. Not verified reference annotations."
+    },
+    {
+      "id": "paddleocr_gemma4_31b_original_visual_enrichment_01",
+      "run_directory": "outputs/parser_runs/paddleocr-gemma4-31b-visual-enrichment-01",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "raw_results_subdirectory": "paddleocr",
+      "model_name": "PaddleOCR-VL-1.6+gemma4:31b",
+      "notes": "Original Paddle extraction plus generated Ollama visual enrichment. Check enrichment-manifest separately from OCR run-status for visual failures. Not verified reference annotations."
+    },
+    {
+      "id": "irena-mixed-content-20-paddleocr-vl-1.6-01",
+      "run_directory": "outputs/parser_runs/irena-mixed-content-20-paddleocr-vl-1.6-01",
+      "expected_evaluation_pages": 20,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "selection_manifest": "evaluation/test_cases/irena-renewable-power-costs-20.json",
+      "model_name": "PaddleOCR-VL-1.6",
+      "notes": "Model predictions; source review pending. Full selected input, not full IRENA publication."
+    },
+    {
+      "id": "imf-complex-tables-26-paddleocr-vl-1.6-01",
+      "run_directory": "outputs/parser_runs/imf-complex-tables-26-paddleocr-vl-1.6-01",
+      "expected_evaluation_pages": 26,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "selection_manifest": "evaluation/test_cases/imf-weo-october-2025-complex-tables-26.json",
+      "model_name": "PaddleOCR-VL-1.6",
+      "notes": "Model predictions; source review pending. Full selected input, not full IRENA publication."
+    },
+    {
+      "id": "irena-mixed-content-20-paddleocr-gemma4-31b-01",
+      "run_directory": "outputs/parser_runs/irena-mixed-content-20-paddleocr-gemma4-31b-01",
+      "expected_evaluation_pages": 20,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "selection_manifest": "evaluation/test_cases/irena-renewable-power-costs-20.json",
+      "model_name": "PaddleOCR-VL-1.6+gemma4:31b",
+      "notes": "Completed selected input; evaluated by scoped single-assistant source checks. These are predictions, not ground truth. See docs/evaluation/irena-imf-source-review.md for failures and limits.",
+      "reference_annotations": "evaluation/reference_annotations/irena-mixed-content-20-source-review-v1.json",
+      "comparison_report": "outputs/quality_evaluations/irena-imf-source-review-02/irena-results.json"
+    },
+    {
+      "id": "imf-complex-tables-26-paddleocr-gemma4-31b-01",
+      "run_directory": "outputs/parser_runs/imf-complex-tables-26-paddleocr-gemma4-31b-01",
+      "expected_evaluation_pages": 26,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "selection_manifest": "evaluation/test_cases/imf-weo-october-2025-complex-tables-26.json",
+      "model_name": "PaddleOCR-VL-1.6+gemma4:31b",
+      "notes": "Completed selected input; evaluated by scoped single-assistant source checks. These are predictions, not ground truth. See docs/evaluation/irena-imf-source-review.md for failures and limits.",
+      "reference_annotations": "evaluation/reference_annotations/imf-complex-tables-26-source-review-v1.json",
+      "comparison_report": "outputs/quality_evaluations/irena-imf-source-review-02/imf-results.json"
+    },
+    {
+      "id": "irena-final-repair-ocr-02",
+      "model_name": "PaddleOCR-VL-1.6",
+      "run_directory": "outputs/parser_runs/irena-final-repair-paddleocr-vl-1.6-02",
+      "expected_evaluation_pages": 20,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "notes": "Final repair: replayed identical saved raw OCR; no fresh GPU inference. Inferred header roles and source image recovery are postprocessing, not raw OCR accuracy. Original baselines retained."
+    },
+    {
+      "id": "irena-final-repair-enriched-02",
+      "model_name": "PaddleOCR-VL-1.6+gemma4:31b",
+      "run_directory": "outputs/parser_runs/irena-final-repair-paddleocr-gemma4-31b-02",
+      "expected_evaluation_pages": 20,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "notes": "Final repair: replayed identical saved raw OCR; no fresh GPU inference. Inferred header roles and source image recovery are postprocessing, not raw OCR accuracy. Original baselines retained.",
+      "reference_annotations": "evaluation/reference_annotations/irena-mixed-content-20-source-review-v1.json",
+      "comparison_report": "outputs/quality_evaluations/final-quality-repair-02/irena-results.json"
+    },
+    {
+      "id": "imf-final-repair-ocr-02",
+      "model_name": "PaddleOCR-VL-1.6",
+      "run_directory": "outputs/parser_runs/imf-final-repair-paddleocr-vl-1.6-02",
+      "expected_evaluation_pages": 26,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "notes": "Final repair: replayed identical saved raw OCR; no fresh GPU inference. Inferred header roles and source image recovery are postprocessing, not raw OCR accuracy. Original baselines retained."
+    },
+    {
+      "id": "imf-final-repair-enriched-02",
+      "model_name": "PaddleOCR-VL-1.6+gemma4:31b",
+      "run_directory": "outputs/parser_runs/imf-final-repair-paddleocr-gemma4-31b-02",
+      "expected_evaluation_pages": 26,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "notes": "Final repair: replayed identical saved raw OCR; no fresh GPU inference. Inferred header roles and source image recovery are postprocessing, not raw OCR accuracy. Original baselines retained.",
+      "reference_annotations": "evaluation/reference_annotations/imf-complex-tables-26-source-review-v1.json",
+      "comparison_report": "outputs/quality_evaluations/final-quality-repair-02/imf-results.json"
+    },
+    {
+      "id": "original-final-repair-ocr-02",
+      "model_name": "PaddleOCR-VL-1.6",
+      "run_directory": "outputs/parser_runs/original-final-repair-paddleocr-vl-1.6-02",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "notes": "Final repair: replayed identical saved raw OCR; no fresh GPU inference. Inferred header roles and source image recovery are postprocessing, not raw OCR accuracy. Original baselines retained."
+    },
+    {
+      "id": "original-final-repair-enriched-02",
+      "model_name": "PaddleOCR-VL-1.6+gemma4:31b",
+      "run_directory": "outputs/parser_runs/original-final-repair-paddleocr-gemma4-31b-02",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "notes": "Final repair: replayed identical saved raw OCR; no fresh GPU inference. Inferred header roles and source image recovery are postprocessing, not raw OCR accuracy. Original baselines retained.",
+      "reference_annotations": "outputs/parser_runs/paddleocr-gemma4-31b-visual-enrichment-01/source-derived-visual-reference.json",
+      "comparison_report": "outputs/quality_evaluations/final-quality-repair-02/original-results.json"
+    },
+    {
+      "id": "irena-final-source-checked-03",
+      "model_name": "PaddleOCR-VL-1.6+gemma4:31b",
+      "run_directory": "outputs/parser_runs/irena-final-source-checked-03",
+      "expected_evaluation_pages": 20,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "notes": "Final source-only quality postprocessing of saved raw OCR and saved Gemma responses. No new GPU OCR or VLM inference in this stage. Inferred header roles and native-PDF endpoint records are explicitly labelled; pipeline scores must not be presented as raw VLM accuracy.",
+      "reference_annotations": "evaluation/reference_annotations/irena-mixed-content-20-source-review-v1.json",
+      "comparison_report": "outputs/quality_evaluations/final-source-checked-03/irena-results.json"
+    },
+    {
+      "id": "imf-final-source-checked-03",
+      "model_name": "PaddleOCR-VL-1.6+gemma4:31b",
+      "run_directory": "outputs/parser_runs/imf-final-source-checked-03",
+      "expected_evaluation_pages": 26,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "notes": "Final source-only quality postprocessing of saved raw OCR and saved Gemma responses. No new GPU OCR or VLM inference in this stage. Inferred header roles and native-PDF endpoint records are explicitly labelled; pipeline scores must not be presented as raw VLM accuracy.",
+      "reference_annotations": "evaluation/reference_annotations/imf-complex-tables-26-source-review-v1.json",
+      "comparison_report": "outputs/quality_evaluations/final-source-checked-03/imf-results.json"
+    },
+    {
+      "id": "original-final-source-checked-03",
+      "model_name": "PaddleOCR-VL-1.6+gemma4:31b",
+      "run_directory": "outputs/parser_runs/original-final-source-checked-03",
+      "expected_evaluation_pages": 2,
+      "evaluation_pages": [
+        1,
+        2
+      ],
+      "notes": "Final source-only quality postprocessing of saved raw OCR and saved Gemma responses. No new GPU OCR or VLM inference in this stage. Inferred header roles and native-PDF endpoint records are explicitly labelled; pipeline scores must not be presented as raw VLM accuracy.",
+      "reference_annotations": "outputs/parser_runs/paddleocr-gemma4-31b-visual-enrichment-01/source-derived-visual-reference.json",
+      "comparison_report": "outputs/parser_runs/original-final-source-checked-03/visual-spot-checks.json"
+    }
+  ],
+  "archive_layout": "{archive_root}/{model_name}_output/{case_id}/{timestamp}_{status}_{pages}",
+  "retired_cases": [
+    {
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 1,
+      "evaluation_pages": [
+        1
+      ],
+      "selection_manifest": "evaluation/test_cases/original-multimodal-page-1-cpu-precision.json",
+      "reference_annotations": "outputs/maintenance/cpu-probe-table-reference.json",
+      "id": "original_multimodal_page1_q4_reused_for_cpu_bf16",
+      "model_name": "dots.mocr-Q4_K_M-mmproj-Q8_0",
+      "run_directory": "outputs/parser_runs/dots-mocr-q4-gpu-page1-reference-01",
+      "notes": "Reused original official-prompt GPU page-1 prediction with identical rendered pixels and explicit parent mapping; no new inference. Original run timing and full-run GPU-memory scope retained.",
+      "retirement_reason": "User retired CPU approach; executable CPU support and BF16 weight downloads removed. Frozen reports/raw outputs retained."
+    },
+    {
+      "raw_results_subdirectory": "dots_mocr",
+      "expected_evaluation_pages": 1,
+      "evaluation_pages": [
+        1
+      ],
+      "selection_manifest": "evaluation/test_cases/original-multimodal-page-1-cpu-precision.json",
+      "reference_annotations": "outputs/maintenance/cpu-probe-table-reference.json",
+      "id": "original_multimodal_page1_bf16_cpu",
+      "model_name": "dots.mocr-BF16-mmproj-BF16-CPU",
+      "model_profile": "cpu-bf16",
+      "run_directory": "outputs/parser_runs/dots-mocr-bf16-cpu-page1-01",
+      "notes": "BF16 CPU experiment fit in RAM but failed after 728.46 seconds at 4096 output tokens. Repetitive caption loop, missing category fields, and out-of-bounds boxes. No accepted parsed page. Diagnostic HTML and all raw data retained; see docs/evaluation/dots-mocr-cpu-bf16-probe.md.",
+      "retirement_reason": "User retired CPU approach; executable CPU support and BF16 weight downloads removed. Frozen reports/raw outputs retained."
+    }
+  ],
+  "experimental_cases": [
+    {
+      "id": "unlimited_ocr_2_nf4_original_two_pages_01",
+      "run_directory": "outputs/parser_runs/unlimited-ocr-2-nf4-original-two-pages-01",
+      "model_name": "Unlimited-OCR-2-NF4-FP16-vision",
+      "expected_evaluation_pages": 2,
+      "archive_directory": "outputs/evaluation_archive/Unlimited-OCR-2-NF4-FP16-vision_output/unlimited_ocr_2_nf4_original_two_pages_01/20261030T225502088903Z_completed",
+      "notes": "Diagnostic probe; not normalized project Document JSON.",
+      "additional_archives": [
+        "outputs/evaluation_archive/Unlimited-OCR-2-NF4-FP16-vision_output/unlimited_ocr_2_nf4_original_two_pages_01/20261030T225627877526Z_completed"
+      ]
+    },
+    {
+      "id": "unlimited_ocr_2_nf4_nasa_first20_01",
+      "run_directory": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01",
+      "model_name": "Unlimited-OCR-2-NF4-FP16-vision",
+      "expected_evaluation_pages": 20,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "archive_directory": "outputs/evaluation_archive/Unlimited-OCR-2-NF4-FP16-vision_output/unlimited_ocr_2_nf4_nasa_first20_01/20261030T234543263360Z_completed",
+      "notes": "Diagnostic probe; not normalized project Document JSON."
+    },
+    {
+      "id": "unlimited_ocr_2_nf4_diary_five_01",
+      "run_directory": "outputs/parser_runs/unlimited-ocr-2-nf4-diary-five-01",
+      "model_name": "Unlimited-OCR-2-NF4-FP16-vision",
+      "expected_evaluation_pages": 5,
+      "evaluation_pages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "archive_directory": "outputs/evaluation_archive/Unlimited-OCR-2-NF4-FP16-vision_output/unlimited_ocr_2_nf4_diary_five_01/20261031T002246332989Z_completed_with_errors",
+      "notes": "Diagnostic probe; not normalized project Document JSON."
+    }
+  ],
+  "quality_reviews": [
+    {
+      "id": "irena-imf-source-review-v1",
+      "status": "completed_with_documented_quality_issues",
+      "archive_directory": "outputs/evaluation_archive/quality_reviews/irena-imf-source-review-v1-20261031T135556Z",
+      "report": "docs/evaluation/irena-imf-source-review.md",
+      "measured_summary": "evaluation/results/irena-imf-source-review-v1.json",
+      "note": "Single-assistant development checks; not independent human ground truth. Stop before RAG chunking."
+    },
+    {
+      "id": "final-source-repair-and-five-vlm-benchmark-v1",
+      "archive_directory": "outputs/evaluation_archive/quality_reviews/final-source-repair-and-vlm-benchmark-20261031T153551Z",
+      "source_repair_status": "completed_selected_checks_pass",
+      "vlm_benchmark_status": "blocked_by_account_access",
+      "reports": [
+        "docs/evaluation/final-source-quality-repair.md",
+        "docs/evaluation/five-model-vlm-benchmark.md"
+      ],
+      "note": "97 local tests passed. Native-PDF pipeline corrections are not raw VLM scores; four alternatives returned HTTP 402. No best-model claim. RAG unstarted."
+    },
+    {
+      "id": "rag-100-baseline-and-judge-validation-v2",
+      "status": "baseline and judge validation preserved; comparative answer evaluation ongoing",
+      "judge_model": "gpt-oss:120b",
+      "answer_model": "gemma4:31b",
+      "archive_directory": "outputs/evaluation_archive/gpt-oss-120b_output/rag-judge-audit-20261101T125904Z",
+      "report": "docs/evaluation/judge-validation-and-rag-ablation.md",
+      "measured_summary": "evaluation/results/judge-validation-and-retrieval-v1.json",
+      "note": "100 original questions processed; one metric error retained. 20-case assistant audit. Original Ragas correctness fails calibration; contextual rubric v2 passes 90/90 finite synthetic trials. Not independent human validation. No comparative answer-quality winner yet."
+    },
+    {
+      "id": "rag-comparison-v1-and-superseded-structural-v1",
+      "archive_directory": "outputs/evaluation_archive/gpt-oss-120b_output/rag-comparisons-preserved-20261101T135307Z",
+      "status": "initial comparison completed; structural v1 preserved as superseded",
+      "report": "docs/evaluation/judge-validation-and-rag-ablation.md",
+      "note": "Initial comparison 500/500. Superseded structural v1 has 18 new-method cases plus 300 reused advanced cases; preserve all incomplete cases. Replacement v2 adds related explanations and semantic boundaries without rerunning parsing."
+    },
+    {
+      "id": "structural-rag-v2-completed",
+      "archive_directory": "outputs/evaluation_archive/gpt-oss-120b_output/structural-rag-v2-completed-20261101T141156Z",
+      "status": "completed 500/500 cases",
+      "judge_model": "gpt-oss:120b",
+      "answer_model": "gemma4:31b",
+      "report": "docs/evaluation/judge-validation-and-rag-ablation.md",
+      "measured_summary": "evaluation/results/rag-structural-comparison-v2.json",
+      "note": "200 new cases, 300 reused advanced cases; zero new scoring errors. Earlier metric missingness retained. Inspected silver questions and assistant-authored judge calibration; not independent human ground truth. Production unchanged."
+    }
+  ]
+}

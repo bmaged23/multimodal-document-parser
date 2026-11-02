@@ -1,0 +1,36 @@
+{
+  "reviewer": "Single assistant, source-grounded manual development review; not independent human adjudication.",
+  "model": "gemma4:31b",
+  "cases": {
+    "equipment-close-up": {
+      "source_page": 13,
+      "feature_coverage": {
+        "passed": 4,
+        "checked": 4
+      },
+      "unsupported_claims": [
+        {
+          "statement": "being lowered into the nacelle",
+          "severity": "minor",
+          "reason": "The still photograph shows a suspended component, but does not establish its direction of motion."
+        }
+      ],
+      "overall": "Main visible scene is described accurately; motion direction is inferred."
+    },
+    "landscape-dam": {
+      "source_page": 20,
+      "feature_coverage": {
+        "passed": 4,
+        "checked": 4
+      },
+      "unsupported_claims": [],
+      "overall": "Concrete dam, white spray, orange structures/buildings and mountainous surroundings are supported."
+    },
+    "multi-series-line-chart": {
+      "draft": "Broad general-decline description omits that some endpoint costs rise.",
+      "review": "The explicit claim that all seven technologies show a downward endpoint trend is contradicted by the source: bioenergy, geothermal and hydropower rise."
+    }
+  },
+  "other_models": "No manual quality judgments: inference unavailable due to HTTP 402.",
+  "note": "Image coverage and unsupported claims are separate observations; no aggregate quality score or best-model ranking is assigned."
+}

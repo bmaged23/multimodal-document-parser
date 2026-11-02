@@ -1,0 +1,11 @@
+{
+  "format_version": "dots-mocr-page-v1",
+  "page_number": 1,
+  "source_width": 200,
+  "source_height": 300,
+  "input_width": 112,
+  "input_height": 168,
+  "coordinate_space": "input_pixels",
+  "finish_reason": "stop",
+  "content": "[{\"bbox\": [0, 0, 112, 20], \"category\": \"Title\", \"text\": \"# Synthetic report\"}, {\"bbox\": [0, 21, 112, 35], \"category\": \"Section-header\", \"text\": \"## Results\"}, {\"bbox\": [0, 36, 112, 50], \"category\": \"Text\", \"text\": \"Revenue rose. <script>alert(1)</script>\"}, {\"bbox\": [0, 51, 112, 80], \"category\": \"Table\", \"text\": \"<table><tr><th rowspan=\\\"2\\\">Year</th><th>Revenue</th></tr><tr><td>12</td></tr></table>\"}, {\"bbox\": [28, 84, 84, 112], \"category\": \"Picture\"}, {\"bbox\": [0, 113, 112, 140], \"category\": \"Formula\", \"text\": \"E=mc^2\"}, {\"bbox\": [0, 141, 112, 168], \"category\": \"Page-footer\", \"text\": \"1\"}]"
+}

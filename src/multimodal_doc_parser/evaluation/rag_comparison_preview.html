@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RAG alternatives: live evaluation</title>
+<style>
+body{font:15px system-ui;color:#172538;max-width:1500px;margin:24px auto;padding:0 16px}
+aside{background:#fff4d8;padding:14px;line-height:1.6}
+table{border-collapse:collapse;width:100%}td,th{padding:10px;border:1px solid #ccd;text-align:left;vertical-align:top}
+th:last-child{min-width:320px}section{overflow:auto;margin:20px 0}a{color:#1756a9}
+label{display:inline-block;margin:14px 16px 14px 0}select,button{padding:8px}
+</style>
+<h1>Simple RAG versus adaptive and agentic RAG</h1>
+<p id="progress" role="status">Loading saved checkpoints…</p>
+<aside>The revised custom judge rubric passed 90/90 synthetic control trials.
+This is limited calibration, not independent human certification. Original Ragas
+factual-correctness scores failed calibration and are excluded from winner selection.
+This is an exploratory comparison on the same 100 previously inspected questions.
+Means include only available scores; a high average is not automatically the fraction
+of correctly answered questions. No final winner is declared while scoring is incomplete.</aside>
+<p><a href="retrieval-report.html">Judge-free retrieval comparison</a> ·
+<a href="../judge-validation-v2/report.html">Judge validation</a> ·
+<a href="../ragas-100-v1/audit-20-v1/report.html">20-case audit</a> ·
+<a href="metrics.csv">Metrics CSV</a> · <a href="paired-differences.json">Paired differences</a></p>
+<label>Approach <select id="approach"><option value="">All approaches</option></select></label>
+<label>Metric <select id="metric"><option value="">All metrics</option></select></label>
+<button id="refresh">Refresh now</button>
+<section><table><thead><tr><th>Approach</th><th>Metric</th><th>Mean</th><th>Scored</th><th>Meaning</th></tr></thead>
+<tbody id="scores"></tbody></table></section>
+<p>Fixed-size: 350-token windows with 50-token overlap. All methods use the same saved
+source representations, 1,024-dimensional BGE embeddings and a 2,400-token answer-context
+ceiling. Plain RAG uses one generation; the agent can make a bounded query rewrite.
+Generated image descriptions remain unverified visual evidence.</p>
+<script>
+const meanings={
+ required_fact_coverage:"Custom validated judge: fraction of saved required reference facts correctly expressed in the answer, interpreted in question context. Facts have mixed granularity. Higher is better.",
+ clean_answer:"Custom validated judge: all required facts covered, no contradicted required facts, no unsupported extra claims, and an appropriate answer-or-refuse decision. Higher is better; this remains a text-judge assessment.",
+ unsupported_extra_claims:"Custom validated judge: fraction of answers with at least one unsupported extra claim. LOWER is better. Support from generated descriptions does not independently verify visual truth.",
+ abstention_correct:"Deterministic check: did the answer's insufficient-evidence flag match whether the question was answerable? This does not establish factual correctness. Higher is better.",
+ faithfulness:"Ragas with GPT-OSS: fraction of answer claims supported by the supplied context. Context can itself contain parsing or visual-description errors. Higher is better.",
+ citation_support:"Ragas faithfulness against only the cited child chunks: do those specific citations support the answer? Higher is better.",
+ context_source_recall:"Deterministic conservative check: fraction of expected evidence groups present as full source parts in the initial packed answer context. See the separate retrieval report for requested-cell coverage.",
+ final_context_source_recall:"Deterministic conservative check: fraction of expected evidence groups present as full source parts in the final answer context, after any agent rewrite. See the separate retrieval report for requested-cell coverage."
+};
+function meaning(name){
+ if(meanings[name])return meanings[name];
+ const match=name.match(/^(source|cell)_(evidence_recall|complete)_at_(\d+)$/);
+ if(!match)return "No description available.";
+ const measure=match[2]==="complete"?"Fraction of answerable questions with ALL expected evidence groups present":"Average fraction of required evidence groups present";
+ const unit=match[1]==="cell"?"requested complete column-label/value segments (full saved parts for narrative and chart points)":"complete source parts, so unrelated columns can make this stricter for split table rows";
+ return `Deterministic source-coordinate check: ${measure} within the top ${match[3]} retrieved chunks, before packing to the smaller answer-context budget. Requires ${unit}. Higher is better.`;
+}
+let rows=[];
+function render(){
+ const body=document.getElementById("scores");body.replaceChildren();
+ for(const row of rows){
+  if(document.getElementById("approach").value&&row.variant!==document.getElementById("approach").value)continue;
+  if(document.getElementById("metric").value&&row.metric!==document.getElementById("metric").value)continue;
+  const tr=document.createElement("tr");
+  for(const value of [row.variant,row.metric,row.mean.toFixed(4),row.scored,meaning(row.metric)]){
+   const td=document.createElement("td");td.textContent=value;tr.append(td);
+  }body.append(tr);
+ }
+}
+function options(id,field){
+ const select=document.getElementById(id),current=select.value;
+ for(const option of [...select.options].slice(1))option.remove();
+ for(const value of [...new Set(rows.map(r=>r[field]))].sort()){
+  const option=document.createElement("option");option.value=value;option.textContent=value;select.append(option);
+ }select.value=current;
+}
+async function refresh(){
+ try{
+  const [summaryResponse,statusResponse]=await Promise.all([fetch("summary.json",{cache:"no-store"}),fetch("status.json",{cache:"no-store"})]);
+  if(!summaryResponse.ok||!statusResponse.ok)throw Error("Checkpoint unavailable");
+  const summary=await summaryResponse.json(),status=await statusResponse.json();rows=summary.metrics;
+  document.getElementById("progress").textContent=`${summary.completed||0}/${summary.expected} approach/question evaluations completed. Status: ${status.status}. ${status.question?`Current question: ${status.question}; approach: ${status.variant}.`:""} Updated ${new Date().toLocaleTimeString()}.`;
+  options("approach","variant");options("metric","metric");render();
+ }catch(error){document.getElementById("progress").textContent=`Could not read current checkpoints: ${error.message}. Use the local HTTP report URL.`;}
+}
+document.getElementById("approach").addEventListener("change",render);
+document.getElementById("metric").addEventListener("change",render);
+document.getElementById("refresh").addEventListener("click",refresh);
+refresh();setInterval(refresh,30000);
+</script>
+</html>

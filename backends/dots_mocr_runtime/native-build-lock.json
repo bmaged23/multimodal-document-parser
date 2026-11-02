@@ -1,0 +1,30 @@
+{
+  "format_version": "1.0",
+  "runtime": "llama.cpp-b11960-cuda12.6-sm75-local",
+  "platform": "linux-x86_64",
+  "cuda_architecture": "75",
+  "cuda_toolkit": "12.6.85",
+  "bootstrap": {
+    "url": "https://api.anaconda.org/download/conda-forge/micromamba/2.10.0/linux-64/micromamba-2.10.0-0.tar.bz2",
+    "filename": "micromamba.tar.bz2",
+    "sha256": "9a97976244929bbae28fb1fae504e74a3e7e6d1932870e3a03321f01b7fbd07b"
+  },
+  "source": {
+    "url": "https://github.com/ggml-org/llama.cpp/archive/refs/tags/b11960.tar.gz",
+    "filename": "llama-b11960.tar.gz",
+    "sha256": "2b37ffa871595f90b94164f6c510ad9a34bd7f94da21557cc9878587e163af37"
+  },
+  "toolchain_lock_sha256": "508e483e4caebc1c05cadf7a7d5f647778f9d7dfb0c8957156e30ec306b35c2f",
+  "cmake_options": [
+    "-DGGML_CUDA=ON",
+    "-DCMAKE_CUDA_ARCHITECTURES=75",
+    "-DGGML_CUDA_USE_PDL=OFF",
+    "-DGGML_CUDA_FA_ALL_QUANTS=OFF",
+    "-DGGML_CUDA_GRAPHS=OFF",
+    "-DLLAMA_CURL=OFF",
+    "-DLLAMA_BUILD_TESTS=OFF",
+    "-DLLAMA_BUILD_EXAMPLES=OFF",
+    "-DLLAMA_BUILD_SERVER=ON",
+    "-DCMAKE_BUILD_TYPE=Release"
+  ]
+}

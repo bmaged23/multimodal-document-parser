@@ -1,0 +1,228 @@
+{
+  "$defs": {
+    "BoundingBox": {
+      "additionalProperties": false,
+      "description": "Normalized top-left coordinates relative to the rendered, rotated page.",
+      "properties": {
+        "x0": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "X0",
+          "type": "number"
+        },
+        "y0": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Y0",
+          "type": "number"
+        },
+        "x1": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "X1",
+          "type": "number"
+        },
+        "y1": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Y1",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x0",
+        "y0",
+        "x1",
+        "y1"
+      ],
+      "title": "BoundingBox",
+      "type": "object"
+    },
+    "PartSlice": {
+      "additionalProperties": false,
+      "properties": {
+        "part_id": {
+          "title": "Part Id",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "part_id",
+        "start",
+        "end"
+      ],
+      "title": "PartSlice",
+      "type": "object"
+    },
+    "SourceRegion": {
+      "additionalProperties": false,
+      "properties": {
+        "page_number": {
+          "exclusiveMinimum": 0,
+          "title": "Page Number",
+          "type": "integer"
+        },
+        "bounding_box": {
+          "$ref": "#/$defs/BoundingBox"
+        }
+      },
+      "required": [
+        "page_number",
+        "bounding_box"
+      ],
+      "title": "SourceRegion",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "parent_id": {
+      "title": "Parent Id",
+      "type": "string"
+    },
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "heading_path": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Heading Path",
+      "type": "array"
+    },
+    "kind": {
+      "enum": [
+        "text",
+        "table",
+        "visual"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "text": {
+      "title": "Text",
+      "type": "string"
+    },
+    "token_count": {
+      "exclusiveMinimum": 0,
+      "title": "Token Count",
+      "type": "integer"
+    },
+    "slices": {
+      "items": {
+        "$ref": "#/$defs/PartSlice"
+      },
+      "minItems": 1,
+      "title": "Slices",
+      "type": "array"
+    },
+    "context_part_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Context Part Ids",
+      "type": "array"
+    },
+    "deferred_context_part_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Deferred Context Part Ids",
+      "type": "array"
+    },
+    "source_element_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Element Ids",
+      "type": "array"
+    },
+    "source_regions": {
+      "items": {
+        "$ref": "#/$defs/SourceRegion"
+      },
+      "title": "Source Regions",
+      "type": "array"
+    },
+    "column_group": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Column Group"
+    },
+    "previous_child_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Previous Child Id"
+    },
+    "next_child_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Next Child Id"
+    },
+    "quality_warnings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Quality Warnings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "parent_id",
+    "document_id",
+    "heading_path",
+    "kind",
+    "text",
+    "token_count",
+    "slices",
+    "context_part_ids",
+    "deferred_context_part_ids",
+    "source_element_ids",
+    "source_regions"
+  ],
+  "title": "ChildRecord",
+  "type": "object"
+}

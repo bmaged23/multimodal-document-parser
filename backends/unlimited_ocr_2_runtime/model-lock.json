@@ -1,0 +1,111 @@
+{
+  "repository": "baidu/Unlimited-OCR-2",
+  "sha": "c14071b549f4fcab10909f3c4acc6a2edb366947",
+  "siblings": [
+    {
+      "rfilename": "README.md",
+      "size": 13914,
+      "blobId": "5a0379301f4b9a470a01e732a09f0ca87a4d55b0"
+    },
+    {
+      "rfilename": "_sparse_base_impl.py",
+      "size": 221755,
+      "blobId": "3291637638c1366b7b6cd20fd53b6efafcea8a65"
+    },
+    {
+      "rfilename": "config.json",
+      "size": 5525,
+      "blobId": "a1ea89c4c965d5c5bd5c77b21b928aa710aa7af6"
+    },
+    {
+      "rfilename": "configuration_deepseek_v2.py",
+      "size": 10720,
+      "blobId": "1c28cf39e8b821ec2623d3762f08ffd77050e8f8"
+    },
+    {
+      "rfilename": "conversation.py",
+      "size": 9253,
+      "blobId": "65c295e81cd804080ec238b31d1922f33e1f9405"
+    },
+    {
+      "rfilename": "dash_attention.py",
+      "size": 71465,
+      "blobId": "891d2ff7b5f9dc282cf702f34d7d2cfd69528011"
+    },
+    {
+      "rfilename": "deepencoder.py",
+      "size": 37939,
+      "blobId": "6b10ea1b896cffb8e6cfb4d799d4b11479d519b8"
+    },
+    {
+      "rfilename": "generation_config.json",
+      "size": 111,
+      "blobId": "6f7f9313195af78c979fc889accc234edb6e0d3c"
+    },
+    {
+      "rfilename": "model-00001-of-00002.safetensors",
+      "size": 4998430312,
+      "blobId": "816ac22348c3176795d7c13034eadbdb71de47dc",
+      "lfs": {
+        "sha256": "4c40b740f209fd7682040d4ebf19409208acde5c401ccd2dde426d0f41542f18",
+        "size": 4998430312,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00002-of-00002.safetensors",
+      "size": 1689875264,
+      "blobId": "f33017c06fa42e3c9f4540ab253e00362b50999b",
+      "lfs": {
+        "sha256": "9490b82fa47f89e5110eb5577f8ab1b6694c12121905dbc086ddb10207a4ba0c",
+        "size": 1689875264,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model.safetensors.index.json",
+      "size": 254054,
+      "blobId": "bc164961600a572ed4ff5215eee526d9fe706774"
+    },
+    {
+      "rfilename": "modeling_deepseekv2.py",
+      "size": 25572,
+      "blobId": "6cf69a31cbfb09f8d9d54fba51af21ebffc695dc"
+    },
+    {
+      "rfilename": "modeling_unlimitedocr.py",
+      "size": 55724,
+      "blobId": "2a717b55c0509995978d0a1e78802a997c26660e"
+    },
+    {
+      "rfilename": "packing_patch.py",
+      "size": 8110,
+      "blobId": "f01b4bd31cffe43135a8b86d5436f04d3a69146b"
+    },
+    {
+      "rfilename": "sparse_gather_e2e_triton.py",
+      "size": 18058,
+      "blobId": "021575ce952bbded01bbfa99eb95641d271cad7d"
+    },
+    {
+      "rfilename": "sparse_gather_triton.py",
+      "size": 23860,
+      "blobId": "6621872e78cd318e4bb55aa70c1c8813973c78e7"
+    },
+    {
+      "rfilename": "special_tokens_map.json",
+      "size": 549,
+      "blobId": "ae2383ca05f494aa736e72e6a874332cd2f1c67e"
+    },
+    {
+      "rfilename": "tokenizer.json",
+      "size": 9980278,
+      "blobId": "d5909a7c1e63a78be90fe2bde6c8464e6e9e8540"
+    },
+    {
+      "rfilename": "tokenizer_config.json",
+      "size": 166632,
+      "blobId": "e97c1bb98fa1de585d85259b77e4785bf1c195a2"
+    }
+  ]
+}
