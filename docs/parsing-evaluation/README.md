@@ -78,6 +78,14 @@ and [measurement scope](../evaluation/quantized-gpu-batch.md).
 
 ## Author handwritten mathematics
 
+**dots.mocr was substantially better at handwritten text and mathematical
+notation on our four-page assignment test:** 29/37 selected text/math checks,
+compared with PaddleOCR's 13/37 and Unlimited-OCR's 11/37. All three recovered
+20/20 ordered truth-table cells; Unlimited timed out on two pages. Our quantized
+dots profile is the preferred candidate for similar handwritten mathematics
+PDFs, with manual formula review. This is a small assistant-reviewed development
+case with different runtime budgets, not a general handwriting benchmark.
+
 The current demo replaces the diary with four author-provided assignment photos.
 [Study methodology and results](../evaluation/author-handwritten-mathematics.md)
 separate selected prose/math checks from ordered truth-table cells and runtime.

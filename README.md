@@ -147,6 +147,12 @@ cover only one small development table, not a general table benchmark.
 
 ### Author-written mathematics · four photos
 
+**Finding: quantized dots.mocr was substantially better at handwritten text and
+mathematical notation in our four-page assignment test.** It recovered 29/37
+selected text/math checks, versus PaddleOCR's 13/37 and Unlimited-OCR's 11/37.
+It is our preferred candidate for similar handwritten mathematics PDFs, with
+formula review. This small test does not establish superiority across all handwriting.
+
 The current handwriting demo uses the author’s own assignment. These are selected
 assistant-reviewed presence checks, not independent annotations or full-page accuracy.
 Ambiguous/crossed-out spans are excluded; original mathematical mistakes stay unchanged.

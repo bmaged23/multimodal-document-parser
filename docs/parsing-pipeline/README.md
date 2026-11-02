@@ -6,6 +6,13 @@
 The pipeline turns a PDF into source-addressable document data and visual review
 reports. Its quality is evaluated separately from each raw parsing model.
 
+For handwritten mathematics PDFs, our tested **quantized dots.mocr** profile is
+the preferred comparison candidate: it recovered substantially more selected
+text/math checks on the four-page author-written assignment than the other two
+tested profiles. Formulas still require review. See the
+[handwriting findings and limits](../evaluation/author-handwritten-mathematics.md).
+The deployed service continues to default to PaddleOCR; dots uses its separate GPU runtime.
+
 ## Processing flow
 
 ```mermaid

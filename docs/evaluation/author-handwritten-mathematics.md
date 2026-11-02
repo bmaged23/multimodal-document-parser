@@ -73,6 +73,14 @@ precision are **not measured**. No Ragas or LLM-as-judge score is used here.
 
 ## Observed results
 
+**Finding: quantized dots.mocr was substantially better at handwritten text and
+mathematical notation on this assignment.** It recovered 29/37 selected checks,
+versus PaddleOCR's 13/37 and Unlimited-OCR's 11/37, and completed all four pages.
+We prefer this tested dots profile for similar handwritten mathematics PDFs,
+while reviewing formulas and proofs against the source. The evidence is limited
+to these four pages and the retained configurations; it does not establish a
+universal handwriting ranking or the performance of unquantized dots.mocr.
+
 | Tested profile | Completed pages /4 | Text checks /18 | Math checks /19 | Ordered table cells /20 | Median page time |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | PaddleOCR-VL-1.6 | 4/4 | 8/18 | 5/19 | 20/20 | 420.4 s |
