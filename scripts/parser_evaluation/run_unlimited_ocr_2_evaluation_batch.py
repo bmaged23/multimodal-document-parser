@@ -9,7 +9,7 @@ import time
 from datetime import UTC, datetime
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 RUNTIME = ROOT / "backends/unlimited_ocr_2_runtime"
 STATE = ROOT / "outputs/parser_runs/unlimited-ocr-2-nf4-evaluation-batch-01.json"
 CASES = [
@@ -199,13 +199,14 @@ def main() -> None:
         subprocess.run(
             [
                 str(ROOT / ".venv/bin/python"),
-                str(ROOT / "scripts/build_unlimited_ocr_2_review.py"),
+                str(ROOT / "scripts/visualization/build_unlimited_ocr_2_review.py"),
                 str(run),
             ],
             check=True,
         )
         spec = importlib.util.spec_from_file_location(
-            "unlimited_archive", ROOT / "scripts/run_unlimited_ocr_2_validation.py"
+            "unlimited_archive",
+            ROOT / "scripts/parser_evaluation/run_unlimited_ocr_2_validation.py",
         )
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)

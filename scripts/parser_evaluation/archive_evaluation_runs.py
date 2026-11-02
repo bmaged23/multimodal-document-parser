@@ -11,7 +11,7 @@ from pathlib import Path
 
 import pypdfium2 as pdfium
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 REGISTRY = ROOT / "evaluation/preserved-runs.json"
 
 
@@ -83,9 +83,9 @@ def snapshot(case: dict, archive_root: Path) -> dict:
         runtime_files = (
             [
                 "backends/dots_mocr_runtime/runtime-lock.json",
-                "scripts/serve_dots_mocr.py",
-                "scripts/setup_dots_mocr_runtime.py",
-                "scripts/build_dots_mocr_runtime.py",
+                "scripts/model_runtimes/serve_dots_mocr.py",
+                "scripts/model_runtimes/setup_dots_mocr_runtime.py",
+                "scripts/model_runtimes/build_dots_mocr_runtime.py",
                 "backends/dots_mocr_runtime/native-build-lock.json",
                 "backends/dots_mocr_runtime/toolchain-linux-64.lock",
             ]

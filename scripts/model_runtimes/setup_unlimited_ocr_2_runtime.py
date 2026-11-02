@@ -7,7 +7,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 REVISION = "c14071b549f4fcab10909f3c4acc6a2edb366947"
 REPOSITORY = "baidu/Unlimited-OCR-2"
 

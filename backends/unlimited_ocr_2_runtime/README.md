@@ -25,11 +25,11 @@ From the project root:
 
 ```bash
 uv sync --project backends/unlimited_ocr_2_runtime --frozen
-uv run python scripts/setup_unlimited_ocr_2_runtime.py
+uv run python scripts/model_runtimes/setup_unlimited_ocr_2_runtime.py
 backends/unlimited_ocr_2_runtime/.venv/bin/python \
   backends/unlimited_ocr_2_runtime/run_gpu_probe.py \
   --output-directory outputs/parser_runs/unlimited-ocr-2-new-run
-uv run python scripts/build_unlimited_ocr_2_review.py \
+uv run python scripts/visualization/build_unlimited_ocr_2_review.py \
   outputs/parser_runs/unlimited-ocr-2-new-run
 ```
 
@@ -85,7 +85,7 @@ unchanged. Both initial and corrected-review snapshots are preserved separately.
 
 ## NASA and diary batch
 
-`scripts/run_unlimited_ocr_2_evaluation_batch.py` tests the same NASA first-20
+`scripts/parser_evaluation/run_unlimited_ocr_2_evaluation_batch.py` tests the same NASA first-20
 subset and final diary selection (original pages 4, 5, 7, 6, 74). It runs one GPU
 process per page, sequentially, with the same NF4/FP16/base-view/4096-token profile.
 Each job has a 720-second limit including model loading; failed and incomplete

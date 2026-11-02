@@ -33,8 +33,8 @@ text-layer presence, and the initial selected pages.
 Download or verify the exact files from the repository root:
 
 ```bash
-uv run python scripts/download_evaluation_documents.py
-uv run python scripts/download_evaluation_documents.py --document-id lucinda_davis_diary_1874
+uv run python scripts/document_processing/download_evaluation_documents.py
+uv run python scripts/document_processing/download_evaluation_documents.py --document-id lucinda_davis_diary_1874
 ```
 
 The downloader checks pinned hashes, rejects non-PDF responses, and writes to a

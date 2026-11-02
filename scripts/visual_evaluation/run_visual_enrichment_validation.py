@@ -10,7 +10,7 @@ from pathlib import Path
 
 from multimodal_doc_parser.visual_enrichment.ollama import api, enrich_document, save
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 MODEL = "gemma4:31b"
 DESTINATION = ROOT / "outputs/parser_runs/paddleocr-qwen3-vl-visual-enrichment-01"
 
@@ -101,7 +101,7 @@ def main() -> None:
     }
     save(result / "source-derived-visual-reference.json", reference)
     spec = importlib.util.spec_from_file_location(
-        "visual_scoring", ROOT / "scripts/evaluate_visual_enrichment.py"
+        "visual_scoring", ROOT / "scripts/visual_evaluation/evaluate_visual_enrichment.py"
     )
     scorer = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(scorer)
@@ -128,7 +128,7 @@ def main() -> None:
     subprocess.run(
         [
             str(ROOT / ".venv/bin/python"),
-            str(ROOT / "scripts/archive_evaluation_runs.py"),
+            str(ROOT / "scripts/parser_evaluation/archive_evaluation_runs.py"),
             "--case",
             case,
         ],

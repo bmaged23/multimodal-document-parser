@@ -11,7 +11,7 @@ from PIL import Image
 
 from multimodal_doc_parser.review_interface.html_report import render_markdown_preview
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 BLOCK = re.compile(r"<BLOCK>([A-Za-z_][\w-]*)(\[[^\]\n]*\])<FORK>(.*?)(?=<BLOCK>|\Z)", re.S)
 REFERENCE = re.compile(r"<\|ref\|>(.*?)<\|/ref\|><\|det\|>(.*?)<\|/det\|>", re.S)
 

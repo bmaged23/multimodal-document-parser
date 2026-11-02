@@ -1,5 +1,5 @@
 {
-  "recorded_at": "2026-11-02T09:41:28.102874+00:00",
+  "recorded_at": "2026-11-02T09:57:22.179861+00:00",
   "intended_public_repository": "bmaged23/multimodal-document-parser",
   "docker_target": "parsing",
   "platform": "linux/amd64",
@@ -33,7 +33,6 @@
   "published": true,
   "repository_public_visibility_verified": true,
   "next_required": [
-    "Complete hosted container validation",
     "Verify a hosted Docker Hub release workflow run"
   ],
   "storage_cleanup": {
@@ -78,6 +77,15 @@
     "release_variables_configured": true,
     "release_secret_configured": true,
     "container_validation_run": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41422591707",
-    "container_validation_status": "in_progress"
+    "container_validation_status": "completed",
+    "container_validation_conclusion": "success"
+  },
+  "repository_reorganization": {
+    "local_tests_passed": 132,
+    "ruff_format": true,
+    "ruff_lint": true,
+    "strict_mypy": true,
+    "task_script_groups": 8,
+    "preserved_evaluation_archives_modified": false
   }
 }

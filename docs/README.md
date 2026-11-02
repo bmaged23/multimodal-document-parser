@@ -14,7 +14,10 @@ unverified. Detailed experiment reports are linked from each guide rather than
 presented as one undifferentiated benchmark.
 
 - [Interactive saved-results explorer](development/evaluation-showcase.md)
-- [Docker image, public release and CI/CD](deployment/docker-hub.md)
+- [API setup and request examples](api/README.md)
+- [Docker clone, pull and deployment](docker/README.md)
+- [CI/CD checks and release automation](ci-cd/README.md)
+- [Script directory guide](../scripts/README.md)
 - [Project scope and showcase](project/project-scope-and-showcase.md)
 - [Milestones](project/milestones.md)
 - [Hardware findings](development/hardware-report.md)

@@ -9,7 +9,7 @@ import tempfile
 from pathlib import Path
 from urllib.request import urlopen
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def digest(path: Path) -> str:
@@ -61,7 +61,8 @@ def main() -> None:
                 shutil.rmtree(staging)
     if not args.prebuilt:
         print(
-            "Model files ready. Run scripts/build_dots_mocr_runtime.py for the local GPU runtime.",
+            "Model files ready. Run scripts/model_runtimes/build_dots_mocr_runtime.py "
+            "for the local GPU runtime.",
             flush=True,
         )
         return

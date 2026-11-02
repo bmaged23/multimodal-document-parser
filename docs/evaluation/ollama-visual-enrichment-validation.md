@@ -4,7 +4,7 @@ The original two-page synthetic PDF was enriched from preserved PaddleOCR-VL-1.6
 extraction with local Ollama v0.40.13 and `qwen3-vl:2b-instruct`. Exact model digest:
 `afc393e3572c07db0bc84aa460d928a16c75f3fbb9ca9e0dccc4fbd2dafb573e`.
 The API reports Q4_K_M quantization. The portable runtime archive SHA-256 is pinned
-in `scripts/setup_ollama_runtime.py`. Existing project uv `.venv` is used; no extra
+in `scripts/model_runtimes/setup_ollama_runtime.py`. Existing project uv `.venv` is used; no extra
 Python environment or global Ollama installation was created.
 
 ## Actual observations

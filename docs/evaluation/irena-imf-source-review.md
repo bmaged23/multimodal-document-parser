@@ -154,17 +154,17 @@ ignored by Git; a fresh clone must reproduce or obtain the corresponding runs.
 Use fresh destination paths: the scorer refuses to overwrite a results file.
 
 ```bash
-uv run python scripts/evaluate_source_review.py \
+uv run python scripts/parser_evaluation/evaluate_source_review.py \
   outputs/parser_runs/irena-mixed-content-20-paddleocr-gemma4-31b-01 \
   evaluation/reference_annotations/irena-mixed-content-20-source-review-v1.json \
   --output outputs/quality_evaluations/reproduced/irena-results.json
 
-uv run python scripts/evaluate_source_review.py \
+uv run python scripts/parser_evaluation/evaluate_source_review.py \
   outputs/parser_runs/imf-complex-tables-26-paddleocr-gemma4-31b-01 \
   evaluation/reference_annotations/imf-complex-tables-26-source-review-v1.json \
   --output outputs/quality_evaluations/reproduced/imf-results.json
 
-uv run --group browser python scripts/verify_saved_review_reports.py \
+uv run --group browser python scripts/visualization/verify_saved_review_reports.py \
   outputs/parser_runs/irena-mixed-content-20-paddleocr-gemma4-31b-01 \
   outputs/parser_runs/imf-complex-tables-26-paddleocr-gemma4-31b-01 \
   --output-directory outputs/quality_evaluations/reproduced/browser

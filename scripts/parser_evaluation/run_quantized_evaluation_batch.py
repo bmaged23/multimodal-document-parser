@@ -26,7 +26,7 @@ from multimodal_doc_parser.parser_adapters.parsing_run import parse_prepared_doc
 from multimodal_doc_parser.pdf_preparation.prepare_document import prepare_document
 from multimodal_doc_parser.review_interface.html_report import write_html_report
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 MODEL_NAME = "dots.mocr-Q4_K_M-mmproj-Q8_0"
 NASA_BUNDLE = (
     ROOT
@@ -255,7 +255,10 @@ class Batch:
         self.stop_server()
         log = (ROOT / f"outputs/dots-mocr-q4-evaluation-server-{self.suffix}.log").open("a")
         self.server = subprocess.Popen(
-            [str(ROOT / ".venv/bin/python"), str(ROOT / "scripts/serve_dots_mocr.py")],
+            [
+                str(ROOT / ".venv/bin/python"),
+                str(ROOT / "scripts/model_runtimes/serve_dots_mocr.py"),
+            ],
             stdin=subprocess.DEVNULL,
             stdout=log,
             stderr=subprocess.STDOUT,
@@ -459,7 +462,7 @@ class Batch:
         subprocess.run(
             [
                 str(ROOT / ".venv/bin/python"),
-                str(ROOT / "scripts/archive_evaluation_runs.py"),
+                str(ROOT / "scripts/parser_evaluation/archive_evaluation_runs.py"),
                 "--case",
                 case["id"],
             ],

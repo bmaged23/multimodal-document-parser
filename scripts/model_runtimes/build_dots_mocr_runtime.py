@@ -11,7 +11,7 @@ from urllib.request import urlopen
 
 from setup_dots_mocr_runtime import digest
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def download(artifact: dict, destination: Path) -> None:

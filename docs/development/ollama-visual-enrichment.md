@@ -15,7 +15,7 @@ uv run document-parser enrich outputs/parser_runs/paddleocr-vl-1.6-reviewed \
 For the original three-visual validation and source-derived checks:
 
 ```bash
-uv run python scripts/run_visual_enrichment_validation.py \
+uv run python scripts/visual_evaluation/run_visual_enrichment_validation.py \
   --provider ollama-cloud --model gemma4:31b --suffix NEW
 ```
 
@@ -38,7 +38,7 @@ Milestone 5 adds a separate stage after OCR. Use the existing project uv environ
 
 ```bash
 uv sync --locked --group dev
-uv run python scripts/setup_ollama_runtime.py --model qwen3-vl:2b-instruct
+uv run python scripts/model_runtimes/setup_ollama_runtime.py --model qwen3-vl:2b-instruct
 uv run document-parser enrich outputs/parser_runs/paddleocr-vl-1.6-reviewed \
   --provider ollama --model qwen3-vl:2b-instruct \
   --output-directory outputs/parser_runs/paddleocr-qwen3-vl-visual-enrichment-01
@@ -101,7 +101,7 @@ unit and correlate endpoints for narrowly supported vector line charts. Those
 numeric records use separate extracted provenance; source-based endpoint summaries
 are labelled separately from VLM prose. Unsupported layouts abstain and warnings
 remain visible. See [final source repairs](../evaluation/final-source-quality-repair.md).
-Use `scripts/finalize_saved_visual_quality.py` to apply those source-only checks
+Use `scripts/parser_evaluation/finalize_saved_visual_quality.py` to apply those source-only checks
 to an existing saved run without new OCR or VLM calls. The
 [five-VLM comparison](../evaluation/five-model-vlm-benchmark.md) scores raw model
 responses and excludes these repairs.

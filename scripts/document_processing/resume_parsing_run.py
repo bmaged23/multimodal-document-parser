@@ -32,7 +32,7 @@ def main() -> None:
     )
     if prepared.document_id != existing.document_id or prepared.pages != existing.pages:
         parser.error("Prepared input and interrupted run do not match")
-    runtime = Path(__file__).resolve().parents[1] / "backends/paddleocr_runtime"
+    runtime = Path(__file__).resolve().parents[2] / "backends/paddleocr_runtime"
     raw = args.run_directory / "raw/paddleocr"
     manifest_path = raw / "inference-manifest.json"
     checkpoint = json.loads(manifest_path.read_text(encoding="utf-8"))

@@ -10,7 +10,7 @@ import time
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 DIRECTORY = ROOT / "outputs/service_data/development"
 MODULE = "multimodal_doc_parser.pipeline_services.service_runtime"
 PORTS = dict(

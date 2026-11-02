@@ -117,7 +117,7 @@ Completed raw files are retained when a job is interrupted. To resume a stopped
 run using the original one-model, one-page configuration:
 
 ```bash
-uv run python scripts/resume_parsing_run.py <prepared-bundle> <existing-run-directory>
+uv run python scripts/document_processing/resume_parsing_run.py <prepared-bundle> <existing-run-directory>
 ```
 
 This validates input identity and saved page dimensions before reusing results.

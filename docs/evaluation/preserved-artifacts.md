@@ -35,13 +35,13 @@ Snapshots are append-only. Normal parsing does not overwrite them. Create anothe
 snapshot of one case, or omit `--case` to snapshot all registered cases:
 
 ```bash
-uv run python scripts/archive_evaluation_runs.py --case handwritten_replacement_5_pages
+uv run python scripts/parser_evaluation/archive_evaluation_runs.py --case handwritten_replacement_5_pages
 ```
 
 For a future active run, a watcher can wait for inference and exports to finish:
 
 ```bash
-uv run python scripts/archive_evaluation_runs.py --watch-case <registered-case-id>
+uv run python scripts/parser_evaluation/archive_evaluation_runs.py --watch-case <registered-case-id>
 ```
 
 The watcher also snapshots failed/interrupted terminal runs. It is a local

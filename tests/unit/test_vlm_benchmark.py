@@ -9,7 +9,9 @@ from multimodal_doc_parser.document_schema.document import VisualAnalysis
 
 
 def module():
-    spec = importlib.util.spec_from_file_location("vlm_benchmark", "scripts/run_vlm_benchmark.py")
+    spec = importlib.util.spec_from_file_location(
+        "vlm_benchmark", "scripts/visual_evaluation/run_vlm_benchmark.py"
+    )
     loaded = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(loaded)
     return loaded

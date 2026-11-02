@@ -12,7 +12,7 @@ from pathlib import Path
 
 import zstandard
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 VERSION = "v0.40.13"
 DIGEST = "c9490e0f520be21271d969e6703f012268b1d39f8b70dd58854e5bfef7a75bb6"
 HOST = "http://127.0.0.1:11435"

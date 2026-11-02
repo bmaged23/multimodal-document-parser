@@ -8,7 +8,7 @@ from types import SimpleNamespace
 
 def test_failed_job_is_retained_and_following_page_completes(tmp_path: Path, monkeypatch):
     spec = importlib.util.spec_from_file_location(
-        "unlimited_batch", "scripts/run_unlimited_ocr_2_evaluation_batch.py"
+        "unlimited_batch", "scripts/parser_evaluation/run_unlimited_ocr_2_evaluation_batch.py"
     )
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

@@ -59,7 +59,7 @@ modes passed; this does not demonstrate a hybrid or parent-expansion advantage.
 There is no held-out fixed-size chunking comparison yet.
 
 Evidence: `outputs/quality_evaluations/adaptive-rag-retrieval-01/results.json`.
-Reproduce using `scripts/evaluate_rag_retrieval.py` with a fresh output directory.
+Reproduce using `scripts/rag_evaluation/evaluate_rag_retrieval.py` with a fresh output directory.
 
 ## Service and answer checks
 

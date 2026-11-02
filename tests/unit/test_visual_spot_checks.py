@@ -9,7 +9,7 @@ import pytest
 
 def test_numeric_match_without_required_unit_fails(tmp_path: Path):
     spec = importlib.util.spec_from_file_location(
-        "visual_checks", "scripts/evaluate_visual_enrichment.py"
+        "visual_checks", "scripts/visual_evaluation/evaluate_visual_enrichment.py"
     )
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -45,7 +45,7 @@ def test_numeric_match_without_required_unit_fails(tmp_path: Path):
 
 def test_wrong_raster_type_is_not_hidden_by_correct_numeric_checks(tmp_path: Path):
     spec = importlib.util.spec_from_file_location(
-        "visual_checks", "scripts/evaluate_visual_enrichment.py"
+        "visual_checks", "scripts/visual_evaluation/evaluate_visual_enrichment.py"
     )
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

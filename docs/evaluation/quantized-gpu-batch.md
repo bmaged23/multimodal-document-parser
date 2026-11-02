@@ -5,7 +5,7 @@ on the first 20 NASA financial-report pages, then the same five diary pages used
 for the final PaddleOCR baseline (original diary PDF pages 4, 5, 7, 6, 74).
 
 ```bash
-uv run python scripts/run_quantized_evaluation_batch.py --suffix 01
+uv run python scripts/parser_evaluation/run_quantized_evaluation_batch.py --suffix 01
 ```
 
 The script requires the existing local corpus/preparation bundles and the built

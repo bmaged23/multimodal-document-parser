@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 def test_gpu_launcher_selects_retained_models_and_enables_offload():
-    build = runpy.run_path("scripts/serve_dots_mocr.py")["server_command"]
+    build = runpy.run_path("scripts/model_runtimes/serve_dots_mocr.py")["server_command"]
     command = build(
         Path("llama-server"),
         Path("cache"),

@@ -3,7 +3,7 @@
 Build a portable static viewer from preserved results, without rerunning models:
 
 ```bash
-uv run --no-sync python scripts/build_evaluation_showcase.py \
+uv run --no-sync python scripts/visualization/build_evaluation_showcase.py \
   --output-directory outputs/evaluation_showcase/my-showcase
 uv run --no-sync python -m http.server 8765 --bind 127.0.0.1 --directory outputs
 ```

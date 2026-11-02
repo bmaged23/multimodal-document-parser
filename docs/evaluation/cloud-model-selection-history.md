@@ -72,5 +72,5 @@ are not claimed for cloud execution.
 
 The existing local Ollama adapter remains available for reproducing historical
 experiments with the project uv environment. See
-[setup](docs/development/ollama-visual-enrichment.md) and
-[measured results and limits](docs/evaluation/ollama-visual-enrichment-validation.md).
+[setup](../development/ollama-visual-enrichment.md) and
+[measured results and limits](ollama-visual-enrichment-validation.md).

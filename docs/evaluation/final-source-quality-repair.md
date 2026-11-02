@@ -90,11 +90,11 @@ The original frozen baseline and revised raw Gemma run remain separate.
 Reproduce source-only postprocessing without OCR or model calls:
 
 ```bash
-uv run python scripts/finalize_saved_visual_quality.py \
+uv run python scripts/parser_evaluation/finalize_saved_visual_quality.py \
   outputs/parser_runs/irena-final-repair-paddleocr-gemma4-31b-02 \
   --output-directory outputs/parser_runs/irena-source-check-reproduction
 
-uv run python scripts/evaluate_source_review.py \
+uv run python scripts/parser_evaluation/evaluate_source_review.py \
   outputs/parser_runs/irena-source-check-reproduction \
   evaluation/reference_annotations/irena-mixed-content-20-source-review-v1.json \
   --output outputs/quality_evaluations/reproduced-source-checks/irena.json

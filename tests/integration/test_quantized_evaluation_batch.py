@@ -13,7 +13,7 @@ from multimodal_doc_parser.pdf_preparation.prepare_document import prepare_docum
 
 def test_failed_page_is_preserved_and_next_page_can_succeed(tmp_path: Path, monkeypatch):
     spec = importlib.util.spec_from_file_location(
-        "batch", "scripts/run_quantized_evaluation_batch.py"
+        "batch", "scripts/parser_evaluation/run_quantized_evaluation_batch.py"
     )
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

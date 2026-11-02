@@ -10,9 +10,9 @@ base but does not pin the original revision; equivalence is not verified.
 The observed official source revision is metadata, not proof of conversion lineage.
 
 ```bash
-uv run python scripts/setup_dots_mocr_runtime.py
-uv run python scripts/build_dots_mocr_runtime.py --jobs 4
-uv run python scripts/serve_dots_mocr.py
+uv run python scripts/model_runtimes/setup_dots_mocr_runtime.py
+uv run python scripts/model_runtimes/build_dots_mocr_runtime.py --jobs 4
+uv run python scripts/model_runtimes/serve_dots_mocr.py
 ```
 
 Setup downloads only the quantized model and projector to `.cache/dots_mocr/`,

@@ -7,7 +7,7 @@ from pathlib import Path
 
 def test_dots_snapshot_retains_correct_manifest_and_runtime(tmp_path: Path):
     spec = importlib.util.spec_from_file_location(
-        "archive_runs", "scripts/archive_evaluation_runs.py"
+        "archive_runs", "scripts/parser_evaluation/archive_evaluation_runs.py"
     )
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -27,9 +27,9 @@ def test_dots_snapshot_retains_correct_manifest_and_runtime(tmp_path: Path):
         ".python-version",
         "THIRD_PARTY_NOTICES.md",
         "backends/dots_mocr_runtime/runtime-lock.json",
-        "scripts/serve_dots_mocr.py",
-        "scripts/setup_dots_mocr_runtime.py",
-        "scripts/build_dots_mocr_runtime.py",
+        "scripts/model_runtimes/serve_dots_mocr.py",
+        "scripts/model_runtimes/setup_dots_mocr_runtime.py",
+        "scripts/model_runtimes/build_dots_mocr_runtime.py",
         "backends/dots_mocr_runtime/native-build-lock.json",
         "backends/dots_mocr_runtime/toolchain-linux-64.lock",
     ]:

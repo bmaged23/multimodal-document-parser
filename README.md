@@ -88,35 +88,6 @@ attributed to the raw OCR or VLM model.
 [Repairs and final checks](docs/evaluation/final-source-quality-repair.md) ·
 [Raw VLM comparison limits](docs/evaluation/five-model-vlm-benchmark.md)
 
-## Deployment and CI/CD
-
-The GPU parsing image includes PDF/DOCX preparation, PaddleOCR, normalized exports,
-HTML review and the Ollama Cloud client for Gemma visual descriptions. Gemma runs
-in the cloud; its weights and runtime credentials are not baked into the image.
-OCR weights use a persistent cache populated on first use. The comparison's
-quantized dots.mocr server is a separate runtime.
-
-[Container contents, deployment and public Docker Hub release](docs/deployment/docker-hub.md) ·
-[Parsing-only Compose](compose.parsing.yaml) ·
-[CI checks](.github/workflows/continuous-integration.yml) ·
-[Docker build checks](.github/workflows/container-build.yml) ·
-[Docker Hub release workflow](.github/workflows/docker-hub-release.yml)
-
-The public release candidate is available on [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser):
-
-```bash
-docker pull bmaged23/multimodal-document-parser:0.1.0-rc.1
-```
-
-Anonymous registry access and the tested image digest were verified, including
-SBOM and build provenance. Local checks passed API/auth, DOCX conversion, page
-rendering and a CUDA tensor. The release workflow gates future publication on CI
-and image checks. GitHub Actions runs on source pushes and pull requests; the first
-[Python and browser CI run passed](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41377223373).
-The Docker Hub release environment is configured. Hosted container validation is
-in progress; no hosted demo is claimed. See the
-[deployment evidence](docs/deployment/docker-hub.md#local-validation-status-2026-11-02).
-
 ## Secondary comparison: chunking and RAG
 
 After evaluating parsing, we tested how its saved output supports retrieval and
@@ -157,23 +128,39 @@ are inconclusive. These scores do not measure parsing accuracy.
 
 **Implementation status:** parsing, visual enrichment, review exports and local
 service APIs are implemented within their documented scopes. Docker definitions
-and CI are configured; container deployment, a hosted demo and an independent
+and CI are active; the public parsing image passed local runtime/GPU checks.
+Hosted API/parsing container checks passed. A hosted demo and an independent
 benchmark remain unverified.
 
-## Quick start
+## Clone and install from source
 
-Requirements: uv 0.12.24. uv provisions Python 3.12 using `.python-version`.
+Use Linux or WSL2 for the GPU runtime. The project uses **Python 3.12** and **uv**;
+CI pins uv 0.12.24. Install Git and [uv](https://docs.astral.sh/uv/getting-started/installation/)
+first. The official Linux/WSL installer is:
 
 ```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Open a new terminal so `uv` is on your PATH, then:
+
+```bash
+git clone https://github.com/bmaged23/multimodal-document-parser.git
+cd multimodal-document-parser
+uv python install 3.12
 uv sync --locked
-uv run document-parser-check-environment
+uv run --locked document-parser-check-environment
+uv run --locked document-parser --help
 ```
 
-The project environment lives in `.venv/`. Optional shell activation:
+The project environment lives in `.venv/`. Preparation and schema inspection work
+without downloading OCR weights. Live PaddleOCR needs the separate runtime shown
+below and a compatible NVIDIA GPU/driver. Optional API dependencies and cloud
+credentials are covered in the [API guide](docs/api/README.md).
 
-```bash
-source .venv/bin/activate
-```
+Prefer the packaged runtime? Follow the independent
+[Docker clone, pull and startup instructions](docs/docker/README.md#clone-and-run-the-published-image);
+that path needs no uv environment or local Paddle installation.
 
 ## Prepare a PDF
 
@@ -225,7 +212,7 @@ reports, illustrated spreads, and a real handwritten diary. See the
 [case matrix and evaluation plan](docs/evaluation/evaluation-corpus.md).
 
 ```bash
-uv run python scripts/download_evaluation_documents.py
+uv run python scripts/document_processing/download_evaluation_documents.py
 ```
 
 The original PDFs stay local and ignored by Git. Downloading the corpus does
@@ -254,7 +241,9 @@ src/multimodal_doc_parser/          Installable Python package
   rag_preparation/                 Parent/child contracts, chunks, GPU embeddings and retrieval
   pipeline_services/               Independent APIs, durable jobs and bounded RAG agent
 services/                         Descriptive service folders and OpenAPI contracts
-Dockerfile / compose.yaml         Separate API, conversion, OCR and embedding images/workers
+scripts/                          Task scripts grouped by purpose; see scripts/README.md
+Dockerfile / compose.parsing.yaml Primary parsing image and preparation/parsing APIs/workers
+compose.yaml                      Optional full secondary RAG stack
 backends/paddleocr_runtime/         Isolated, locked PaddleOCR GPU environment
 backends/dots_mocr_runtime/         Pinned dots.mocr model/runtime artifacts and setup
 evaluation/corpus-manifest.json    Public document sources, hashes, and page selections
@@ -270,6 +259,9 @@ docs/
   parsing-evaluation/README.md      Models, benchmarks, comparisons and limits
   parsing-pipeline/README.md        Primary document-processing pipeline
   chunking-and-rag/README.md        Secondary downstream pipeline and study
+  api/README.md                    API setup, authentication and job/artifact flow
+  docker/README.md                 Published image, Compose setup and GPU requirements
+  ci-cd/README.md                  Automated checks and Docker Hub releases
   project/milestones.md             Deliverables and milestone progress
   development/hardware-report.md    Observed laptop resources and limitations
   architecture/document-processing-design.md
@@ -283,22 +275,6 @@ uv.lock                            Resolved dependency versions
 
 Add descriptive implementation modules as functionality is built. Keep private
 PDFs, credentials, model weights, and generated results out of Git.
-
-## Development checks
-
-```bash
-uv run ruff format --check .
-uv run ruff check .
-uv run mypy
-uv run pytest
-uv run document-parser-check-environment
-uv build
-```
-
-GitHub Actions runs these checks on pushes and pull requests. Tests cover schema
-invariants, generated PDFs, rotation, input limits,
-cleanup on failure, and the installed CLI. GPU evaluations are preserved separately from these automated checks; CI tests
-do not establish OCR quality or prove deployment.
 
 ## Visual enrichment: Gemma 4 31B on Ollama Cloud
 
@@ -338,32 +314,6 @@ See [Gemma validation](docs/evaluation/gemma4-cloud-visual-validation.md),
 [setup and reproduction](docs/development/ollama-visual-enrichment.md), and
 [earlier cloud model research](docs/evaluation/cloud-model-selection-history.md).
 
-## Local service APIs (secondary setup)
-
-The [service architecture](docs/architecture/service-pipeline.md) separates
-ingestion from agentic questions. Seven stage APIs have checked-in OpenAPI
-contracts under `services/`. Long processing runs in separate durable workers.
-
-```bash
-uv sync --locked --extra api --extra chunking --extra rag
-uv run --extra api --extra rag python scripts/configure_service_secrets.py
-uv run --extra api --extra rag python scripts/run_development_services.py
-```
-
-- Document pipeline API: `http://127.0.0.1:8100/docs`
-- Agentic RAG API: `http://127.0.0.1:8106/docs`
-
-Authorize using the private local `PIPELINE_API_KEY`. The RAG API exposes no
-upload or ingestion routes. Embeddings use **BAAI/bge-large-en-v1.5**, **1,024
-dimensions**, with verified CUDA execution. Gemma 4 31B remains on Ollama Cloud.
-See the [development validation](docs/evaluation/adaptive-rag-development.md) for
-chunk coverage, retrieval checks, one real cited answer and current limitations.
-Compose and Docker image definitions are provided; they have not been run here
-because Docker Desktop WSL integration is unavailable.
-
-See the [initial local validation](docs/evaluation/paddleocr-local-validation.md)
-for measurements, manual checks, and observed parsing limitations.
-
 ## Intended capabilities
 
 - Compare PaddleOCR-VL-1.6 and dots.mocr through a shared schema.
@@ -375,3 +325,37 @@ for measurements, manual checks, and observed parsing limitations.
 See the [milestones](docs/project/milestones.md),
 [architecture](docs/architecture/document-processing-design.md), and
 [hardware findings](docs/development/hardware-report.md).
+
+## API
+
+Preparation and parsing have separate APIs and workers; the document pipeline and
+agentic RAG APIs are separate applications. Jobs return IDs for progress tracking
+and versioned output artifacts. Bearer authentication protects document data.
+
+[API README: installation, startup, endpoints and request examples](docs/api/README.md)
+
+## Docker
+
+Parse PDF and `.docx` files with Docker and a compatible NVIDIA GPU; cloud chart/image descriptions also require an Ollama API key.
+Legacy `.doc` and encrypted documents are unsupported, and extraction quality varies with the document.
+
+The public Linux amd64 image packages PDF/DOCX preparation, PaddleOCR GPU parsing,
+JSON/Markdown/HTML exports and the Ollama Cloud client. Gemma runs remotely;
+model credentials and Gemma weights are not bundled. The dots.mocr comparison
+runtime is separate. The local image passed API/auth, conversion and CUDA checks.
+
+```bash
+docker pull bmaged23/multimodal-document-parser:0.1.0-rc.1
+```
+
+[Docker README: clone, pull, secrets, GPU setup, Compose and verification](docs/docker/README.md)
+
+## CI/CD
+
+GitHub Actions checks Python formatting, lint, types, tests, packaging and browser
+behavior. Separate jobs validate container builds; version tags or manual releases
+publish to Docker Hub with an SBOM and build provenance. The first Python/browser
+CI and hosted API/parsing container checks passed. The release environment is
+configured; the first automated publication is tracked separately from local GPU validation.
+
+[CI/CD README: workflows, triggers, configuration and release process](docs/ci-cd/README.md)

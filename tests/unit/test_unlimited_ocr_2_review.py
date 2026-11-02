@@ -8,7 +8,7 @@ from PIL import Image
 
 def review_module():
     spec = importlib.util.spec_from_file_location(
-        "unlimited_review", "scripts/build_unlimited_ocr_2_review.py"
+        "unlimited_review", "scripts/visualization/build_unlimited_ocr_2_review.py"
     )
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

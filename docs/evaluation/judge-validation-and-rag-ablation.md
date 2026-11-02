@@ -304,16 +304,16 @@ Cloud calls require the configured Ollama credentials; embedding requires CUDA.
 The source runs, adaptive bundles and index must already exist locally.
 
 ```bash
-uv run --extra rag --extra evaluation python scripts/audit_rag_evaluation.py
-uv run --extra rag --extra evaluation python scripts/validate_rag_judge.py \
+uv run --extra rag --extra evaluation python scripts/rag_evaluation/audit_rag_evaluation.py
+uv run --extra rag --extra evaluation python scripts/rag_evaluation/validate_rag_judge.py \
   --rubric-version v2 --repeats 3 \
   --output-directory outputs/quality_evaluations/judge-validation-new
-uv run --extra rag --extra evaluation python scripts/compare_rag_approaches.py \
+uv run --extra rag --extra evaluation python scripts/rag_evaluation/compare_rag_approaches.py \
   --judge-validation outputs/quality_evaluations/judge-validation-new/summary.json \
   --output-directory outputs/quality_evaluations/rag-approach-comparison-new
-uv run --extra rag --extra evaluation python scripts/report_rag_retrieval_comparison.py \
+uv run --extra rag --extra evaluation python scripts/rag_evaluation/report_rag_retrieval_comparison.py \
   --directory outputs/quality_evaluations/rag-approach-comparison-new
-uv run --extra rag --extra evaluation python scripts/compare_structural_rag_baseline.py \
+uv run --extra rag --extra evaluation python scripts/rag_evaluation/compare_structural_rag_baseline.py \
   --prior-comparison outputs/quality_evaluations/rag-approach-comparison-new \
   --output-directory outputs/quality_evaluations/rag-structural-comparison-new
 ```

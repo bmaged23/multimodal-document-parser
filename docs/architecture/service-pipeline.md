@@ -134,10 +134,10 @@ and prompt-injection resistance still need independent evaluation.
 
 ```bash
 uv sync --locked --extra api --extra chunking --extra rag --group browser
-uv run --extra api --extra rag python scripts/configure_service_secrets.py
-uv run --extra api --extra rag python scripts/run_development_services.py
+uv run --extra api --extra rag python scripts/service_management/configure_service_secrets.py
+uv run --extra api --extra rag python scripts/service_management/run_development_services.py
 # Stop only these project processes:
-uv run --extra api --extra rag python scripts/run_development_services.py --stop
+uv run --extra api --extra rag python scripts/service_management/run_development_services.py --stop
 ```
 
 The script starts independent APIs/workers using the existing project environment.
@@ -170,8 +170,9 @@ docker compose up -d
 docker compose ps
 ```
 
-Docker Desktop WSL integration is currently unavailable in this environment, so
-these container images and the Compose deployment have not been run locally.
-That does not prevent native service/API and GPU integration checks. Container
-build validation is configured separately in CI; hosted CI remains unrun until
-the repository is published.
+The primary parsing image has passed local API/auth, DOCX conversion, page
+rendering and GPU CUDA smoke checks, and is public on Docker Hub. Hosted container
+validation is tracked separately. This does not establish that the entire
+secondary RAG Compose stack has been deployed or evaluated in containers.
+See the [API README](../api/README.md), [Docker README](../docker/README.md) and
+[CI/CD README](../ci-cd/README.md) for current installation and validation status.

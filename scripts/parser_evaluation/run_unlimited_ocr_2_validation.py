@@ -9,7 +9,7 @@ import time
 from datetime import UTC, datetime
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 REVISION = "c14071b549f4fcab10909f3c4acc6a2edb366947"
 RUNTIME = ROOT / "backends/unlimited_ocr_2_runtime"
 CASE = "unlimited_ocr_2_nf4_original_two_pages_01"
@@ -39,9 +39,9 @@ def archive() -> Path:
         RUNTIME / "uv.lock",
         RUNTIME / "model-lock.json",
         RUNTIME / "run_gpu_probe.py",
-        ROOT / "scripts/build_unlimited_ocr_2_review.py",
-        ROOT / "scripts/run_unlimited_ocr_2_validation.py",
-        ROOT / "scripts/run_unlimited_ocr_2_evaluation_batch.py",
+        ROOT / "scripts/visualization/build_unlimited_ocr_2_review.py",
+        ROOT / "scripts/parser_evaluation/run_unlimited_ocr_2_validation.py",
+        ROOT / "scripts/parser_evaluation/run_unlimited_ocr_2_evaluation_batch.py",
         ROOT / ".cache/unlimited_ocr_2/download-manifest.json",
     ]:
         shutil.copyfile(source, reproduction / source.name)
@@ -194,7 +194,7 @@ def main() -> None:
     subprocess.run(
         [
             str(ROOT / ".venv/bin/python"),
-            str(ROOT / "scripts/build_unlimited_ocr_2_review.py"),
+            str(ROOT / "scripts/visualization/build_unlimited_ocr_2_review.py"),
             str(RUN),
         ],
         check=True,

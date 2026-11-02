@@ -13,7 +13,7 @@ from multimodal_doc_parser.evaluation.source_review import evaluate_source_revie
 from multimodal_doc_parser.parser_adapters.parsing_run import parse_prepared_document
 from multimodal_doc_parser.visual_enrichment.ollama import enrich_document
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def save(path: Path, data: object) -> None:

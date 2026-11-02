@@ -158,7 +158,7 @@ Manual observations:
 `evaluation/vlm_benchmarks/irena-five-visuals-manual-review-v1.json`.
 
 ```bash
-uv run python scripts/run_vlm_benchmark.py \
+uv run python scripts/visual_evaluation/run_vlm_benchmark.py \
   evaluation/vlm_benchmarks/irena-five-visuals-v1.json \
   --output-directory outputs/quality_evaluations/ollama-five-models-five-visuals-02
 ```

@@ -79,7 +79,7 @@ remain inaccurate; no general document accuracy claim is made. See
 `docs/evaluation/dots-mocr-local-validation.md` for settings and limitations.
 
 Validation includes 49 unit/integration/browser checks, Ruff, strict source type
-checks, and package builds. These are local results; GitHub-hosted CI has not run.
+checks, and package builds. At this milestone these were local results; subsequent hosted CI is recorded below.
 The original, NASA-20, and final handwriting-5 PaddleOCR baselines are preserved;
 The subsequent quantized GPU batch attempted NASA 20/20 and diary 5/5 pages,
 accepting 20 and three respectively. Two diary pages reached the output token
@@ -179,4 +179,5 @@ including DOCX conversion and CUDA allocation. The public Docker Hub release
 is published with anonymous manifest verification, SBOM and provenance.
 The public GitHub repository is connected and CI runs on source pushes.
 Python/browser CI passed, and the Docker Hub environment token is configured.
-Hosted container/release workflow verification and a hosted demo remain pending.
+Hosted API/parsing image checks passed. Automated release verification and a
+hosted demo remain pending.
