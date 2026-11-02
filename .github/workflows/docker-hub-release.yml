@@ -126,7 +126,13 @@ jobs:
           else
             options=()
             if [[ "$version" == *-* ]]; then options+=(--prerelease); fi
+            if ! gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/v$version" >/dev/null 2>&1; then
+              gh api --method POST "repos/$GITHUB_REPOSITORY/git/refs" \
+                -f "ref=refs/tags/v$version" -f "sha=$GITHUB_SHA" >/dev/null
+            fi
+            tag_commit=$(gh api "repos/$GITHUB_REPOSITORY/commits/v$version" --jq .sha)
+            test "$tag_commit" = "$GITHUB_SHA"
             gh release create "v$version" container-release.json \
-              --target "$GITHUB_SHA" --title "Document parsing pipeline $version" \
+              --verify-tag --title "Document parsing pipeline $version" \
               --notes-file release-notes.md "${options[@]}"
           fi

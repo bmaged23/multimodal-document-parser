@@ -48,6 +48,8 @@ jobs:
           fi
           options=()
           if [[ "$VERSION" == *-* ]]; then options+=(--prerelease); fi
+          tag_commit=$(gh api "repos/$GITHUB_REPOSITORY/commits/v$VERSION" --jq .sha)
+          test "$tag_commit" = "$REVISION"
           gh release create "v$VERSION" container-release.json \
-            --target "$REVISION" --title "Document parsing pipeline $VERSION" \
+            --verify-tag --title "Document parsing pipeline $VERSION" \
             --notes-file "docs/releases/$VERSION.md" "${options[@]}"
