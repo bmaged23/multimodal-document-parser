@@ -92,7 +92,9 @@ Choose one trigger per release. Keep existing tags immutable; prereleases do not
 update stable `latest`. The release runs source/browser CI before image build and
 smoke tests. It then publishes version/SHA tags with SPDX SBOM and SLSA provenance,
 records the digest in its summary, and checks anonymous access to that digest.
-Consumers should pin a version or immutable digest.
+Consumers should pin a version or immutable digest. The publisher also creates a
+GitHub Release at the verified source tag with image metadata and setup links.
+Creating a release does not rerun OCR evaluation.
 
 ## Recorded status
 
@@ -104,3 +106,23 @@ Consumers should pin a version or immutable digest.
 
 [Docker instructions and evidence](../docker/README.md) ·
 [Machine-readable release validation](../../evaluation/results/container-release-validation-v1.json)
+
+## Saved-output demo deployment and package location
+
+[Pages deployment](../../.github/workflows/publish-demo.yml) downloads the public
+excerpt ZIP from the versioned GitHub Release, checks the pinned archive digest
+and per-file inventory, and deploys static pages. Updating the bundle pin on
+`main` or manually dispatching the workflow publishes the demo; no PDF parsing
+or cloud inference occurs in that job.
+
+The [release-record workflow](../../.github/workflows/publish-release-record.yml)
+can catalog an already verified image without rebuilding it. It verifies the
+public registry digest and exact source tag before creating a Release. Existing
+release records and assets are preserved.
+
+The official container package is on
+[Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser).
+GitHub Packages is a separate registry: a Docker Hub push does not create a GHCR
+package or fill GitHub's Packages sidebar. A GHCR mirror is optional, not a second
+required runtime or a claim that an unpublished package exists. See the
+[GitHub Container registry documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).

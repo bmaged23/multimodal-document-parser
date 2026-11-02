@@ -65,7 +65,9 @@
       "slowest_page_seconds": 233.6219310790002,
       "peak_torch_allocated_memory_mib": 3150.1318359375,
       "measurement_scope": "Experimental NF4 language / FP16 vision with compatibility changes. Generation-only page timing; repeated per-page model loading and process startup excluded. PyTorch allocator memory is not sampled total-device memory.",
-      "quality_reference_status": "not_scored"
+      "quality_reference_status": "not_scored",
+      "saved_run_status": "outputs/parser_runs/unlimited-ocr-2-nf4-nasa-first20-01/run-status.json",
+      "saved_run_status_sha256": "6b544b7f6caf532d51bcca346d5f6f10915e196153e2a32e999d07adeac0e580"
     }
   ],
   "source_comparison": "outputs/parser_comparisons/nasa-first20-paddleocr-vs-dots-mocr-q4-01/comparison.json",

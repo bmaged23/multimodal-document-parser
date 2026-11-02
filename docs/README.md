@@ -13,7 +13,9 @@ The guides distinguish what is implemented, what was measured, and what remains
 unverified. Detailed experiment reports are linked from each guide rather than
 presented as one undifferentiated benchmark.
 
-- [Interactive saved-results explorer](development/evaluation-showcase.md)
+- [Live saved-output demo](https://bmaged23.github.io/multimodal-document-parser/)
+- [Interactive explorer and local reproduction](development/evaluation-showcase.md)
+- [Unlimited-OCR 2 GPU evaluation](evaluation/unlimited-ocr-2-gpu-results.md)
 - [API setup and request examples](api/README.md)
 - [Docker clone, pull and deployment](docker/README.md)
 - [CI/CD checks and release automation](ci-cd/README.md)

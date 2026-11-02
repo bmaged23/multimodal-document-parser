@@ -22,6 +22,9 @@ pages 15–16. They are not raw-model accuracy claims.
 
 ## Models and execution scope
 
+**Hardware:** NVIDIA GeForce GTX 1660 Ti, **6 GB VRAM (6,144 MiB)**, Linux/WSL2.
+OCR backends ran sequentially; cloud visual-enrichment hardware is separate.
+
 | Configuration | Evaluated path | Interpretation |
 | --- | --- | --- |
 | PaddleOCR-VL-1.6 | Isolated locked Paddle GPU runtime; canonical JSON/Markdown/HTML | Raw predictions and normalized exports retained |
@@ -54,12 +57,16 @@ never describe a completed selection as a completed full source document.
 
 ## Measured parser comparison
 
-| Observed case | PaddleOCR-VL-1.6 | Quantized dots.mocr |
-| --- | ---: | ---: |
-| NASA selection, 20 pages | 20 accepted | 20 accepted |
-| NASA median measured page time | 155.7 s | 25.9 s |
-| Handwritten selection, 5 pages | 5 saved | 3 accepted, 2 token-limit failures |
-| Selected assertions on one small sensor table | 20/20 | 20/20 |
+| Observed case | PaddleOCR-VL-1.6 | Quantized dots.mocr | Unlimited-OCR 2 NF4/FP16 |
+| --- | ---: | ---: | ---: |
+| NASA selection, 20 pages | 20 accepted | 20 accepted | 20 completed generations |
+| NASA median measured page time | 155.7 s | 25.9 s | 108.1 s generation-only |
+| Handwritten selection, 5 pages | 5 saved | 3 accepted, 2 token-limit failures | 3 generated, 2 timeouts |
+| Selected assertions on one small sensor table | 20/20 | 20/20 | 20/20 |
+
+Unlimited-OCR 2 is a diagnostic raw-output path; its per-page loading is excluded
+from the generation timing. It is not an interchangeable canonical backend.
+[Third-model configuration and failures](../evaluation/unlimited-ocr-2-gpu-results.md).
 
 Accepted does not mean accurate. Backend preprocessing, inference image size,
 initialization and timing scopes differ; these timings are an operational
@@ -131,6 +138,7 @@ Raw responses, source identities, source-page maps, logs, timings, normalized
 outputs and checksum inventories are preserved locally by model/configuration.
 [Archive policy](../evaluation/preserved-artifacts.md).
 
-Independent human annotations, wider held-out coverage, hosted CI execution and
-verified container deployment remain separate work. RAG scores measure downstream
+Independent human annotations, wider held-out coverage and a live hosted inference
+service remain separate work. Source/browser CI, container validation and automated
+image publication passed; the public demo displays saved excerpts. RAG scores measure downstream
 behavior and must not be used as substitutes for parsing-model accuracy.

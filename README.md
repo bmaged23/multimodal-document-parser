@@ -1,49 +1,118 @@
 # Multimodal Document Parser
 
 [![CI](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml)
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.1-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.2-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
 
-Evaluate multimodal PDF parsing models and inspect the evidence: source pages,
-extracted tables, chart values, structured output, failures and runtime.
+Compare **PaddleOCR-VL-1.6**, **quantized dots.mocr**, and **Unlimited-OCR 2**
+on real document selections. Inspect extracted text, tables, charts, images,
+failures and runtime beside the original source pages.
 
 **Primary focus:** parser-model comparison and the final parsing pipeline.
 Chunking, retrieval and the RAG agent are secondary downstream studies.
 
+## Live demo
+
+**[Open the interactive parsing demo →](https://bmaged23.github.io/multimodal-document-parser/)**
+
+Browse saved results with the **PDF on the left and extraction on the right**.
+Switch between all three models, compare OCR/enriched/source-reviewed stages,
+and inspect rendered Markdown, Markdown source, JSON, raw replies and source boxes.
+No GPU, account or API key is needed: this is a read-only demo of **7 curated
+public-source pages**, not a live upload/inference service.
+
+[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v1.zip) ·
+[Run the full local explorer](docs/development/evaluation-showcase.md) ·
 [Parsing/model evaluation](docs/parsing-evaluation/README.md) ·
 [Parsing pipeline](docs/parsing-pipeline/README.md) ·
-[Chunking and RAG](docs/chunking-and-rag/README.md) ·
 [All documentation](docs/README.md)
 
-## See the parsing output
+### Five output examples
 
-![Source PDF table alongside structured extraction, with inferred headers identified](docs/assets/parser-review-table.png)
+**Complex table — source cells, merged headers and structured output.**
 
-Actual review of an IRENA table: source at left, extracted content at right,
-with page navigation, source regions, Markdown and JSON views.
+![IRENA table beside parsed cells and visibly inferred header roles](docs/assets/demo-table.png)
+
+IRENA, original PDF page 15. This final-pipeline view marks inferred header roles;
+it is not a raw-model accuracy score. Expand the examples below to see other content.
 
 <details>
-<summary><strong>Chart example: source plot → description, values, units and provenance</strong></summary>
+<summary><strong>Chart — source plot, description, values and provenance</strong></summary>
 
-![Source chart alongside source-correlated values and generated interpretation](docs/assets/parser-review-chart.png)
+![IRENA chart beside generated interpretation and source-reviewed values](docs/assets/demo-chart.png)
 
-The review distinguishes generated interpretation from values corrected using
-native PDF evidence. These are final-pipeline examples, not raw-model accuracy.
-Source: IRENA, *Renewable Power Generation Costs in 2024*, original PDF pages
-15–16. [Capture provenance](docs/assets/showcase-provenance.json).
+IRENA, original PDF page 16. Generated interpretation is distinct from values
+corrected using PDF evidence; final-pipeline checks are separate from raw VLM quality.
 
 </details>
 
-![Expanded PDF and extraction review with resizable panes](docs/assets/parsing-explorer-expanded.png)
+<details>
+<summary><strong>Image — extracted photograph and its caption</strong></summary>
 
-The saved-results explorer adds an expanded reading view, a draggable PDF/output
-divider, independent zoom, model/stage comparison tabs, synchronized page search,
-and Markdown source/preview, JSON and raw replies.
-[Build and launch the explorer](docs/development/evaluation-showcase.md).
+![NASA Apollo photograph beside the extracted image crop and caption](docs/assets/demo-image.png)
+
+NASA financial report, original PDF page 4. Photograph credited to NASA.
+This is the saved OCR/image-crop stage; no new visual description was generated
+for this NASA example. NASA does not endorse this project.
+
+</details>
+
+<details>
+<summary><strong>Text — narrative paragraphs and source coordinates</strong></summary>
+
+![NASA narrative paragraph beside extracted text with its source region highlighted](docs/assets/demo-text.png)
+
+NASA financial report, original PDF page 6. The source box connects the selected
+paragraph to its saved text extraction; model outputs remain inspectable.
+
+</details>
+
+<details>
+<summary><strong>Handwriting — historical scan beside the saved transcription</strong></summary>
+
+![Historical handwritten diary beside PaddleOCR's saved transcription](docs/assets/demo-handwriting.png)
+
+Lucinda Davis Diary, 1874, original PDF page 6. Transcription errors are not hidden
+or corrected for this preview. Courtesy of North Cascades NPS Complex Museum
+Collection, Aerial Photograph Collection; NPS identifies the asset as public domain.
+
+</details>
+
+IRENA examples: © IRENA 2025, *Renewable Power Generation Costs in 2024*,
+International Renewable Energy Agency, Abu Dhabi. These are real browser captures,
+not generated mockups. [Page mappings and screenshot hashes](docs/assets/readme-gallery.provenance.json).
+
+## How the parsing pipeline works
+
+```mermaid
+flowchart LR
+    A[PDF or DOCX] --> B[Render pages]
+    B --> C[OCR text and layout]
+    C --> D[Canonical document JSON]
+    D --> E[Optional cloud visual descriptions]
+    E --> F[JSON, Markdown and HTML review]
+```
+
+1. **Prepare:** convert DOCX to PDF when needed, then render page images and record source identity.
+2. **Parse:** extract text, headings, tables and visual regions, retaining raw model responses.
+3. **Normalize:** map supported outputs into one JSON schema with reading order, table cells and page coordinates.
+4. **Describe visuals:** optionally send chart/image crops to Gemma through Ollama Cloud; retain generated descriptions, numbers, uncertainty and provenance separately from OCR.
+5. **Review and export:** compare the source with JSON, Markdown and HTML; keep failures and inferred structure visible. Chunking/RAG is an optional downstream study.
+
+The deployed service defaults to **PaddleOCR**. dots.mocr uses a separately configured
+GPU server; **Unlimited-OCR 2 is an experimental saved-output evaluation path**,
+not an integrated production backend. Source-reviewed evaluation repairs are
+identified explicitly; they do not guarantee correct extraction for every upload.
+[Detailed pipeline README](docs/parsing-pipeline/README.md).
 
 ## Measured parser comparison
 
-Saved laptop-GPU runs compare **PaddleOCR-VL-1.6** with **dots.mocr Q4_K_M +
-Q8_0 projector** on matching document selections.
+All three configurations were tested on an **NVIDIA GeForce GTX 1660 Ti with
+6 GB VRAM (6,144 MiB)** under WSL2. OCR runs were sequential. Gemma visual
+enrichment executes on Ollama Cloud, not on this laptop GPU.
+
+- **PaddleOCR-VL-1.6:** integrated parsing and normalized exports.
+- **dots.mocr:** Q4_K_M language weights with a Q8_0 vision projector on GPU.
+- **Unlimited-OCR 2:** NF4 language / FP16 vision diagnostic runs with compatibility changes; saved raw generations remain separate from canonical parsing.
 
 **dots.mocr demo quantization:** the language model uses **Q4_K_M (4-bit)**
 and the vision projector uses **Q8_0 (8-bit)**. These saved results come from that
@@ -52,21 +121,24 @@ parameter count. They do not represent unquantized dots.mocr performance. Full p
 improve output quality, but its effect and any change in ranking are unmeasured;
 we have no matched full-precision GPU comparison.
 
-| Observed case | PaddleOCR-VL-1.6 | Quantized dots.mocr |
-| --- | ---: | ---: |
-| NASA financial report, selected 20 pages | 20 accepted | 20 accepted |
-| Median measured page time on that NASA selection | 155.7 s | 25.9 s |
-| Handwritten diary, selected 5 pages | 5 saved | 3 accepted; 2 token-limit failures |
-| Selected cell assertions on one small sensor table | 20/20 | 20/20 |
+| Observed case | PaddleOCR-VL-1.6 | Quantized dots.mocr | Unlimited-OCR 2 NF4/FP16 |
+| --- | ---: | ---: | ---: |
+| NASA financial report, selected 20 pages | 20 accepted | 20 accepted | 20 completed generations |
+| Median measured page time on that NASA selection | 155.7 s | 25.9 s | 108.1 s generation-only |
+| Handwritten diary, selected 5 pages | 5 saved | 3 accepted; 2 token-limit failures | 3 completed; 2 timeouts |
+| Selected cell assertions on one small sensor table | 20/20 | 20/20 | 20/20 |
 
-Accepted pages are not necessarily accurate pages. Backend timing scopes,
-initialization and inference image dimensions differ, so these timings are an
-operational profile, not a controlled speedup or a model-quality ranking.
-The NASA selection has no independent accuracy reference.
+Accepted or generated pages are not necessarily accurate pages. Backend timing
+scopes, initialization, precision, preprocessing and image dimensions differ;
+Unlimited-OCR 2 additionally reloads the model per page, excluded from the median
+above. These are operational observations, not a controlled speedup or quality
+ranking. NASA's selection has no independent accuracy reference. The cell checks
+cover only one small development table, not a general table benchmark.
 
-[Measured comparison data](evaluation/results/parser-comparison-showcase-v1.json) ·
-[GPU batch findings](docs/evaluation/quantized-gpu-batch.md) ·
-[Configuration and limits](docs/evaluation/dots-mocr-local-validation.md)
+[Three-model comparison data](evaluation/results/parser-comparison-showcase-v1.json) ·
+[Paddle/dots batch findings](docs/evaluation/quantized-gpu-batch.md) ·
+[Unlimited-OCR 2 findings](docs/evaluation/unlimited-ocr-2-gpu-results.md) ·
+[Hardware and limits](docs/development/hardware-report.md)
 
 ## Evaluate the final pipeline separately
 
@@ -129,8 +201,8 @@ are inconclusive. These scores do not measure parsing accuracy.
 **Implementation status:** parsing, visual enrichment, review exports and local
 service APIs are implemented within their documented scopes. Docker definitions
 and CI are active; the public parsing image passed local runtime/GPU checks.
-Hosted API/parsing container checks passed. A hosted demo and an independent
-benchmark remain unverified.
+Hosted API/parsing container checks passed. The public demo serves curated saved
+outputs; live hosted inference and an independent benchmark remain unverified.
 
 ## Clone and install from source
 
@@ -336,6 +408,8 @@ and versioned output artifacts. Bearer authentication protects document data.
 
 ## Docker
 
+**[Public Docker Hub image · 0.1.0-rc.2](https://hub.docker.com/r/bmaged23/multimodal-document-parser/tags?name=0.1.0-rc.2)**
+
 Parse PDF and `.docx` files with Docker and a compatible NVIDIA GPU; cloud chart/image descriptions also require an Ollama API key.
 Legacy `.doc` and encrypted documents are unsupported, and extraction quality varies with the document.
 
@@ -350,6 +424,18 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.2
 ```
 
 [Docker README: clone, pull, secrets, GPU setup, Compose and verification](docs/docker/README.md)
+
+### Releases and packages
+
+| Artifact | Where to find it |
+| --- | --- |
+| Public GPU parsing image | [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser) |
+| Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.2](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.2) |
+| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.2/public-demo-v1.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
+
+The container package is distributed through Docker Hub; it is a separate registry
+from GitHub Packages. Release records identify the exact tested image/source and
+keep its download instructions and provenance together.
 
 ## CI/CD
 

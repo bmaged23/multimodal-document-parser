@@ -1,0 +1,14 @@
+{
+  "release_tag": "v0.1.0-rc.2",
+  "asset": "public-demo-v1.zip",
+  "sha256": "a0a4f74638afceddf1204e27e32789e681dc4473d5045fca56a7aaff3979124b",
+  "demo_version": "1.0",
+  "selected_pages": 7,
+  "models": [
+    "PaddleOCR-VL-1.6",
+    "dots.mocr Q4_K_M language + Q8_0 projector",
+    "Unlimited-OCR 2 NF4/FP16 vision"
+  ],
+  "private_inputs_included": false,
+  "inference_requests": 0
+}

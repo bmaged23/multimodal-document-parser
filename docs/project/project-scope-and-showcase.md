@@ -36,7 +36,9 @@ PDF corrections and the table view identifies inferred header roles. Keep privat
 documents and full generated artifacts outside Git.
 
 The standalone screenshots are under `docs/assets/`; their source and capture
-details are recorded in `docs/assets/showcase-provenance.json`. The comparison
+details are recorded in `docs/assets/readme-gallery.provenance.json`.
+The main README shows one table preview and keeps four varied examples collapsed.
+The public saved-output demo is linked immediately after the introduction. The comparison
 summary is `evaluation/results/parser-comparison-showcase-v1.json`.
 
 ## Secondary scope
