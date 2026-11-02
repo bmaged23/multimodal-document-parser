@@ -148,7 +148,7 @@ See [RAG validation](../evaluation/adaptive-rag-development.md) and
 and CI build validation are configured. The parsing container passed API/auth,
 DOCX conversion, page rendering and GPU CUDA checks. The public Docker Hub
 release is published and anonymous registry access verified. GitHub CI runs on source
-pushes; automated image releases still require the environment token. Held-out retrieval/answer
+pushes; the Docker Hub release environment is configured. Held-out retrieval/answer
 evaluation is recorded separately; a multi-model VLM winner remains unavailable.
 
 ## Delivery sequence
@@ -178,4 +178,5 @@ and parsing-only Compose deployment are defined. Local image smoke checks passed
 including DOCX conversion and CUDA allocation. The public Docker Hub release
 is published with anonymous manifest verification, SBOM and provenance.
 The public GitHub repository is connected and CI runs on source pushes.
-A Docker Hub Actions token and a hosted demo remain pending.
+Python/browser CI passed, and the Docker Hub environment token is configured.
+Hosted container/release workflow verification and a hosted demo remain pending.

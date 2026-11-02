@@ -123,8 +123,11 @@ GPU CI jobs remove unused preinstalled toolchains only on ephemeral GitHub-hoste
 Linux runners, then require 40 GiB free before building. The guard script refuses
 workstation/self-hosted execution. The public GitHub repository is
 [bmaged23/multimodal-document-parser](https://github.com/bmaged23/multimodal-document-parser).
-CI runs on source pushes and pull requests; check Actions for actual results.
-The `docker-hub` environment and both release variables are configured. Docker Hub
-returned HTTP 403 when creating a dedicated Actions token, so automated image
-publication remains pending `DOCKERHUB_TOKEN` in that environment. The existing
-Docker Desktop credential was not copied into GitHub.
+The first [hosted CI run](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41377223373)
+passed Python checks, package build and Chromium browser tests.
+The `docker-hub` environment, both release variables and encrypted `DOCKERHUB_TOKEN`
+are configured. The existing Docker Hub access token was reused at the owner's
+request; its value is absent from source and logs. The first
+[hosted container validation](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41422591707)
+is in progress. Automated publishing still needs a successful workflow run before
+it is described as verified.

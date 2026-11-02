@@ -111,8 +111,10 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.1
 Anonymous registry access and the tested image digest were verified, including
 SBOM and build provenance. Local checks passed API/auth, DOCX conversion, page
 rendering and a CUDA tensor. The release workflow gates future publication on CI
-and image checks. GitHub Actions runs on source pushes and pull requests. Automated
-Docker releases still need the environment token; no hosted demo is claimed. See the
+and image checks. GitHub Actions runs on source pushes and pull requests; the first
+[Python and browser CI run passed](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41377223373).
+The Docker Hub release environment is configured. Hosted container validation is
+in progress; no hosted demo is claimed. See the
 [deployment evidence](docs/deployment/docker-hub.md#local-validation-status-2026-11-02).
 
 ## Secondary comparison: chunking and RAG
