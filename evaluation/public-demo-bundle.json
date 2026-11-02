@@ -1,12 +1,13 @@
 {
-  "release_tag": "v0.1.0-rc.2",
-  "asset": "public-demo-v3.zip",
-  "sha256": "ed2e0e498dd937d9d74a9948d8fe8ae0e2a13ca75310845dc828cf9057a3bdd5",
-  "demo_version": "3.0",
+  "release_tag": "demo-v4",
+  "asset": "public-demo-v4.zip",
+  "sha256": "54789af8179167cc7cfdb1b0203128d447bfbffe48f9c324542bdc13e121f09a",
+  "demo_version": "4.0",
   "selected_pages": 53,
   "models": [
-    "PaddleOCR-VL-1.6",
     "dots.mocr Q4_K_M language + Q8_0 projector",
+    "dots.mocr original HF BF16, Colab T4",
+    "PaddleOCR-VL-1.6",
     "Unlimited-OCR 2 NF4/FP16 vision"
   ],
   "private_inputs_included": false,

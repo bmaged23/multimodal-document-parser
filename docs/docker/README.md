@@ -86,6 +86,14 @@ uv run python scripts/deployment/verify_container_image.py document-parser:dots
 uv run python scripts/deployment/verify_container_image.py document-parser:dots --gpu
 ```
 
+For the actual preparation/parsing worker check on a synthetic PDF, using already
+cached weights:
+
+```bash
+uv run python scripts/deployment/verify_gpu_parsing.py document-parser:dots \
+  --output-directory outputs/maintenance/gpu-release-probe-new
+```
+
 The smoke test checks non-root execution, API authentication/OpenAPI, dots default
 contracts, native shared libraries, DOCX conversion and PDF rendering. `--gpu`
 additionally checks native CUDA device discovery; it does not claim OCR accuracy.
