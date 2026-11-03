@@ -1,16 +1,16 @@
 # Browse saved parsing evidence
 
-**[Open the public demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.2)**
-or [download the portable ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.2/public-demo-v5.2.zip).
+**[Open the public demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.3)**
+or [download the portable ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.3/public-demo-v5.3.zip).
 It contains 53 selected public/author-provided pages, all four OCR profiles,
 and IRENA/IMF OCR/enriched/source-reviewed stages. It runs no live model requests.
 
 ## Run the downloaded demo
 
-After downloading `public-demo-v5.2.zip`, use Python 3's standard library only:
+After downloading `public-demo-v5.3.zip`, use Python 3's standard library only:
 
 ```bash
-python3 -m zipfile -e public-demo-v5.2.zip public-demo
+python3 -m zipfile -e public-demo-v5.3.zip public-demo
 python3 -m http.server 8765 --bind 127.0.0.1 --directory public-demo
 ```
 

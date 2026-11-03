@@ -122,6 +122,16 @@ def main() -> None:
             for case_id in order:
                 page.locator("#document-select").select_option(case_id, force=True)
                 expect(page.locator("#page")).to_have_value(positions[case_id])
+            for profile in ["dots", "paddle", "unlimited", "bf16"]:
+                current_id = page.locator("#document-select").input_value()
+                selected_case = next(c for c in catalog["cases"] if c["id"] == current_id)
+                selected_run = next(r for r in selected_case["runs"] if f"-{profile}-" in r)
+                page.locator("#run-a").select_option(selected_run)
+                for case_id in order:
+                    page.locator("#document-select").select_option(case_id, force=True)
+                    selected_case = next(c for c in catalog["cases"] if c["id"] == case_id)
+                    expected_run = next(r for r in selected_case["runs"] if f"-{profile}-" in r)
+                    expect(page.locator("#run-a")).to_have_value(expected_run)
             page.set_viewport_size({"width": 390, "height": 844})
             assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
             assert not errors, errors
@@ -141,6 +151,7 @@ def main() -> None:
                 document_order=order,
                 first_visit_first_page=True,
                 per_document_page_memory=True,
+                model_selection_preserved_across_documents=True,
                 mobile_width=390,
                 javascript_errors=errors,
                 inference_requests=0,

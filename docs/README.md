@@ -18,7 +18,7 @@ presented as one undifferentiated benchmark.
 
 - [Live saved-output demo](https://bmaged23.github.io/multimodal-document-parser/)
 - [Four-model demo design, attribution and reproduction](demo/README.md)
-- [Hosted demo verification](../evaluation/results/public-demo-validation-v5.2.json)
+- [Hosted demo verification](../evaluation/results/public-demo-validation-v5.3.json)
 - [Interactive explorer and local reproduction](development/evaluation-showcase.md)
 - [Unlimited-OCR 2 GPU evaluation](evaluation/unlimited-ocr-2-gpu-results.md)
 - [API setup and request examples](api/README.md)

@@ -8,7 +8,7 @@ it is not a claim that quantized dots has the best quality.
 
 ## Current comparison and evaluation
 
-Version 5.2 replaces the earlier stage-based viewer with the matched four-model
+Version 5.3 replaces the earlier stage-based viewer with the matched four-model
 comparison. **70-page evaluation** opens the measured results, per-document
 filters and metric definitions. Its overall interpretation is BF16 → Q4/Q8 →
 Paddle → Unlimited; this is a qualitative ranking of this corpus, not a combined
@@ -102,7 +102,7 @@ changed OCR text/tables or unresolved visual failures:
 
 ```bash
 uv run --no-sync python scripts/visualization/build_four_model_demo.py \
-  --output-directory outputs/evaluation_showcase/four-model-public-new --version 5.2 \
+  --output-directory outputs/evaluation_showcase/four-model-public-new --version 5.3 \
   --evaluation-directory outputs/quality_evaluations/manual-reference-full-corpus-04
 ```
 
@@ -113,4 +113,4 @@ it does not deploy a live inference API or rerun the models when opened.
 
 Documents appear as Handwritten mathematics → IMF · complex tables → IRENA · charts and tables → NASA financial report. Each starts at its first available page on its first visit and remembers its position while you switch PDFs in the same open demo. Explicit page links still open the requested page.
 
-The model selector starts with original dots.mocr BF16, followed by dots.mocr Q4/Q8, PaddleOCR-VL-1.6 and Unlimited-OCR 2. BF16 is the default for each PDF; links to a specific model still open that model.
+The model selector starts with original dots.mocr BF16, followed by dots.mocr Q4/Q8, PaddleOCR-VL-1.6 and Unlimited-OCR 2. BF16 is the initial default. Switching PDFs keeps the selected OCR model; links to a specific model still open that model.
