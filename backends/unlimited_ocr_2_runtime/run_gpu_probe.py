@@ -31,7 +31,10 @@ def main() -> None:
     args = parser.parse_args()
     output = args.output_directory.resolve()
     output.mkdir(parents=True, exist_ok=False)
-    snapshot = ROOT / ".cache/unlimited_ocr_2" / REVISION
+    snapshot = (
+        Path(os.environ.get("UNLIMITED_OCR_CACHE_DIR", str(ROOT / ".cache/unlimited_ocr_2")))
+        / REVISION
+    )
     bundle = (
         args.bundle.resolve()
         if args.bundle

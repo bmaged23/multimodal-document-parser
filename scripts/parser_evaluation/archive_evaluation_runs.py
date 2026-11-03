@@ -21,7 +21,7 @@ def read_json(path: Path) -> dict:
 
 def raw_subdirectory(case: dict) -> str:
     name = case.get("raw_results_subdirectory", "paddleocr")
-    if name not in {"paddleocr", "dots_mocr"}:
+    if name not in {"paddleocr", "dots_mocr", "unlimited_ocr_2"}:
         raise ValueError("Unknown raw results subdirectory")
     return name
 

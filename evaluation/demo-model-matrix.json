@@ -1,0 +1,166 @@
+{
+  "version": "1.0",
+  "scope": "Four current demo PDFs, four OCR execution profiles, shared Gemma visual enrichment. No winner inferred.",
+  "rows": [
+    {
+      "case_id": "nasa-financial",
+      "case_key": "nasa",
+      "profile": "paddle",
+      "label": "PaddleOCR-VL-1.6",
+      "source_directory": "paddleocr-nasa-first20-reference-01",
+      "output_directory": "demo-v5-nasa-paddle-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:bc73868c89045132a265a9b6f6aa62b43ce09a8830f7f622c025b2f53a934f66"
+    },
+    {
+      "case_id": "nasa-financial",
+      "case_key": "nasa",
+      "profile": "dots",
+      "label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+      "source_directory": "dots-mocr-q4-k-m-nasa-first20-01",
+      "output_directory": "demo-v5-nasa-dots-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:bc73868c89045132a265a9b6f6aa62b43ce09a8830f7f622c025b2f53a934f66"
+    },
+    {
+      "case_id": "nasa-financial",
+      "case_key": "nasa",
+      "profile": "bf16",
+      "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+      "source_directory": "dots-mocr-bf16-colab-nasa-first-20-pages-01",
+      "output_directory": "demo-v5-nasa-bf16-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:bc73868c89045132a265a9b6f6aa62b43ce09a8830f7f622c025b2f53a934f66"
+    },
+    {
+      "case_id": "nasa-financial",
+      "case_key": "nasa",
+      "profile": "unlimited",
+      "label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+      "source_directory": "unlimited-ocr-2-nf4-nasa-first20-01",
+      "output_directory": "demo-v5-nasa-unlimited-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:bc73868c89045132a265a9b6f6aa62b43ce09a8830f7f622c025b2f53a934f66"
+    },
+    {
+      "case_id": "handwriting",
+      "case_key": "math",
+      "profile": "paddle",
+      "label": "PaddleOCR-VL-1.6",
+      "source_directory": "paddleocr-author-handwritten-mathematics-four-pages-01",
+      "output_directory": "demo-v5-math-paddle-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:699f592fda553d61c1360f92ab19208fe9c735dea1ce3c57980397de01c910ea"
+    },
+    {
+      "case_id": "handwriting",
+      "case_key": "math",
+      "profile": "dots",
+      "label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+      "source_directory": "dots-mocr-q4-k-m-author-handwritten-mathematics-four-pages-01",
+      "output_directory": "demo-v5-math-dots-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:699f592fda553d61c1360f92ab19208fe9c735dea1ce3c57980397de01c910ea"
+    },
+    {
+      "case_id": "handwriting",
+      "case_key": "math",
+      "profile": "bf16",
+      "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+      "source_directory": "dots-mocr-bf16-colab-author-mathematics-4-pages-01",
+      "output_directory": "demo-v5-math-bf16-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:699f592fda553d61c1360f92ab19208fe9c735dea1ce3c57980397de01c910ea"
+    },
+    {
+      "case_id": "handwriting",
+      "case_key": "math",
+      "profile": "unlimited",
+      "label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+      "source_directory": "unlimited-ocr-2-nf4-author-handwritten-mathematics-four-pages-01",
+      "output_directory": "demo-v5-math-unlimited-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:699f592fda553d61c1360f92ab19208fe9c735dea1ce3c57980397de01c910ea"
+    },
+    {
+      "case_id": "irena-pipeline",
+      "case_key": "irena",
+      "profile": "paddle",
+      "label": "PaddleOCR-VL-1.6",
+      "source_directory": "irena-mixed-content-20-paddleocr-vl-1.6-01",
+      "output_directory": "irena-mixed-content-20-paddleocr-gemma4-31b-01",
+      "reuse_enriched_directory": "irena-mixed-content-20-paddleocr-gemma4-31b-01",
+      "source_document_id": "sha256:7f624f343fabbcd213bff4e0431a6d60e6ba42d8041a576b5afce53c73f86e26"
+    },
+    {
+      "case_id": "irena-pipeline",
+      "case_key": "irena",
+      "profile": "dots",
+      "label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+      "source_directory": "dots-mocr-q4-k-m-irena-demo-01",
+      "output_directory": "demo-v5-irena-dots-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:7f624f343fabbcd213bff4e0431a6d60e6ba42d8041a576b5afce53c73f86e26"
+    },
+    {
+      "case_id": "irena-pipeline",
+      "case_key": "irena",
+      "profile": "bf16",
+      "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+      "source_directory": "dots-mocr-bf16-colab-irena-mixed-content-20-pages-01",
+      "output_directory": "demo-v5-irena-bf16-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:7f624f343fabbcd213bff4e0431a6d60e6ba42d8041a576b5afce53c73f86e26"
+    },
+    {
+      "case_id": "irena-pipeline",
+      "case_key": "irena",
+      "profile": "unlimited",
+      "label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+      "source_directory": "unlimited-ocr-2-nf4-irena-demo-01",
+      "output_directory": "demo-v5-irena-unlimited-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:7f624f343fabbcd213bff4e0431a6d60e6ba42d8041a576b5afce53c73f86e26"
+    },
+    {
+      "case_id": "imf-pipeline",
+      "case_key": "imf",
+      "profile": "paddle",
+      "label": "PaddleOCR-VL-1.6",
+      "source_directory": "imf-complex-tables-26-paddleocr-vl-1.6-01",
+      "output_directory": "demo-v5-imf-paddle-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:cc32177add7ff4b8f4029bdd17e4d08a2ce68563470f041d957e51db908fbd6a"
+    },
+    {
+      "case_id": "imf-pipeline",
+      "case_key": "imf",
+      "profile": "dots",
+      "label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+      "source_directory": "dots-mocr-q4-k-m-imf-demo-01",
+      "output_directory": "demo-v5-imf-dots-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:cc32177add7ff4b8f4029bdd17e4d08a2ce68563470f041d957e51db908fbd6a"
+    },
+    {
+      "case_id": "imf-pipeline",
+      "case_key": "imf",
+      "profile": "bf16",
+      "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+      "source_directory": "dots-mocr-bf16-colab-imf-complex-tables-26-pages-01",
+      "output_directory": "demo-v5-imf-bf16-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:cc32177add7ff4b8f4029bdd17e4d08a2ce68563470f041d957e51db908fbd6a"
+    },
+    {
+      "case_id": "imf-pipeline",
+      "case_key": "imf",
+      "profile": "unlimited",
+      "label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+      "source_directory": "unlimited-ocr-2-nf4-imf-demo-01",
+      "output_directory": "demo-v5-imf-unlimited-gemma-01",
+      "reuse_enriched_directory": null,
+      "source_document_id": "sha256:cc32177add7ff4b8f4029bdd17e4d08a2ce68563470f041d957e51db908fbd6a"
+    }
+  ]
+}

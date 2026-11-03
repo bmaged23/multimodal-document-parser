@@ -12,8 +12,12 @@ from urllib.parse import unquote, urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from multimodal_doc_parser.document_exports.readable_exports import document_markdown, element_html
-from multimodal_doc_parser.document_schema.document import Document
+from multimodal_doc_parser.document_exports.readable_exports import (
+    document_markdown,
+    element_html,
+    visual_analysis_html,
+)
+from multimodal_doc_parser.document_schema.document import ChartElement, Document, ImageElement
 from multimodal_doc_parser.evaluation.parser_comparison import load_inference
 from multimodal_doc_parser.evaluation.rag_benchmark import digest, save
 from multimodal_doc_parser.review_interface.html_report import render_markdown_preview
@@ -23,6 +27,7 @@ class SavedRun(BaseModel):
     model_config = ConfigDict(extra="forbid")
     id: str = Field(pattern=r"^[a-z0-9][a-z0-9-]+$")
     label: str
+    ocr_label: str | None = None
     stage: Literal["ocr", "enriched", "source_checked", "experimental"]
     kind: Literal["canonical", "unlimited"]
     directory: str = Field(pattern=r"^[a-z0-9][a-z0-9.-]+$")
@@ -125,6 +130,10 @@ justify-content:space-between;margin-bottom:10px}img{max-width:100%;height:auto}
 table{border-collapse:collapse;font-size:12px}td,th{border:1px solid #dce5ed;padding:7px}
 th{background:#edf5fa;text-align:left}.table-scroll{overflow:auto}figure{margin:0}
 pre{white-space:pre-wrap}aside{padding:14px;background:#fff4d9;border-radius:10px}
+.producer-badge{margin-left:auto;background:#edf5fa;border-radius:6px;padding:3px 7px;
+max-width:75%;text-align:right;overflow-wrap:anywhere}
+.gemma-output{border-left:4px solid #9671c4}
+.gemma-output .producer-badge{background:#f0e9fa;color:#68469c}
 button{font:inherit;background:#edf7f5;border:0;color:#087e71;border-radius:6px;padding:4px 8px}
 </style>"""
         + body
@@ -153,6 +162,8 @@ def raw_page(run: Path, number: int, kind: str) -> str | None:
     if len(paths) != 1:
         raise ValueError("Ambiguous raw page artifact")
     data = json.loads(paths[0].read_text())
+    if "text" in data and isinstance(data["text"], str):
+        return data["text"]
     if "content" in data:
         return str(data["content"])
     # Deliberately exclude input paths, request envelopes and credentials.
@@ -198,17 +209,55 @@ def canonical_run(run: Path, target: Path, spec: SavedRun) -> tuple[dict[str, An
             region = next(r for r in element.source_regions if r.page_number == number)
             box = region.bounding_box
             coordinates = f"{box.x0},{box.y0},{box.x1},{box.y1}"
-            method = element.provenance.method
-            description = getattr(element, "description", None)
-            if description:
-                method += " / visual " + description.provenance.method
-            cards.append(
-                f'<article data-box="{coordinates}" data-element="{escape(element.id)}">'
-                f"<header><span>{escape(element.type)} · {escape(method)}</span>"
-                '<button type="button">Locate in source ↗</button></header>'
-                + local_preview(element_html(element))
-                + "</article>"
+            identity = spec.ocr_label or spec.label
+            origin = "Source reviewed" if spec.stage == "source_checked" else "OCR"
+            source_element = element
+            description = None
+            if isinstance(element, (ImageElement, ChartElement)):
+                description = element.description
+                source_element = element.model_copy(
+                    update={"description": None, "quality_review": None}
+                )
+            source_html = element_html(source_element).replace(
+                "<p>Visual description pending enrichment.</p>", ""
             )
+            cards.append(
+                f'<article data-box="{coordinates}" data-element="{escape(element.id)}" '
+                'data-producer="ocr">'
+                f'<header><span>{escape(element.type)}</span><span class="producer-badge">'
+                f"{origin} · {escape(identity)}</span></header>"
+                + local_preview(source_html)
+                + '<button type="button">Locate in source ↗</button></article>'
+            )
+            if description and isinstance(element, (ImageElement, ChartElement)):
+                model = description.provenance.model_version or description.provenance.producer
+                producer = "Gemma" if "gemma" in model.lower() else description.provenance.producer
+                raw_details = ""
+                for suffix, title in [
+                    ("response", f"Initial {producer} reply"),
+                    ("review-response", f"{producer} review reply"),
+                ]:
+                    relative = f"raw/visual_enrichment/{element.id}-{suffix}.json"
+                    candidate = run / relative
+                    if candidate.exists():
+                        reply = json.loads(safe_file(run, relative).read_text()).get("response")
+                        if isinstance(reply, str):
+                            raw_details += (
+                                f"<details><summary>{escape(title)}</summary><pre>"
+                                + escape(reply)
+                                + "</pre></details>"
+                            )
+                cards.append(
+                    f'<article class="gemma-output" data-box="{coordinates}" '
+                    f'data-element="{escape(element.id)}" data-producer="generated">'
+                    '<header><span>Generated visual description</span><span class="producer-badge">'
+                    f'<span title="{escape(model, quote=True)}">'
+                    f"{escape(producer)} · {escape(model.split('@')[0])}</span></span></header>"
+                    f"<p>{escape(description.text)}</p>"
+                    + local_preview(visual_analysis_html(element))
+                    + raw_details
+                    + '<button type="button">Locate in source ↗</button></article>'
+                )
         notice = (
             "<aside>No accepted extraction for this page. "
             "Failed output is not an accurate empty page.</aside>"
@@ -216,6 +265,14 @@ def canonical_run(run: Path, target: Path, spec: SavedRun) -> tuple[dict[str, An
             else ""
         )
         content = notice + ("".join(cards) or "<p>No extracted elements on this page.</p>")
+        saved_reply = raw_page(run, number, spec.kind)
+        if missing and saved_reply:
+            content += (
+                '<details open class="raw-fallback"><summary>Saved raw OCR reply '
+                "(normalization failed; inspect content separately)</summary><pre>"
+                + escape(saved_reply)
+                + "</pre></details>"
+            )
         folder = target / "pages"
         folder.mkdir(exist_ok=True)
         (folder / f"{number:04}-content.html").write_text(page_shell(content))
@@ -231,7 +288,7 @@ def canonical_run(run: Path, target: Path, spec: SavedRun) -> tuple[dict[str, An
                 content=f"pages/{number:04}-content.html",
                 preview=f"pages/{number:04}-preview.html",
                 markdown=markdown,
-                raw=raw_page(run, number, spec.kind),
+                raw=saved_reply,
                 json=dict(
                     document_id=document.document_id,
                     page=page.model_dump(),

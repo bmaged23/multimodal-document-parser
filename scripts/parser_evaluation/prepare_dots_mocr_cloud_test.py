@@ -22,7 +22,7 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def prepare(destination: Path) -> Path:
+def prepare(destination: Path, selections: list[tuple[str, str]] | None = None) -> Path:
     destination.mkdir(parents=True, exist_ok=False)
     registry = json.loads((ROOT / "evaluation/preserved-runs.json").read_text())
     manifest = {
@@ -36,7 +36,7 @@ def prepare(destination: Path) -> Path:
             "Private matched inputs; do not publish this ZIP. No baseline predictions are included."
         ),
     }
-    for name, identifier in SELECTIONS:
+    for name, identifier in SELECTIONS if selections is None else selections:
         case = next(c for c in registry["cases"] if c["id"] == identifier)
         run = ROOT / case["run_directory"]
         document = json.loads((run / "document.json").read_text())

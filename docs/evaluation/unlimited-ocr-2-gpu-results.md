@@ -15,8 +15,9 @@ full-precision quality or an isolated measurement of quantization effects.
 | Original private two-page development sample | 2/2 | Selected table cell assertions 20/20; some labels/order still wrong | A small assistant-reviewed regression case, not an independent benchmark |
 
 Generation completion is not extraction accuracy. This runner preserves raw
-`<BLOCK>...<FORK>...` responses and diagnostic Markdown/HTML; it is not integrated
-into the common canonical parser adapter. Its timings and Torch allocator memory
+`<BLOCK>...<FORK>...` responses and diagnostic Markdown/HTML. A later, separate
+[demo normalizer](../demo/README.md) converts retained native blocks for comparison;
+Unlimited remains outside the production CLI/API parser choices. Its timings and Torch allocator memory
 are not directly comparable to sampled total-device memory or another backend's
 initialization/preprocessing scope. NASA's 20-page selection has no independent
 transcription reference. No universal quality winner follows from these runs.

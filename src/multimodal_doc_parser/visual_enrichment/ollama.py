@@ -162,12 +162,14 @@ def enrich_document(
     model: str = "gemma4:31b",
     timeout: float = 300,
     provider: str = "ollama-cloud",
+    allow_partial: bool = False,
+    response_cache: Path | None = None,
 ) -> Path:
     source, destination = source.resolve(), destination.resolve()
     if destination.exists() or destination.is_relative_to(source):
         raise ValueError("Use a fresh output directory outside the source run")
     document = Document.model_validate_json((source / "document.json").read_text())
-    if document.status != "parsed":
+    if document.status != "parsed" and not (allow_partial and document.status == "parsing"):
         raise ValueError("Visual enrichment requires a fully parsed document")
     visuals = [e for e in document.elements if isinstance(e, (ChartElement, ImageElement))]
     if any(e.description for e in visuals):
@@ -189,13 +191,18 @@ def enrich_document(
     elif provider == "ollama-cloud":
         from multimodal_doc_parser.visual_enrichment.ollama_cloud import OllamaCloudClient
 
-        cloud = OllamaCloudClient(model)
+        cloud = (
+            OllamaCloudClient(model)
+            if response_cache is None
+            else OllamaCloudClient(model, cache_directory=response_cache)
+        )
         base_url = cloud.base_url
         call = cloud.api
         catalog = cloud.request("/api/tags")
         identity = next((m for m in catalog.get("models", []) if m["name"] == model), None)
         if not identity or "vision" not in identity.get("capabilities", []):
             raise ValueError("Requested model is not listed as vision-capable in Ollama Cloud")
+        cloud.cache_namespace = identity["digest"]
         identity = dict(
             identity, identity_scope="Hosted catalog alias/digest; deployment revision unpinned"
         )

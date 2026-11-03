@@ -41,6 +41,16 @@ base view, the upstream default prompt, greedy decoding and a 4,096-token cap.
 This deliberately tests bounded single-page compatibility before long-document
 inference; it does not measure the model's multi-page context capability.
 
+Set `UNLIMITED_OCR_CACHE_DIR` to an existing model-cache directory on a larger
+disk before setup and inference to reuse its pinned downloads. Both commands
+must use the same value. This changes storage location, not the GPU profile.
+
+The [four-model demo](../../docs/demo/README.md) also has a separate saved-output
+normalizer for the native blocks. It preserves raw replies and table spans,
+rejects invalid pages, and provides each model's own visual regions to Gemma.
+This does not add Unlimited to the production CLI/API parser choices. The
+original diagnostic runs and measurements below remain unchanged.
+
 `model-lock.json` pins file sizes, official Git blob identities and LFS SHA-256
 hashes. Downloads use ignored project-local storage. The supervised first run
 verifies every identity before importing the reviewed code. Model output is never

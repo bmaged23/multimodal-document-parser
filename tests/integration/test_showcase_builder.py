@@ -60,3 +60,54 @@ def test_asset_paths_cannot_escape_the_selected_run(tmp_path: Path):
     for name in ["../secret.txt", "alias.txt"]:
         with pytest.raises(ValueError, match="unsafe"):
             safe_file(root, name)
+
+
+def test_gemma_description_is_separate_from_the_ocr_card(showcase_project):
+    project, manifest = showcase_project
+    run = project / "outputs/parser_runs/run-a"
+    path = run / "document.json"
+    document = json.loads(path.read_text())
+    document["elements"].append(
+        {
+            "id": "visual-one",
+            "type": "image",
+            "source_regions": [
+                {"page_number": 1, "bounding_box": {"x0": 0.1, "y0": 0.4, "x1": 0.9, "y1": 0.9}}
+            ],
+            "asset": document["pages"][0]["image"],
+            "provenance": {"producer": "synthetic OCR", "method": "extracted"},
+            "description": {
+                "text": "Generated description <script>bad()</script>",
+                "provenance": {
+                    "producer": "Ollama Cloud",
+                    "model_version": "gemma4:31b",
+                    "method": "generated",
+                },
+            },
+        }
+    )
+    path.write_text(json.dumps(document))
+    output = project / "gemma-showcase"
+    build_showcase(project, output, manifest)
+    html = (output / "runs/model-a/pages/0001-content.html").read_text()
+    assert 'data-producer="ocr"' in html
+    assert 'data-producer="generated"' in html
+    assert "OCR · model-a" in html
+    assert "Gemma · gemma4:31b" in html
+    assert "<script>bad()</script>" not in html
+    assert html.count("Generated description") == 1
+
+
+def test_failed_normalization_still_shows_the_saved_raw_content(showcase_project):
+    project, manifest = showcase_project
+    run = project / "outputs/parser_runs/run-a"
+    (run / "raw/paddleocr/page_0002.json").write_text(
+        json.dumps({"content": "Readable model text <script>bad()</script>"})
+    )
+    output = project / "raw-fallback-showcase"
+    build_showcase(project, output, manifest)
+    html = (output / "runs/model-a/pages/0002-content.html").read_text()
+    assert "No accepted extraction" in html
+    assert "Saved raw OCR reply" in html
+    assert "Readable model text" in html
+    assert "<script>bad()</script>" not in html

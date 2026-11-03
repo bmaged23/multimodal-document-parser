@@ -124,7 +124,7 @@ def test_showcase_two_models_failure_pages_formats_and_mobile(showcase_project):
             assert not page.locator("#download-a").is_visible()
             page.locator("#document-select").select_option("fixture-pipeline")
             page.wait_for_function(
-                "document.getElementById('primary-selector-label').textContent==='Pipeline stage'"
+                "document.getElementById('primary-selector-label').textContent==='Model'"
             )
             assert page.locator("#run-a").input_value() == "pipeline-b"
             page.locator("#document-select").select_option("fixture-public")

@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import os
 import shutil
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -13,7 +14,7 @@ REPOSITORY = "baidu/Unlimited-OCR-2"
 
 
 def main() -> None:
-    cache = ROOT / ".cache/unlimited_ocr_2"
+    cache = Path(os.environ.get("UNLIMITED_OCR_CACHE_DIR", str(ROOT / ".cache/unlimited_ocr_2")))
     source = ROOT / "backends/unlimited_ocr_2_runtime/model-lock.json"
     metadata = json.loads(source.read_text())
     if metadata["sha"] != REVISION:

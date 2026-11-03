@@ -1,0 +1,257 @@
+{
+  "version": "1.0",
+  "cases": [
+    {
+      "id": "nasa-financial",
+      "title": "NASA financial report",
+      "description": "Our parsing pipeline using four OCR profiles on the same source selection. OCR and Gemma descriptions are labeled separately. Failed predictions stay visible.",
+      "group": "parsers",
+      "private": false,
+      "original_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
+      "runs": [
+        {
+          "id": "nasa-paddle-gemma",
+          "label": "PaddleOCR-VL-1.6",
+          "ocr_label": "PaddleOCR-VL-1.6",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-nasa-paddle-gemma-01"
+        },
+        {
+          "id": "nasa-dots-gemma",
+          "label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+          "ocr_label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-nasa-dots-gemma-01"
+        },
+        {
+          "id": "nasa-bf16-gemma",
+          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-nasa-bf16-gemma-01"
+        },
+        {
+          "id": "nasa-unlimited-gemma",
+          "label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+          "ocr_label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-nasa-unlimited-gemma-01"
+        }
+      ],
+      "preview_page": 11
+    },
+    {
+      "id": "handwriting",
+      "title": "Handwritten mathematics",
+      "description": "Our parsing pipeline using four OCR profiles on the same source selection. OCR and Gemma descriptions are labeled separately. Failed predictions stay visible.",
+      "group": "parsers",
+      "private": false,
+      "original_pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_url": null,
+      "runs": [
+        {
+          "id": "math-paddle-gemma",
+          "label": "PaddleOCR-VL-1.6",
+          "ocr_label": "PaddleOCR-VL-1.6",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-math-paddle-gemma-01"
+        },
+        {
+          "id": "math-dots-gemma",
+          "label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+          "ocr_label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-math-dots-gemma-01"
+        },
+        {
+          "id": "math-bf16-gemma",
+          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-math-bf16-gemma-01"
+        },
+        {
+          "id": "math-unlimited-gemma",
+          "label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+          "ocr_label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-math-unlimited-gemma-01"
+        }
+      ],
+      "preview_page": 4
+    },
+    {
+      "id": "irena-pipeline",
+      "title": "IRENA \u00b7 charts and tables",
+      "description": "Our parsing pipeline using four OCR profiles on the same source selection. OCR and Gemma descriptions are labeled separately. Failed predictions stay visible.",
+      "group": "parsers",
+      "private": false,
+      "original_pages": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
+      "runs": [
+        {
+          "id": "irena-paddle-gemma",
+          "label": "PaddleOCR-VL-1.6",
+          "ocr_label": "PaddleOCR-VL-1.6",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "irena-mixed-content-20-paddleocr-gemma4-31b-01"
+        },
+        {
+          "id": "irena-dots-gemma",
+          "label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+          "ocr_label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-irena-dots-gemma-01"
+        },
+        {
+          "id": "irena-bf16-gemma",
+          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-irena-bf16-gemma-01"
+        },
+        {
+          "id": "irena-unlimited-gemma",
+          "label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+          "ocr_label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-irena-unlimited-gemma-01"
+        }
+      ],
+      "preview_page": 3
+    },
+    {
+      "id": "imf-pipeline",
+      "title": "IMF \u00b7 complex tables",
+      "description": "Our parsing pipeline using four OCR profiles on the same source selection. OCR and Gemma descriptions are labeled separately. Failed predictions stay visible.",
+      "group": "parsers",
+      "private": false,
+      "original_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "source_url": "https://www.imf.org/-/media/files/publications/weo/2025/october/english/statsappendix.pdf",
+      "runs": [
+        {
+          "id": "imf-paddle-gemma",
+          "label": "PaddleOCR-VL-1.6",
+          "ocr_label": "PaddleOCR-VL-1.6",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-imf-paddle-gemma-01"
+        },
+        {
+          "id": "imf-dots-gemma",
+          "label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+          "ocr_label": "dots.mocr \u00b7 Q4_K_M + Q8_0 projector",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-imf-dots-gemma-01"
+        },
+        {
+          "id": "imf-bf16-gemma",
+          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-imf-bf16-gemma-01"
+        },
+        {
+          "id": "imf-unlimited-gemma",
+          "label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+          "ocr_label": "Unlimited-OCR 2 \u00b7 NF4 / FP16 vision",
+          "stage": "enriched",
+          "kind": "canonical",
+          "directory": "demo-v5-imf-unlimited-gemma-01"
+        }
+      ],
+      "preview_page": 12
+    }
+  ],
+  "math_evaluation": "author-handwritten-mathematics-four-profiles-v1.json",
+  "parser_evaluation": "parser-four-profiles-operational-v1.json"
+}
