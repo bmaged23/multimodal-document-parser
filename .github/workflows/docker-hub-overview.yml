@@ -1,0 +1,29 @@
+name: Synchronize Docker Hub overview
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['docs/docker/docker-hub-overview.md', '.github/workflows/docker-hub-overview.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docker-hub-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  overview:
+    runs-on: ubuntu-latest
+    environment: docker-hub
+    steps:
+      - uses: actions/checkout@v4
+      - name: Synchronize overview without rebuilding the image
+        uses: peter-evans/dockerhub-description@v5
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{ vars.DOCKERHUB_IMAGE }}
+          readme-filepath: docs/docker/docker-hub-overview.md
+          short-description: Quantized dots.mocr GPU PDF/DOCX parsing, structured exports and cloud visual enrichment

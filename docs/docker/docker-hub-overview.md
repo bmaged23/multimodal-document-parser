@@ -1,5 +1,7 @@
 # Multimodal Document Parser
 
+[GitHub repository: bmaged23/multimodal-document-parser](https://github.com/bmaged23/multimodal-document-parser)
+
 **Turn PDF and DOCX files into source-linked JSON, Markdown and HTML review reports.**
 The GPU parsing pipeline combines quantized dots.mocr (Q4_K_M language + Q8_0 projector) with optional chart/image
 interpretation through Gemma on Ollama Cloud.
