@@ -27,7 +27,7 @@ its model or pipeline stage, and use **Expand PDF + output** beside the reading
 area. Metrics and zoom are optional settings; output formats use one dropdown.
 This is a read-only saved-output demo, not a live upload/inference service.
 
-[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.3/public-demo-v3.zip) ·
+[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v4.1/public-demo-v4.1.zip) ·
 [Local demo instructions](docs/development/evaluation-showcase.md#run-the-downloaded-demo) ·
 [Parsing/model evaluation](docs/parsing-evaluation/README.md) ·
 [Parsing pipeline](docs/parsing-pipeline/README.md) ·
@@ -526,7 +526,7 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.3
 | --- | --- |
 | Public GPU parsing image | [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser) |
 | Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.3](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.3) |
-| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/v0.1.0-rc.3/public-demo-v3.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
+| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v4.1/public-demo-v4.1.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
 
 The container package is distributed through Docker Hub; it is a separate registry
 from GitHub Packages. Release records identify the exact tested image/source and
@@ -539,6 +539,8 @@ behavior. Separate jobs validate container builds; version tags or manual releas
 publish to Docker Hub with an SBOM and build provenance. The first Python/browser
 CI and hosted API/parsing container checks passed. The first
 [automated release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424942053)
-also passed, publishing `0.1.0-rc.3` with verified public access.
+also passed, publishing the historical Paddle image `0.1.0-rc.2` with verified public access.
+The quantized dots `0.1.0-rc.3` release is undergoing the same checks;
+[follow its release workflow](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41556010625).
 
 [CI/CD README: workflows, triggers, configuration and release process](docs/ci-cd/README.md)
