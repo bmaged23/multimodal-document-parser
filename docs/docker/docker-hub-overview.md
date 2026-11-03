@@ -14,7 +14,7 @@ in every category; printed-text recovery is essentially tied.
 [Source and evaluation](https://github.com/bmaged23/multimodal-document-parser) ·
 [Complete Docker setup](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/docker/README.md) ·
 [API guide](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/api/README.md) ·
-[Release and checksums](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.3)
+[Release and checksums](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.4)
 
 ## What this image does
 
@@ -33,7 +33,7 @@ not silently presented as verified source facts.
 ## Pull the public image
 
 ```bash
-docker pull bmaged23/multimodal-document-parser:0.1.0-rc.3
+docker pull bmaged23/multimodal-document-parser:0.1.0-rc.4
 ```
 
 **Platform:** Linux amd64. Live OCR requires a compatible NVIDIA GPU and host
@@ -50,7 +50,7 @@ Clone the source to obtain the supported Compose configuration:
 ```bash
 git clone https://github.com/bmaged23/multimodal-document-parser.git
 cd multimodal-document-parser
-export PARSER_IMAGE=bmaged23/multimodal-document-parser:0.1.0-rc.3
+export PARSER_IMAGE=bmaged23/multimodal-document-parser:0.1.0-rc.4
 ```
 
 Create the local secret files using the **secret setup step in the
@@ -111,6 +111,11 @@ PDF and `.docx` are supported; legacy `.doc` and encrypted documents are not.
 Extraction quality varies with layout, handwriting, image resolution and model
 limits. Source-reviewed evaluation repairs are disclosed case-specific processing,
 not a guarantee that every new document is automatically corrected.
+
+The GPU launcher disables the fixed-size dummy vision warmup that exhausted
+workspace on the tested 6 GB device. Actual input pixel limits and GPU offload
+remain unchanged. A synthetic text/table page completed through the real workers,
+including HTML export and server teardown. This is a runtime check, not corpus accuracy.
 
 ## Release verification
 

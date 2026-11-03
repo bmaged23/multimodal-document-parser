@@ -78,8 +78,8 @@ After merging and checking the intended commit, either create a new version tag
 or manually dispatch the workflow. Example for a **new, unused** prerelease:
 
 ```bash
-git tag -a v0.1.0-rc.3 -m 'Document parser release candidate 2'
-git push origin v0.1.0-rc.3
+git tag -a v0.1.0-rc.4 -m 'Document parser release candidate 4'
+git push origin v0.1.0-rc.4
 ```
 
 Alternative, using an authenticated GitHub CLI:
@@ -87,7 +87,7 @@ Alternative, using an authenticated GitHub CLI:
 ```bash
 gh workflow run docker-hub-release.yml \
   --repo bmaged23/multimodal-document-parser \
-  --ref main -f tag=0.1.0-rc.3
+  --ref main -f tag=0.1.0-rc.4
 ```
 
 Choose one trigger per release. Keep existing tags immutable; prereleases do not
@@ -99,6 +99,9 @@ GitHub Release at the verified source tag with image metadata and setup links.
 Creating a release does not rerun OCR evaluation.
 
 ## Recorded status
+
+- [Quantized dots release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41556010625): passed source/browser CI and image smoke tests; published `0.1.0-rc.3` and `latest`, synchronized the Docker Hub overview, and verified anonymous digest access. [Retained validation record](../../evaluation/results/container-release-validation-v2.json). Its real GPU parsing probe later failed on oversized dummy vision warmup; CPU-hosted success did not establish inference.
+- The `rc.4` fix disables dummy warmup; its synthetic GPU worker probe passed. [Current validation record](../../evaluation/results/container-release-validation-v3.json).
 
 - [First Python/browser CI](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41377223373): passed.
 - [Initial hosted container validation](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41422591707): passed API/parsing builds and parsing runtime checks.

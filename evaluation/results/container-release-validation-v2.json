@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-11-03",
+  "image": "bmaged23/multimodal-document-parser:0.1.0-rc.3",
+  "source_revision": "b62cf534bd059f0cc580fef26da198960a6d563b",
+  "default_backend": "dots.mocr",
+  "quantization": {
+    "language": "Q4_K_M",
+    "vision_projector": "Q8_0"
+  },
+  "model_weights_bundled": false,
+  "cloud_visual_model": "gemma4:31b",
+  "cloud_execution": "Ollama Cloud; weights not bundled",
+  "hosted_container_validation": {
+    "conclusion": "success",
+    "url": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41547531105",
+    "scope": "CPU-hosted API/auth/storage, native dependency linkage, PDF/DOCX preparation; no GPU inference"
+  },
+  "release_workflow": {
+    "url": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41556010625",
+    "status": "completed",
+    "source_checks": "passed",
+    "browser_checks": "passed",
+    "conclusion": "success"
+  },
+  "published": true,
+  "gpu_container_inference": "failed: native vision encoder CUDA workspace allocation exhausted VRAM, then server disconnected",
+  "docker_hub_overview_synchronized": true,
+  "historical_release_record": "container-release-validation-v1.json",
+  "notes": [
+    "No historical Paddle GPU test is credited to the dots image.",
+    "Private inputs, saved evaluation outputs and runtime credentials are excluded from the image."
+  ],
+  "public_visibility_verified": true,
+  "overview_matches_repository_markdown": true,
+  "index_digest": "sha256:6ab09ab24db0795021e093b26ba826976db5b04374c6f1b74c7b194b80733a68",
+  "platform_manifest_digest": "sha256:cb4834c85f3ecc7f11df637c9fba2d6bac114c35cdf0d4658f9cac648db620fd",
+  "latest_matches_version": true,
+  "attestation_predicates": [
+    "https://spdx.dev/Document",
+    "https://slsa.dev/provenance/v1"
+  ],
+  "gpu_container_device_smoke": "passed on NVIDIA GeForce GTX 1660 Ti: CUDA device discovery, API/auth/storage, DOCX conversion and PDF rendering",
+  "gpu_failure_log": "Private local maintenance logs retain the synthetic probe and native allocation failure; no corpus rerun"
+}

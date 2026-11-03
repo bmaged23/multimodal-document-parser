@@ -123,7 +123,7 @@ transcribed every page correctly, and none's diagrams were semantically verified
 
 [Per-assertion, per-cell, timing and repetition results](../../evaluation/results/author-handwritten-mathematics-comparison-v1.json)
 include source/reference/evaluator hashes and hashes of the scored page text.
-The evidence dialog in the [interactive demo](https://bmaged23.github.io/multimodal-document-parser/?v=3.0&case=handwriting&run=math-paddle&page=4)
+The evidence dialog in the [interactive demo](https://bmaged23.github.io/multimodal-document-parser/?v=4.1&case=handwriting&run=math-paddle&page=4)
 shows the same selected checks. All original predictions, failures and logs are
 preserved in model-specific local snapshots. Earlier diary and RAG studies
 remain frozen; this case does not silently replace their evaluation inputs.

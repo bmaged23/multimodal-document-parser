@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-11-03",
+  "image": "bmaged23/multimodal-document-parser:0.1.0-rc.4",
+  "default_backend": "dots.mocr",
+  "quantization": {
+    "language": "Q4_K_M",
+    "vision_projector": "Q8_0"
+  },
+  "dummy_warmup": false,
+  "published": false,
+  "gpu_candidate_probe": {
+    "result": "passed",
+    "image_default_backend": "dots-mocr",
+    "prepared_job": "897825df04aa4088a57e60c9997f7569",
+    "parsed_job": "db03b72f8f734d18b7e10e75388ab8ae",
+    "model_version": "dots.mocr; GGUF@5cd9f01392968881af86dfde7bc60b9cb412f87a; Q4_K_M+mmproj-Q8_0",
+    "completed_pages": 1,
+    "synthetic_reference_checks": 5,
+    "table_detected": true,
+    "owned_server_released": true,
+    "cloud_requests": 0,
+    "artifact_id": "294700d1b7084fb79f392bbf122ad0d9"
+  },
+  "gpu_probe_scope": "Temporary derivative of published rc.3 with the same no-warmup source fix; published rc.4 still requires verification",
+  "gpu_published_image_inference": "pending",
+  "release_workflow": {
+    "status": "pending"
+  },
+  "historical_release_record": "container-release-validation-v2.json"
+}

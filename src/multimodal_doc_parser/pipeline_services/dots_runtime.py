@@ -87,6 +87,9 @@ def dots_server(settings: ServiceSettings, evidence: Path) -> Iterator[Path | No
         "512",
         "--ubatch-size",
         "128",
+        # The fixed-size vision dummy warmup exceeds the 6 GiB GPU workspace.
+        # Real inputs retain their existing pixel budget and full GPU offload.
+        "--no-warmup",
         "--flash-attn",
         "off",
     ]
@@ -102,6 +105,7 @@ def dots_server(settings: ServiceSettings, evidence: Path) -> Iterator[Path | No
                 "parallel_requests": 1,
                 "context_size": 8192,
                 "flash_attention": False,
+                "dummy_warmup": False,
                 "server_command": command,
             },
             indent=2,

@@ -80,6 +80,9 @@ def test_managed_server_stops_and_preserves_original_parsing_exception(monkeypat
     )
     with pytest.raises(OSError, match="original extraction error"):
         with dots_runtime.dots_server(settings, tmp_path) as metadata:
-            assert json.loads(metadata.read_text())["execution_device"] == "gpu"
+            evidence = json.loads(metadata.read_text())
+            assert evidence["execution_device"] == "gpu"
+            assert evidence["dummy_warmup"] is False
+            assert "--no-warmup" in evidence["server_command"]
             raise OSError("original extraction error")
     assert state["terminated"]

@@ -16,5 +16,6 @@ def test_gpu_launcher_selects_retained_models_and_enables_offload():
     assert command[command.index("--n-gpu-layers") + 1] == "99"
     assert command[command.index("--model") + 1] == "cache/dots.mocr.Q4_K_M.gguf"
     assert command[command.index("--mmproj") + 1] == "cache/dots.mocr.mmproj-q8_0.gguf"
+    assert "--no-warmup" in command
     assert "--no-mmproj-offload" not in command
     assert not any("BF16" in part or "bf16" in part for part in command)

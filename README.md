@@ -503,7 +503,7 @@ the full optional stack exposes pipeline **8100** and RAG **8106**.
 
 ## Docker
 
-**[Public Docker Hub image · 0.1.0-rc.3](https://hub.docker.com/r/bmaged23/multimodal-document-parser)**
+**[Public Docker Hub image · 0.1.0-rc.4](https://hub.docker.com/r/bmaged23/multimodal-document-parser)**
 
 Parse PDF and `.docx` files with Docker and a compatible NVIDIA GPU; cloud chart/image descriptions also require an Ollama API key.
 Legacy `.doc` and encrypted documents are unsupported, and extraction quality varies with the document.
@@ -515,7 +515,7 @@ Gemma runs remotely; credentials, BF16 weights and Paddle runtime are not bundle
 Earlier `0.1.0-rc.1`/`0.1.0-rc.2` images retain their historical Paddle configuration.
 
 ```bash
-docker pull bmaged23/multimodal-document-parser:0.1.0-rc.3
+docker pull bmaged23/multimodal-document-parser:0.1.0-rc.4
 ```
 
 [Docker README: clone, pull, secrets, GPU setup, Compose and verification](docs/docker/README.md)
@@ -525,7 +525,7 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.3
 | Artifact | Where to find it |
 | --- | --- |
 | Public GPU parsing image | [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser) |
-| Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.3](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.3) |
+| Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.4](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.4) |
 | Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v4.1/public-demo-v4.1.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
 
 The container package is distributed through Docker Hub; it is a separate registry
@@ -540,7 +540,11 @@ publish to Docker Hub with an SBOM and build provenance. The first Python/browse
 CI and hosted API/parsing container checks passed. The first
 [automated release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424942053)
 also passed, publishing the historical Paddle image `0.1.0-rc.2` with verified public access.
-The quantized dots `0.1.0-rc.3` release is undergoing the same checks;
-[follow its release workflow](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41556010625).
+The [quantized dots release](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/docker-hub-release.yml)
+publishes the versioned image and updates the live Docker Hub overview.
+The `rc.4` candidate disables oversized dummy vision warmup; its synthetic GPU
+worker probe passed. See the release record for hosted publication status.
+[Current image validation](evaluation/results/container-release-validation-v3.json)
+records publication, provenance and the separate GPU check.
 
 [CI/CD README: workflows, triggers, configuration and release process](docs/ci-cd/README.md)

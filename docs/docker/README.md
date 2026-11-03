@@ -34,7 +34,7 @@ No CPU fallback is provided. The default 8,192-token context, sequential request
 ```bash
 git clone https://github.com/bmaged23/multimodal-document-parser.git
 cd multimodal-document-parser
-export PARSER_IMAGE=bmaged23/multimodal-document-parser:0.1.0-rc.3
+export PARSER_IMAGE=bmaged23/multimodal-document-parser:0.1.0-rc.4
 docker pull "$PARSER_IMAGE"
 ```
 
@@ -97,7 +97,9 @@ uv run python scripts/deployment/verify_gpu_parsing.py document-parser:dots \
 The smoke test checks non-root execution, API authentication/OpenAPI, dots default
 contracts, native shared libraries, DOCX conversion and PDF rendering. `--gpu`
 additionally checks native CUDA device discovery; it does not claim OCR accuracy.
-Live GPU parsing is validated separately against the built image before release.
+Live GPU parsing requires the separate worker probe above; CPU-hosted CI cannot
+establish GPU inference. Check the [current validation record](../../evaluation/results/container-release-validation-v3.json)
+for its recorded status.
 The build includes no model weights or credentials. First-use downloads need
 internet access; subsequent jobs use the verified named model volume.
 
@@ -107,13 +109,18 @@ alternative; requesting `backend: paddleocr` in this dots-only image requires a
 custom image with that runtime installed. The full optional RAG Compose stack
 remains separate from this four-container parsing deployment.
 
+The GPU launcher disables synthetic vision warmup, whose fixed dummy image
+exceeded the tested 6 GB device workspace in `rc.3`. Actual page pixel limits,
+Q4/Q8 weights and full GPU offload are unchanged. This avoids that startup failure;
+other applications and large pages can still exhaust VRAM.
+
 ## Release and CI/CD
 
 [CI/CD details](../ci-cd/README.md). Publishing requires source/browser CI,
 container smoke tests and the existing Docker Hub environment credentials.
 Each image is versioned; prior `0.1.0-rc.1`/`0.1.0-rc.2` Paddle images remain
 historical releases and are not silently overwritten. The current dots release
-uses `0.1.0-rc.3`; consult its GitHub release for the immutable image digest and
+uses `0.1.0-rc.4`; consult its GitHub release for the immutable image digest and
 build verification record.
 
 [Docker Hub overview](https://hub.docker.com/r/bmaged23/multimodal-document-parser) ·
