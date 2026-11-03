@@ -30,6 +30,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--max-new-tokens", type=int, default=6144)
     parser.add_argument("--page-seconds", type=int, default=300)
+    parser.add_argument("--weight-dtype", choices=["auto", "bfloat16", "float16"], default="auto")
     args = parser.parse_args()
     import torch
 
@@ -67,7 +68,10 @@ def main() -> None:
         stub.flash_attn_varlen_func = forbidden_flash_attention
         sys.modules["flash_attn"] = stub
 
-    dtype = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
+    use_bf16 = args.weight_dtype == "bfloat16" or (
+        args.weight_dtype == "auto" and torch.cuda.is_bf16_supported()
+    )
+    dtype = torch.bfloat16 if use_bf16 else torch.float16
     model_id, revision = manifest["model_id"], manifest["model_revision"]
     config = AutoConfig.from_pretrained(model_id, revision=revision, trust_remote_code=True)
     config.vision_config.attn_implementation = "sdpa"
