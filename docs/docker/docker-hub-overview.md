@@ -4,6 +4,11 @@
 The GPU parsing pipeline combines quantized dots.mocr (Q4_K_M language + Q8_0 projector) with optional chart/image
 interpretation through Gemma on Ollama Cloud.
 
+**Why quantized dots?** It is our default for the 6 GB laptop. Original BF16 dots
+scored best on selected handwritten mathematics (32/37 vs Q4 29/37), but peaked
+at **8.53 GiB PyTorch-allocated GPU memory** on Colab T4. It is not the winner
+in every category; printed-text recovery is essentially tied.
+
 [![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=4.1)
 
 [Source and evaluation](https://github.com/bmaged23/multimodal-document-parser) ·
@@ -109,12 +114,14 @@ not a guarantee that every new document is automatically corrected.
 
 ## Release verification
 
-Version `0.1.0-rc.3` passed source/browser CI, hosted image/runtime checks and
-anonymous registry verification. It includes SPDX SBOM and SLSA build provenance.
-Actual local CUDA tensor validation covers the earlier `0.1.0-rc.1` image; hosted
-runners have no GPU. These checks establish software/runtime behavior, not OCR
-accuracy. Evaluation PDFs, private outputs, credentials and model weights are not
-redistributed in the container.
+The release workflow requires source/browser CI, hosted image/runtime checks and
+anonymous registry verification. It publishes SPDX SBOM and SLSA build provenance.
+The real GPU worker probe is a separate release check; CPU-hosted runners cannot
+establish GPU inference. Earlier Paddle CUDA tests are historical and are not
+credited to the new dots image. These checks establish software/runtime behavior,
+not OCR accuracy. Evaluation PDFs, private outputs, credentials and model weights
+are not redistributed in the container. Consult the versioned GitHub release for
+the published digest and validation record.
 
 [CI/CD process](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/ci-cd/README.md) ·
 [Measured parser comparisons](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/parsing-evaluation/README.md)

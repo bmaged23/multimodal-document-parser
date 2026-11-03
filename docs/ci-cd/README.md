@@ -91,7 +91,7 @@ gh workflow run docker-hub-release.yml \
 ```
 
 Choose one trigger per release. Keep existing tags immutable; prereleases do not
-update stable `latest`. The release runs source/browser CI before image build and
+update `latest` unless the manual `publish_latest` input is explicitly enabled. The release runs source/browser CI before image build and
 smoke tests. It then publishes version/SHA tags with SPDX SBOM and SLSA provenance,
 records the digest in its summary, and checks anonymous access to that digest.
 Consumers should pin a version or immutable digest. The publisher also creates a
@@ -137,3 +137,9 @@ The parsing target builds the pinned dots CUDA native server instead of Paddle.
 Hosted image checks verify shared-library linkage and quantized default contracts
 without downloading model weights. Real GPU parsing remains a separate local
 release check; passing CPU-hosted CI alone does not establish it.
+
+The dots image passed [hosted container validation](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41547531105).
+The release workflow also synchronizes the Docker Hub overview from
+`docs/docker/docker-hub-overview.md`; publishing that Markdown in Git alone does
+not update Docker Hub. The new default is quantized dots, and historical Paddle
+release records above remain unchanged.

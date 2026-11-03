@@ -16,7 +16,7 @@ unverified. Detailed experiment reports are linked from each guide rather than
 presented as one undifferentiated benchmark.
 
 - [Live saved-output demo](https://bmaged23.github.io/multimodal-document-parser/)
-- [Hosted demo verification](../evaluation/results/public-demo-validation-v3.json)
+- [Hosted demo verification](../evaluation/results/public-demo-validation-v4.1.json)
 - [Interactive explorer and local reproduction](development/evaluation-showcase.md)
 - [Unlimited-OCR 2 GPU evaluation](evaluation/unlimited-ocr-2-gpu-results.md)
 - [API setup and request examples](api/README.md)
@@ -36,3 +36,6 @@ public-source screenshots and non-private measured summaries remain in the
 repository. See [screenshot provenance](assets/showcase-provenance.json).
 
 - [Author handwritten mathematics comparison](evaluation/author-handwritten-mathematics.md)
+
+- [Four-profile evaluation across all 31 shared pages](evaluation/parser-corpus-four-profiles.md)
+- [Model selection and measured GPU memory](evaluation/parser-model-selection.md)
