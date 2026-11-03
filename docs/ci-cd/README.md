@@ -101,7 +101,7 @@ Creating a release does not rerun OCR evaluation.
 ## Recorded status
 
 - [Quantized dots release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41556010625): passed source/browser CI and image smoke tests; published `0.1.0-rc.3` and `latest`, synchronized the Docker Hub overview, and verified anonymous digest access. [Retained validation record](../../evaluation/results/container-release-validation-v2.json). Its real GPU parsing probe later failed on oversized dummy vision warmup; CPU-hosted success did not establish inference.
-- The `rc.4` fix disables dummy warmup; its synthetic GPU worker probe passed. [Current validation record](../../evaluation/results/container-release-validation-v3.json).
+- [Quantized dots warmup fix](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41623880397): published `0.1.0-rc.4` and `latest`; live overview, anonymous digest and attestations verified. The exact public image passed its synthetic GPU worker probe after releasing WSL file caches; preceding host-pressure failures are retained. [Current validation record](../../evaluation/results/container-release-validation-v3.json).
 
 - [First Python/browser CI](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41377223373): passed.
 - [Initial hosted container validation](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41422591707): passed API/parsing builds and parsing runtime checks.
@@ -114,7 +114,8 @@ Creating a release does not rerun OCR evaluation.
 - [Handwriting update CI](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41483426987): passed, including 140 tests.
 
 [Docker instructions and evidence](../docker/README.md) ·
-[Machine-readable release validation](../../evaluation/results/container-release-validation-v1.json)
+[Current release validation](../../evaluation/results/container-release-validation-v3.json) ·
+[Historical Paddle release validation](../../evaluation/results/container-release-validation-v1.json)
 
 ## Saved-output demo deployment and package location
 

@@ -3,7 +3,7 @@
 **Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](docs/evaluation/parser-model-selection.md).
 
 [![CI](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml)
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.3-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.4-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
 
 Compare **dots.mocr Q4/Q8**, **original dots.mocr BF16**, **PaddleOCR-VL-1.6**, and **Unlimited-OCR 2**
 on real document selections. Inspect extracted text, tables, charts, images,
@@ -540,10 +540,11 @@ publish to Docker Hub with an SBOM and build provenance. The first Python/browse
 CI and hosted API/parsing container checks passed. The first
 [automated release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41424942053)
 also passed, publishing the historical Paddle image `0.1.0-rc.2` with verified public access.
-The [quantized dots release](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/docker-hub-release.yml)
-publishes the versioned image and updates the live Docker Hub overview.
-The `rc.4` candidate disables oversized dummy vision warmup; its synthetic GPU
-worker probe passed. See the release record for hosted publication status.
+The [quantized dots release](https://github.com/bmaged23/multimodal-document-parser/actions/runs/41623880397)
+passed and published `0.1.0-rc.4`, updated the live Docker Hub overview, and verified
+anonymous access, SBOM and provenance. The exact published image also completed
+a synthetic text/table page through the real GPU workers, including exports and
+server teardown. This runtime check is separate from OCR-quality evaluation.
 [Current image validation](evaluation/results/container-release-validation-v3.json)
 records publication, provenance and the separate GPU check.
 

@@ -7,7 +7,7 @@
     "vision_projector": "Q8_0"
   },
   "dummy_warmup": false,
-  "published": false,
+  "published": true,
   "gpu_candidate_probe": {
     "result": "passed",
     "image_default_backend": "dots-mocr",
@@ -21,10 +21,96 @@
     "cloud_requests": 0,
     "artifact_id": "294700d1b7084fb79f392bbf122ad0d9"
   },
-  "gpu_probe_scope": "Temporary derivative of published rc.3 with the same no-warmup source fix; published rc.4 still requires verification",
-  "gpu_published_image_inference": "pending",
+  "gpu_probe_scope": "Candidate derivative and exact published rc.4 image both completed the same synthetic text/table worker test. No evaluation-corpus rerun or cloud requests.",
+  "gpu_published_image_inference": "passed",
   "release_workflow": {
-    "status": "pending"
+    "status": "completed",
+    "url": "https://github.com/bmaged23/multimodal-document-parser/actions/runs/41623880397",
+    "conclusion": "success"
   },
-  "historical_release_record": "container-release-validation-v2.json"
+  "historical_release_record": "container-release-validation-v2.json",
+  "source_revision": "e810b9f36f032ebdc0ce37c97f7d9730229ff43a",
+  "source_checks": {
+    "unit_integration_tests_passed": 147,
+    "mypy_source_files": 57,
+    "changed_file_ruff_check": true,
+    "changed_file_ruff_format": true
+  },
+  "gpu_candidate_evidence_sha256": {
+    "verification": "c4f1752b3d62100dc93eecd223cd1158572437e2546a2afac084a82effabf815",
+    "inference_manifest": "4016067e889e0966dd09fd1d9c3eb284ab1d42b08807939ddb697a6261e84562"
+  },
+  "index_digest": "sha256:3cc1432bb586a40dffeb3757e1be0587094ecd9d4deb33fd5c0fbe5ab13ad7a4",
+  "platform_manifest_digest": "sha256:fea6f9d566a69fd65e2fcdb4a8628df6206525e96396a97982b87070679227be",
+  "latest_matches_version": true,
+  "public_visibility_verified": true,
+  "docker_hub_overview_synchronized": true,
+  "overview_matches_repository_markdown": true,
+  "anonymous_digest_access": true,
+  "attestation_predicates": [
+    "https://spdx.dev/Document",
+    "https://slsa.dev/provenance/v1"
+  ],
+  "published_source_revision_verified": "e810b9f36f032ebdc0ce37c97f7d9730229ff43a",
+  "published_image_smoke": {
+    "result": "passed",
+    "gpu_device": "NVIDIA GeForce GTX 1660 Ti",
+    "device_memory_mib": 6143,
+    "api_auth_storage": true,
+    "native_dependency_linkage": true,
+    "docx_conversion_pdf_rendering": true,
+    "cuda_device_discovery": true,
+    "cloud_requests": 0
+  },
+  "published_gpu_attempts": [
+    {
+      "attempt": "01",
+      "result": "failed",
+      "stage": "vision weight allocation",
+      "cuda_allocation_mib": 1281.81
+    },
+    {
+      "attempt": "verbose",
+      "result": "failed",
+      "stage": "vision memory preflight allocation",
+      "cuda_allocation_mib": 1281.81
+    },
+    {
+      "attempt": "after-cache-release",
+      "result": "passed",
+      "setting_changes": "None; same published image and inference settings"
+    }
+  ],
+  "host_pressure_observation": {
+    "windows_available_ram_mib": 652,
+    "windows_committed_bytes": 19838050304,
+    "windows_commit_limit_bytes": 21118914560,
+    "c_free_gib": 0.22,
+    "action": "Released reclaimable WSL file caches; did not change host memory limits or restart WSL",
+    "windows_free_physical_kib_after_cache_release": 2636448,
+    "retry": "passed after releasing WSL file caches"
+  },
+  "gpu_published_probe": {
+    "result": "passed",
+    "image_default_backend": "dots-mocr",
+    "prepared_job": "f890aadbc106434ebc6b3ac6f7f552a9",
+    "parsed_job": "b1f0c8e5bbfa46eba6df368030884407",
+    "model_version": "dots.mocr; GGUF@5cd9f01392968881af86dfde7bc60b9cb412f87a; Q4_K_M+mmproj-Q8_0",
+    "completed_pages": 1,
+    "synthetic_reference_checks": 5,
+    "table_detected": true,
+    "owned_server_released": true,
+    "cloud_requests": 0,
+    "artifact_id": "a07cb1cd289f423a993bb09fb1df70ae"
+  },
+  "gpu_published_evidence_sha256": {
+    "verification": "6281c8cc681a2f93393965ecf5e0fea6340defff851433e4b801a09d383d5f0e",
+    "inference_manifest": "651a12979d2ba542493e05a6f5d9f5ae64eeda274ca4e51f82c3e20ec4c9a2d3",
+    "runtime_metadata": "ba329c270475d1a93741034cfb58f9722eff71c9241f9ff8ae56aacb84e2bebf"
+  },
+  "native_library_sha256": {
+    "libggml-cuda.so": "ac98af2c235480b45b0c9a9b1fa53b8e2a63385d7f85bea24af7d14f4a99dcb1",
+    "libmtmd.so.0": "70d96e0a544e5a8b4cb72e3a9032ce9b826a6ceb128f80dd640e566657cf1b2b",
+    "libllama.so.0": "4a613fe8086c91b0af665cfea8e4b1920fec6729ebcf843ff75c85f043daf284"
+  }
 }

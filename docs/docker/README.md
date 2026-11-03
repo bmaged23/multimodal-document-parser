@@ -113,6 +113,10 @@ The GPU launcher disables synthetic vision warmup, whose fixed dummy image
 exceeded the tested 6 GB device workspace in `rc.3`. Actual page pixel limits,
 Q4/Q8 weights and full GPU offload are unchanged. This avoids that startup failure;
 other applications and large pages can still exhaust VRAM.
+On Windows/WSL, also check available host RAM, commit capacity and C: free space.
+Our published-image retry initially failed to allocate vision weights while Windows
+reported only 652 MiB of available RAM, despite the CUDA device reporting free VRAM.
+The validation record preserves these host conditions separately from OCR quality.
 
 ## Release and CI/CD
 
