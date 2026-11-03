@@ -15,6 +15,20 @@ production Q4/Q8 configuration runs on the tested 6 GB GPU; BF16 reached
 
 [![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.1)
 
+### [▶ Open the interactive four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.1)
+
+Compare the same source pages across all four OCR profiles, with synchronized PDF
+and extraction panes. OCR content and Gemma-generated visual descriptions carry
+separate producer labels. Documents open in this order: **Handwritten mathematics →
+IMF · complex tables → IRENA · charts and tables → NASA financial report**.
+Each starts at its first available page and remembers your place when you switch
+away and return in the same open demo. This is a saved-output viewer, with no live
+inference or API key required.
+
+[Open the 70-page evaluation report: rankings, per-page metrics and metric definitions](https://bmaged23.github.io/multimodal-document-parser/evaluation/).
+The demo displays 53 shareable source pages; evaluation metrics cover all 70 retained
+pages and 280 page/profile slots. Omitted source pages are not redistributed.
+
 [Source and evaluation](https://github.com/bmaged23/multimodal-document-parser) ·
 [Complete Docker setup](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/docker/README.md) ·
 [API guide](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/api/README.md) ·
@@ -137,9 +151,18 @@ the published digest and validation record.
 
 ## Why this profile
 
-Original BF16 dots.mocr achieved our best selected handwritten-mathematics result
-(32/37 vs quantized 29/37), with 8,739 MiB / **8.53 GiB peak PyTorch-allocated
-GPU memory** on Colab T4. It does not win every category; printed-text recovery
-is essentially tied. Quantized dots is the production default for the 6 GB
-laptop. Peak allocation is not total device memory or a minimum VRAM requirement.
-[Full comparison and memory scope](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/evaluation/parser-model-selection.md).
+Our qualitative overall ranking for the retained 70-page test corpus is:
+
+| Rank | OCR profile | Main finding |
+| --- | --- | --- |
+| 1 | dots.mocr original BF16 | Strongest balance: 91.67% visual-region recall and 80.96% table row/value matching |
+| 2 | dots.mocr Q4/Q8 | Lowest scoped text error rate (0.67%); weaker table associations than BF16 |
+| 3 | PaddleOCR-VL-1.6 | Best table row/value matching (86.58%) and heading detection |
+| 4 | Unlimited-OCR 2 | Lowest table row/value matching (55.62%) and two missing handwriting outputs |
+
+Original BF16 used **8.53 GiB peak PyTorch allocation on Colab T4**. Quantized dots
+is the production default for the tested **GTX 1660 Ti with 6 GB VRAM**. Allocation
+is not total device usage or a minimum VRAM requirement. These are assistant-created
+source-reference development checks, not independent human labels or a universal
+model ranking. Raw OCR scores exclude Gemma enrichment and source-based repairs.
+[Method, metric definitions and limitations](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/evaluation/README.md).
