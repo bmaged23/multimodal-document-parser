@@ -1,6 +1,6 @@
 # Parsing evaluation and model comparison
 
-**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](../evaluation/parser-model-selection.md).
+**Model choice:** dots.mocr is our preferred model family overall on the 70-page test corpus. Original BF16 offers the strongest overall balance; **Q4_K_M language + Q8_0 projector** is the production default for the **GTX 1660 Ti with 6 GB VRAM**. BF16 reached **8.53 GiB peak PyTorch allocation** on Colab T4. [Comparison, measured memory and limits](../evaluation/parser-model-selection.md).
 
 [Project overview](../../README.md) · [Parsing pipeline](../parsing-pipeline/README.md) ·
 [Secondary RAG study](../chunking-and-rag/README.md)
@@ -34,7 +34,7 @@ hardware is separate.
 | PaddleOCR-VL-1.6 | Isolated locked Paddle GPU runtime; canonical JSON/Markdown/HTML | Raw predictions and normalized exports retained |
 | dots.mocr Q4_K_M language + Q8_0 projector | Pinned CUDA 12.6/sm75 native runtime on GTX 1660 Ti | Quantized GPU configuration; do not generalize to BF16 or another quantization |
 | Unlimited-OCR-2 NF4/FP16 vision experiments | Separately preserved diagnostic runs | Not interchangeable with the common normalized comparison contract |
-| Original dots.mocr BF16 | GPU-only Colab T4, original pinned HF weights, SDPA | Best selected handwritten-mathematics score; not an overall winner |
+| Original dots.mocr BF16 | GPU-only Colab T4, original pinned HF weights, SDPA | Strongest overall balance in this corpus; category-specific tradeoffs remain |
 
 Retired CPU experiments are historical failure evidence, not active execution
 paths. Runtime locks, model identity, quantization, prompts, preprocessing,
@@ -60,7 +60,39 @@ completing inference or scoring every page.
 Private inputs remain local. Preserve failed attempts and partial subsets;
 never describe a completed selection as a completed full source document.
 
-## Measured parser comparison
+## Current 70-page evaluation
+
+1. **dots.mocr BF16** — strongest balance: excellent text recovery, **91.67% visual-region recall**, and **80.96% row/value matching**.
+2. **dots.mocr Q4/Q8** — lowest scoped text error rate (**0.67%**), but weaker table associations than BF16.
+3. **PaddleOCR-VL-1.6** — strongest table associations (**86.58%**) and heading detection, but weaker text and handwriting recovery.
+4. **Unlimited-OCR 2** — weakest row/value associations (**55.62%**) and two missing handwritten-page outputs.
+
+The order changes by task:
+
+| Task | Best → lowest |
+| --- | --- |
+| Scoped text recovery | Q4 → BF16 → Unlimited → Paddle |
+| Table row/value associations | Paddle → BF16 → Q4 → Unlimited |
+| Visual-region detection | BF16 → Q4 = Unlimited → Paddle |
+
+**dots.mocr is our overall preferred model family for this corpus.** We use its
+quantized **Q4_K_M (4-bit) language model + Q8_0 (8-bit) vision projector** for
+smaller GPUs: it ran on the GTX 1660 Ti with **6 GB VRAM**, while the original
+BF16 profile reached **8.53 GiB peak PyTorch-allocated memory** on a Colab T4.
+That allocation is not total device memory or a minimum VRAM requirement.
+
+This overall order is an interpretation across the metrics, **not a calculated
+combined score or a universal ranking**. The study uses assistant-created source
+references across all **70 pages of the retained four test PDFs**. Unresolved
+handwriting is excluded. It compares raw OCR outputs; Gemma descriptions and
+pipeline repairs receive no credit. Scoped text error measures content recovery
+within source regions, not full-page accuracy or hallucination precision.
+
+[Interactive evaluation report](https://bmaged23.github.io/multimodal-document-parser/evaluation/) ·
+[Evaluation methodology and metric explanations](../evaluation/README.md) ·
+[Saved metrics by model and PDF](../../evaluation/results/manual-reference-full-corpus-v1.json)
+
+## Earlier operational measurements
 
 | Observed case | PaddleOCR-VL-1.6 | Quantized dots.mocr | Unlimited-OCR 2 NF4/FP16 |
 | --- | ---: | ---: | ---: |
@@ -83,13 +115,12 @@ and [measurement scope](../evaluation/quantized-gpu-batch.md).
 
 ## Author handwritten mathematics
 
-**dots.mocr was substantially better at handwritten text and mathematical
-notation on our four-page assignment test:** 29/37 selected text/math checks,
-compared with PaddleOCR's 13/37 and Unlimited-OCR's 11/37. All three recovered
-20/20 ordered truth-table cells; Unlimited timed out on two pages. Our quantized
-dots profile is the preferred candidate for similar handwritten mathematics
-PDFs, with manual formula review. This is a small assistant-reviewed development
-case with different runtime budgets, not a general handwriting benchmark.
+**Original dots.mocr BF16 led the earlier selected handwriting checks:**
+32/37, followed by quantized dots 29/37, Paddle 13/37 and Unlimited 11/37.
+All four recovered the 20 checked truth-table data cells; Unlimited timed out on
+two pages. These selected checks use a different reference and matching contract
+from the newer source-region study and must not be combined with its scores.
+Quantized dots is the deployment choice for the 6 GB GPU; formulas still need review.
 
 The current demo replaces the diary with four author-provided assignment photos.
 [Study methodology and results](../evaluation/author-handwritten-mathematics.md)

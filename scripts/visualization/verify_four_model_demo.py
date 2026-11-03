@@ -71,9 +71,20 @@ def main() -> None:
                     )
                     if visual_count:
                         expect(frame.locator(".gemma-output").first).to_be_attached()
-                        expect(
-                            frame.locator(".gemma-output .producer-badge").first
-                        ).to_contain_text("Gemma")
+                        for element in selected["json"].get("elements", []):
+                            description = element.get("description")
+                            if not description:
+                                continue
+                            provenance = description["provenance"]
+                            model = provenance.get("model_version") or provenance["producer"]
+                            producer = (
+                                "Gemma" if "gemma" in model.lower() else provenance["producer"]
+                            )
+                            expect(
+                                frame.locator(
+                                    f'.gemma-output[data-element="{element["id"]}"] .producer-badge'
+                                )
+                            ).to_contain_text(producer)
                     expect(page.locator("#page")).to_have_value(
                         str(case["original_pages"][number - 1])
                     )
@@ -86,6 +97,26 @@ def main() -> None:
                             status="passed",
                         )
                     )
+            page.goto(f"http://127.0.0.1:{server.server_port}/")
+            order = ["handwriting", "imf-pipeline", "irena-pipeline", "nasa-financial"]
+            expect(page.locator("#document-select")).to_have_value(order[0])
+            assert (
+                page.locator("#document-select option").evaluate_all(
+                    "options=>options.map(option=>option.value)"
+                )
+                == order
+            )
+            positions = {}
+            for case_id in order:
+                case = next(c for c in catalog["cases"] if c["id"] == case_id)
+                page.locator("#document-select").select_option(case_id, force=True)
+                expect(page.locator("#page")).to_have_value(str(case["original_pages"][0]))
+                page.locator("#next").click()
+                positions[case_id] = str(case["original_pages"][1])
+                expect(page.locator("#page")).to_have_value(positions[case_id])
+            for case_id in order:
+                page.locator("#document-select").select_option(case_id, force=True)
+                expect(page.locator("#page")).to_have_value(positions[case_id])
             page.set_viewport_size({"width": 390, "height": 844})
             assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
             assert not errors, errors
@@ -102,6 +133,9 @@ def main() -> None:
                 checked=checks,
                 unavailable=unavailable,
                 scope="local incomplete preview" if unavailable else "complete saved demo",
+                document_order=order,
+                first_visit_first_page=True,
+                per_document_page_memory=True,
                 mobile_width=390,
                 javascript_errors=errors,
                 inference_requests=0,

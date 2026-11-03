@@ -131,6 +131,17 @@ def test_showcase_two_models_failure_pages_formats_and_mobile(showcase_project):
             page.wait_for_function(
                 "document.getElementById('primary-selector-label').textContent==='Model'"
             )
+            page.wait_for_function("document.getElementById('page').value==='20'")
+            page.locator("#document-select").select_option("fixture-pipeline")
+            page.wait_for_function("document.getElementById('page').value==='10'")
+            page.locator("#next").click()
+            page.wait_for_function("document.getElementById('page').value==='20'")
+            page.locator("#document-select").select_option("fixture-public")
+            page.wait_for_function("document.getElementById('page').value==='20'")
+            page.locator("#previous").click()
+            page.wait_for_function("document.getElementById('page').value==='10'")
+            page.locator("#document-select").select_option("fixture-pipeline")
+            page.wait_for_function("document.getElementById('page').value==='20'")
             page.set_viewport_size(dict(width=390, height=844))
             assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
             assert not errors

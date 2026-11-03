@@ -1,6 +1,6 @@
 # Parsing pipeline
 
-**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](../evaluation/parser-model-selection.md).
+**Model choice:** dots.mocr is our preferred model family overall on the 70-page test corpus. Original BF16 offers the strongest overall balance; **Q4_K_M language + Q8_0 projector** is the production default for the **GTX 1660 Ti with 6 GB VRAM**. BF16 reached **8.53 GiB peak PyTorch allocation** on Colab T4. [Comparison, measured memory and limits](../evaluation/parser-model-selection.md).
 
 [Project overview](../../README.md) · [Parsing evaluation](../parsing-evaluation/README.md) ·
 [Secondary chunking/RAG](../chunking-and-rag/README.md)
@@ -8,11 +8,11 @@
 The pipeline turns a PDF into source-addressable document data and visual review
 reports. Its quality is evaluated separately from each raw parsing model.
 
-For handwritten mathematics PDFs, our tested **quantized dots.mocr** profile is
-the preferred comparison candidate: it recovered substantially more selected
-text/math checks on the four-page author-written assignment than the other two
-tested profiles. Formulas still require review. See the
-[handwriting findings and limits](../evaluation/author-handwritten-mathematics.md).
+Original BF16 dots is the preferred overall quality profile for this test corpus;
+quantized dots is the production choice for the smaller 6 GB GPU. Paddle remains
+stronger on some table-structure and row-association measurements. See the
+[70-page evaluation, ranking and limits](../evaluation/README.md). Formula review
+remains necessary.
 The deployed service defaults to quantized dots. Its container worker manages the CUDA server; native development can use an external dots endpoint.
 
 ## Processing flow

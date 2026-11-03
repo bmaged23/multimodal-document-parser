@@ -2,7 +2,9 @@
 
 import argparse
 import hashlib
+import importlib.util
 import json
+import shutil
 import zipfile
 from pathlib import Path
 
@@ -88,7 +90,8 @@ def validate_matrix() -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-directory", type=Path, required=True)
-    parser.add_argument("--version", default="5.0")
+    parser.add_argument("--version", default="5.1")
+    parser.add_argument("--evaluation-directory", type=Path)
     args = parser.parse_args()
     coverage = validate_matrix()
     output = args.output_directory.resolve()
@@ -102,8 +105,46 @@ def main() -> None:
     path = output / "public-selection.json"
     path.write_text(json.dumps(selection, indent=2) + "\n")
     public = build_public_demo(
-        full, output / "public-demo", path, evidence_directory=ROOT / "evaluation/results"
-    )
+        full.parent, output / "public-demo", path, evidence_directory=ROOT / "evaluation/results"
+    ).parent
+    if args.evaluation_directory:
+        evaluation = public / "evaluation"
+        evaluation.mkdir()
+        # Publish metrics only; source transcriptions and expected/actual traces stay private.
+        for name in ["metrics.json", "page-metrics.json", "excluded-references.json"]:
+            shutil.copy2(args.evaluation_directory / name, evaluation / name)
+        spec = importlib.util.spec_from_file_location(
+            "manual_reference_report",
+            ROOT / "scripts/visualization/build_manual_reference_report.py",
+        )
+        report = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(report)
+        report.build(evaluation, demo_directory=public)
+        index = public / "index.html"
+        html = index.read_text().replace(
+            '<p id="model-choice" hidden>',
+            '<p><a id="evaluation-report-link" href="evaluation/" '
+            'style="font-size:13px;font-weight:650">'
+            "70-page evaluation · ranking and metrics ↗</a></p>"
+            '<p id="model-choice" hidden>',
+            1,
+        )
+        index.write_text(html)
+        manifest_path = public / "build-manifest.json"
+        manifest = json.loads(manifest_path.read_text())
+        manifest["evaluation"] = dict(
+            reference_pages=70,
+            page_profile_slots=280,
+            scope="Assistant source-reference development study; qualitative overall ranking",
+            private_reference_transcriptions_included=False,
+            private_failure_traces_included=False,
+        )
+        manifest["artifacts"] = {
+            item.relative_to(public).as_posix(): hashlib.sha256(item.read_bytes()).hexdigest()
+            for item in public.rglob("*")
+            if item.is_file() and item != manifest_path
+        }
+        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
     archive = output / f"public-demo-v{args.version}.zip"
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipped:
         for item in sorted(public.rglob("*")):

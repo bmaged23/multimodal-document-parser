@@ -1,12 +1,13 @@
 # Project documentation
 
-**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](evaluation/parser-model-selection.md).
+**Model choice:** dots.mocr is our preferred model family overall on the 70-page test corpus. Original BF16 offers the strongest overall balance; **Q4_K_M language + Q8_0 projector** is the production default for the **GTX 1660 Ti with 6 GB VRAM**. BF16 reached **8.53 GiB peak PyTorch allocation** on Colab T4. [Comparison, measured memory and limits](evaluation/parser-model-selection.md).
 
 Start with the [main README](../README.md) for visual examples and comparison
 results. The documentation below follows the project's priorities.
 
 | Guide | Purpose | Priority |
 | --- | --- | --- |
+| [70-page evaluation methodology and report](evaluation/README.md) | Source references, metric definitions, ranking and saved results | Primary |
 | [Parsing evaluation and model comparison](parsing-evaluation/README.md) | Models, cases, metrics, results, failures and reproducibility | Primary |
 | [Parsing pipeline](parsing-pipeline/README.md) | Preparation, OCR, normalization, visual enrichment, exports and review | Primary |
 | [Chunking, retrieval and RAG](chunking-and-rag/README.md) | Downstream approaches, completed comparison, agent and judge limitations | Secondary |
@@ -17,7 +18,7 @@ presented as one undifferentiated benchmark.
 
 - [Live saved-output demo](https://bmaged23.github.io/multimodal-document-parser/)
 - [Four-model demo design, attribution and reproduction](demo/README.md)
-- [Hosted demo verification](../evaluation/results/public-demo-validation-v4.1.json)
+- [Hosted demo verification](../evaluation/results/public-demo-validation-v5.1.json)
 - [Interactive explorer and local reproduction](development/evaluation-showcase.md)
 - [Unlimited-OCR 2 GPU evaluation](evaluation/unlimited-ocr-2-gpu-results.md)
 - [API setup and request examples](api/README.md)

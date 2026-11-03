@@ -6,12 +6,14 @@
 The GPU parsing pipeline combines quantized dots.mocr (Q4_K_M language + Q8_0 projector) with optional chart/image
 interpretation through Gemma on Ollama Cloud.
 
-**Why quantized dots?** It is our default for the 6 GB laptop. Original BF16 dots
-scored best on selected handwritten mathematics (32/37 vs Q4 29/37), but peaked
-at **8.53 GiB PyTorch-allocated GPU memory** on Colab T4. It is not the winner
-in every category; printed-text recovery is essentially tied.
+**Why quantized dots?** dots.mocr is our preferred model family overall on the
+70-page test corpus, with original BF16 offering the strongest balance. The
+production Q4/Q8 configuration runs on the tested 6 GB GPU; BF16 reached
+**8.53 GiB peak PyTorch allocation** on Colab T4. Paddle leads some table checks.
+[Ranking, methodology and measured metrics](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/evaluation/README.md).
 
-[![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=4.1)
+
+[![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.1)
 
 [Source and evaluation](https://github.com/bmaged23/multimodal-document-parser) ·
 [Complete Docker setup](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/docker/README.md) ·

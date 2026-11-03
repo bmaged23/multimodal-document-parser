@@ -1,0 +1,1259 @@
+{
+  "version": "manual-reference-ocr-development-evaluation-v1",
+  "reference_sha256": "f44e38d0d703b9464d90f7b5019eb277022a05a4c6070b99bfb043c4328bab3d",
+  "scorer_sha256": "f380ca99452de9ffba3938d6b2c633831be7aa4d7bc3d15903c2b93c442768ce",
+  "reference_provenance": "Existing eight-page references retained; new pages manually transcribed from rendered source. PDFium used only for rendering new pages. No PyMuPDF or OCR predictions used.",
+  "reference_pages": 70,
+  "page_slots": 280,
+  "summary": {
+    "paddle": {
+      "text": {
+        "reference_characters": 131108,
+        "page_order_character_edits": 15940,
+        "character_edits": 4750,
+        "reference_words": 19639,
+        "page_order_word_edits": 4538,
+        "word_edits": 990,
+        "token_reference": 19639,
+        "token_prediction": 22682,
+        "token_matched": 19166,
+        "character_error_rate": 0.036229673246483816,
+        "word_error_rate": 0.05040989867101176,
+        "token_f1": 0.905744193190142,
+        "page_macro_character_error_rate": 0.05668451774241707
+      },
+      "table": {
+        "reference_cells": 5246,
+        "reference_tables": 29,
+        "matched_tables": 21,
+        "exact_cells": 4383,
+        "span_attributes": 10492,
+        "span_matches": 9478,
+        "header_matches": 4562,
+        "reference_keyed_rows": 730,
+        "keyed_row_matches": 632,
+        "content_reference": 4892,
+        "content_prediction": 4745,
+        "content_matched": 4414,
+        "strict_cell_text_match": 0.835493709492947,
+        "nonunique_reference_rows_excluded": 6,
+        "cell_text_multiset_f1": 0.9160527135000519,
+        "keyed_row_value_match": 0.8657534246575342,
+        "span_match": 0.9033549370949294,
+        "header_role_match": 0.8696149447197865,
+        "page_macro_strict_cell_text_match": 0.7603829584489257
+      },
+      "visual": {
+        "reference_regions": 48,
+        "matched_regions": 39,
+        "iou_sum": 36.7605525946119,
+        "region_recall_at_iou_0_5": 0.8125,
+        "matched_mean_iou": 0.9425782716567154,
+        "page_macro_region_recall_at_iou_0_5": 0.8951612903225806
+      },
+      "chart": {
+        "reference_values": 144,
+        "matched_values": 0,
+        "printed_numeric_token_recall": 0.0
+      },
+      "heading": {
+        "reference_headings": 96,
+        "matched_headings": 74,
+        "heading_detection_recall": 0.7708333333333334
+      },
+      "order": {
+        "eligible_pairs": 2930,
+        "correct_pairs": 2883,
+        "matched_block_pair_order": 0.9839590443686007
+      },
+      "page_slots": 70,
+      "native_present": 70,
+      "structured_native_pages": 70
+    },
+    "dots": {
+      "text": {
+        "reference_characters": 131108,
+        "page_order_character_edits": 5103,
+        "character_edits": 875,
+        "reference_words": 19639,
+        "page_order_word_edits": 1086,
+        "word_edits": 397,
+        "token_reference": 19639,
+        "token_prediction": 19702,
+        "token_matched": 19284,
+        "character_error_rate": 0.006673887176983861,
+        "word_error_rate": 0.020214878557971383,
+        "token_f1": 0.9803512874609186,
+        "page_macro_character_error_rate": 0.02626797506178443
+      },
+      "table": {
+        "reference_cells": 5246,
+        "reference_tables": 29,
+        "matched_tables": 23,
+        "exact_cells": 4322,
+        "span_attributes": 10492,
+        "span_matches": 9565,
+        "header_matches": 4783,
+        "reference_keyed_rows": 730,
+        "keyed_row_matches": 526,
+        "content_reference": 4892,
+        "content_prediction": 4931,
+        "content_matched": 4438,
+        "strict_cell_text_match": 0.8238658025162028,
+        "nonunique_reference_rows_excluded": 6,
+        "cell_text_multiset_f1": 0.9035936068410872,
+        "keyed_row_value_match": 0.7205479452054795,
+        "span_match": 0.911646969119329,
+        "header_role_match": 0.9117422798322532,
+        "page_macro_strict_cell_text_match": 0.75645401066238
+      },
+      "visual": {
+        "reference_regions": 48,
+        "matched_regions": 41,
+        "iou_sum": 38.20289520810134,
+        "region_recall_at_iou_0_5": 0.8541666666666666,
+        "matched_mean_iou": 0.9317779319049107,
+        "page_macro_region_recall_at_iou_0_5": 0.946236559139785
+      },
+      "chart": {
+        "reference_values": 144,
+        "matched_values": 0,
+        "printed_numeric_token_recall": 0.0
+      },
+      "heading": {
+        "reference_headings": 96,
+        "matched_headings": 4,
+        "heading_detection_recall": 0.041666666666666664
+      },
+      "order": {
+        "eligible_pairs": 3253,
+        "correct_pairs": 3181,
+        "matched_block_pair_order": 0.9778665846910544
+      },
+      "page_slots": 70,
+      "native_present": 70,
+      "structured_native_pages": 70
+    },
+    "bf16": {
+      "text": {
+        "reference_characters": 131108,
+        "page_order_character_edits": 5262,
+        "character_edits": 941,
+        "reference_words": 19639,
+        "page_order_word_edits": 1160,
+        "word_edits": 470,
+        "token_reference": 19639,
+        "token_prediction": 19713,
+        "token_matched": 19218,
+        "character_error_rate": 0.007177288952619215,
+        "word_error_rate": 0.02393197209633892,
+        "token_f1": 0.976722911160805,
+        "page_macro_character_error_rate": 0.02677981874754176
+      },
+      "table": {
+        "reference_cells": 5246,
+        "reference_tables": 29,
+        "matched_tables": 23,
+        "exact_cells": 4190,
+        "span_attributes": 10492,
+        "span_matches": 9328,
+        "header_matches": 4665,
+        "reference_keyed_rows": 730,
+        "keyed_row_matches": 591,
+        "content_reference": 4892,
+        "content_prediction": 4779,
+        "content_matched": 4376,
+        "strict_cell_text_match": 0.7987037743042318,
+        "nonunique_reference_rows_excluded": 6,
+        "cell_text_multiset_f1": 0.9049736325095646,
+        "keyed_row_value_match": 0.8095890410958904,
+        "span_match": 0.8890583301563095,
+        "header_role_match": 0.8892489515821579,
+        "page_macro_strict_cell_text_match": 0.7123061884601367
+      },
+      "visual": {
+        "reference_regions": 48,
+        "matched_regions": 44,
+        "iou_sum": 40.79859346077549,
+        "region_recall_at_iou_0_5": 0.9166666666666666,
+        "matched_mean_iou": 0.9272407604721703,
+        "page_macro_region_recall_at_iou_0_5": 0.9354838709677419
+      },
+      "chart": {
+        "reference_values": 144,
+        "matched_values": 0,
+        "printed_numeric_token_recall": 0.0
+      },
+      "heading": {
+        "reference_headings": 96,
+        "matched_headings": 3,
+        "heading_detection_recall": 0.03125
+      },
+      "order": {
+        "eligible_pairs": 3258,
+        "correct_pairs": 3185,
+        "matched_block_pair_order": 0.9775936157151627
+      },
+      "page_slots": 70,
+      "native_present": 70,
+      "structured_native_pages": 70
+    },
+    "unlimited": {
+      "text": {
+        "reference_characters": 131108,
+        "page_order_character_edits": 6705,
+        "character_edits": 4190,
+        "reference_words": 19639,
+        "page_order_word_edits": 1173,
+        "word_edits": 812,
+        "token_reference": 19639,
+        "token_prediction": 19418,
+        "token_matched": 19159,
+        "character_error_rate": 0.031958385453214146,
+        "word_error_rate": 0.04134630072814298,
+        "token_f1": 0.9810789359141767,
+        "page_macro_character_error_rate": 0.06483870430457316
+      },
+      "table": {
+        "reference_cells": 5246,
+        "reference_tables": 29,
+        "matched_tables": 21,
+        "exact_cells": 4464,
+        "span_attributes": 10492,
+        "span_matches": 9483,
+        "header_matches": 4574,
+        "reference_keyed_rows": 730,
+        "keyed_row_matches": 406,
+        "content_reference": 4892,
+        "content_prediction": 4737,
+        "content_matched": 4214,
+        "strict_cell_text_match": 0.8509340449866565,
+        "nonunique_reference_rows_excluded": 6,
+        "cell_text_multiset_f1": 0.8752726139786063,
+        "keyed_row_value_match": 0.5561643835616439,
+        "span_match": 0.9038314906595502,
+        "header_role_match": 0.8719024018299657,
+        "page_macro_strict_cell_text_match": 0.7785469573794509
+      },
+      "visual": {
+        "reference_regions": 48,
+        "matched_regions": 41,
+        "iou_sum": 37.93437286140751,
+        "region_recall_at_iou_0_5": 0.8541666666666666,
+        "matched_mean_iou": 0.925228606375793,
+        "page_macro_region_recall_at_iou_0_5": 0.8870967741935484
+      },
+      "chart": {
+        "reference_values": 144,
+        "matched_values": 0,
+        "printed_numeric_token_recall": 0.0
+      },
+      "heading": {
+        "reference_headings": 96,
+        "matched_headings": 61,
+        "heading_detection_recall": 0.6354166666666666
+      },
+      "order": {
+        "eligible_pairs": 3115,
+        "correct_pairs": 3070,
+        "matched_block_pair_order": 0.985553772070626
+      },
+      "page_slots": 70,
+      "native_present": 68,
+      "structured_native_pages": 68
+    }
+  },
+  "per_pdf": {
+    "nasa": {
+      "paddle": {
+        "text": {
+          "reference_characters": 37780,
+          "page_order_character_edits": 2184,
+          "character_edits": 1178,
+          "reference_words": 5672,
+          "page_order_word_edits": 388,
+          "word_edits": 241,
+          "token_reference": 5672,
+          "token_prediction": 5637,
+          "token_matched": 5528,
+          "character_error_rate": 0.031180518793012174,
+          "word_error_rate": 0.04248942172073343,
+          "token_f1": 0.9776284375276328,
+          "page_macro_character_error_rate": 0.03571544190765668
+        },
+        "table": {
+          "reference_cells": 198,
+          "reference_tables": 7,
+          "matched_tables": 1,
+          "exact_cells": 1,
+          "span_attributes": 396,
+          "span_matches": 73,
+          "header_matches": 33,
+          "reference_keyed_rows": 79,
+          "keyed_row_matches": 12,
+          "content_reference": 197,
+          "content_prediction": 48,
+          "content_matched": 33,
+          "strict_cell_text_match": 0.005050505050505051,
+          "cell_text_multiset_f1": 0.2693877551020408,
+          "keyed_row_value_match": 0.1518987341772152,
+          "span_match": 0.18434343434343434,
+          "header_role_match": 0.16666666666666666,
+          "page_macro_strict_cell_text_match": 0.005208333333333333
+        },
+        "visual": {
+          "reference_regions": 27,
+          "matched_regions": 22,
+          "iou_sum": 20.81932055914309,
+          "region_recall_at_iou_0_5": 0.8148148148148148,
+          "matched_mean_iou": 0.9463327526883223,
+          "page_macro_region_recall_at_iou_0_5": 0.8970588235294118
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 37,
+          "matched_headings": 24,
+          "heading_detection_recall": 0.6486486486486487
+        },
+        "order": {
+          "eligible_pairs": 795,
+          "correct_pairs": 770,
+          "matched_block_pair_order": 0.9685534591194969
+        },
+        "page_slots": 20,
+        "native_present": 20,
+        "structured_native_pages": 20
+      },
+      "dots": {
+        "text": {
+          "reference_characters": 37780,
+          "page_order_character_edits": 552,
+          "character_edits": 187,
+          "reference_words": 5672,
+          "page_order_word_edits": 144,
+          "word_edits": 88,
+          "token_reference": 5672,
+          "token_prediction": 5630,
+          "token_matched": 5590,
+          "character_error_rate": 0.004949708840656432,
+          "word_error_rate": 0.015514809590973202,
+          "token_f1": 0.9892054503627676,
+          "page_macro_character_error_rate": 0.008496243676177025
+        },
+        "table": {
+          "reference_cells": 198,
+          "reference_tables": 7,
+          "matched_tables": 3,
+          "exact_cells": 0,
+          "span_attributes": 396,
+          "span_matches": 191,
+          "header_matches": 98,
+          "reference_keyed_rows": 79,
+          "keyed_row_matches": 63,
+          "content_reference": 197,
+          "content_prediction": 114,
+          "content_matched": 93,
+          "strict_cell_text_match": 0.0,
+          "cell_text_multiset_f1": 0.5980707395498392,
+          "keyed_row_value_match": 0.7974683544303798,
+          "span_match": 0.4823232323232323,
+          "header_role_match": 0.494949494949495,
+          "page_macro_strict_cell_text_match": 0.0
+        },
+        "visual": {
+          "reference_regions": 27,
+          "matched_regions": 24,
+          "iou_sum": 21.79810290442879,
+          "region_recall_at_iou_0_5": 0.8888888888888888,
+          "matched_mean_iou": 0.908254287684533,
+          "page_macro_region_recall_at_iou_0_5": 0.9411764705882353
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 37,
+          "matched_headings": 1,
+          "heading_detection_recall": 0.02702702702702703
+        },
+        "order": {
+          "eligible_pairs": 775,
+          "correct_pairs": 771,
+          "matched_block_pair_order": 0.9948387096774194
+        },
+        "page_slots": 20,
+        "native_present": 20,
+        "structured_native_pages": 20
+      },
+      "bf16": {
+        "text": {
+          "reference_characters": 37780,
+          "page_order_character_edits": 549,
+          "character_edits": 180,
+          "reference_words": 5672,
+          "page_order_word_edits": 138,
+          "word_edits": 81,
+          "token_reference": 5672,
+          "token_prediction": 5630,
+          "token_matched": 5596,
+          "character_error_rate": 0.004764425622022234,
+          "word_error_rate": 0.014280677009873061,
+          "token_f1": 0.990267209343479,
+          "page_macro_character_error_rate": 0.008337835422350498
+        },
+        "table": {
+          "reference_cells": 198,
+          "reference_tables": 7,
+          "matched_tables": 3,
+          "exact_cells": 0,
+          "span_attributes": 396,
+          "span_matches": 191,
+          "header_matches": 98,
+          "reference_keyed_rows": 79,
+          "keyed_row_matches": 63,
+          "content_reference": 197,
+          "content_prediction": 114,
+          "content_matched": 93,
+          "strict_cell_text_match": 0.0,
+          "cell_text_multiset_f1": 0.5980707395498392,
+          "keyed_row_value_match": 0.7974683544303798,
+          "span_match": 0.4823232323232323,
+          "header_role_match": 0.494949494949495,
+          "page_macro_strict_cell_text_match": 0.0
+        },
+        "visual": {
+          "reference_regions": 27,
+          "matched_regions": 23,
+          "iou_sum": 20.695338954201024,
+          "region_recall_at_iou_0_5": 0.8518518518518519,
+          "matched_mean_iou": 0.8997973458348271,
+          "page_macro_region_recall_at_iou_0_5": 0.8823529411764706
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 37,
+          "matched_headings": 1,
+          "heading_detection_recall": 0.02702702702702703
+        },
+        "order": {
+          "eligible_pairs": 775,
+          "correct_pairs": 771,
+          "matched_block_pair_order": 0.9948387096774194
+        },
+        "page_slots": 20,
+        "native_present": 20,
+        "structured_native_pages": 20
+      },
+      "unlimited": {
+        "text": {
+          "reference_characters": 37780,
+          "page_order_character_edits": 2316,
+          "character_edits": 1041,
+          "reference_words": 5672,
+          "page_order_word_edits": 372,
+          "word_edits": 188,
+          "token_reference": 5672,
+          "token_prediction": 5599,
+          "token_matched": 5520,
+          "character_error_rate": 0.027554261514028587,
+          "word_error_rate": 0.03314527503526093,
+          "token_f1": 0.9795049241416024,
+          "page_macro_character_error_rate": 0.05116223358226173
+        },
+        "table": {
+          "reference_cells": 198,
+          "reference_tables": 7,
+          "matched_tables": 1,
+          "exact_cells": 0,
+          "span_attributes": 396,
+          "span_matches": 76,
+          "header_matches": 35,
+          "reference_keyed_rows": 79,
+          "keyed_row_matches": 12,
+          "content_reference": 197,
+          "content_prediction": 48,
+          "content_matched": 33,
+          "strict_cell_text_match": 0.0,
+          "cell_text_multiset_f1": 0.2693877551020408,
+          "keyed_row_value_match": 0.1518987341772152,
+          "span_match": 0.1919191919191919,
+          "header_role_match": 0.17676767676767677,
+          "page_macro_strict_cell_text_match": 0.0
+        },
+        "visual": {
+          "reference_regions": 27,
+          "matched_regions": 21,
+          "iou_sum": 19.170189090612844,
+          "region_recall_at_iou_0_5": 0.7777777777777778,
+          "matched_mean_iou": 0.9128661471720402,
+          "page_macro_region_recall_at_iou_0_5": 0.8529411764705882
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 37,
+          "matched_headings": 25,
+          "heading_detection_recall": 0.6756756756756757
+        },
+        "order": {
+          "eligible_pairs": 829,
+          "correct_pairs": 804,
+          "matched_block_pair_order": 0.9698431845597105
+        },
+        "page_slots": 20,
+        "native_present": 20,
+        "structured_native_pages": 20
+      }
+    },
+    "math": {
+      "paddle": {
+        "text": {
+          "reference_characters": 1231,
+          "page_order_character_edits": 8951,
+          "character_edits": 637,
+          "reference_words": 238,
+          "page_order_word_edits": 3207,
+          "word_edits": 163,
+          "token_reference": 238,
+          "token_prediction": 3234,
+          "token_matched": 84,
+          "character_error_rate": 0.5174654752233956,
+          "word_error_rate": 0.6848739495798319,
+          "token_f1": 0.04838709677419355,
+          "page_macro_character_error_rate": 0.5137672215920043
+        },
+        "table": {
+          "reference_cells": 25,
+          "reference_tables": 1,
+          "matched_tables": 1,
+          "exact_cells": 22,
+          "span_attributes": 50,
+          "span_matches": 50,
+          "header_matches": 20,
+          "nonunique_reference_rows_excluded": 4,
+          "content_reference": 25,
+          "content_prediction": 25,
+          "content_matched": 22,
+          "strict_cell_text_match": 0.88,
+          "cell_text_multiset_f1": 0.88,
+          "keyed_row_value_match": null,
+          "span_match": 1.0,
+          "header_role_match": 0.8,
+          "page_macro_strict_cell_text_match": 0.88
+        },
+        "visual": {
+          "reference_regions": 6,
+          "matched_regions": 3,
+          "iou_sum": 2.2860163295463116,
+          "region_recall_at_iou_0_5": 0.5,
+          "matched_mean_iou": 0.7620054431821038,
+          "page_macro_region_recall_at_iou_0_5": 0.5
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 2,
+          "matched_headings": 0,
+          "heading_detection_recall": 0.0
+        },
+        "order": {
+          "eligible_pairs": 31,
+          "correct_pairs": 31,
+          "matched_block_pair_order": 1.0
+        },
+        "page_slots": 4,
+        "native_present": 4,
+        "structured_native_pages": 4
+      },
+      "dots": {
+        "text": {
+          "reference_characters": 1231,
+          "page_order_character_edits": 1050,
+          "character_edits": 391,
+          "reference_words": 238,
+          "page_order_word_edits": 283,
+          "word_edits": 120,
+          "token_reference": 238,
+          "token_prediction": 408,
+          "token_matched": 141,
+          "character_error_rate": 0.31762794476035744,
+          "word_error_rate": 0.5042016806722689,
+          "token_f1": 0.43653250773993807,
+          "page_macro_character_error_rate": 0.29646839149034643
+        },
+        "table": {
+          "reference_cells": 25,
+          "reference_tables": 1,
+          "matched_tables": 1,
+          "exact_cells": 24,
+          "span_attributes": 50,
+          "span_matches": 50,
+          "header_matches": 25,
+          "nonunique_reference_rows_excluded": 4,
+          "content_reference": 25,
+          "content_prediction": 25,
+          "content_matched": 24,
+          "strict_cell_text_match": 0.96,
+          "cell_text_multiset_f1": 0.96,
+          "keyed_row_value_match": null,
+          "span_match": 1.0,
+          "header_role_match": 1.0,
+          "page_macro_strict_cell_text_match": 0.96
+        },
+        "visual": {
+          "reference_regions": 6,
+          "matched_regions": 2,
+          "iou_sum": 1.8029168328893364,
+          "region_recall_at_iou_0_5": 0.3333333333333333,
+          "matched_mean_iou": 0.9014584164446682,
+          "page_macro_region_recall_at_iou_0_5": 0.3333333333333333
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 2,
+          "matched_headings": 0,
+          "heading_detection_recall": 0.0
+        },
+        "order": {
+          "eligible_pairs": 63,
+          "correct_pairs": 63,
+          "matched_block_pair_order": 1.0
+        },
+        "page_slots": 4,
+        "native_present": 4,
+        "structured_native_pages": 4
+      },
+      "bf16": {
+        "text": {
+          "reference_characters": 1231,
+          "page_order_character_edits": 1040,
+          "character_edits": 408,
+          "reference_words": 238,
+          "page_order_word_edits": 289,
+          "word_edits": 130,
+          "token_reference": 238,
+          "token_prediction": 415,
+          "token_matched": 139,
+          "character_error_rate": 0.3314378554021121,
+          "word_error_rate": 0.5462184873949579,
+          "token_f1": 0.42572741194486985,
+          "page_macro_character_error_rate": 0.3054546930119068
+        },
+        "table": {
+          "reference_cells": 25,
+          "reference_tables": 1,
+          "matched_tables": 1,
+          "exact_cells": 24,
+          "span_attributes": 50,
+          "span_matches": 50,
+          "header_matches": 25,
+          "nonunique_reference_rows_excluded": 4,
+          "content_reference": 25,
+          "content_prediction": 25,
+          "content_matched": 24,
+          "strict_cell_text_match": 0.96,
+          "cell_text_multiset_f1": 0.96,
+          "keyed_row_value_match": null,
+          "span_match": 1.0,
+          "header_role_match": 1.0,
+          "page_macro_strict_cell_text_match": 0.96
+        },
+        "visual": {
+          "reference_regions": 6,
+          "matched_regions": 6,
+          "iou_sum": 5.513113453181994,
+          "region_recall_at_iou_0_5": 1.0,
+          "matched_mean_iou": 0.918852242196999,
+          "page_macro_region_recall_at_iou_0_5": 1.0
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 2,
+          "matched_headings": 0,
+          "heading_detection_recall": 0.0
+        },
+        "order": {
+          "eligible_pairs": 79,
+          "correct_pairs": 79,
+          "matched_block_pair_order": 1.0
+        },
+        "page_slots": 4,
+        "native_present": 4,
+        "structured_native_pages": 4
+      },
+      "unlimited": {
+        "text": {
+          "reference_characters": 1231,
+          "page_order_character_edits": 809,
+          "character_edits": 716,
+          "reference_words": 238,
+          "page_order_word_edits": 177,
+          "word_edits": 159,
+          "token_reference": 238,
+          "token_prediction": 158,
+          "token_matched": 85,
+          "character_error_rate": 0.5816409423233144,
+          "word_error_rate": 0.6680672268907563,
+          "token_f1": 0.4292929292929293,
+          "page_macro_character_error_rate": 0.5979851430872843
+        },
+        "table": {
+          "reference_cells": 25,
+          "reference_tables": 1,
+          "matched_tables": 1,
+          "exact_cells": 24,
+          "span_attributes": 50,
+          "span_matches": 50,
+          "header_matches": 20,
+          "nonunique_reference_rows_excluded": 4,
+          "content_reference": 25,
+          "content_prediction": 25,
+          "content_matched": 24,
+          "strict_cell_text_match": 0.96,
+          "cell_text_multiset_f1": 0.96,
+          "keyed_row_value_match": null,
+          "span_match": 1.0,
+          "header_role_match": 0.8,
+          "page_macro_strict_cell_text_match": 0.96
+        },
+        "visual": {
+          "reference_regions": 6,
+          "matched_regions": 6,
+          "iou_sum": 5.112457814953061,
+          "region_recall_at_iou_0_5": 1.0,
+          "matched_mean_iou": 0.8520763024921768,
+          "page_macro_region_recall_at_iou_0_5": 1.0
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 2,
+          "matched_headings": 0,
+          "heading_detection_recall": 0.0
+        },
+        "order": {
+          "eligible_pairs": 48,
+          "correct_pairs": 48,
+          "matched_block_pair_order": 1.0
+        },
+        "page_slots": 4,
+        "native_present": 2,
+        "structured_native_pages": 2
+      }
+    },
+    "irena": {
+      "paddle": {
+        "text": {
+          "reference_characters": 42746,
+          "page_order_character_edits": 391,
+          "character_edits": 277,
+          "reference_words": 6294,
+          "page_order_word_edits": 149,
+          "word_edits": 105,
+          "token_reference": 6294,
+          "token_prediction": 6345,
+          "token_matched": 6222,
+          "character_error_rate": 0.006480138492490526,
+          "word_error_rate": 0.016682554814108675,
+          "token_f1": 0.984571564206029,
+          "page_macro_character_error_rate": 0.007890373107362986
+        },
+        "table": {
+          "reference_cells": 106,
+          "reference_tables": 2,
+          "matched_tables": 2,
+          "exact_cells": 106,
+          "span_attributes": 212,
+          "span_matches": 212,
+          "header_matches": 82,
+          "reference_keyed_rows": 10,
+          "keyed_row_matches": 10,
+          "content_reference": 104,
+          "content_prediction": 104,
+          "content_matched": 104,
+          "strict_cell_text_match": 1.0,
+          "cell_text_multiset_f1": 1.0,
+          "keyed_row_value_match": 1.0,
+          "span_match": 1.0,
+          "header_role_match": 0.7735849056603774,
+          "page_macro_strict_cell_text_match": 1.0
+        },
+        "visual": {
+          "reference_regions": 15,
+          "matched_regions": 14,
+          "iou_sum": 13.655215705922503,
+          "region_recall_at_iou_0_5": 0.9333333333333333,
+          "matched_mean_iou": 0.9753725504230359,
+          "page_macro_region_recall_at_iou_0_5": 0.9230769230769231
+        },
+        "chart": {
+          "reference_values": 144,
+          "matched_values": 0,
+          "printed_numeric_token_recall": 0.0
+        },
+        "heading": {
+          "reference_headings": 24,
+          "matched_headings": 24,
+          "heading_detection_recall": 1.0
+        },
+        "order": {
+          "eligible_pairs": 602,
+          "correct_pairs": 602,
+          "matched_block_pair_order": 1.0
+        },
+        "page_slots": 20,
+        "native_present": 20,
+        "structured_native_pages": 20
+      },
+      "dots": {
+        "text": {
+          "reference_characters": 42746,
+          "page_order_character_edits": 105,
+          "character_edits": 102,
+          "reference_words": 6294,
+          "page_order_word_edits": 49,
+          "word_edits": 49,
+          "token_reference": 6294,
+          "token_prediction": 6280,
+          "token_matched": 6246,
+          "character_error_rate": 0.002386188181350302,
+          "word_error_rate": 0.007785192246584048,
+          "token_f1": 0.9934786066486401,
+          "page_macro_character_error_rate": 0.0028667914143530424
+        },
+        "table": {
+          "reference_cells": 106,
+          "reference_tables": 2,
+          "matched_tables": 2,
+          "exact_cells": 106,
+          "span_attributes": 212,
+          "span_matches": 212,
+          "header_matches": 103,
+          "reference_keyed_rows": 10,
+          "keyed_row_matches": 10,
+          "content_reference": 104,
+          "content_prediction": 104,
+          "content_matched": 104,
+          "strict_cell_text_match": 1.0,
+          "cell_text_multiset_f1": 1.0,
+          "keyed_row_value_match": 1.0,
+          "span_match": 1.0,
+          "header_role_match": 0.9716981132075472,
+          "page_macro_strict_cell_text_match": 1.0
+        },
+        "visual": {
+          "reference_regions": 15,
+          "matched_regions": 15,
+          "iou_sum": 14.60187547078322,
+          "region_recall_at_iou_0_5": 1.0,
+          "matched_mean_iou": 0.9734583647188814,
+          "page_macro_region_recall_at_iou_0_5": 1.0
+        },
+        "chart": {
+          "reference_values": 144,
+          "matched_values": 0,
+          "printed_numeric_token_recall": 0.0
+        },
+        "heading": {
+          "reference_headings": 24,
+          "matched_headings": 1,
+          "heading_detection_recall": 0.041666666666666664
+        },
+        "order": {
+          "eligible_pairs": 619,
+          "correct_pairs": 619,
+          "matched_block_pair_order": 1.0
+        },
+        "page_slots": 20,
+        "native_present": 20,
+        "structured_native_pages": 20
+      },
+      "bf16": {
+        "text": {
+          "reference_characters": 42746,
+          "page_order_character_edits": 72,
+          "character_edits": 70,
+          "reference_words": 6294,
+          "page_order_word_edits": 46,
+          "word_edits": 46,
+          "token_reference": 6294,
+          "token_prediction": 6283,
+          "token_matched": 6249,
+          "character_error_rate": 0.0016375801244560896,
+          "word_error_rate": 0.0073085478233238,
+          "token_f1": 0.9937186928520315,
+          "page_macro_character_error_rate": 0.0013770335000141223
+        },
+        "table": {
+          "reference_cells": 106,
+          "reference_tables": 2,
+          "matched_tables": 2,
+          "exact_cells": 106,
+          "span_attributes": 212,
+          "span_matches": 212,
+          "header_matches": 103,
+          "reference_keyed_rows": 10,
+          "keyed_row_matches": 10,
+          "content_reference": 104,
+          "content_prediction": 104,
+          "content_matched": 104,
+          "strict_cell_text_match": 1.0,
+          "cell_text_multiset_f1": 1.0,
+          "keyed_row_value_match": 1.0,
+          "span_match": 1.0,
+          "header_role_match": 0.9716981132075472,
+          "page_macro_strict_cell_text_match": 1.0
+        },
+        "visual": {
+          "reference_regions": 15,
+          "matched_regions": 15,
+          "iou_sum": 14.59014105339247,
+          "region_recall_at_iou_0_5": 1.0,
+          "matched_mean_iou": 0.9726760702261646,
+          "page_macro_region_recall_at_iou_0_5": 1.0
+        },
+        "chart": {
+          "reference_values": 144,
+          "matched_values": 0,
+          "printed_numeric_token_recall": 0.0
+        },
+        "heading": {
+          "reference_headings": 24,
+          "matched_headings": 0,
+          "heading_detection_recall": 0.0
+        },
+        "order": {
+          "eligible_pairs": 632,
+          "correct_pairs": 632,
+          "matched_block_pair_order": 1.0
+        },
+        "page_slots": 20,
+        "native_present": 20,
+        "structured_native_pages": 20
+      },
+      "unlimited": {
+        "text": {
+          "reference_characters": 42746,
+          "page_order_character_edits": 399,
+          "character_edits": 325,
+          "reference_words": 6294,
+          "page_order_word_edits": 78,
+          "word_edits": 78,
+          "token_reference": 6294,
+          "token_prediction": 6271,
+          "token_matched": 6218,
+          "character_error_rate": 0.007603050577831844,
+          "word_error_rate": 0.012392755004766444,
+          "token_f1": 0.989733386390768,
+          "page_macro_character_error_rate": 0.010959400919565005
+        },
+        "table": {
+          "reference_cells": 106,
+          "reference_tables": 2,
+          "matched_tables": 2,
+          "exact_cells": 106,
+          "span_attributes": 212,
+          "span_matches": 212,
+          "header_matches": 82,
+          "reference_keyed_rows": 10,
+          "keyed_row_matches": 10,
+          "content_reference": 104,
+          "content_prediction": 104,
+          "content_matched": 104,
+          "strict_cell_text_match": 1.0,
+          "cell_text_multiset_f1": 1.0,
+          "keyed_row_value_match": 1.0,
+          "span_match": 1.0,
+          "header_role_match": 0.7735849056603774,
+          "page_macro_strict_cell_text_match": 1.0
+        },
+        "visual": {
+          "reference_regions": 15,
+          "matched_regions": 14,
+          "iou_sum": 13.65172595584159,
+          "region_recall_at_iou_0_5": 0.9333333333333333,
+          "matched_mean_iou": 0.9751232825601136,
+          "page_macro_region_recall_at_iou_0_5": 0.9230769230769231
+        },
+        "chart": {
+          "reference_values": 144,
+          "matched_values": 0,
+          "printed_numeric_token_recall": 0.0
+        },
+        "heading": {
+          "reference_headings": 24,
+          "matched_headings": 24,
+          "heading_detection_recall": 1.0
+        },
+        "order": {
+          "eligible_pairs": 602,
+          "correct_pairs": 602,
+          "matched_block_pair_order": 1.0
+        },
+        "page_slots": 20,
+        "native_present": 20,
+        "structured_native_pages": 20
+      }
+    },
+    "imf": {
+      "paddle": {
+        "text": {
+          "reference_characters": 49351,
+          "page_order_character_edits": 4414,
+          "character_edits": 2658,
+          "reference_words": 7435,
+          "page_order_word_edits": 794,
+          "word_edits": 481,
+          "token_reference": 7435,
+          "token_prediction": 7466,
+          "token_matched": 7332,
+          "character_error_rate": 0.05385909100119552,
+          "word_error_rate": 0.06469401479488904,
+          "token_f1": 0.9840950271793839,
+          "page_macro_character_error_rate": 0.04002811751156864
+        },
+        "table": {
+          "reference_cells": 4917,
+          "reference_tables": 19,
+          "matched_tables": 17,
+          "exact_cells": 4254,
+          "span_attributes": 9834,
+          "span_matches": 9143,
+          "header_matches": 4427,
+          "reference_keyed_rows": 641,
+          "keyed_row_matches": 610,
+          "content_reference": 4566,
+          "content_prediction": 4568,
+          "content_matched": 4255,
+          "strict_cell_text_match": 0.8651616839536302,
+          "nonunique_reference_rows_excluded": 2,
+          "cell_text_multiset_f1": 0.931683818699365,
+          "keyed_row_value_match": 0.9516380655226209,
+          "span_match": 0.9297335773845841,
+          "header_role_match": 0.9003457392719137,
+          "page_macro_strict_cell_text_match": 0.8645500053672728
+        },
+        "visual": {
+          "region_recall_at_iou_0_5": null,
+          "matched_mean_iou": null,
+          "page_macro_region_recall_at_iou_0_5": null
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 33,
+          "matched_headings": 26,
+          "heading_detection_recall": 0.7878787878787878
+        },
+        "order": {
+          "eligible_pairs": 1502,
+          "correct_pairs": 1480,
+          "matched_block_pair_order": 0.9853528628495339
+        },
+        "page_slots": 26,
+        "native_present": 26,
+        "structured_native_pages": 26
+      },
+      "dots": {
+        "text": {
+          "reference_characters": 49351,
+          "page_order_character_edits": 3396,
+          "character_edits": 195,
+          "reference_words": 7435,
+          "page_order_word_edits": 610,
+          "word_edits": 140,
+          "token_reference": 7435,
+          "token_prediction": 7384,
+          "token_matched": 7307,
+          "character_error_rate": 0.00395128771453466,
+          "word_error_rate": 0.01882985877605918,
+          "token_f1": 0.9861664079897429,
+          "page_macro_character_error_rate": 0.016370153328958574
+        },
+        "table": {
+          "reference_cells": 4917,
+          "reference_tables": 19,
+          "matched_tables": 17,
+          "exact_cells": 4192,
+          "span_attributes": 9834,
+          "span_matches": 9112,
+          "header_matches": 4557,
+          "reference_keyed_rows": 641,
+          "keyed_row_matches": 453,
+          "content_reference": 4566,
+          "content_prediction": 4688,
+          "content_matched": 4217,
+          "strict_cell_text_match": 0.8525523693308928,
+          "nonunique_reference_rows_excluded": 2,
+          "cell_text_multiset_f1": 0.9113896693321807,
+          "keyed_row_value_match": 0.7067082683307332,
+          "span_match": 0.9265812487288997,
+          "header_role_match": 0.9267846247712019,
+          "page_macro_strict_cell_text_match": 0.8551242646607726
+        },
+        "visual": {
+          "region_recall_at_iou_0_5": null,
+          "matched_mean_iou": null,
+          "page_macro_region_recall_at_iou_0_5": null
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 33,
+          "matched_headings": 2,
+          "heading_detection_recall": 0.06060606060606061
+        },
+        "order": {
+          "eligible_pairs": 1796,
+          "correct_pairs": 1728,
+          "matched_block_pair_order": 0.9621380846325167
+        },
+        "page_slots": 26,
+        "native_present": 26,
+        "structured_native_pages": 26
+      },
+      "bf16": {
+        "text": {
+          "reference_characters": 49351,
+          "page_order_character_edits": 3601,
+          "character_edits": 283,
+          "reference_words": 7435,
+          "page_order_word_edits": 687,
+          "word_edits": 213,
+          "token_reference": 7435,
+          "token_prediction": 7385,
+          "token_matched": 7234,
+          "character_error_rate": 0.005734432939555429,
+          "word_error_rate": 0.028648285137861464,
+          "token_f1": 0.9762483130904184,
+          "page_macro_character_error_rate": 0.017633506224346295
+        },
+        "table": {
+          "reference_cells": 4917,
+          "reference_tables": 19,
+          "matched_tables": 17,
+          "exact_cells": 4060,
+          "span_attributes": 9834,
+          "span_matches": 8875,
+          "header_matches": 4439,
+          "reference_keyed_rows": 641,
+          "keyed_row_matches": 518,
+          "content_reference": 4566,
+          "content_prediction": 4536,
+          "content_matched": 4155,
+          "strict_cell_text_match": 0.8257067317470002,
+          "nonunique_reference_rows_excluded": 2,
+          "cell_text_multiset_f1": 0.912986156888596,
+          "keyed_row_value_match": 0.8081123244929798,
+          "span_match": 0.9024811877160871,
+          "header_role_match": 0.9027862517795404,
+          "page_macro_strict_cell_text_match": 0.794421009132688
+        },
+        "visual": {
+          "region_recall_at_iou_0_5": null,
+          "matched_mean_iou": null,
+          "page_macro_region_recall_at_iou_0_5": null
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 33,
+          "matched_headings": 2,
+          "heading_detection_recall": 0.06060606060606061
+        },
+        "order": {
+          "eligible_pairs": 1772,
+          "correct_pairs": 1703,
+          "matched_block_pair_order": 0.9610609480812641
+        },
+        "page_slots": 26,
+        "native_present": 26,
+        "structured_native_pages": 26
+      },
+      "unlimited": {
+        "text": {
+          "reference_characters": 49351,
+          "page_order_character_edits": 3181,
+          "character_edits": 2108,
+          "reference_words": 7435,
+          "page_order_word_edits": 546,
+          "word_edits": 387,
+          "token_reference": 7435,
+          "token_prediction": 7390,
+          "token_matched": 7336,
+          "character_error_rate": 0.04271443334481571,
+          "word_error_rate": 0.052051109616677874,
+          "token_f1": 0.9896795952782462,
+          "page_macro_character_error_rate": 0.03478215534363264
+        },
+        "table": {
+          "reference_cells": 4917,
+          "reference_tables": 19,
+          "matched_tables": 17,
+          "exact_cells": 4334,
+          "span_attributes": 9834,
+          "span_matches": 9145,
+          "header_matches": 4437,
+          "reference_keyed_rows": 641,
+          "keyed_row_matches": 384,
+          "content_reference": 4566,
+          "content_prediction": 4560,
+          "content_matched": 4053,
+          "strict_cell_text_match": 0.8814317673378076,
+          "nonunique_reference_rows_excluded": 2,
+          "cell_text_multiset_f1": 0.8882314266929652,
+          "keyed_row_value_match": 0.5990639625585024,
+          "span_match": 0.9299369534268863,
+          "header_role_match": 0.9023794996949359,
+          "page_macro_strict_cell_text_match": 0.885502066396745
+        },
+        "visual": {
+          "region_recall_at_iou_0_5": null,
+          "matched_mean_iou": null,
+          "page_macro_region_recall_at_iou_0_5": null
+        },
+        "chart": {
+          "printed_numeric_token_recall": null
+        },
+        "heading": {
+          "reference_headings": 33,
+          "matched_headings": 12,
+          "heading_detection_recall": 0.36363636363636365
+        },
+        "order": {
+          "eligible_pairs": 1636,
+          "correct_pairs": 1616,
+          "matched_block_pair_order": 0.9877750611246944
+        },
+        "page_slots": 26,
+        "native_present": 26,
+        "structured_native_pages": 26
+      }
+    }
+  },
+  "limitations": [
+    "Assistant-created retrospective source references, not independent human ground truth. User endorsed the approach and inspected examples; no per-annotation human approvals are implied.",
+    "Text CER/WER use best contiguous matches inside geometrically overlapping native blocks. They measure scoped content recovery, not hallucination precision. Page-order edit diagnostics are retained separately. Token F1 is order-insensitive and case-sensitive. Conservative formatting normalization preserves signs and numbers.",
+    "Strict table-grid origin/span metrics penalize alternative table layouts. Label-linked row checks validate uniquely matched keys and ordered values, tolerating header offsets. Cell-text multiset F1 is complementary and does not validate country/value associations.",
+    "Heading metric measures region detection, not heading levels or parent correctness. Pair-order metric covers only matched text-region pairs; denominator is reported.",
+    "Visual metric measures region recall and crop overlap only. Logos/decorations are outside reference scope; no false-positive precision or semantic image-description score is claimed.",
+    "Chart metric is numeric token recall in the source chart region, not series/category association accuracy. Axis numbers can produce matches; this diagnostic must not be called chart understanding.",
+    "Raw native predictions only; Gemma descriptions, native PDF image recovery and pipeline repairs are excluded.",
+    "Unresolved handwriting/deleted passages are excluded. Text normalization does not attempt complete LaTeX equivalence; formula semantic accuracy is not measured.",
+    "Dots BF16 used Colab T4 while local profiles used GTX 1660 Ti 6 GiB. Scores do not isolate quantization or establish a universal winner."
+  ]
+}

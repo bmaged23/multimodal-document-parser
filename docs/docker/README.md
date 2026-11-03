@@ -3,10 +3,7 @@
 [Docker Hub overview](https://hub.docker.com/r/bmaged23/multimodal-document-parser) ·
 [Version-controlled overview](docker-hub-overview.md)
 
-**Parser choice:** quantized dots.mocr Q4_K_M language + Q8_0 projector is the
-production default. Original BF16 dots scored best on selected handwritten
-mathematics, with **8.53 GiB peak PyTorch-allocated GPU memory** on Colab T4.
-[Evaluation, memory scope and limits](../evaluation/parser-model-selection.md).
+**Model choice:** dots.mocr is our preferred model family overall on the 70-page test corpus. Original BF16 offers the strongest overall balance; **Q4_K_M language + Q8_0 projector** is the production default for the **GTX 1660 Ti with 6 GB VRAM**. BF16 reached **8.53 GiB peak PyTorch allocation** on Colab T4. [Comparison, measured memory and limits](../evaluation/parser-model-selection.md).
 
 Parse PDF and `.docx` files into source-linked JSON, Markdown and HTML with a
 compatible NVIDIA GPU. Optional chart/image descriptions use Gemma through the

@@ -1,6 +1,6 @@
 # Multimodal Document Parser
 
-**Parser choice:** quantized dots.mocr (Q4_K_M + Q8_0) is the production default. Original BF16 dots achieved our best selected handwritten-mathematics result (32/37), with **8.53 GiB peak PyTorch-allocated GPU memory** on a Colab T4. [Results, memory scope and limits](docs/evaluation/parser-model-selection.md).
+**Model choice:** dots.mocr is our preferred model family overall on the 70-page test corpus. Original BF16 offers the strongest overall balance; **Q4_K_M language + Q8_0 projector** is the production default for the **GTX 1660 Ti with 6 GB VRAM**. BF16 reached **8.53 GiB peak PyTorch allocation** on Colab T4. [Comparison, measured memory and limits](docs/evaluation/parser-model-selection.md).
 
 [![CI](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml)
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.4-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
@@ -14,20 +14,21 @@ Chunking, retrieval and the RAG agent are secondary downstream studies.
 
 ## Live demo
 
-[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=4.1)
+[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.1)
 
 **Click the banner to try the interactive demo—no setup, GPU or API key needed.**
 
 Browse saved results with the **PDF on the left and extraction on the right**.
-Switch between all four profiles, compare OCR/enriched/source-reviewed stages,
-and inspect rendered Markdown, Markdown source, JSON, raw replies and source boxes.
+Switch between all four profiles and inspect each model’s OCR output alongside
+separate Gemma descriptions, rendered Markdown, Markdown source, JSON, raw replies
+and source boxes. Open **70-page evaluation** for measured comparisons and metric explanations.
 The reader now includes **53 saved pages across NASA, IRENA charts, IMF complex
 tables and the author’s handwritten mathematics assignment**. Choose a document in the sidebar, switch
-its model or pipeline stage, and use **Expand PDF + output** beside the reading
+its OCR model, and use **Expand PDF + output** beside the reading
 area. Metrics and zoom are optional settings; output formats use one dropdown.
 This is a read-only saved-output demo, not a live upload/inference service.
 
-[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v4.1/public-demo-v4.1.zip) ·
+[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.1/public-demo-v5.1.zip) ·
 [Local demo instructions](docs/development/evaluation-showcase.md#run-the-downloaded-demo) ·
 [Parsing/model evaluation](docs/parsing-evaluation/README.md) ·
 [Parsing pipeline](docs/parsing-pipeline/README.md) ·
@@ -79,7 +80,7 @@ paragraph to its saved text extraction; model outputs remain inspectable.
 ![Author-written mathematics and truth table beside quantized dots.mocr's saved transcription](docs/assets/demo-handwriting.png)
 
 The author’s assignment, page 4 of four original photos. Transcription errors
-remain visible. [Three-model handwriting evaluation](docs/evaluation/author-handwritten-mathematics.md).
+remain visible. [Selected handwriting evaluation](docs/evaluation/author-handwritten-mathematics.md).
 The previous diary outputs remain archived.
 
 </details>
@@ -113,6 +114,41 @@ identified explicitly; they do not guarantee correct extraction for every upload
 
 ## Measured parser comparison
 
+### Overall quality ranking on these test PDFs
+
+1. **dots.mocr BF16** — strongest balance: excellent text recovery, **91.67% visual-region recall**, and **80.96% row/value matching**.
+2. **dots.mocr Q4/Q8** — lowest scoped text error rate (**0.67%**), but weaker table associations than BF16.
+3. **PaddleOCR-VL-1.6** — strongest table associations (**86.58%**) and heading detection, but weaker text and handwriting recovery.
+4. **Unlimited-OCR 2** — weakest row/value associations (**55.62%**) and two missing handwritten-page outputs.
+
+The order changes by task:
+
+| Task | Best → lowest |
+| --- | --- |
+| Scoped text recovery | Q4 → BF16 → Unlimited → Paddle |
+| Table row/value associations | Paddle → BF16 → Q4 → Unlimited |
+| Visual-region detection | BF16 → Q4 = Unlimited → Paddle |
+
+**dots.mocr is our overall preferred model family for this corpus.** We use its
+quantized **Q4_K_M (4-bit) language model + Q8_0 (8-bit) vision projector** for
+smaller GPUs: it ran on the GTX 1660 Ti with **6 GB VRAM**, while the original
+BF16 profile reached **8.53 GiB peak PyTorch-allocated memory** on a Colab T4.
+That allocation is not total device memory or a minimum VRAM requirement.
+
+This overall order is an interpretation across the metrics, **not a calculated
+combined score or a universal ranking**. The study uses assistant-created source
+references across all **70 pages of the retained four test PDFs**. Unresolved
+handwriting is excluded. It compares raw OCR outputs; Gemma descriptions and
+pipeline repairs receive no credit. Scoped text error measures content recovery
+within source regions, not full-page accuracy or hallucination precision.
+
+[Interactive evaluation report](https://bmaged23.github.io/multimodal-document-parser/evaluation/) ·
+[Evaluation methodology and metric explanations](docs/evaluation/README.md) ·
+[Saved metrics by model and PDF](evaluation/results/manual-reference-full-corpus-v1.json)
+
+<details>
+<summary>Earlier runtime measurements and selected-reference studies</summary>
+
 All three configurations were tested on an **NVIDIA GeForce GTX 1660 Ti with
 6 GB VRAM (6,144 MiB)** under WSL2. OCR runs were sequential. Gemma visual
 enrichment executes on Ollama Cloud, not on this laptop GPU.
@@ -124,8 +160,9 @@ enrichment executes on Ollama Cloud, not on this laptop GPU.
 **dots.mocr demo quantization:** the language model uses **Q4_K_M (4-bit)**
 and the vision projector uses **Q8_0 (8-bit)**. These saved results come from that
 quantized GPU configuration; quantization precision is distinct from model
-parameter count. The public demo retains this quantized baseline. A separate
-original-weight BF16 run on a Colab T4 now covers the same 31 input PNGs:
+parameter count. The public demo retains this quantized baseline. The earlier
+original-weight BF16 study on Colab T4 covered 31 matched input pages; the later
+four-document matrix covers all 70 retained pages. Earlier study:
 [unquantized versus retained parser profiles](docs/evaluation/dots-mocr-colab-bf16-comparison.md).
 Different hardware, backends and conversion lineage prevent isolating quantization alone.
 
@@ -154,6 +191,8 @@ cover only one small development table, not a general table benchmark.
 [Paddle/dots batch findings](docs/evaluation/quantized-gpu-batch.md) ·
 [Unlimited-OCR 2 findings](docs/evaluation/unlimited-ocr-2-gpu-results.md) ·
 [Hardware and limits](docs/development/hardware-report.md)
+
+</details>
 
 ### Author-written mathematics · four photos
 
@@ -191,8 +230,8 @@ dots.mocr, **13/37** for PaddleOCR and **11/37** for Unlimited-OCR. All score
 
 Across the 31 matched pages, BF16 finished 30 generations and passed the strict
 canonical schema on 28; quantized dots passed on 29. Better selected handwriting
-does not imply better output validity everywhere. NASA has completion/timing
-measurements, without a full-page accuracy reference.
+does not imply better output validity everywhere. This earlier report covers completion/timing; the newer 70-page source-reference
+study above adds scoped content and structure measurements.
 [Four-profile method and limitations](docs/evaluation/dots-mocr-colab-bf16-comparison.md) ·
 [Per-check metrics](evaluation/results/author-handwritten-mathematics-four-profiles-v1.json).
 
@@ -268,6 +307,7 @@ are inconclusive. These scores do not measure parsing accuracy.
 
 | Read more | What it covers |
 | --- | --- |
+| [Evaluation methodology and report](docs/evaluation/README.md) | Source references, all 70 pages, metrics, ranking and saved outputs |
 | [Parsing evaluation](docs/parsing-evaluation/README.md) | Model configurations, datasets, metrics, measured comparisons, failure cases and reproduction |
 | [Parsing pipeline](docs/parsing-pipeline/README.md) | Preparation, OCR, canonical JSON, visual enrichment, source review, exports, APIs and deployment status |
 | [Chunking and RAG](docs/chunking-and-rag/README.md) | Chunking variants, GPU embeddings, retrieval, agent flow, completed evaluation and judge limitations |
@@ -526,7 +566,7 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.4
 | --- | --- |
 | Public GPU parsing image | [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser) |
 | Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.4](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.4) |
-| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v4.1/public-demo-v4.1.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
+| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.1/public-demo-v5.1.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
 
 The container package is distributed through Docker Hub; it is a separate registry
 from GitHub Packages. Release records identify the exact tested image/source and

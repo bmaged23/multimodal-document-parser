@@ -5,11 +5,18 @@ The CLI, parsing/pipeline request defaults, container worker and default demo
 selection use this quantized profile. PaddleOCR remains an optional native
 comparison backend; its preserved IRENA/IMF pipeline reports remain labeled Paddle.
 
-**Original unquantized BF16 dots.mocr achieved our best selected handwritten
-mathematics result: 32/37 versus quantized dots 29/37.** It is essentially tied
-with Q4 on NASA printed-text recovery and does not win every category. In
-particular, its original two-page sample failed strict normalization; Paddle
-finished all 31 shared pages, while BF16 finished 30 and accepted 28.
+**dots.mocr is the preferred model family overall for the retained 70-page corpus.**
+Original BF16 offers the strongest balance: 91.67% visual-region recall and
+80.96% label-linked row/value matching. Q4/Q8 has the lowest scoped text error
+rate (0.67%); Paddle leads row/value matching (86.58%). The overall interpretation
+is **BF16 → Q4/Q8 → Paddle → Unlimited**, not a weighted composite or a universal
+winner claim. [Evaluation method, report and metrics](README.md).
+
+**Why deploy Q4/Q8?** The local GTX 1660 Ti has 6 GB VRAM. Original BF16 exceeded
+that capacity in the measured configuration; quantized dots provides the tested
+local GPU path. The older handwriting study also favored BF16 (32/37 versus
+Q4 29/37), but remains a separate selected-assertion experiment. Historical
+normalization failures on the original two-page sample are preserved.
 
 | Observed profile | GPU | Measured peak | Measurement scope |
 |---|---|---:|---|
@@ -27,5 +34,6 @@ The production Docker image contains a CUDA 12.6 native runtime and downloads
 the two checksum-pinned quantized weights to its persistent cache on first use.
 BF16 weights and Paddle's Python runtime are not bundled in this release.
 
-[All four PDFs and category-level results](parser-corpus-four-profiles.md) ·
+[Current four-PDF evaluation](README.md) ·
+[Earlier 31-page study](parser-corpus-four-profiles.md) ·
 [Measured memory, per-page peaks and prediction hashes](../../evaluation/results/parser-model-selection-v1.json)

@@ -6,6 +6,19 @@ Gemma through Ollama Cloud, and display the saved outputs beside the source.
 The production container's Q4 default is a hardware choice for the 6 GB laptop;
 it is not a claim that quantized dots has the best quality.
 
+## Current comparison and evaluation
+
+Version 5.1 replaces the earlier stage-based viewer with the matched four-model
+comparison. **70-page evaluation** opens the measured results, per-document
+filters and metric definitions. Its overall interpretation is BF16 → Q4/Q8 →
+Paddle → Unlimited; this is a qualitative ranking of this corpus, not a combined
+score. dots.mocr is the preferred family; the production Q4/Q8 default fits the
+smaller 6 GB GPU. [Evaluation README](../evaluation/README.md).
+
+The public evaluation report contains metrics for all 70 pages. It links source
+outputs only for allowlisted excerpt pages. Full reference transcriptions,
+private failure traces and the local annotation editor are not published.
+
 ## Scope
 
 | Document | Full saved selection | Public excerpt |
@@ -79,7 +92,7 @@ uv run --no-sync python scripts/visual_evaluation/enrich_demo_model_matrix.py --
 ```
 
 Use the [pinned Colab notebook](../../notebooks/complete_four_model_demo_bf16.ipynb)
-for the two missing BF16 selections. It checks the private matched-input ZIP,
+for reproducing the two BF16 selections; all four current selections already have saved outputs. It checks the private matched-input ZIP,
 records dtype/GPU/hash evidence, and downloads its results. Never publish that
 private input ZIP. Import and preserve the result using
 `scripts/parser_evaluation/watch_demo_cloud_results.py`.
@@ -89,10 +102,13 @@ changed OCR text/tables or unresolved visual failures:
 
 ```bash
 uv run --no-sync python scripts/visualization/build_four_model_demo.py \
-  --output-directory outputs/evaluation_showcase/four-model-public-new
+  --output-directory outputs/evaluation_showcase/four-model-public-new --version 5.1 \
+  --evaluation-directory outputs/quality_evaluations/manual-reference-full-corpus-04
 ```
 
 Keep full archives under their exact model namespaces. Publish only the curated
 `public-demo` bundle and its checksum, then validate the viewer with
 `scripts/visualization/verify_four_model_demo.py`. The demo is static saved output;
 it does not deploy a live inference API or rerun the models when opened.
+
+Documents appear as Handwritten mathematics → IMF · complex tables → IRENA · charts and tables → NASA financial report. Each starts at its first available page on its first visit and remembers its position while you switch PDFs in the same open demo. Explicit page links still open the requested page.
