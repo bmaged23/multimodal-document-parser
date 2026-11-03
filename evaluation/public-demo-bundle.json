@@ -1,8 +1,8 @@
 {
-  "release_tag": "demo-v4.1",
-  "asset": "public-demo-v4.1.zip",
-  "sha256": "bef8cd33d9e17cf3bc604a3f46881272b33c0ed107d745541abb3d587be46aa9",
-  "demo_version": "4.1",
+  "release_tag": "demo-v5.1",
+  "asset": "public-demo-v5.1.zip",
+  "sha256": "5dbad6009fa3d4f84fe9ad3a526a1679121e765393dfd44b84eb38c9e3232965",
+  "demo_version": "5.1",
   "selected_pages": 53,
   "models": [
     "dots.mocr Q4_K_M language + Q8_0 projector",
