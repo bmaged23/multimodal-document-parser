@@ -1,0 +1,133 @@
+{
+  "result": "passed",
+  "checked": [
+    {
+      "case": "nasa-financial",
+      "run": "nasa-bf16-gemma",
+      "original_page": 1,
+      "visible_gemma_cards": 2,
+      "status": "passed"
+    },
+    {
+      "case": "nasa-financial",
+      "run": "nasa-dots-gemma",
+      "original_page": 1,
+      "visible_gemma_cards": 2,
+      "status": "passed"
+    },
+    {
+      "case": "nasa-financial",
+      "run": "nasa-paddle-gemma",
+      "original_page": 1,
+      "visible_gemma_cards": 1,
+      "status": "passed"
+    },
+    {
+      "case": "nasa-financial",
+      "run": "nasa-unlimited-gemma",
+      "original_page": 2,
+      "visible_gemma_cards": 2,
+      "status": "passed"
+    },
+    {
+      "case": "handwriting",
+      "run": "math-bf16-gemma",
+      "original_page": 2,
+      "visible_gemma_cards": 6,
+      "status": "passed"
+    },
+    {
+      "case": "handwriting",
+      "run": "math-dots-gemma",
+      "original_page": 2,
+      "visible_gemma_cards": 2,
+      "status": "passed"
+    },
+    {
+      "case": "handwriting",
+      "run": "math-paddle-gemma",
+      "original_page": 2,
+      "visible_gemma_cards": 3,
+      "status": "passed"
+    },
+    {
+      "case": "handwriting",
+      "run": "math-unlimited-gemma",
+      "original_page": 2,
+      "visible_gemma_cards": 6,
+      "status": "passed"
+    },
+    {
+      "case": "irena-pipeline",
+      "run": "irena-bf16-gemma",
+      "original_page": 16,
+      "visible_gemma_cards": 1,
+      "status": "passed"
+    },
+    {
+      "case": "irena-pipeline",
+      "run": "irena-dots-gemma",
+      "original_page": 16,
+      "visible_gemma_cards": 1,
+      "status": "passed"
+    },
+    {
+      "case": "irena-pipeline",
+      "run": "irena-paddle-gemma",
+      "original_page": 16,
+      "visible_gemma_cards": 1,
+      "status": "passed"
+    },
+    {
+      "case": "irena-pipeline",
+      "run": "irena-unlimited-gemma",
+      "original_page": 16,
+      "visible_gemma_cards": 1,
+      "status": "passed"
+    },
+    {
+      "case": "imf-pipeline",
+      "run": "imf-bf16-gemma",
+      "original_page": 7,
+      "visible_gemma_cards": 0,
+      "status": "passed"
+    },
+    {
+      "case": "imf-pipeline",
+      "run": "imf-dots-gemma",
+      "original_page": 7,
+      "visible_gemma_cards": 0,
+      "status": "passed"
+    },
+    {
+      "case": "imf-pipeline",
+      "run": "imf-paddle-gemma",
+      "original_page": 7,
+      "visible_gemma_cards": 0,
+      "status": "passed"
+    },
+    {
+      "case": "imf-pipeline",
+      "run": "imf-unlimited-gemma",
+      "original_page": 7,
+      "visible_gemma_cards": 0,
+      "status": "passed"
+    }
+  ],
+  "unavailable": [],
+  "scope": "complete saved demo",
+  "document_order": [
+    "handwriting",
+    "imf-pipeline",
+    "irena-pipeline",
+    "nasa-financial"
+  ],
+  "first_visit_first_page": true,
+  "per_document_page_memory": true,
+  "model_selection_preserved_across_documents": true,
+  "reference_viewer_pages": 53,
+  "reference_viewer_annotations": 501,
+  "mobile_width": 390,
+  "javascript_errors": [],
+  "inference_requests": 0
+}

@@ -1,5 +1,11 @@
 # Multimodal Document Parser
 
+[![CI](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.4-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
+[![dots.mocr](https://img.shields.io/badge/OCR-dots.mocr-16867a)](https://huggingface.co/dots-studio/dots.mocr)
+[![PaddleOCR](https://img.shields.io/badge/OCR-PaddleOCR--VL--1.6-306db6)](https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6)
+[![Unlimited-OCR 2](https://img.shields.io/badge/OCR-Unlimited--OCR%202-8458ae)](https://huggingface.co/baidu/Unlimited-OCR-2)
+
 This project compares multiple OCR and document parsing models to find which
 performs best overall on our test documents and which works best for text,
 handwriting, tables, charts and images. We evaluate their outputs and show them
@@ -14,14 +20,13 @@ project’s main focus.
 
 **Model choice:** dots.mocr is our preferred model family overall on the 70-page test corpus. Original BF16 offers the strongest overall balance; **Q4_K_M language + Q8_0 projector** is the production default for the **GTX 1660 Ti with 6 GB VRAM**. BF16 reached **8.53 GiB peak PyTorch allocation** on Colab T4. [Comparison, measured memory and limits](docs/evaluation/parser-model-selection.md).
 
-[![CI](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml)
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.4-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
-
 ## Live demo
 
-[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.3)
+[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.4)
 
 **Click the banner to try the interactive demo—no setup, GPU or API key needed.**
+
+[Inspect evaluation references: source pages + annotations](https://bmaged23.github.io/multimodal-document-parser/references/) · [Evaluation metrics](https://bmaged23.github.io/multimodal-document-parser/evaluation/)
 
 Browse saved results with the **PDF on the left and extraction on the right**.
 Switch between all four profiles and inspect each model’s OCR output alongside
@@ -33,7 +38,7 @@ its OCR model, and use **Expand PDF + output** beside the reading
 area. Metrics and zoom are optional settings; output formats use one dropdown.
 This is a read-only saved-output demo, not a live upload/inference service.
 
-[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.3/public-demo-v5.3.zip) ·
+[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.4/public-demo-v5.4.zip) ·
 [Local demo instructions](docs/development/evaluation-showcase.md#run-the-downloaded-demo) ·
 [Parsing/model evaluation](docs/parsing-evaluation/README.md) ·
 [Parsing pipeline](docs/parsing-pipeline/README.md) ·
@@ -571,7 +576,7 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.4
 | --- | --- |
 | Public GPU parsing image | [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser) |
 | Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.4](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.4) |
-| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.3/public-demo-v5.3.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
+| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.4/public-demo-v5.4.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
 
 The container package is distributed through Docker Hub; it is a separate registry
 from GitHub Packages. Release records identify the exact tested image/source and

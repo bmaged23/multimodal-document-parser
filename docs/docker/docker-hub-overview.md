@@ -25,9 +25,9 @@ production Q4/Q8 configuration runs on the tested 6 GB GPU; BF16 reached
 [Ranking, methodology and measured metrics](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/evaluation/README.md).
 
 
-[![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.3)
+[![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.4)
 
-### [▶ Open the interactive four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.3)
+### [▶ Open the interactive four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.4)
 
 Compare the same source pages across all four OCR profiles, with synchronized PDF
 and extraction panes. OCR content and Gemma-generated visual descriptions carry
@@ -38,6 +38,8 @@ PaddleOCR-VL-1.6 and Unlimited-OCR 2. Switching PDFs keeps your selected model.
 Each starts at its first available page and remembers your place when you switch
 away and return in the same open demo. This is a saved-output viewer, with no live
 inference or API key required.
+
+[Inspect the evaluation references beside the source pages](https://bmaged23.github.io/multimodal-document-parser/references/).
 
 [Open the 70-page evaluation report: rankings, per-page metrics and metric definitions](https://bmaged23.github.io/multimodal-document-parser/evaluation/).
 The demo displays 53 shareable source pages; evaluation metrics cover all 70 retained

@@ -2,7 +2,7 @@
 
 [Project overview](../../README.md) · [Model comparison guide](../parsing-evaluation/README.md) ·
 [Interactive evaluation report](https://bmaged23.github.io/multimodal-document-parser/evaluation/) ·
-[Four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.3)
+[Four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.4)
 
 **dots.mocr is our preferred model family overall for this test corpus.** Original
 BF16 offers the strongest balance; quantized Q4_K_M language weights with a Q8_0
@@ -134,7 +134,7 @@ pipeline scores use different references and must not be merged into this study.
 | `page-metrics.json` | All 280 page/profile metric rows | Demo report download |
 | `excluded-references.json` | Annotation identifiers and exclusion reasons | Demo report download |
 | `failure-traces.json` | Expected/actual source text, cell checks and row associations | Local; contains private source content |
-| `frozen-reference.json` | Exact reference version used | Local; contains source transcriptions |
+| `frozen-reference.json` | Exact reference version used | Full version local; allowlisted subset in the public reference viewer |
 | `frozen-scorer.py` | Exact scorer bytes matching the recorded SHA-256 | Local reproducibility artifact |
 | `index.html` | Filterable comparison and metric explanations | Published demo evaluation report |
 
@@ -172,3 +172,7 @@ metric rows. Dataset, source and scorer hashes make the frozen run identifiable.
 
 The new raw-OCR comparison does not replace these historical artifacts or give
 raw models credit for Gemma-generated or source-repaired output.
+
+## Inspect the public references
+
+[Open the source + reference annotation viewer](https://bmaged23.github.io/multimodal-document-parser/references/). It shows 501 exact frozen evaluation annotations for the 53 shareable source pages, with synchronized page navigation, selectable source regions, rendered table grids, provenance and draft status. Download the displayed subset as JSON from the viewer. Omitted pages and their transcriptions remain local; the full reference dataset is not published. These are assistant-created retrospective references, not independently verified human ground truth.

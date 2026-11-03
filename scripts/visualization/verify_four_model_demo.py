@@ -134,6 +134,39 @@ def main() -> None:
                     expect(page.locator("#run-a")).to_have_value(expected_run)
             page.set_viewport_size({"width": 390, "height": 844})
             assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+            references = json.loads((root / "references/annotations.json").read_text())
+            page.set_viewport_size({"width": 1600, "height": 1100})
+            page.goto(f"http://127.0.0.1:{server.server_port}/references/")
+            expect(page.locator("#document")).to_have_value("math")
+            for source in references["pages"]:
+                page.locator("#document").select_option(source["case"])
+                page.locator("#page").fill(str(source["original_page"]))
+                page.locator("#page-form").evaluate("form=>form.requestSubmit()")
+                expect(page.locator("#source-title")).to_have_text(
+                    f"{source['title']} · original page {source['original_page']}"
+                )
+                expected = [
+                    a
+                    for a in references["annotations"]
+                    if (a["case"], a["page"]) == (source["case"], source["page"])
+                ]
+                expect(page.locator("article")).to_have_count(len(expected))
+                expect(page.locator("#source")).not_to_have_js_property("naturalWidth", 0)
+                if expected and expected[0].get("source_box"):
+                    page.locator("article h3").first.click()
+                    expect(page.locator("#region")).to_have_attribute("visibility", "visible")
+            page.goto(f"http://127.0.0.1:{server.server_port}/references/?document=math&page=1")
+            expect(page.locator("#source-title")).to_contain_text("original page 1")
+            page.screenshot(path=str(root.parent / "reference-viewer-handwriting.png"))
+            table_page = next(p for p in references["pages"] if p["case"] == "imf")
+            page.goto(
+                f"http://127.0.0.1:{server.server_port}/references/"
+                f"?document=imf&page={table_page['original_page']}"
+            )
+            expect(page.locator("table").first).to_be_attached()
+            page.screenshot(path=str(root.parent / "reference-viewer-tables.png"))
+            page.set_viewport_size({"width": 390, "height": 844})
+            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
             assert not errors, errors
             browser.close()
     finally:
@@ -152,6 +185,8 @@ def main() -> None:
                 first_visit_first_page=True,
                 per_document_page_memory=True,
                 model_selection_preserved_across_documents=True,
+                reference_viewer_pages=len(references["pages"]),
+                reference_viewer_annotations=len(references["annotations"]),
                 mobile_width=390,
                 javascript_errors=errors,
                 inference_requests=0,

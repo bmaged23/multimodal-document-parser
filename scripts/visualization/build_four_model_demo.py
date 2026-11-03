@@ -90,7 +90,7 @@ def validate_matrix() -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-directory", type=Path, required=True)
-    parser.add_argument("--version", default="5.3")
+    parser.add_argument("--version", default="5.4")
     parser.add_argument("--evaluation-directory", type=Path)
     args = parser.parse_args()
     coverage = validate_matrix()
@@ -120,12 +120,32 @@ def main() -> None:
         report = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(report)
         report.build(evaluation, demo_directory=public)
+        spec = importlib.util.spec_from_file_location(
+            "public_reference_viewer",
+            ROOT / "scripts/visualization/build_public_reference_viewer.py",
+        )
+        viewer = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(viewer)
+        reference_summary = viewer.build(
+            public, args.evaluation_directory / "frozen-reference.json"
+        )
+        report_index = evaluation / "index.html"
+        report_index.write_text(
+            report_index.read_text().replace(
+                "</header>",
+                '<p><a href="../references/">Inspect source pages + '
+                "evaluation references ↗</a></p></header>",
+                1,
+            )
+        )
         index = public / "index.html"
         html = index.read_text().replace(
             '<p id="model-choice" hidden>',
             '<p><a id="evaluation-report-link" href="evaluation/" '
             'style="font-size:13px;font-weight:650">'
             "70-page evaluation · ranking and metrics ↗</a></p>"
+            '<p><a id="reference-viewer-link" href="references/">'
+            "Inspect evaluation references · source pages + annotations ↗</a></p>"
             '<p id="model-choice" hidden>',
             1,
         )
@@ -138,6 +158,7 @@ def main() -> None:
             scope="Assistant source-reference development study; qualitative overall ranking",
             private_reference_transcriptions_included=False,
             private_failure_traces_included=False,
+            public_reference_viewer=reference_summary,
         )
         manifest["artifacts"] = {
             item.relative_to(public).as_posix(): hashlib.sha256(item.read_bytes()).hexdigest()
