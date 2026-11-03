@@ -1,16 +1,18 @@
 # Multimodal Document Parser
 
+This project evaluates how well document parsing models turn PDFs and DOCX files
+into structured, usable data. We compare text and handwriting recovery, table
+structure, and chart/image detection, with saved outputs shown beside the source
+pages so you can inspect where each model succeeds or fails.
+
+The goal is to make model selection evidence-based and build a practical parsing
+pipeline that exports JSON, Markdown and HTML. Parsing and evaluation are the main
+focus; chunking, retrieval and RAG are secondary studies using the extracted data.
+
 **Model choice:** dots.mocr is our preferred model family overall on the 70-page test corpus. Original BF16 offers the strongest overall balance; **Q4_K_M language + Q8_0 projector** is the production default for the **GTX 1660 Ti with 6 GB VRAM**. BF16 reached **8.53 GiB peak PyTorch allocation** on Colab T4. [Comparison, measured memory and limits](docs/evaluation/parser-model-selection.md).
 
 [![CI](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml)
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.4-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
-
-Compare **dots.mocr Q4/Q8**, **original dots.mocr BF16**, **PaddleOCR-VL-1.6**, and **Unlimited-OCR 2**
-on real document selections. Inspect extracted text, tables, charts, images,
-failures and runtime beside the original source pages.
-
-**Primary focus:** parser-model comparison and the final parsing pipeline.
-Chunking, retrieval and the RAG agent are secondary downstream studies.
 
 ## Live demo
 
