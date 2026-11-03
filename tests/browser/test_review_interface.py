@@ -54,10 +54,10 @@ def test_review_navigation_tabs_search_and_escaping(tmp_path: Path) -> None:
             assert page.locator(".element-card").count() == 9
             assert page.evaluate("window.injected") is None
             assert page.locator("#view-preview").is_visible()
-            page.wait_for_function(
-                "[...document.querySelectorAll('#preview-pages img')]"
-                ".every(img => img.naturalWidth > 0)"
-            )
+            preview_images = page.locator("#preview-pages img")
+            playwright.expect(preview_images).to_have_count(2)
+            for image in preview_images.all():
+                playwright.expect(image).not_to_have_js_property("naturalWidth", 0)
             assert page.locator('#preview-pages .markdown-page[data-page="1"] img').count() == 2
             page.get_by_role("tab", name="JSON", exact=True).click()
             assert page.locator("#view-json").is_visible()
@@ -189,9 +189,8 @@ def test_finished_partial_report_does_not_claim_pages_are_still_processing(tmp_p
             browser = manager.chromium.launch()
             page = browser.new_page()
             page.goto(f"http://127.0.0.1:{server.server_port}/review.html")
-            page.wait_for_function(
-                "document.querySelector('.progress-notice').textContent"
-                ".includes('Finished testing: 1/2 pages accepted')"
+            playwright.expect(page.locator(".progress-notice")).to_contain_text(
+                "Finished testing: 1/2 pages accepted"
             )
             assert "Other pages failed" in page.locator(".progress-notice").inner_text()
             browser.close()
