@@ -126,12 +126,17 @@ jobs:
         run: |
           version="${TAG_INPUT:-${GITHUB_REF_NAME#v}}"
           python - <<'PYTHON'
-          import json, os, pathlib
+          import json, os, pathlib, re
           record = {'image': os.environ['IMAGE'], 'digest': os.environ['DIGEST'],
                     'source_revision': os.environ['GITHUB_SHA'],
                     'workflow': f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"}
           pathlib.Path('container-release.json').write_text(json.dumps(record, indent=2)+'\n')
+          version = os.environ.get('TAG_INPUT') or os.environ['GITHUB_REF_NAME'].removeprefix('v')
+          assert re.fullmatch(r'\d+\.\d+\.\d+(?:-[A-Za-z0-9.-]+)?', version)
+          notes = pathlib.Path('docs/releases') / (version + '.md')
+          details = notes.read_text() + '\n\n' if notes.is_file() else ''
           pathlib.Path('release-notes.md').write_text(
+              details +
               f"Public GPU parsing image: `{record['image']}@{record['digest']}`.\n\n"
               f"Built from `{record['source_revision']}` after source/browser CI and image smoke tests. "
               'Includes SBOM and build provenance. Gemma executes through Ollama Cloud; its weights are not bundled.\n\n'
