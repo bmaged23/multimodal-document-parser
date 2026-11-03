@@ -90,7 +90,7 @@ def validate_matrix() -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-directory", type=Path, required=True)
-    parser.add_argument("--version", default="5.1")
+    parser.add_argument("--version", default="5.2")
     parser.add_argument("--evaluation-directory", type=Path)
     args = parser.parse_args()
     coverage = validate_matrix()

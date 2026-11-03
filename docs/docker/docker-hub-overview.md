@@ -13,14 +13,16 @@ production Q4/Q8 configuration runs on the tested 6 GB GPU; BF16 reached
 [Ranking, methodology and measured metrics](https://github.com/bmaged23/multimodal-document-parser/blob/main/docs/evaluation/README.md).
 
 
-[![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.1)
+[![Open the interactive PDF parsing demo](https://raw.githubusercontent.com/bmaged23/multimodal-document-parser/main/docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.2)
 
-### [▶ Open the interactive four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.1)
+### [▶ Open the interactive four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.2)
 
 Compare the same source pages across all four OCR profiles, with synchronized PDF
 and extraction panes. OCR content and Gemma-generated visual descriptions carry
 separate producer labels. Documents open in this order: **Handwritten mathematics →
 IMF · complex tables → IRENA · charts and tables → NASA financial report**.
+The model selector starts with dots.mocr BF16 (default), then dots.mocr Q4/Q8,
+PaddleOCR-VL-1.6 and Unlimited-OCR 2.
 Each starts at its first available page and remembers your place when you switch
 away and return in the same open demo. This is a saved-output viewer, with no live
 inference or API key required.

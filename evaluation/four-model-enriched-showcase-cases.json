@@ -32,12 +32,12 @@
       "source_url": "https://www.nasa.gov/budgets-plans-and-reports/agency-financial-reports/",
       "runs": [
         {
-          "id": "nasa-paddle-gemma",
-          "label": "PaddleOCR-VL-1.6",
-          "ocr_label": "PaddleOCR-VL-1.6",
+          "id": "nasa-bf16-gemma",
+          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
           "stage": "enriched",
           "kind": "canonical",
-          "directory": "demo-v5-nasa-paddle-gemma-01"
+          "directory": "demo-v5-nasa-bf16-gemma-01"
         },
         {
           "id": "nasa-dots-gemma",
@@ -48,12 +48,12 @@
           "directory": "demo-v5-nasa-dots-gemma-01"
         },
         {
-          "id": "nasa-bf16-gemma",
-          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
-          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "id": "nasa-paddle-gemma",
+          "label": "PaddleOCR-VL-1.6",
+          "ocr_label": "PaddleOCR-VL-1.6",
           "stage": "enriched",
           "kind": "canonical",
-          "directory": "demo-v5-nasa-bf16-gemma-01"
+          "directory": "demo-v5-nasa-paddle-gemma-01"
         },
         {
           "id": "nasa-unlimited-gemma",
@@ -64,7 +64,8 @@
           "directory": "demo-v5-nasa-unlimited-gemma-01"
         }
       ],
-      "preview_page": 11
+      "preview_page": 11,
+      "preferred_run": "nasa-bf16-gemma"
     },
     {
       "id": "handwriting",
@@ -81,12 +82,12 @@
       "source_url": null,
       "runs": [
         {
-          "id": "math-paddle-gemma",
-          "label": "PaddleOCR-VL-1.6",
-          "ocr_label": "PaddleOCR-VL-1.6",
+          "id": "math-bf16-gemma",
+          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
           "stage": "enriched",
           "kind": "canonical",
-          "directory": "demo-v5-math-paddle-gemma-01"
+          "directory": "demo-v5-math-bf16-gemma-01"
         },
         {
           "id": "math-dots-gemma",
@@ -97,12 +98,12 @@
           "directory": "demo-v5-math-dots-gemma-01"
         },
         {
-          "id": "math-bf16-gemma",
-          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
-          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "id": "math-paddle-gemma",
+          "label": "PaddleOCR-VL-1.6",
+          "ocr_label": "PaddleOCR-VL-1.6",
           "stage": "enriched",
           "kind": "canonical",
-          "directory": "demo-v5-math-bf16-gemma-01"
+          "directory": "demo-v5-math-paddle-gemma-01"
         },
         {
           "id": "math-unlimited-gemma",
@@ -113,7 +114,8 @@
           "directory": "demo-v5-math-unlimited-gemma-01"
         }
       ],
-      "preview_page": 4
+      "preview_page": 4,
+      "preferred_run": "math-bf16-gemma"
     },
     {
       "id": "irena-pipeline",
@@ -146,12 +148,12 @@
       "source_url": "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_2025.pdf",
       "runs": [
         {
-          "id": "irena-paddle-gemma",
-          "label": "PaddleOCR-VL-1.6",
-          "ocr_label": "PaddleOCR-VL-1.6",
+          "id": "irena-bf16-gemma",
+          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
           "stage": "enriched",
           "kind": "canonical",
-          "directory": "irena-mixed-content-20-paddleocr-gemma4-31b-01"
+          "directory": "demo-v5-irena-bf16-gemma-01"
         },
         {
           "id": "irena-dots-gemma",
@@ -162,12 +164,12 @@
           "directory": "demo-v5-irena-dots-gemma-01"
         },
         {
-          "id": "irena-bf16-gemma",
-          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
-          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "id": "irena-paddle-gemma",
+          "label": "PaddleOCR-VL-1.6",
+          "ocr_label": "PaddleOCR-VL-1.6",
           "stage": "enriched",
           "kind": "canonical",
-          "directory": "demo-v5-irena-bf16-gemma-01"
+          "directory": "irena-mixed-content-20-paddleocr-gemma4-31b-01"
         },
         {
           "id": "irena-unlimited-gemma",
@@ -178,7 +180,8 @@
           "directory": "demo-v5-irena-unlimited-gemma-01"
         }
       ],
-      "preview_page": 3
+      "preview_page": 3,
+      "preferred_run": "irena-bf16-gemma"
     },
     {
       "id": "imf-pipeline",
@@ -217,12 +220,12 @@
       "source_url": "https://www.imf.org/-/media/files/publications/weo/2025/october/english/statsappendix.pdf",
       "runs": [
         {
-          "id": "imf-paddle-gemma",
-          "label": "PaddleOCR-VL-1.6",
-          "ocr_label": "PaddleOCR-VL-1.6",
+          "id": "imf-bf16-gemma",
+          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
           "stage": "enriched",
           "kind": "canonical",
-          "directory": "demo-v5-imf-paddle-gemma-01"
+          "directory": "demo-v5-imf-bf16-gemma-01"
         },
         {
           "id": "imf-dots-gemma",
@@ -233,12 +236,12 @@
           "directory": "demo-v5-imf-dots-gemma-01"
         },
         {
-          "id": "imf-bf16-gemma",
-          "label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
-          "ocr_label": "dots.mocr \u00b7 original BF16 \u00b7 Colab GPU",
+          "id": "imf-paddle-gemma",
+          "label": "PaddleOCR-VL-1.6",
+          "ocr_label": "PaddleOCR-VL-1.6",
           "stage": "enriched",
           "kind": "canonical",
-          "directory": "demo-v5-imf-bf16-gemma-01"
+          "directory": "demo-v5-imf-paddle-gemma-01"
         },
         {
           "id": "imf-unlimited-gemma",
@@ -249,7 +252,8 @@
           "directory": "demo-v5-imf-unlimited-gemma-01"
         }
       ],
-      "preview_page": 12
+      "preview_page": 12,
+      "preferred_run": "imf-bf16-gemma"
     }
   ],
   "math_evaluation": "author-handwritten-mathematics-four-profiles-v1.json",

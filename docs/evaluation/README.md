@@ -2,7 +2,7 @@
 
 [Project overview](../../README.md) · [Model comparison guide](../parsing-evaluation/README.md) ·
 [Interactive evaluation report](https://bmaged23.github.io/multimodal-document-parser/evaluation/) ·
-[Four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.1)
+[Four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.2)
 
 **dots.mocr is our preferred model family overall for this test corpus.** Original
 BF16 offers the strongest balance; quantized Q4_K_M language weights with a Q8_0

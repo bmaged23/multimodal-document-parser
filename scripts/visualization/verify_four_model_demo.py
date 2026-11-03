@@ -111,6 +111,11 @@ def main() -> None:
                 case = next(c for c in catalog["cases"] if c["id"] == case_id)
                 page.locator("#document-select").select_option(case_id, force=True)
                 expect(page.locator("#page")).to_have_value(str(case["original_pages"][0]))
+                expect(page.locator("#run-a")).to_have_value(case["runs"][0])
+                assert "-bf16-" in case["runs"][0]
+                assert "-dots-" in case["runs"][1]
+                assert "-paddle-" in case["runs"][2]
+                assert "-unlimited-" in case["runs"][3]
                 page.locator("#next").click()
                 positions[case_id] = str(case["original_pages"][1])
                 expect(page.locator("#page")).to_have_value(positions[case_id])
