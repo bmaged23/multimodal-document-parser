@@ -2,14 +2,17 @@
 
 [GitHub repository: bmaged23/multimodal-document-parser](https://github.com/bmaged23/multimodal-document-parser)
 
-This project evaluates how well document parsing models turn PDFs and DOCX files
-into structured, usable data. We compare text and handwriting recovery, table
-structure, and chart/image detection, with saved outputs shown beside the source
-pages so you can inspect where each model succeeds or fails.
+This project compares multiple OCR and document parsing models to find which
+performs best overall on our test documents and which works best for text,
+handwriting, tables, charts and images. We evaluate their outputs and show them
+beside the original pages in an interactive demo, making strengths and failures
+easy to inspect.
 
-The goal is to make model selection evidence-based and build a practical parsing
-pipeline that exports JSON, Markdown and HTML. Parsing and evaluation are the main
-focus; chunking, retrieval and RAG are secondary studies using the extracted data.
+We then use these findings to build a practical PDF/DOCX parsing pipeline that
+extracts and structures content, adds optional chart/image descriptions, and
+exports JSON, Markdown and HTML. Chunking, retrieval and RAG extend the extracted
+data as secondary studies; model comparison and the parsing pipeline are the
+project’s main focus.
 
 **Turn PDF and DOCX files into source-linked JSON, Markdown and HTML review reports.**
 The GPU parsing pipeline combines quantized dots.mocr (Q4_K_M language + Q8_0 projector) with optional chart/image

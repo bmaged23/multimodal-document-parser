@@ -1,13 +1,16 @@
 # Multimodal Document Parser
 
-This project evaluates how well document parsing models turn PDFs and DOCX files
-into structured, usable data. We compare text and handwriting recovery, table
-structure, and chart/image detection, with saved outputs shown beside the source
-pages so you can inspect where each model succeeds or fails.
+This project compares multiple OCR and document parsing models to find which
+performs best overall on our test documents and which works best for text,
+handwriting, tables, charts and images. We evaluate their outputs and show them
+beside the original pages in an interactive demo, making strengths and failures
+easy to inspect.
 
-The goal is to make model selection evidence-based and build a practical parsing
-pipeline that exports JSON, Markdown and HTML. Parsing and evaluation are the main
-focus; chunking, retrieval and RAG are secondary studies using the extracted data.
+We then use these findings to build a practical PDF/DOCX parsing pipeline that
+extracts and structures content, adds optional chart/image descriptions, and
+exports JSON, Markdown and HTML. Chunking, retrieval and RAG extend the extracted
+data as secondary studies; model comparison and the parsing pipeline are the
+project’s main focus.
 
 **Model choice:** dots.mocr is our preferred model family overall on the 70-page test corpus. Original BF16 offers the strongest overall balance; **Q4_K_M language + Q8_0 projector** is the production default for the **GTX 1660 Ti with 6 GB VRAM**. BF16 reached **8.53 GiB peak PyTorch allocation** on Colab T4. [Comparison, measured memory and limits](docs/evaluation/parser-model-selection.md).
 
