@@ -1,8 +1,8 @@
 {
-  "release_tag": "demo-v5.3",
-  "asset": "public-demo-v5.3.zip",
-  "sha256": "b8c0bafbdb229514a703e684c6969ad5b2ce0e9c4f7f7b1028a1ba899c1fed9b",
-  "demo_version": "5.3",
+  "release_tag": "demo-v5.5",
+  "asset": "public-demo-v5.5.zip",
+  "sha256": "24f8ecebc422f250221278a0aa99a1d02828b63ef5668521b3f8badcecfcef9d",
+  "demo_version": "5.5",
   "selected_pages": 53,
   "models": [
     "dots.mocr original HF BF16, Colab T4",
