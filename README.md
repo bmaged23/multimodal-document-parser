@@ -111,7 +111,7 @@ to exports, while optional visual enrichment sends crops and page context to
 
 
 1. **Prepare:** convert DOCX to PDF when needed, then render page images and record source identity.
-2. **Parse:** extract text, headings, tables and visual regions, retaining raw model responses.
+2. **Parse:** run **dots.mocr Q4_K_M (4-bit) language weights + Q8_0 (8-bit) vision projector on GPU** to extract text, headings, tables and visual regions, retaining raw model responses.
 3. **Normalize:** map supported outputs into one JSON schema with reading order, table cells and page coordinates.
 4. **Describe visuals:** optionally send chart/image crops to Gemma through Ollama Cloud; retain generated descriptions, numbers, uncertainty and provenance separately from OCR.
 5. **Review and export:** compare the source with JSON, Markdown and HTML; keep failures and inferred structure visible. Chunking/RAG is an optional downstream study.
@@ -155,54 +155,6 @@ within source regions, not full-page accuracy or hallucination precision.
 [Interactive evaluation report](https://bmaged23.github.io/multimodal-document-parser/evaluation/) ·
 [Evaluation methodology and metric explanations](docs/evaluation/README.md) ·
 [Saved metrics by model and PDF](evaluation/results/manual-reference-full-corpus-v1.json)
-
-<details>
-<summary>Earlier runtime measurements and selected-reference studies</summary>
-
-All three configurations were tested on an **NVIDIA GeForce GTX 1660 Ti with
-6 GB VRAM (6,144 MiB)** under WSL2. OCR runs were sequential. Gemma visual
-enrichment executes on Ollama Cloud, not on this laptop GPU.
-
-- **PaddleOCR-VL-1.6:** integrated parsing and normalized exports.
-- **dots.mocr:** Q4_K_M language weights with a Q8_0 vision projector on GPU.
-- **Unlimited-OCR 2:** NF4 language / FP16 vision diagnostic runs with compatibility changes; saved raw generations remain separate from canonical parsing.
-
-**dots.mocr demo quantization:** the language model uses **Q4_K_M (4-bit)**
-and the vision projector uses **Q8_0 (8-bit)**. These saved results come from that
-quantized GPU configuration; quantization precision is distinct from model
-parameter count. The public demo retains this quantized baseline. The earlier
-original-weight BF16 study on Colab T4 covered 31 matched input pages; the later
-four-document matrix covers all 70 retained pages. Earlier study:
-[unquantized versus retained parser profiles](docs/evaluation/dots-mocr-colab-bf16-comparison.md).
-Different hardware, backends and conversion lineage prevent isolating quantization alone.
-
-| Observed case | PaddleOCR-VL-1.6 | Quantized dots.mocr | Unlimited-OCR 2 NF4/FP16 | Original dots BF16 |
-| --- | ---: | ---: | ---: | ---: |
-| NASA financial report, selected 20 pages | 20 accepted | 20 accepted | 20 completed generations | 20 accepted |
-| NASA PDF-text-layer token F1 | 96.59% | 97.13% | 96.17% | 97.14% |
-| Median measured NASA page time | 155.7 s | 25.9 s | 108.1 s generation-only | 61.7 s on Colab T4 |
-| Historical diary, archived 5-page selection | 5 accepted | 3 accepted; 2 token-limit failures | 3 completed; 2 timeouts | 4 accepted; 1 time limit |
-| Selected small sensor-table cell checks | 20/20 | 20/20 | 20/20 | 20/20 raw; 0/2 original pages normalize |
-| Peak memory across retained runs | 5,959 MiB device | 5,914 MiB device | 3,150 MiB allocator | **8,739 MiB / 8.53 GiB allocator** |
-
-Device peaks are sampled total GPU memory; allocator peaks are PyTorch maxima.
-They are different metrics, not minimum GPU capacities. BF16 ran on Colab T4;
-the other profiles ran on GTX 1660 Ti (6 GB). Printed token F1 is source-text
-recovery, not overall document accuracy or diagram understanding.
-
-Accepted or generated pages are not necessarily accurate pages. Backend timing
-scopes, initialization, precision, preprocessing and image dimensions differ;
-Unlimited-OCR 2 additionally reloads the model per page, excluded from the median
-above. These are operational observations, not a controlled speedup or quality
-ranking. NASA's selection has no independent accuracy reference. The cell checks
-cover only one small development table, not a general table benchmark.
-
-[Four-profile comparison and per-page data](evaluation/results/parser-corpus-four-profiles-v1.json) ·
-[Paddle/dots batch findings](docs/evaluation/quantized-gpu-batch.md) ·
-[Unlimited-OCR 2 findings](docs/evaluation/unlimited-ocr-2-gpu-results.md) ·
-[Hardware and limits](docs/development/hardware-report.md)
-
-</details>
 
 ### Author-written mathematics · four photos
 
