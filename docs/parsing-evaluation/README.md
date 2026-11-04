@@ -193,3 +193,13 @@ Independent human annotations, wider held-out coverage and a live hosted inferen
 service remain separate work. Source/browser CI, container validation and automated
 image publication passed; the public demo displays saved excerpts. RAG scores measure downstream
 behavior and must not be used as substitutes for parsing-model accuracy.
+
+## Upstream code and model weights
+
+The main README model badges open the official code repositories. Use the model cards for weights, download instructions and model-specific usage. dots.mocr BF16 and Q4/Q8 are two execution profiles of the same model family.
+
+| Model family | Official repository | Model card / weights |
+| --- | --- | --- |
+| dots.mocr | [GitHub](https://github.com/studio-dots-ai/dots.mocr) | [Hugging Face](https://huggingface.co/dots-studio/dots.mocr) |
+| PaddleOCR-VL-1.6 | [GitHub](https://github.com/PaddlePaddle/PaddleOCR) | [Hugging Face](https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6) |
+| Unlimited-OCR 2 | [GitHub](https://github.com/baidu/Unlimited-OCR) | [Hugging Face](https://huggingface.co/baidu/Unlimited-OCR-2) |

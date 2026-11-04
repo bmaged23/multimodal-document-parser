@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/bmaged23/multimodal-document-parser/actions/workflows/continuous-integration.yml)
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-0.1.0--rc.4-blue)](https://hub.docker.com/r/bmaged23/multimodal-document-parser)
-[![dots.mocr](https://img.shields.io/badge/OCR-dots.mocr-16867a)](https://huggingface.co/dots-studio/dots.mocr)
-[![PaddleOCR](https://img.shields.io/badge/OCR-PaddleOCR--VL--1.6-306db6)](https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6)
-[![Unlimited-OCR 2](https://img.shields.io/badge/OCR-Unlimited--OCR%202-8458ae)](https://huggingface.co/baidu/Unlimited-OCR-2)
+[![dots.mocr](https://img.shields.io/badge/GitHub-dots.mocr-16867a)](https://github.com/studio-dots-ai/dots.mocr)
+[![PaddleOCR](https://img.shields.io/badge/GitHub-PaddleOCR--VL--1.6-306db6)](https://github.com/PaddlePaddle/PaddleOCR)
+[![Unlimited-OCR 2](https://img.shields.io/badge/GitHub-Unlimited--OCR%202-8458ae)](https://github.com/baidu/Unlimited-OCR)
 
 This project compares multiple OCR and document parsing models to find which
 performs best overall on our test documents and which works best for text,
