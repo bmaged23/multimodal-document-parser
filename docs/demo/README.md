@@ -8,7 +8,7 @@ it is not a claim that quantized dots has the best quality.
 
 ## Current comparison and evaluation
 
-Version 5.4 replaces the earlier stage-based viewer with the matched four-model
+Version 5.5 replaces the earlier stage-based viewer with the matched four-model
 comparison. **70-page evaluation** opens the measured results, per-document
 filters and metric definitions. Its overall interpretation is BF16 → Q4/Q8 →
 Paddle → Unlimited; this is a qualitative ranking of this corpus, not a combined
@@ -102,7 +102,7 @@ changed OCR text/tables or unresolved visual failures:
 
 ```bash
 uv run --no-sync python scripts/visualization/build_four_model_demo.py \
-  --output-directory outputs/evaluation_showcase/four-model-public-new --version 5.4 \
+  --output-directory outputs/evaluation_showcase/four-model-public-new --version 5.5 \
   --evaluation-directory outputs/quality_evaluations/manual-reference-full-corpus-04
 ```
 
@@ -116,3 +116,5 @@ Documents appear as Handwritten mathematics → IMF · complex tables → IRENA 
 The model selector starts with original dots.mocr BF16, followed by dots.mocr Q4/Q8, PaddleOCR-VL-1.6 and Unlimited-OCR 2. BF16 is the initial default. Switching PDFs keeps the selected OCR model; links to a specific model still open that model.
 
 [Inspect evaluation references](https://bmaged23.github.io/multimodal-document-parser/references/) to compare the 53 shareable source pages with the frozen annotation subset. The viewer is read-only; it exposes draft status, provenance, table cells and source regions. Full private references remain local.
+
+The reference viewer has independent scrolling in the two panes. Page navigation updates both panes. Hovering highlights without scrolling; explicitly clicking an annotation or source region jumps the opposite pane to its match.

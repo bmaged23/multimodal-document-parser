@@ -22,7 +22,7 @@ project’s main focus.
 
 ## Live demo
 
-[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.4)
+[![Click to open the interactive PDF parsing demo](docs/assets/interactive-demo-banner.svg)](https://bmaged23.github.io/multimodal-document-parser/?v=5.5)
 
 **Click the banner to try the interactive demo—no setup, GPU or API key needed.**
 
@@ -38,7 +38,7 @@ its OCR model, and use **Expand PDF + output** beside the reading
 area. Metrics and zoom are optional settings; output formats use one dropdown.
 This is a read-only saved-output demo, not a live upload/inference service.
 
-[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.4/public-demo-v5.4.zip) ·
+[Download the portable demo](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.5/public-demo-v5.5.zip) ·
 [Local demo instructions](docs/development/evaluation-showcase.md#run-the-downloaded-demo) ·
 [Parsing/model evaluation](docs/parsing-evaluation/README.md) ·
 [Parsing pipeline](docs/parsing-pipeline/README.md) ·
@@ -576,7 +576,7 @@ docker pull bmaged23/multimodal-document-parser:0.1.0-rc.4
 | --- | --- |
 | Public GPU parsing image | [Docker Hub](https://hub.docker.com/r/bmaged23/multimodal-document-parser) |
 | Versioned release, source and immutable image record | [GitHub Release v0.1.0-rc.4](https://github.com/bmaged23/multimodal-document-parser/releases/tag/v0.1.0-rc.4) |
-| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.4/public-demo-v5.4.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
+| Portable saved-output demo | [Release ZIP](https://github.com/bmaged23/multimodal-document-parser/releases/download/demo-v5.5/public-demo-v5.5.zip) · [Checksum pin](evaluation/public-demo-bundle.json) |
 
 The container package is distributed through Docker Hub; it is a separate registry
 from GitHub Packages. Release records identify the exact tested image/source and

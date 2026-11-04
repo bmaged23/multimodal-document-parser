@@ -157,6 +157,49 @@ def main() -> None:
                     expect(page.locator("#region")).to_have_attribute("visibility", "visible")
             page.goto(f"http://127.0.0.1:{server.server_port}/references/?document=math&page=1")
             expect(page.locator("#source-title")).to_contain_text("original page 1")
+            expect(page.locator("#source")).not_to_have_js_property("naturalWidth", 0)
+            source_scroll = page.locator("#source-pane").evaluate("pane=>pane.scrollTop")
+            page.locator("#annotation-pane").evaluate("pane=>pane.scrollTop=300")
+            assert page.locator("#source-pane").evaluate("pane=>pane.scrollTop") == source_scroll
+            page.locator("article h3").last.hover()
+            assert page.locator("#source-pane").evaluate("pane=>pane.scrollTop") == source_scroll
+            annotation_scroll = page.locator("#annotation-pane").evaluate("pane=>pane.scrollTop")
+            page.locator("#source-pane").evaluate("pane=>pane.scrollTop=200")
+            assert (
+                page.locator("#annotation-pane").evaluate("pane=>pane.scrollTop")
+                == annotation_scroll
+            )
+            target = page.locator(".region-target").first
+            annotation_id = target.get_attribute("data-annotation")
+            target.dispatch_event("click")
+            expect(page.locator("article.active")).to_have_attribute(
+                "data-annotation", annotation_id
+            )
+            expect(page.locator("#region")).to_have_attribute("visibility", "visible")
+            page.wait_for_timeout(600)
+            assert page.evaluate("""()=>{
+                const pane=document.getElementById('annotation-pane');
+                const card=document.querySelector('article.active');
+                const target=pane.scrollTop+card.getBoundingClientRect().top
+                    -pane.getBoundingClientRect().top-pane.querySelector('h2').offsetHeight-12;
+                const clamped=Math.max(0,Math.min(pane.scrollHeight-pane.clientHeight,target));
+                return Math.abs(pane.scrollTop-clamped)<3;
+            }""")
+            page.locator("article h3").last.click()
+            page.wait_for_timeout(600)
+            assert page.evaluate("""()=>{
+                const pane=document.getElementById('source-pane');
+                const sheet=document.querySelector('.sheet');
+                const id=document.querySelector('article.active').dataset.annotation;
+                const box=data.annotations.find(a=>a.id===id).source_box;
+                const target=pane.scrollTop+sheet.getBoundingClientRect().top
+                    -pane.getBoundingClientRect().top+box.y0*sheet.clientHeight
+                    -pane.querySelector('h2').offsetHeight-12;
+                const clamped=Math.max(0,Math.min(pane.scrollHeight-pane.clientHeight,target));
+                return Math.abs(pane.scrollTop-clamped)<3;
+            }""")
+            page.locator("#annotation-pane").evaluate("pane=>pane.scrollTop=0")
+            page.locator("#source-pane").evaluate("pane=>pane.scrollTop=0")
             page.screenshot(path=str(root.parent / "reference-viewer-handwriting.png"))
             table_page = next(p for p in references["pages"] if p["case"] == "imf")
             page.goto(
@@ -187,6 +230,9 @@ def main() -> None:
                 model_selection_preserved_across_documents=True,
                 reference_viewer_pages=len(references["pages"]),
                 reference_viewer_annotations=len(references["annotations"]),
+                reference_viewer_independent_scrolling=True,
+                reference_viewer_bidirectional_highlighting=True,
+                reference_viewer_click_reveals_opposite_region=True,
                 mobile_width=390,
                 javascript_errors=errors,
                 inference_requests=0,

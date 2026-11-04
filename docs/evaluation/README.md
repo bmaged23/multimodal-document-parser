@@ -2,7 +2,7 @@
 
 [Project overview](../../README.md) · [Model comparison guide](../parsing-evaluation/README.md) ·
 [Interactive evaluation report](https://bmaged23.github.io/multimodal-document-parser/evaluation/) ·
-[Four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.4)
+[Four-model demo](https://bmaged23.github.io/multimodal-document-parser/?v=5.5)
 
 **dots.mocr is our preferred model family overall for this test corpus.** Original
 BF16 offers the strongest balance; quantized Q4_K_M language weights with a Q8_0
@@ -87,7 +87,7 @@ No inference rerun or external judge was needed for this evaluation.
 | Strict grid cell-text match ↑ | 83.55% | 82.39% | 79.87% | 85.09% |
 | Label-linked row/value match ↑ | 86.58% | 72.05% | 80.96% | 55.62% |
 | Table cell-content multiset F1 ↑ | 91.61% | 90.36% | 90.50% | 87.53% |
-| Visual-region recall at IoU ≥ 0.50 ↑ | 81.25% | 85.42% | 91.67% | 85.42% |
+| Visual-region recall at IoU ≥ 0.50 ↑ | 81.25% | 85.52% | 91.67% | 85.52% |
 | Pages with native layout output | 70/70 | 70/70 | 70/70 | 68/70 |
 
 The [interactive report](https://bmaged23.github.io/multimodal-document-parser/evaluation/)
