@@ -203,38 +203,6 @@ assignment. It reports printed-text recovery, selected table/visual checks and
 failures separately; [metrics and per-page evidence](evaluation/results/parser-corpus-four-profiles-v1.json)
 are saved alongside it.
 
-## Evaluate the final pipeline separately
-
-**What does “final pipeline” mean here?** It is the evaluated saved-report
-version assembled from **PaddleOCR → normalized document JSON → Gemma visual
-descriptions → disclosed source-based postprocessing and review → exports**.
-The earlier baseline is a previous snapshot of this assembled pipeline, not a
-separate raw-model accuracy score.
-
-The reviewed version links table structure and captions, explicitly marks inferred
-headers, and corrects selected chart values using native PDF text/vector evidence.
-Those evaluation-specific repairs are documented; they do not mean every new
-uploaded PDF is automatically corrected or independently verified.
-
-We checked **46 selected pages: 20 IRENA pages and 26 IMF appendix pages** against
-specific source assertions. In the table, **277/277 means 277 selected cell-text
-checks matched**, not 277 tables or perfect accuracy across all document content.
-
-| Selected source check | Earlier pipeline snapshot | Final source-reviewed snapshot |
-| --- | ---: | ---: |
-| Table-cell text | 277/277 | 277/277 |
-| Merged-cell span attributes | 40/40 | 40/40 |
-| Sampled column-header roles | 0/32 | 32/32, marked inferred |
-| Printed chart values matched to series/category | 141/144 | 144/144, after PDF source correction |
-
-These are selected assistant-reviewed development checks, not full-document
-accuracy or independent human annotations. Repaired pipeline scores must not be
-attributed to the raw OCR or VLM model.
-
-[Initial findings and failures](docs/evaluation/irena-imf-source-review.md) ·
-[Repairs and final checks](docs/evaluation/final-source-quality-repair.md) ·
-[Raw VLM comparison limits](docs/evaluation/five-model-vlm-benchmark.md)
-
 ## Secondary comparison: chunking and RAG
 
 After evaluating parsing, we tested how its saved output supports retrieval and
